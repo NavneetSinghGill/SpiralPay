@@ -1,0 +1,6 @@
+framework module Pods_SpiralPay {
+  umbrella header "Pods-SpiralPay-umbrella.h"
+
+  export *
+  module * { export * }
+}

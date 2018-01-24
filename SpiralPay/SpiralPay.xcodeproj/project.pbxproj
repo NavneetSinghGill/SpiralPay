@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		123F9D4C2AA191714DD024B1 /* Pods_SpiralPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDE718037355A683F8CD2F0 /* Pods_SpiralPay.framework */; };
+		147A20A88B30D1D4A241C375 /* Pods_SpiralPayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C010BB9EF1D6CFE337A113FC /* Pods_SpiralPayTests.framework */; };
+		77372554115C7AD75F24E2E3 /* Pods_SpiralPayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB660408693C4325D269D6D /* Pods_SpiralPayUITests.framework */; };
 		F1D9BA51201852E8004B42B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA50201852E8004B42B7 /* AppDelegate.swift */; };
 		F1D9BA53201852E8004B42B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA52201852E8004B42B7 /* ViewController.swift */; };
 		F1D9BA56201852E8004B42B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1D9BA54201852E8004B42B7 /* Main.storyboard */; };
@@ -14,6 +17,52 @@
 		F1D9BA5B201852E8004B42B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1D9BA59201852E8004B42B7 /* LaunchScreen.storyboard */; };
 		F1D9BA66201852E8004B42B7 /* SpiralPayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA65201852E8004B42B7 /* SpiralPayTests.swift */; };
 		F1D9BA71201852E8004B42B7 /* SpiralPayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA70201852E8004B42B7 /* SpiralPayUITests.swift */; };
+		F1D9BAA320185605004B42B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA7F20185605004B42B7 /* Constants.swift */; };
+		F1D9BAA520185605004B42B7 /* StoryboardIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA8220185605004B42B7 /* StoryboardIdentifiable.swift */; };
+		F1D9BAA620185605004B42B7 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA8320185605004B42B7 /* StoryboardInstantiable.swift */; };
+		F1D9BAA720185605004B42B7 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA8520185605004B42B7 /* ArrayExtensions.swift */; };
+		F1D9BAA820185605004B42B7 /* FloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA8620185605004B42B7 /* FloatExtensions.swift */; };
+		F1D9BAA920185605004B42B7 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA8720185605004B42B7 /* ViewControllerExtensions.swift */; };
+		F1D9BAAA20185605004B42B7 /* UIStoryboard+Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA8820185605004B42B7 /* UIStoryboard+Storyboards.swift */; };
+		F1D9BAAC20185605004B42B7 /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA8A20185605004B42B7 /* DictionaryExtensions.swift */; };
+		F1D9BAAD20185605004B42B7 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA8B20185605004B42B7 /* DataExtensions.swift */; };
+		F1D9BAAE20185605004B42B7 /* BoolExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA8C20185605004B42B7 /* BoolExtensions.swift */; };
+		F1D9BAAF20185605004B42B7 /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA8D20185605004B42B7 /* GenericExtensions.swift */; };
+		F1D9BAB020185605004B42B7 /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA8E20185605004B42B7 /* DoubleExtensions.swift */; };
+		F1D9BAB120185605004B42B7 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA8F20185605004B42B7 /* URLExtensions.swift */; };
+		F1D9BAB220185605004B42B7 /* CGFloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9120185605004B42B7 /* CGFloatExtensions.swift */; };
+		F1D9BAB320185605004B42B7 /* CGSizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9220185605004B42B7 /* CGSizeExtensions.swift */; };
+		F1D9BAB420185605004B42B7 /* CGPointExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9320185605004B42B7 /* CGPointExtensions.swift */; };
+		F1D9BAB520185605004B42B7 /* CGColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9420185605004B42B7 /* CGColorExtensions.swift */; };
+		F1D9BAB620185605004B42B7 /* NSColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9520185605004B42B7 /* NSColorExtensions.swift */; };
+		F1D9BAB720185605004B42B7 /* NSViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9620185605004B42B7 /* NSViewExtensions.swift */; };
+		F1D9BAB820185605004B42B7 /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9720185605004B42B7 /* NSAttributedStringExtensions.swift */; };
+		F1D9BAB920185605004B42B7 /* CLLocationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9820185605004B42B7 /* CLLocationExtensions.swift */; };
+		F1D9BABA20185605004B42B7 /* StringExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9920185605004B42B7 /* StringExtention.swift */; };
+		F1D9BABB20185605004B42B7 /* SearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9A20185605004B42B7 /* SearchBarExtension.swift */; };
+		F1D9BABC20185605004B42B7 /* LocaleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9B20185605004B42B7 /* LocaleExtensions.swift */; };
+		F1D9BABD20185605004B42B7 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9C20185605004B42B7 /* SwifterSwift.swift */; };
+		F1D9BABE20185605004B42B7 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9D20185605004B42B7 /* DateExtensions.swift */; };
+		F1D9BAC020185605004B42B7 /* OptionalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9F20185605004B42B7 /* OptionalExtensions.swift */; };
+		F1D9BAC120185605004B42B7 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAA020185605004B42B7 /* CollectionExtensions.swift */; };
+		F1D9BAC220185605004B42B7 /* UIViewController+StoryboardIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAA120185605004B42B7 /* UIViewController+StoryboardIdentifier.swift */; };
+		F1D9BAC320185605004B42B7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAA220185605004B42B7 /* Utils.swift */; };
+		F1D9BAD1201856D1004B42B7 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAC5201856D1004B42B7 /* AppSettings.swift */; };
+		F1D9BAD2201856D1004B42B7 /* CommonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAC6201856D1004B42B7 /* CommonResponse.swift */; };
+		F1D9BAD4201856D1004B42B7 /* BannerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAC9201856D1004B42B7 /* BannerManager.swift */; };
+		F1D9BAD5201856D1004B42B7 /* AppSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BACA201856D1004B42B7 /* AppSettingsManager.swift */; };
+		F1D9BAD6201856D1004B42B7 /* RemoteNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BACB201856D1004B42B7 /* RemoteNotificationManager.swift */; };
+		F1D9BAD7201856D1004B42B7 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BACD201856D1004B42B7 /* RequestManager.swift */; };
+		F1D9BAD8201856D1004B42B7 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BACE201856D1004B42B7 /* BaseRequest.swift */; };
+		F1D9BAD9201856D1004B42B7 /* RealAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BACF201856D1004B42B7 /* RealAPI.swift */; };
+		F1D9BADA201856D1004B42B7 /* NetworkHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAD0201856D1004B42B7 /* NetworkHttpClient.swift */; };
+		F1D9BAE720185A8B004B42B7 /* BaseWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BADE20185A8B004B42B7 /* BaseWorker.swift */; };
+		F1D9BAE920185A8B004B42B7 /* AppSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1D9BAE320185A8B004B42B7 /* AppSettings.plist */; };
+		F1D9BAF32018614A004B42B7 /* TokenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAEE2018614A004B42B7 /* TokenInteractor.swift */; };
+		F1D9BAF42018614A004B42B7 /* TokenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAEF2018614A004B42B7 /* TokenPresenter.swift */; };
+		F1D9BAF52018614A004B42B7 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAF02018614A004B42B7 /* TokenManager.swift */; };
+		F1D9BAF62018614A004B42B7 /* TokenWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAF12018614A004B42B7 /* TokenWorker.swift */; };
+		F1D9BAF72018614A004B42B7 /* TokenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAF22018614A004B42B7 /* TokenModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +83,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4587D939B67760EBB5157D33 /* Pods-SpiralPayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiralPayUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpiralPayUITests/Pods-SpiralPayUITests.release.xcconfig"; sourceTree = "<group>"; };
+		45BB9652458808B24AF7301C /* Pods-SpiralPayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiralPayTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpiralPayTests/Pods-SpiralPayTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5EB660408693C4325D269D6D /* Pods_SpiralPayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpiralPayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87F8290059BCB99401861392 /* Pods-SpiralPay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiralPay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpiralPay/Pods-SpiralPay.debug.xcconfig"; sourceTree = "<group>"; };
+		8CDE718037355A683F8CD2F0 /* Pods_SpiralPay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpiralPay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7561080366BE851B64D99A4 /* Pods-SpiralPayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiralPayTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpiralPayTests/Pods-SpiralPayTests.release.xcconfig"; sourceTree = "<group>"; };
+		C010BB9EF1D6CFE337A113FC /* Pods_SpiralPayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpiralPayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C38F4CF947AB8083F8E50A67 /* Pods-SpiralPay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiralPay.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpiralPay/Pods-SpiralPay.release.xcconfig"; sourceTree = "<group>"; };
+		DC702035A733F0331D9068E0 /* Pods-SpiralPayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiralPayUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpiralPayUITests/Pods-SpiralPayUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F1D9BA4D201852E8004B42B7 /* SpiralPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpiralPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1D9BA50201852E8004B42B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1D9BA52201852E8004B42B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +105,52 @@
 		F1D9BA6C201852E8004B42B7 /* SpiralPayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpiralPayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1D9BA70201852E8004B42B7 /* SpiralPayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralPayUITests.swift; sourceTree = "<group>"; };
 		F1D9BA72201852E8004B42B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1D9BA7F20185605004B42B7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F1D9BA8220185605004B42B7 /* StoryboardIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifiable.swift; sourceTree = "<group>"; };
+		F1D9BA8320185605004B42B7 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
+		F1D9BA8520185605004B42B7 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA8620185605004B42B7 /* FloatExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA8720185605004B42B7 /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA8820185605004B42B7 /* UIStoryboard+Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Storyboards.swift"; sourceTree = "<group>"; };
+		F1D9BA8A20185605004B42B7 /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA8B20185605004B42B7 /* DataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA8C20185605004B42B7 /* BoolExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoolExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA8D20185605004B42B7 /* GenericExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA8E20185605004B42B7 /* DoubleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA8F20185605004B42B7 /* URLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA9120185605004B42B7 /* CGFloatExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA9220185605004B42B7 /* CGSizeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGSizeExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA9320185605004B42B7 /* CGPointExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA9420185605004B42B7 /* CGColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGColorExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA9520185605004B42B7 /* NSColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA9620185605004B42B7 /* NSViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSViewExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA9720185605004B42B7 /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA9820185605004B42B7 /* CLLocationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA9920185605004B42B7 /* StringExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtention.swift; sourceTree = "<group>"; };
+		F1D9BA9A20185605004B42B7 /* SearchBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarExtension.swift; sourceTree = "<group>"; };
+		F1D9BA9B20185605004B42B7 /* LocaleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocaleExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA9C20185605004B42B7 /* SwifterSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterSwift.swift; sourceTree = "<group>"; };
+		F1D9BA9D20185605004B42B7 /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		F1D9BA9F20185605004B42B7 /* OptionalExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalExtensions.swift; sourceTree = "<group>"; };
+		F1D9BAA020185605004B42B7 /* CollectionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionExtensions.swift; sourceTree = "<group>"; };
+		F1D9BAA120185605004B42B7 /* UIViewController+StoryboardIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+StoryboardIdentifier.swift"; sourceTree = "<group>"; };
+		F1D9BAA220185605004B42B7 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		F1D9BAC5201856D1004B42B7 /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		F1D9BAC6201856D1004B42B7 /* CommonResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonResponse.swift; sourceTree = "<group>"; };
+		F1D9BAC9201856D1004B42B7 /* BannerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerManager.swift; sourceTree = "<group>"; };
+		F1D9BACA201856D1004B42B7 /* AppSettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingsManager.swift; sourceTree = "<group>"; };
+		F1D9BACB201856D1004B42B7 /* RemoteNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteNotificationManager.swift; sourceTree = "<group>"; };
+		F1D9BACD201856D1004B42B7 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		F1D9BACE201856D1004B42B7 /* BaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
+		F1D9BACF201856D1004B42B7 /* RealAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealAPI.swift; sourceTree = "<group>"; };
+		F1D9BAD0201856D1004B42B7 /* NetworkHttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHttpClient.swift; sourceTree = "<group>"; };
+		F1D9BADE20185A8B004B42B7 /* BaseWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWorker.swift; sourceTree = "<group>"; };
+		F1D9BAE320185A8B004B42B7 /* AppSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppSettings.plist; sourceTree = "<group>"; };
+		F1D9BAEE2018614A004B42B7 /* TokenInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenInteractor.swift; sourceTree = "<group>"; };
+		F1D9BAEF2018614A004B42B7 /* TokenPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenPresenter.swift; sourceTree = "<group>"; };
+		F1D9BAF02018614A004B42B7 /* TokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		F1D9BAF12018614A004B42B7 /* TokenWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenWorker.swift; sourceTree = "<group>"; };
+		F1D9BAF22018614A004B42B7 /* TokenModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				123F9D4C2AA191714DD024B1 /* Pods_SpiralPay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				147A20A88B30D1D4A241C375 /* Pods_SpiralPayTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +174,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77372554115C7AD75F24E2E3 /* Pods_SpiralPayUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		575C9A2F8E71777712E58AA8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8CDE718037355A683F8CD2F0 /* Pods_SpiralPay.framework */,
+				C010BB9EF1D6CFE337A113FC /* Pods_SpiralPayTests.framework */,
+				5EB660408693C4325D269D6D /* Pods_SpiralPayUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		834B7E22E4DD492C3B56C863 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				87F8290059BCB99401861392 /* Pods-SpiralPay.debug.xcconfig */,
+				C38F4CF947AB8083F8E50A67 /* Pods-SpiralPay.release.xcconfig */,
+				45BB9652458808B24AF7301C /* Pods-SpiralPayTests.debug.xcconfig */,
+				A7561080366BE851B64D99A4 /* Pods-SpiralPayTests.release.xcconfig */,
+				DC702035A733F0331D9068E0 /* Pods-SpiralPayUITests.debug.xcconfig */,
+				4587D939B67760EBB5157D33 /* Pods-SpiralPayUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F1D9BA44201852E8004B42B7 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +211,8 @@
 				F1D9BA64201852E8004B42B7 /* SpiralPayTests */,
 				F1D9BA6F201852E8004B42B7 /* SpiralPayUITests */,
 				F1D9BA4E201852E8004B42B7 /* Products */,
+				834B7E22E4DD492C3B56C863 /* Pods */,
+				575C9A2F8E71777712E58AA8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +231,15 @@
 			children = (
 				F1D9BA50201852E8004B42B7 /* AppDelegate.swift */,
 				F1D9BA52201852E8004B42B7 /* ViewController.swift */,
-				F1D9BA54201852E8004B42B7 /* Main.storyboard */,
+				F1D9BA7E20185605004B42B7 /* Helpers */,
+				F1D9BAC7201856D1004B42B7 /* Manager */,
+				F1D9BAC4201856D1004B42B7 /* Models */,
+				F1D9BACC201856D1004B42B7 /* NetworkManager */,
 				F1D9BA57201852E8004B42B7 /* Assets.xcassets */,
-				F1D9BA59201852E8004B42B7 /* LaunchScreen.storyboard */,
+				F1D9BADF20185A8B004B42B7 /* Resources */,
+				F1D9BAEC2018614A004B42B7 /* Scenes */,
+				F1D9BAEB20185ACC004B42B7 /* StoryboardsAndXIBs */,
+				F1D9BADB20185A8B004B42B7 /* Workers */,
 				F1D9BA5C201852E8004B42B7 /* Info.plist */,
 			);
 			path = SpiralPay;
@@ -125,6 +263,142 @@
 			path = SpiralPayUITests;
 			sourceTree = "<group>";
 		};
+		F1D9BA7E20185605004B42B7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F1D9BA7F20185605004B42B7 /* Constants.swift */,
+				F1D9BA8120185605004B42B7 /* Protocol */,
+				F1D9BA8420185605004B42B7 /* Extensions */,
+				F1D9BAA220185605004B42B7 /* Utils.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F1D9BA8120185605004B42B7 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				F1D9BA8220185605004B42B7 /* StoryboardIdentifiable.swift */,
+				F1D9BA8320185605004B42B7 /* StoryboardInstantiable.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		F1D9BA8420185605004B42B7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F1D9BA8520185605004B42B7 /* ArrayExtensions.swift */,
+				F1D9BA8620185605004B42B7 /* FloatExtensions.swift */,
+				F1D9BA8720185605004B42B7 /* ViewControllerExtensions.swift */,
+				F1D9BA8820185605004B42B7 /* UIStoryboard+Storyboards.swift */,
+				F1D9BA8A20185605004B42B7 /* DictionaryExtensions.swift */,
+				F1D9BA8B20185605004B42B7 /* DataExtensions.swift */,
+				F1D9BA8C20185605004B42B7 /* BoolExtensions.swift */,
+				F1D9BA8D20185605004B42B7 /* GenericExtensions.swift */,
+				F1D9BA8E20185605004B42B7 /* DoubleExtensions.swift */,
+				F1D9BA8F20185605004B42B7 /* URLExtensions.swift */,
+				F1D9BA9020185605004B42B7 /* Cocoa */,
+				F1D9BA9920185605004B42B7 /* StringExtention.swift */,
+				F1D9BA9A20185605004B42B7 /* SearchBarExtension.swift */,
+				F1D9BA9B20185605004B42B7 /* LocaleExtensions.swift */,
+				F1D9BA9C20185605004B42B7 /* SwifterSwift.swift */,
+				F1D9BA9D20185605004B42B7 /* DateExtensions.swift */,
+				F1D9BA9F20185605004B42B7 /* OptionalExtensions.swift */,
+				F1D9BAA020185605004B42B7 /* CollectionExtensions.swift */,
+				F1D9BAA120185605004B42B7 /* UIViewController+StoryboardIdentifier.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F1D9BA9020185605004B42B7 /* Cocoa */ = {
+			isa = PBXGroup;
+			children = (
+				F1D9BA9120185605004B42B7 /* CGFloatExtensions.swift */,
+				F1D9BA9220185605004B42B7 /* CGSizeExtensions.swift */,
+				F1D9BA9320185605004B42B7 /* CGPointExtensions.swift */,
+				F1D9BA9420185605004B42B7 /* CGColorExtensions.swift */,
+				F1D9BA9520185605004B42B7 /* NSColorExtensions.swift */,
+				F1D9BA9620185605004B42B7 /* NSViewExtensions.swift */,
+				F1D9BA9720185605004B42B7 /* NSAttributedStringExtensions.swift */,
+				F1D9BA9820185605004B42B7 /* CLLocationExtensions.swift */,
+			);
+			path = Cocoa;
+			sourceTree = "<group>";
+		};
+		F1D9BAC4201856D1004B42B7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1D9BAC5201856D1004B42B7 /* AppSettings.swift */,
+				F1D9BAC6201856D1004B42B7 /* CommonResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F1D9BAC7201856D1004B42B7 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				F1D9BAC9201856D1004B42B7 /* BannerManager.swift */,
+				F1D9BACA201856D1004B42B7 /* AppSettingsManager.swift */,
+				F1D9BACB201856D1004B42B7 /* RemoteNotificationManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		F1D9BACC201856D1004B42B7 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				F1D9BACD201856D1004B42B7 /* RequestManager.swift */,
+				F1D9BACE201856D1004B42B7 /* BaseRequest.swift */,
+				F1D9BACF201856D1004B42B7 /* RealAPI.swift */,
+				F1D9BAD0201856D1004B42B7 /* NetworkHttpClient.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		F1D9BADB20185A8B004B42B7 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				F1D9BADE20185A8B004B42B7 /* BaseWorker.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		F1D9BADF20185A8B004B42B7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F1D9BAE320185A8B004B42B7 /* AppSettings.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F1D9BAEB20185ACC004B42B7 /* StoryboardsAndXIBs */ = {
+			isa = PBXGroup;
+			children = (
+				F1D9BA54201852E8004B42B7 /* Main.storyboard */,
+				F1D9BA59201852E8004B42B7 /* LaunchScreen.storyboard */,
+			);
+			path = StoryboardsAndXIBs;
+			sourceTree = "<group>";
+		};
+		F1D9BAEC2018614A004B42B7 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				F1D9BAED2018614A004B42B7 /* Token */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		F1D9BAED2018614A004B42B7 /* Token */ = {
+			isa = PBXGroup;
+			children = (
+				F1D9BAEE2018614A004B42B7 /* TokenInteractor.swift */,
+				F1D9BAEF2018614A004B42B7 /* TokenPresenter.swift */,
+				F1D9BAF02018614A004B42B7 /* TokenManager.swift */,
+				F1D9BAF12018614A004B42B7 /* TokenWorker.swift */,
+				F1D9BAF22018614A004B42B7 /* TokenModels.swift */,
+			);
+			path = Token;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +406,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1D9BA75201852E8004B42B7 /* Build configuration list for PBXNativeTarget "SpiralPay" */;
 			buildPhases = (
+				526BB72AD14AF573C2DDB875 /* [CP] Check Pods Manifest.lock */,
 				F1D9BA49201852E8004B42B7 /* Sources */,
 				F1D9BA4A201852E8004B42B7 /* Frameworks */,
 				F1D9BA4B201852E8004B42B7 /* Resources */,
+				3A556FDEAE2F6DB1291C0170 /* [CP] Embed Pods Frameworks */,
+				FAD96631B8200A7B952D21FC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +426,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1D9BA78201852E8004B42B7 /* Build configuration list for PBXNativeTarget "SpiralPayTests" */;
 			buildPhases = (
+				B587ED0E09BAA6F271E53AEA /* [CP] Check Pods Manifest.lock */,
 				F1D9BA5D201852E8004B42B7 /* Sources */,
 				F1D9BA5E201852E8004B42B7 /* Frameworks */,
 				F1D9BA5F201852E8004B42B7 /* Resources */,
+				B86F618C4606CD7B00CB5F27 /* [CP] Embed Pods Frameworks */,
+				49905274E09617D6DA85B150 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +447,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1D9BA7B201852E8004B42B7 /* Build configuration list for PBXNativeTarget "SpiralPayUITests" */;
 			buildPhases = (
+				43927AC39D496E0E0303A7C3 /* [CP] Check Pods Manifest.lock */,
 				F1D9BA68201852E8004B42B7 /* Sources */,
 				F1D9BA69201852E8004B42B7 /* Frameworks */,
 				F1D9BA6A201852E8004B42B7 /* Resources */,
+				6B2C705991813EFE115C8AF4 /* [CP] Embed Pods Frameworks */,
+				1B0BEAF1103DD06C5CB6C0C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -214,6 +497,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = F1D9BA44201852E8004B42B7;
 			productRefGroup = F1D9BA4E201852E8004B42B7 /* Products */;
@@ -234,6 +518,7 @@
 			files = (
 				F1D9BA5B201852E8004B42B7 /* LaunchScreen.storyboard in Resources */,
 				F1D9BA58201852E8004B42B7 /* Assets.xcassets in Resources */,
+				F1D9BAE920185A8B004B42B7 /* AppSettings.plist in Resources */,
 				F1D9BA56201852E8004B42B7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,6 +539,176 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1B0BEAF1103DD06C5CB6C0C0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpiralPayUITests/Pods-SpiralPayUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A556FDEAE2F6DB1291C0170 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SpiralPay/Pods-SpiralPay-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpiralPay/Pods-SpiralPay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		43927AC39D496E0E0303A7C3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpiralPayUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49905274E09617D6DA85B150 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpiralPayTests/Pods-SpiralPayTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		526BB72AD14AF573C2DDB875 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpiralPay-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B2C705991813EFE115C8AF4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpiralPayUITests/Pods-SpiralPayUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B587ED0E09BAA6F271E53AEA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpiralPayTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B86F618C4606CD7B00CB5F27 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpiralPayTests/Pods-SpiralPayTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAD96631B8200A7B952D21FC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpiralPay/Pods-SpiralPay-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F1D9BA49201852E8004B42B7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -261,6 +716,51 @@
 			files = (
 				F1D9BA53201852E8004B42B7 /* ViewController.swift in Sources */,
 				F1D9BA51201852E8004B42B7 /* AppDelegate.swift in Sources */,
+				F1D9BAC220185605004B42B7 /* UIViewController+StoryboardIdentifier.swift in Sources */,
+				F1D9BAB420185605004B42B7 /* CGPointExtensions.swift in Sources */,
+				F1D9BAB220185605004B42B7 /* CGFloatExtensions.swift in Sources */,
+				F1D9BAD4201856D1004B42B7 /* BannerManager.swift in Sources */,
+				F1D9BAA720185605004B42B7 /* ArrayExtensions.swift in Sources */,
+				F1D9BABC20185605004B42B7 /* LocaleExtensions.swift in Sources */,
+				F1D9BAD6201856D1004B42B7 /* RemoteNotificationManager.swift in Sources */,
+				F1D9BAB920185605004B42B7 /* CLLocationExtensions.swift in Sources */,
+				F1D9BABA20185605004B42B7 /* StringExtention.swift in Sources */,
+				F1D9BAC320185605004B42B7 /* Utils.swift in Sources */,
+				F1D9BAC020185605004B42B7 /* OptionalExtensions.swift in Sources */,
+				F1D9BAD2201856D1004B42B7 /* CommonResponse.swift in Sources */,
+				F1D9BAA320185605004B42B7 /* Constants.swift in Sources */,
+				F1D9BAAE20185605004B42B7 /* BoolExtensions.swift in Sources */,
+				F1D9BAF42018614A004B42B7 /* TokenPresenter.swift in Sources */,
+				F1D9BABE20185605004B42B7 /* DateExtensions.swift in Sources */,
+				F1D9BAB720185605004B42B7 /* NSViewExtensions.swift in Sources */,
+				F1D9BAA620185605004B42B7 /* StoryboardInstantiable.swift in Sources */,
+				F1D9BAA820185605004B42B7 /* FloatExtensions.swift in Sources */,
+				F1D9BAB520185605004B42B7 /* CGColorExtensions.swift in Sources */,
+				F1D9BAB320185605004B42B7 /* CGSizeExtensions.swift in Sources */,
+				F1D9BAC120185605004B42B7 /* CollectionExtensions.swift in Sources */,
+				F1D9BAA920185605004B42B7 /* ViewControllerExtensions.swift in Sources */,
+				F1D9BAD1201856D1004B42B7 /* AppSettings.swift in Sources */,
+				F1D9BAD7201856D1004B42B7 /* RequestManager.swift in Sources */,
+				F1D9BAE720185A8B004B42B7 /* BaseWorker.swift in Sources */,
+				F1D9BAF32018614A004B42B7 /* TokenInteractor.swift in Sources */,
+				F1D9BAD9201856D1004B42B7 /* RealAPI.swift in Sources */,
+				F1D9BAB620185605004B42B7 /* NSColorExtensions.swift in Sources */,
+				F1D9BADA201856D1004B42B7 /* NetworkHttpClient.swift in Sources */,
+				F1D9BAA520185605004B42B7 /* StoryboardIdentifiable.swift in Sources */,
+				F1D9BAB820185605004B42B7 /* NSAttributedStringExtensions.swift in Sources */,
+				F1D9BAB120185605004B42B7 /* URLExtensions.swift in Sources */,
+				F1D9BAF62018614A004B42B7 /* TokenWorker.swift in Sources */,
+				F1D9BAD5201856D1004B42B7 /* AppSettingsManager.swift in Sources */,
+				F1D9BAAF20185605004B42B7 /* GenericExtensions.swift in Sources */,
+				F1D9BAF52018614A004B42B7 /* TokenManager.swift in Sources */,
+				F1D9BAF72018614A004B42B7 /* TokenModels.swift in Sources */,
+				F1D9BAB020185605004B42B7 /* DoubleExtensions.swift in Sources */,
+				F1D9BABB20185605004B42B7 /* SearchBarExtension.swift in Sources */,
+				F1D9BABD20185605004B42B7 /* SwifterSwift.swift in Sources */,
+				F1D9BAD8201856D1004B42B7 /* BaseRequest.swift in Sources */,
+				F1D9BAAD20185605004B42B7 /* DataExtensions.swift in Sources */,
+				F1D9BAAA20185605004B42B7 /* UIStoryboard+Storyboards.swift in Sources */,
+				F1D9BAAC20185605004B42B7 /* DictionaryExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +924,7 @@
 		};
 		F1D9BA76201852E8004B42B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87F8290059BCB99401861392 /* Pods-SpiralPay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -438,6 +939,7 @@
 		};
 		F1D9BA77201852E8004B42B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C38F4CF947AB8083F8E50A67 /* Pods-SpiralPay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -452,6 +954,7 @@
 		};
 		F1D9BA79201852E8004B42B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45BB9652458808B24AF7301C /* Pods-SpiralPayTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -468,6 +971,7 @@
 		};
 		F1D9BA7A201852E8004B42B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7561080366BE851B64D99A4 /* Pods-SpiralPayTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -484,6 +988,7 @@
 		};
 		F1D9BA7C201852E8004B42B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC702035A733F0331D9068E0 /* Pods-SpiralPayUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -499,6 +1004,7 @@
 		};
 		F1D9BA7D201852E8004B42B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4587D939B67760EBB5157D33 /* Pods-SpiralPayUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
