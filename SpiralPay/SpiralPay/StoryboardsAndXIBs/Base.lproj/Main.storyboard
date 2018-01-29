@@ -1,24 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Phone And Email View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PhoneAndEmailViewController" customModule="SpiralPay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHr-OV-r48" customClass="ProgressBarView" customModule="SpiralPay" customModuleProvider="target">
+                                <rect key="frame" x="76" y="59" width="168" height="5"/>
+                                <color key="backgroundColor" red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="LSH-tt-b7N"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please provide us your mobile number and email address." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMs-qh-Z50">
+                                <rect key="frame" x="22" y="106" width="276" height="38.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+44" placeholder="Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kR5-iN-6vD" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
+                                <rect key="frame" x="22" y="213" width="80" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Msq-E7-tx0"/>
+                                </constraints>
+                                <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="sdQ-vN-pDc"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1B5-En-pwf">
+                                <rect key="frame" x="22" y="213" width="80" height="45"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hvr-xA-Q1F" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
+                                <rect key="frame" x="120" y="213.5" width="178" height="45"/>
+                                <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="mjk-Ik-L7l"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QBT-Mf-zXw" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
+                                <rect key="frame" x="22" y="277.5" width="276" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="SSV-fc-rzO"/>
+                                </constraints>
+                                <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Nlg-14-GgA"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVY-mL-WxN" customClass="SpiralPayButton" customModule="SpiralPay" customModuleProvider="target">
+                                <rect key="frame" x="29.5" y="369.5" width="262" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="8CO-Uc-5a7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <state key="normal" title="Next" backgroundImage="buttonBlueBackground"/>
+                                <connections>
+                                    <action selector="nextButtonTappedWithButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kzs-H3-Xme"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="UVY-mL-WxN" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.82" id="1Sm-6D-NfP"/>
+                            <constraint firstItem="UVY-mL-WxN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4IR-A4-I0l"/>
+                            <constraint firstItem="QBT-Mf-zXw" firstAttribute="leading" secondItem="kR5-iN-6vD" secondAttribute="leading" id="6PO-xD-q6Z"/>
+                            <constraint firstItem="vHr-OV-r48" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BIU-Hg-k7L"/>
+                            <constraint firstItem="FMs-qh-Z50" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="Beo-KT-971"/>
+                            <constraint firstItem="vHr-OV-r48" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.525" id="Bho-oV-atN"/>
+                            <constraint firstItem="Hvr-xA-Q1F" firstAttribute="leading" secondItem="kR5-iN-6vD" secondAttribute="trailing" constant="18" id="Bl9-sS-n7G"/>
+                            <constraint firstItem="Hvr-xA-Q1F" firstAttribute="centerY" secondItem="kR5-iN-6vD" secondAttribute="centerY" id="DC2-NF-OLo"/>
+                            <constraint firstItem="QBT-Mf-zXw" firstAttribute="top" secondItem="kR5-iN-6vD" secondAttribute="bottom" constant="19" id="FOf-SN-udc"/>
+                            <constraint firstItem="1B5-En-pwf" firstAttribute="leading" secondItem="kR5-iN-6vD" secondAttribute="leading" id="GJ8-35-DFd"/>
+                            <constraint firstItem="kR5-iN-6vD" firstAttribute="top" secondItem="FMs-qh-Z50" secondAttribute="bottom" constant="69" id="M4n-fA-g3g"/>
+                            <constraint firstItem="1B5-En-pwf" firstAttribute="top" secondItem="kR5-iN-6vD" secondAttribute="top" id="Oft-RY-Gqq"/>
+                            <constraint firstItem="1B5-En-pwf" firstAttribute="bottom" secondItem="kR5-iN-6vD" secondAttribute="bottom" id="Rja-J8-yQP"/>
+                            <constraint firstItem="1B5-En-pwf" firstAttribute="trailing" secondItem="kR5-iN-6vD" secondAttribute="trailing" id="Shn-89-tjM"/>
+                            <constraint firstItem="vHr-OV-r48" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="39" id="UdH-Iu-7SV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hvr-xA-Q1F" secondAttribute="trailing" constant="22" id="XdK-dR-vYO"/>
+                            <constraint firstItem="UVY-mL-WxN" firstAttribute="top" secondItem="QBT-Mf-zXw" secondAttribute="bottom" constant="47" id="Zqq-LP-gI0"/>
+                            <constraint firstItem="kR5-iN-6vD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="aub-eR-pso"/>
+                            <constraint firstItem="QBT-Mf-zXw" firstAttribute="trailing" secondItem="Hvr-xA-Q1F" secondAttribute="trailing" id="beq-Vc-EHI"/>
+                            <constraint firstItem="Hvr-xA-Q1F" firstAttribute="width" secondItem="kR5-iN-6vD" secondAttribute="width" multiplier="244:110" id="eSc-Gg-Lsf"/>
+                            <constraint firstItem="Hvr-xA-Q1F" firstAttribute="height" secondItem="kR5-iN-6vD" secondAttribute="height" id="f8i-ag-zMr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FMs-qh-Z50" secondAttribute="trailing" constant="22" id="h7L-Gs-NBf"/>
+                            <constraint firstItem="FMs-qh-Z50" firstAttribute="top" secondItem="vHr-OV-r48" secondAttribute="bottom" constant="42" id="y42-YM-1bR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="countryCodeTextField" destination="kR5-iN-6vD" id="gwo-YM-5hI"/>
+                        <outlet property="emailAddressTextField" destination="QBT-Mf-zXw" id="kL9-AU-4tQ"/>
+                        <outlet property="mobileNumberTextField" destination="Hvr-xA-Q1F" id="Ov9-Ol-q0B"/>
+                        <outlet property="nextButton" destination="UVY-mL-WxN" id="3gQ-MJ-zAM"/>
+                        <outlet property="progressBar" destination="vHr-OV-r48" id="g1u-o7-9Fv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="35.625" y="64.436619718309856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="buttonBlueBackground" width="309" height="52"/>
+    </resources>
 </document>

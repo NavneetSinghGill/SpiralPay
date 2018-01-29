@@ -10,8 +10,9 @@
 		123F9D4C2AA191714DD024B1 /* Pods_SpiralPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDE718037355A683F8CD2F0 /* Pods_SpiralPay.framework */; };
 		147A20A88B30D1D4A241C375 /* Pods_SpiralPayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C010BB9EF1D6CFE337A113FC /* Pods_SpiralPayTests.framework */; };
 		77372554115C7AD75F24E2E3 /* Pods_SpiralPayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB660408693C4325D269D6D /* Pods_SpiralPayUITests.framework */; };
+		F16DF1F42018ADDB00FE3F94 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16DF1F32018ADDB00FE3F94 /* ProgressBarView.swift */; };
+		F16DF1F82019CDA200FE3F94 /* FloatingHeaderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16DF1F72019CDA200FE3F94 /* FloatingHeaderTextField.swift */; };
 		F1D9BA51201852E8004B42B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA50201852E8004B42B7 /* AppDelegate.swift */; };
-		F1D9BA53201852E8004B42B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA52201852E8004B42B7 /* ViewController.swift */; };
 		F1D9BA56201852E8004B42B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1D9BA54201852E8004B42B7 /* Main.storyboard */; };
 		F1D9BA58201852E8004B42B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1D9BA57201852E8004B42B7 /* Assets.xcassets */; };
 		F1D9BA5B201852E8004B42B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1D9BA59201852E8004B42B7 /* LaunchScreen.storyboard */; };
@@ -63,6 +64,15 @@
 		F1D9BAF52018614A004B42B7 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAF02018614A004B42B7 /* TokenManager.swift */; };
 		F1D9BAF62018614A004B42B7 /* TokenWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAF12018614A004B42B7 /* TokenWorker.swift */; };
 		F1D9BAF72018614A004B42B7 /* TokenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAF22018614A004B42B7 /* TokenModels.swift */; };
+		F1E89B4B2019D29D0052C723 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1E89B492019D29D0052C723 /* Lato-Medium.ttf */; };
+		F1E89B6B2019D2FD0052C723 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1E89B5B2019D2FD0052C723 /* Lato-Regular.ttf */; };
+		F1E89B75201F0E540052C723 /* PhoneAndEmailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E89B6F201F0E540052C723 /* PhoneAndEmailPresenter.swift */; };
+		F1E89B76201F0E540052C723 /* PhoneAndEmailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E89B70201F0E540052C723 /* PhoneAndEmailWorker.swift */; };
+		F1E89B77201F0E540052C723 /* PhoneAndEmailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E89B71201F0E540052C723 /* PhoneAndEmailRouter.swift */; };
+		F1E89B78201F0E540052C723 /* PhoneAndEmailModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E89B72201F0E540052C723 /* PhoneAndEmailModels.swift */; };
+		F1E89B79201F0E540052C723 /* PhoneAndEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E89B73201F0E540052C723 /* PhoneAndEmailViewController.swift */; };
+		F1E89B7A201F0E540052C723 /* PhoneAndEmailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E89B74201F0E540052C723 /* PhoneAndEmailInteractor.swift */; };
+		F1E89B7D201F123C0052C723 /* SpiralPayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E89B7C201F123C0052C723 /* SpiralPayButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,9 +102,10 @@
 		C010BB9EF1D6CFE337A113FC /* Pods_SpiralPayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpiralPayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C38F4CF947AB8083F8E50A67 /* Pods-SpiralPay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiralPay.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpiralPay/Pods-SpiralPay.release.xcconfig"; sourceTree = "<group>"; };
 		DC702035A733F0331D9068E0 /* Pods-SpiralPayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiralPayUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpiralPayUITests/Pods-SpiralPayUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F16DF1F32018ADDB00FE3F94 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		F16DF1F72019CDA200FE3F94 /* FloatingHeaderTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingHeaderTextField.swift; sourceTree = "<group>"; };
 		F1D9BA4D201852E8004B42B7 /* SpiralPay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpiralPay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1D9BA50201852E8004B42B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F1D9BA52201852E8004B42B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F1D9BA55201852E8004B42B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F1D9BA57201852E8004B42B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1D9BA5A201852E8004B42B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -151,6 +162,15 @@
 		F1D9BAF02018614A004B42B7 /* TokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		F1D9BAF12018614A004B42B7 /* TokenWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenWorker.swift; sourceTree = "<group>"; };
 		F1D9BAF22018614A004B42B7 /* TokenModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenModels.swift; sourceTree = "<group>"; };
+		F1E89B492019D29D0052C723 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
+		F1E89B5B2019D2FD0052C723 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		F1E89B6F201F0E540052C723 /* PhoneAndEmailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAndEmailPresenter.swift; sourceTree = "<group>"; };
+		F1E89B70201F0E540052C723 /* PhoneAndEmailWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAndEmailWorker.swift; sourceTree = "<group>"; };
+		F1E89B71201F0E540052C723 /* PhoneAndEmailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAndEmailRouter.swift; sourceTree = "<group>"; };
+		F1E89B72201F0E540052C723 /* PhoneAndEmailModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAndEmailModels.swift; sourceTree = "<group>"; };
+		F1E89B73201F0E540052C723 /* PhoneAndEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAndEmailViewController.swift; sourceTree = "<group>"; };
+		F1E89B74201F0E540052C723 /* PhoneAndEmailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAndEmailInteractor.swift; sourceTree = "<group>"; };
+		F1E89B7C201F123C0052C723 /* SpiralPayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralPayButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,7 +250,6 @@
 			isa = PBXGroup;
 			children = (
 				F1D9BA50201852E8004B42B7 /* AppDelegate.swift */,
-				F1D9BA52201852E8004B42B7 /* ViewController.swift */,
 				F1D9BA7E20185605004B42B7 /* Helpers */,
 				F1D9BAC7201856D1004B42B7 /* Manager */,
 				F1D9BAC4201856D1004B42B7 /* Models */,
@@ -267,6 +286,9 @@
 			isa = PBXGroup;
 			children = (
 				F1D9BA7F20185605004B42B7 /* Constants.swift */,
+				F16DF1F32018ADDB00FE3F94 /* ProgressBarView.swift */,
+				F16DF1F72019CDA200FE3F94 /* FloatingHeaderTextField.swift */,
+				F1E89B7C201F123C0052C723 /* SpiralPayButton.swift */,
 				F1D9BA8120185605004B42B7 /* Protocol */,
 				F1D9BA8420185605004B42B7 /* Extensions */,
 				F1D9BAA220185605004B42B7 /* Utils.swift */,
@@ -366,6 +388,8 @@
 			isa = PBXGroup;
 			children = (
 				F1D9BAE320185A8B004B42B7 /* AppSettings.plist */,
+				F1E89B492019D29D0052C723 /* Lato-Medium.ttf */,
+				F1E89B5B2019D2FD0052C723 /* Lato-Regular.ttf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -382,6 +406,7 @@
 		F1D9BAEC2018614A004B42B7 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				F1E89B6D201F09F10052C723 /* Signup */,
 				F1D9BAED2018614A004B42B7 /* Token */,
 			);
 			path = Scenes;
@@ -397,6 +422,27 @@
 				F1D9BAF22018614A004B42B7 /* TokenModels.swift */,
 			);
 			path = Token;
+			sourceTree = "<group>";
+		};
+		F1E89B6D201F09F10052C723 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				F1E89B7B201F0E5C0052C723 /* PhoneAndEmail */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		F1E89B7B201F0E5C0052C723 /* PhoneAndEmail */ = {
+			isa = PBXGroup;
+			children = (
+				F1E89B6F201F0E540052C723 /* PhoneAndEmailPresenter.swift */,
+				F1E89B70201F0E540052C723 /* PhoneAndEmailWorker.swift */,
+				F1E89B71201F0E540052C723 /* PhoneAndEmailRouter.swift */,
+				F1E89B72201F0E540052C723 /* PhoneAndEmailModels.swift */,
+				F1E89B73201F0E540052C723 /* PhoneAndEmailViewController.swift */,
+				F1E89B74201F0E540052C723 /* PhoneAndEmailInteractor.swift */,
+			);
+			path = PhoneAndEmail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -516,6 +562,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1E89B6B2019D2FD0052C723 /* Lato-Regular.ttf in Resources */,
+				F1E89B4B2019D29D0052C723 /* Lato-Medium.ttf in Resources */,
 				F1D9BA5B201852E8004B42B7 /* LaunchScreen.storyboard in Resources */,
 				F1D9BA58201852E8004B42B7 /* Assets.xcassets in Resources */,
 				F1D9BAE920185A8B004B42B7 /* AppSettings.plist in Resources */,
@@ -714,7 +762,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1D9BA53201852E8004B42B7 /* ViewController.swift in Sources */,
 				F1D9BA51201852E8004B42B7 /* AppDelegate.swift in Sources */,
 				F1D9BAC220185605004B42B7 /* UIViewController+StoryboardIdentifier.swift in Sources */,
 				F1D9BAB420185605004B42B7 /* CGPointExtensions.swift in Sources */,
@@ -736,6 +783,7 @@
 				F1D9BAA620185605004B42B7 /* StoryboardInstantiable.swift in Sources */,
 				F1D9BAA820185605004B42B7 /* FloatExtensions.swift in Sources */,
 				F1D9BAB520185605004B42B7 /* CGColorExtensions.swift in Sources */,
+				F16DF1F42018ADDB00FE3F94 /* ProgressBarView.swift in Sources */,
 				F1D9BAB320185605004B42B7 /* CGSizeExtensions.swift in Sources */,
 				F1D9BAC120185605004B42B7 /* CollectionExtensions.swift in Sources */,
 				F1D9BAA920185605004B42B7 /* ViewControllerExtensions.swift in Sources */,
@@ -750,15 +798,23 @@
 				F1D9BAB820185605004B42B7 /* NSAttributedStringExtensions.swift in Sources */,
 				F1D9BAB120185605004B42B7 /* URLExtensions.swift in Sources */,
 				F1D9BAF62018614A004B42B7 /* TokenWorker.swift in Sources */,
+				F16DF1F82019CDA200FE3F94 /* FloatingHeaderTextField.swift in Sources */,
 				F1D9BAD5201856D1004B42B7 /* AppSettingsManager.swift in Sources */,
 				F1D9BAAF20185605004B42B7 /* GenericExtensions.swift in Sources */,
 				F1D9BAF52018614A004B42B7 /* TokenManager.swift in Sources */,
+				F1E89B7D201F123C0052C723 /* SpiralPayButton.swift in Sources */,
 				F1D9BAF72018614A004B42B7 /* TokenModels.swift in Sources */,
+				F1E89B79201F0E540052C723 /* PhoneAndEmailViewController.swift in Sources */,
+				F1E89B77201F0E540052C723 /* PhoneAndEmailRouter.swift in Sources */,
+				F1E89B78201F0E540052C723 /* PhoneAndEmailModels.swift in Sources */,
 				F1D9BAB020185605004B42B7 /* DoubleExtensions.swift in Sources */,
 				F1D9BABB20185605004B42B7 /* SearchBarExtension.swift in Sources */,
+				F1E89B75201F0E540052C723 /* PhoneAndEmailPresenter.swift in Sources */,
 				F1D9BABD20185605004B42B7 /* SwifterSwift.swift in Sources */,
 				F1D9BAD8201856D1004B42B7 /* BaseRequest.swift in Sources */,
+				F1E89B7A201F0E540052C723 /* PhoneAndEmailInteractor.swift in Sources */,
 				F1D9BAAD20185605004B42B7 /* DataExtensions.swift in Sources */,
+				F1E89B76201F0E540052C723 /* PhoneAndEmailWorker.swift in Sources */,
 				F1D9BAAA20185605004B42B7 /* UIStoryboard+Storyboards.swift in Sources */,
 				F1D9BAAC20185605004B42B7 /* DictionaryExtensions.swift in Sources */,
 			);

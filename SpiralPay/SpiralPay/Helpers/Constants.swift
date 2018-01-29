@@ -15,6 +15,7 @@ typealias CompletionHandler = (_ success: Bool, _ response: Any?) -> Void
 
 let isiPad: Bool = UIDevice.current.userInterfaceIdiom == .pad
 
+let numberOfProgressBarPages = 3.0
 
 struct Constants {
     
