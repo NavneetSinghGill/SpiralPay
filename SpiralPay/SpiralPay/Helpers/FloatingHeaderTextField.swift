@@ -20,7 +20,7 @@ class FloatingHeaderTextField: UITextField {
     }
     
     @IBInspectable
-    open var notaResponderWithTextColor: UIColor = UIColor(displayP3Red: 170/255, green: 170/255, blue: 170/255, alpha: 1) {
+    open var notAResponderWithTextColor: UIColor = UIColor(displayP3Red: 170/255, green: 170/255, blue: 170/255, alpha: 1) {
         didSet {
             if !isActive {
                 setInActiveState()
@@ -29,7 +29,7 @@ class FloatingHeaderTextField: UITextField {
     }
     
     @IBInspectable
-    open var notaResponderWithoutTextColor: UIColor = UIColor(displayP3Red: 205/255, green: 210/255, blue: 220/255, alpha: 1) {
+    open var notAResponderWithoutTextColor: UIColor = UIColor(displayP3Red: 205/255, green: 210/255, blue: 220/255, alpha: 1) {
         didSet {
             if !isActive {
                 setInActiveState()
@@ -56,7 +56,7 @@ class FloatingHeaderTextField: UITextField {
     
     var placeholderLabel = UILabel()
     var underLineLayer: CAShapeLayer!
-    var defualtTextColor: UIColor?
+    var defaultTextColor: UIColor?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -81,8 +81,13 @@ class FloatingHeaderTextField: UITextField {
         let path = UIBezierPath()
         path.move(to: CGPoint(x: 0, y: bounds.size.height))
         path.addLine(to: CGPoint(x: bounds.size.width, y: bounds.size.height))
-        
         underLineLayer.path = path.cgPath
+        
+        if isActive {
+            setActiveState()
+        } else {
+            setInActiveState()
+        }
     }
     
     @objc func showHidePassword(button: UIButton) {
@@ -99,7 +104,7 @@ class FloatingHeaderTextField: UITextField {
             buttonPassword.setImage(UIImage(named: "showPassword"), for: .selected)
             rightView = buttonPassword
         }
-        self.defualtTextColor = self.textColor
+        self.defaultTextColor = self.textColor
         
         underLineLayer = CAShapeLayer()
         refreshUnderLineLayerFrame()
@@ -107,7 +112,6 @@ class FloatingHeaderTextField: UITextField {
         
         placeholderLabel = UILabel()
         if !(self.text?.isEmpty)! {
-            isActive = true
             placeholderLabel.text = placeholder
         }
         isActive = false
@@ -145,17 +149,18 @@ class FloatingHeaderTextField: UITextField {
     func setInActiveState()  {
         underLineLayer.fillColor = UIColor.clear.cgColor
         if self.text == nil || self.text!.isEmpty {
-            underLineLayer.strokeColor = notaResponderWithoutTextColor.cgColor
-            placeholderLabel.textColor = notaResponderWithoutTextColor
+            underLineLayer.strokeColor = notAResponderWithoutTextColor.cgColor
+            placeholderLabel.textColor = notAResponderWithoutTextColor
         } else {
-            underLineLayer.strokeColor = notaResponderWithTextColor.cgColor
-            placeholderLabel.textColor = notaResponderWithTextColor
+            underLineLayer.strokeColor = notAResponderWithTextColor.cgColor
+            placeholderLabel.textColor = notAResponderWithTextColor
         }
         
         let isEmpty = text?.isEmpty ?? true
         if isEmpty {
-            self.placeholderLabel.transform = CGAffineTransform.identity
-            self.placeholderLabel.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.height)
+            shiftPlaceholderToCenter()
+        } else {
+            shiftPlaceholderUpwards()
         }
     }
     
@@ -163,14 +168,9 @@ class FloatingHeaderTextField: UITextField {
         underLineLayer.fillColor = UIColor.clear.cgColor
         underLineLayer.strokeColor = firstResponderColor.cgColor
         placeholderLabel.textColor = firstResponderColor
-        self.textColor = defualtTextColor
+        self.textColor = defaultTextColor
         
-        self.placeholderLabel.frame = CGRect(x: 0, y: -25, width: self.bounds.size.width, height: self.bounds.size.height)
-        self.placeholderLabel.transform = CGAffineTransform(scaleX: self.placeholderFontScale, y: self.placeholderFontScale)
-        self.placeholderLabel.frame.origin = CGPoint(x: 0, y: self.placeholderLabel.frame.origin.y)
-        if self.placeholderLabel.effectiveUserInterfaceLayoutDirection == .rightToLeft {
-            self.placeholderLabel.frame.origin = CGPoint(x: self.frame.size.width - self.placeholderLabel.frame.size.width, y: self.placeholderLabel.frame.origin.y)
-        }
+        shiftPlaceholderUpwards()
     }
     
     func setInActiveStateIfShould() {
@@ -179,6 +179,21 @@ class FloatingHeaderTextField: UITextField {
     
     func setErrorColor() {
         self.textColor = errorTextColor
+    }
+    
+    func shiftPlaceholderToCenter() {
+        self.placeholderLabel.transform = CGAffineTransform.identity
+        self.placeholderLabel.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.height)
+    }
+    
+    func shiftPlaceholderUpwards() {
+        self.placeholderLabel.frame = CGRect(x: 0, y: -25, width: self.bounds.size.width, height: self.bounds.size.height)
+        self.placeholderLabel.transform = CGAffineTransform(scaleX: self.placeholderFontScale, y: self.placeholderFontScale)
+        self.placeholderLabel.frame.origin = CGPoint(x: 0, y: self.placeholderLabel.frame.origin.y)
+        
+        if self.placeholderLabel.effectiveUserInterfaceLayoutDirection == .rightToLeft {
+            self.placeholderLabel.frame.origin = CGPoint(x: self.frame.size.width - self.placeholderLabel.frame.size.width, y: self.placeholderLabel.frame.origin.y)
+        }
     }
     
     //MARK:- Validations

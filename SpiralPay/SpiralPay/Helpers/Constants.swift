@@ -44,10 +44,6 @@ struct Constants {
     static let kBearerkey = "Bearer "
     
     static let kAppName = "SpiralPay"
-    static let kChangeBackgroundImageIdentifier = "ChangeBackgroundImageIdentifier"
-    
-    static let generalHorizontalCellAspectRatio: CGFloat = 476/268
-    static let generalVerticalCellAspectRatio: CGFloat = 220/320
     
     // MARK: - User Defaults
     
@@ -111,75 +107,17 @@ struct Constants {
 }
 
 struct Identifiers {
-    //CollectionView
-    static let homeAdvertCollectionCell = "HomeHeaderAdvertisementCollectionViewCell"
-    static let homeImageVerticalCollectionViewCell = "HomeImageVerticalCollectionViewCell"
-    static let homeImageHorizontalCollectionViewCell = "HomeImageHorizontalCollectionViewCell"
-    // Home TableView
-    static let homeTableCell = "HomeTableViewCell"
-    // Browse TableView
-    static let browseTableViewCell = "BrowseTableViewCell"
-    
-    //Storyboard Identifiers
-    // Home
-    static let sIdHomeViewController = "HomeViewController"
-    
-    //MyListViewController
-    static let sIdMyListViewController = "MyListViewController"
-    static let sIdMoviesViewController = "MoviesViewController"
-    static let sIdTVShowsViewController = "TVShowsViewController"
-    static let sIdNetworksViewController = "NetworksViewController"
-    
-    //PlansViewController
-    static let selectPlanTableViewCell = "SelectPlan"
-    static let continuePlanTableViewCell = "ContinuePlan"
-    static let planTableViewCell = "PlanTableViewCell"
-}
-
-struct LocaleKeys {
-    static let kSignIn = "SignIn"
-    static let kFbSignIn = "FbSignIn"
-    
-    static let kSignUp = "SignUp"
-    static let kFbSignUp = "FbSignUp"
-    static let kForgotPassword = "ForgotPassword"
-    static let kCheckEmailforNewPassword = "CheckEmailforNewPassword"
-    
-    static let kBrowse = "Browse".localize()
-    static let kPlans = "Plans".localize()
-    static let kLogout = "Logout".localize()
-    static let kShows = "Shows".localize()
-    static let kSearch = "Search".localize()
-    static let kMyList = "My List".localize()
-    static let kNotifications = "Notifications"
-    
-    //Browse Identifier for Strings
-    static let kMoviesString = "MoviesString".localize()
-    static let kTvShowsString = "TvShowsString".localize()
-    static let kNetworksString = "NetworksString".localize()
-    static let kDocumentariesString = "DocumentariesString".localize()
-    static let kKidString = "KidString".localize()
-    static let kNewReleasesString = "NewReleasesString".localize()
-    static let kRecently_AddedString = "Recently_AddedString".localize()
-    static let kGenresString = "GenresString".localize()
-
-    //Images
-    static let kBackButton = "backButton"
+   
     
 }
 
-enum CellAlignment {
-    case Vertical
-    case Horizontal
-}
-
-// For Show Type
-// numeric values   ShowTypes
-enum NumericValue:Int{
-    case ZERO = 0
-    case ONE = 1
-    case TWO = 2
-    case THREE = 3
-    case FOURTH = 4
-    case FIFTH = 5
+struct Colors {
+    static let lightBlue = UIColor(displayP3Red: 139/255, green: 219/255, blue: 231/255, alpha: 1)
+    static let mediumBlue = UIColor(displayP3Red: 0/255, green: 164/255, blue: 197/255, alpha: 1)
+    static let darkBlue = UIColor(displayP3Red: 0/255, green: 149/255, blue: 178/255, alpha: 1)
+    static let orange = UIColor(displayP3Red: 243/255, green: 156/255, blue: 55/255, alpha: 1)
+    static let red = UIColor(displayP3Red: 247/255, green: 118/255, blue: 109/255, alpha: 1)
+    static let black = UIColor(displayP3Red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
+    static let grey = UIColor(displayP3Red: 100/255, green: 100/255, blue: 100/255, alpha: 1)
+    static let lightGrey = UIColor(displayP3Red: 195/255, green: 204/255, blue: 211/255, alpha: 1)
 }

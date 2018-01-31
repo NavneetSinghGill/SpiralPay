@@ -14,7 +14,7 @@ import UIKit
 
 @objc protocol PhoneAndEmailRoutingLogic
 {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToCountrySelection()
 }
 
 protocol PhoneAndEmailDataPassing
@@ -28,33 +28,26 @@ class PhoneAndEmailRouter: NSObject, PhoneAndEmailRoutingLogic, PhoneAndEmailDat
   var dataStore: PhoneAndEmailDataStore?
   
   // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
+    
+    func routeToCountrySelection() {
+        let countryViewController: CountryViewController = viewController?.storyboard?.instantiateViewController(withIdentifier: "CountryViewController") as! CountryViewController
+        countryViewController.countrySelectionDelegate = viewController
+        countryViewController.defaultCountryName = User.shared.countryName
+        
+        navigateToSomewhere(source: viewController!, destination: countryViewController)
+    }
 
-  // MARK: Navigation
+   //MARK: Navigation
   
-  //func navigateToSomewhere(source: PhoneAndEmailViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
+  func navigateToSomewhere(source: PhoneAndEmailViewController, destination: CountryViewController)
+  {
+    source.show(destination, sender: nil)
+  }
   
-  // MARK: Passing data
+   //MARK: Passing data
   
-  //func passDataToSomewhere(source: PhoneAndEmailDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+  func passDataToSomewhere(source: PhoneAndEmailDataStore, destination: inout CountryViewController)
+  {
+
+  }
 }

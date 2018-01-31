@@ -62,6 +62,7 @@ class ProgressBarView: UIView {
         UIView.animate(withDuration: 0.5, animations: {
             self.setProgressBar(value: toPercentage)
         }) { (completed) in
+            self.percentage = toPercentage
             completionBlock()
         }
     }

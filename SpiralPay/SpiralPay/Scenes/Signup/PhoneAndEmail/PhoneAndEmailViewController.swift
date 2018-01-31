@@ -69,18 +69,29 @@ class PhoneAndEmailViewController: UIViewController, PhoneAndEmailDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
+    initialSetup()
     doSomething()
   }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        progressBar.animate(fromPercentage: 0, toPercentage: CGFloat(1/numberOfProgressBarPages))
-        
+        if progressBar.percentage != percentageOfProgressBar {
+            progressBar.animate(fromPercentage: 0, toPercentage: percentageOfProgressBar)
+        }
     }
   
   // MARK: Do something
     
+    var percentageOfProgressBar = CGFloat(1/numberOfProgressBarPages)
+    
+    @IBOutlet weak var countryCodeLabel: UILabel!
     @IBOutlet weak var countryCodeTextField: FloatingHeaderTextField!
     @IBOutlet weak var mobileNumberTextField: FloatingHeaderTextField!
     @IBOutlet weak var emailAddressTextField: FloatingHeaderTextField!
@@ -101,10 +112,25 @@ class PhoneAndEmailViewController: UIViewController, PhoneAndEmailDisplayLogic
     //MARK:- IBAction methods
     
     @IBAction func nextButtonTapped(button: UIButton) {
-        button.isSelected = !button.isSelected
+
+    }
+    
+    @IBAction func countryButtonTapped(button: UIButton) {
+        router?.routeToCountrySelection()
     }
     
     //MARK:- Private methods
+    
+    func initialSetup() {
+        let dropDownArrowImage = UIImage(named: "dropDownArrow")
+        let dropDownArrowImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 30))
+        dropDownArrowImageView.image = dropDownArrowImage
+        dropDownArrowImageView.contentMode = .center
+        countryCodeTextField.rightView = dropDownArrowImageView
+        countryCodeTextField.rightViewMode = .always
+        
+        
+    }
     
     func checkIfEntriesValid() -> Bool {
         var message = ""
@@ -150,6 +176,17 @@ extension PhoneAndEmailViewController: UITextFieldDelegate {
         
         return true
         
+    }
+}
+
+extension PhoneAndEmailViewController: CountrySelectionDelegate {
+    
+    func performActionWith(countryName: String, countryCode: String) {
+        //Update user
+        User.shared.countryName = countryName
+        User.shared.countryCode = countryCode
+        
+        countryCodeLabel.text = "+\(countryCode)"
     }
     
 }

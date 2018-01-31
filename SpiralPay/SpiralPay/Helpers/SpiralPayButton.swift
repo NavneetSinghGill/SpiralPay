@@ -28,12 +28,8 @@ class SpiralPayButton: UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
         isSelected = false
     }
     
-    override func encode(with aCoder: NSCoder) {
-        super.encode(with: aCoder)
-        isSelected = false
-    }
-
 }
