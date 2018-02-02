@@ -10,6 +10,8 @@ import UIKit
 
 class Utils: NSObject {
     
+    static var currentProgressBarValue: CGFloat = 0.0
+    
     class func deviceIdentifier() -> String {
         return UserDefaults.standard.string(forKey: Constants.deviceIdentifier) ?? (UIDevice.current.identifierForVendor?.uuidString)!
     }

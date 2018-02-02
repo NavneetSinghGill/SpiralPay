@@ -17,7 +17,7 @@ protocol PhoneAndEmailDisplayLogic: class
   func displaySomething(viewModel: PhoneAndEmail.Something.ViewModel)
 }
 
-class PhoneAndEmailViewController: UIViewController, PhoneAndEmailDisplayLogic
+class PhoneAndEmailViewController: ProgressBarViewController, PhoneAndEmailDisplayLogic
 {
   var interactor: PhoneAndEmailBusinessLogic?
   var router: (NSObjectProtocol & PhoneAndEmailRoutingLogic & PhoneAndEmailDataPassing)?
@@ -68,6 +68,7 @@ class PhoneAndEmailViewController: UIViewController, PhoneAndEmailDisplayLogic
   
   override func viewDidLoad()
   {
+    percentageOfProgressBar = CGFloat(1/numberOfProgressBarPages)
     super.viewDidLoad()
     initialSetup()
     doSomething()
@@ -78,24 +79,13 @@ class PhoneAndEmailViewController: UIViewController, PhoneAndEmailDisplayLogic
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if progressBar.percentage != percentageOfProgressBar {
-            progressBar.animate(fromPercentage: 0, toPercentage: percentageOfProgressBar)
-        }
-    }
   
   // MARK: Do something
-    
-    var percentageOfProgressBar = CGFloat(1/numberOfProgressBarPages)
     
     @IBOutlet weak var countryCodeLabel: UILabel!
     @IBOutlet weak var countryCodeTextField: FloatingHeaderTextField!
     @IBOutlet weak var mobileNumberTextField: FloatingHeaderTextField!
     @IBOutlet weak var emailAddressTextField: FloatingHeaderTextField!
-    @IBOutlet weak var progressBar: ProgressBarView!
     @IBOutlet weak var nextButton: SpiralPayButton!
   
   func doSomething()
@@ -112,7 +102,7 @@ class PhoneAndEmailViewController: UIViewController, PhoneAndEmailDisplayLogic
     //MARK:- IBAction methods
     
     @IBAction func nextButtonTapped(button: UIButton) {
-
+        router?.routeToCreatePin()
     }
     
     @IBAction func countryButtonTapped(button: UIButton) {

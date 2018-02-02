@@ -15,6 +15,7 @@ import UIKit
 @objc protocol PhoneAndEmailRoutingLogic
 {
     func routeToCountrySelection()
+    func routeToCreatePin()
 }
 
 protocol PhoneAndEmailDataPassing
@@ -36,17 +37,23 @@ class PhoneAndEmailRouter: NSObject, PhoneAndEmailRoutingLogic, PhoneAndEmailDat
         
         navigateToSomewhere(source: viewController!, destination: countryViewController)
     }
+    
+    func routeToCreatePin() {
+        let pinViewController: PinViewController = viewController?.storyboard?.instantiateViewController(withIdentifier: "PinViewController") as! PinViewController
+        
+        navigateToSomewhere(source: viewController!, destination: pinViewController)
+    }
 
    //MARK: Navigation
   
-  func navigateToSomewhere(source: PhoneAndEmailViewController, destination: CountryViewController)
+  func navigateToSomewhere(source: PhoneAndEmailViewController, destination: UIViewController)
   {
     source.show(destination, sender: nil)
   }
   
    //MARK: Passing data
   
-  func passDataToSomewhere(source: PhoneAndEmailDataStore, destination: inout CountryViewController)
+  func passDataToSomewhere(source: PhoneAndEmailDataStore, destination: inout UIViewController)
   {
 
   }
