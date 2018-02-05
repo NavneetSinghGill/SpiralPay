@@ -21,7 +21,7 @@ protocol CountryDisplayLogic: class
   func displaySomething(viewModel: Country.Something.ViewModel)
 }
 
-class CountryViewController: UIViewController, CountryDisplayLogic
+class CountryViewController: SpiralPayViewController, CountryDisplayLogic
 {
   var interactor: CountryBusinessLogic?
   var router: (NSObjectProtocol & CountryRoutingLogic & CountryDataPassing)?
@@ -86,36 +86,39 @@ class CountryViewController: UIViewController, CountryDisplayLogic
   // MARK: Do something
   
     let countryCellIdentifier = "CountryCell"
+    let noResultsCellIdentifier = "NoResultsCell"
     let countryCellFlagImageViewTag = 11
     let countryCellCountryNameButtonTag = 12
     let countryCellTickButtonTag = 13
+    let countryCellBorderViewTag = 14
+    let noResultsLabelTag = 15
     let countriesAndCodes : Dictionary<String,String> = [
         "Abkhazia (7 840)":"7 840",
         "Abkhazia (7 940)":"7 940",
         "Afghanistan":"93",
-        "Aland Islands":"358-18",
+        "Aland Islands":"358 18",
         "Albania":"355",
         "Algeria":"213",
-        "American Samoa":"1-684",
+        "American Samoa":"1 684",
         "Andorra":"376",
         "Angola":"244",
-        "Anguilla":"1-264",
-        "Antigua and Barbuda":"1-268",
+        "Anguilla":"1 264",
+        "Antigua and Barbuda":"1 268",
         "Argentina":"54",
         "Armenia":"374",
         "Aruba":"297",
         "Australia":"61",
         "Austria":"43",
         "Azerbaijan":"994",
-        "Bahamas":"1-242",
+        "Bahamas":"1 242",
         "Bahrain":"973",
         "Bangladesh":"880",
-        "Barbados":"1-246",
+        "Barbados":"1 246",
         "Belarus":"375",
         "Belgium":"32",
         "Belize":"501",
         "Benin":"229",
-        "Bermuda":"1-441",
+        "Bermuda":"1 441",
         "Bhutan":"975",
         "Bolivia":"591",
         "Bonaire":"599",
@@ -123,7 +126,7 @@ class CountryViewController: UIViewController, CountryDisplayLogic
         "Botswana":"267",
         "Brazil":"55",
         "British Indian Ocean Territory":"246",
-        "British Virgin Islands":"1-284",
+        "British Virgin Islands":"1 284",
         "Brunei":"673",
         "Bulgaria":"359",
         "Burkina Faso":"226",
@@ -132,7 +135,7 @@ class CountryViewController: UIViewController, CountryDisplayLogic
         "Cameroon":"237",
         "Canada":"1",
         "Cape Verde":"238",
-        "Cayman Islands":"1-345",
+        "Cayman Islands":"1 345",
         "Central African Republic":"236",
         "Chad":"235",
         "Chile":"56",
@@ -151,10 +154,10 @@ class CountryViewController: UIViewController, CountryDisplayLogic
         "Democratic Republic of the Congo":"243",
         "Denmark":"45",
         "Djibouti":"253",
-        "Dominica":"1-767",
-        "Dominican Republic (1-809)":"1-809",
-        "Dominican Republic (1-829)":"1-829",
-        "Dominican Republic (1-849)":"1-849",
+        "Dominica":"1 767",
+        "Dominican Republic (1 809)":"1 809",
+        "Dominican Republic (1 829)":"1 829",
+        "Dominican Republic (1 849)":"1 849",
         "East Timor":"670",
         "Ecuador":"593",
         "Egypt":"20",
@@ -178,10 +181,10 @@ class CountryViewController: UIViewController, CountryDisplayLogic
         "Gibraltar":"350",
         "Greece":"30",
         "Greenland":"299",
-        "Grenada":"1-473",
-        "Guam":"1-671",
+        "Grenada":"1 473",
+        "Guam":"1 671",
         "Guatemala":"502",
-        "Guernsey":"44-1481",
+        "Guernsey":"44 1481",
         "Guinea-Bissau":"245",
         "Guinea":"224",
         "Guyana":"592",
@@ -195,13 +198,13 @@ class CountryViewController: UIViewController, CountryDisplayLogic
         "Iran":"98",
         "Iraq":"964",
         "Ireland":"353",
-        "Isle of Man":"44-1624",
+        "Isle of Man":"44 1624",
         "Israel":"972",
         "Italy":"39",
         "Ivory Coast":"225",
-        "Jamaica":"1-876",
+        "Jamaica":"1 876",
         "Japan":"81",
-        "Jersey":"44-1534",
+        "Jersey":"44 1534",
         "Jordan":"962",
         "Kazakhstan":"7",
         "Kenya":"254",
@@ -236,7 +239,7 @@ class CountryViewController: UIViewController, CountryDisplayLogic
         "Monaco":"377",
         "Mongolia":"976",
         "Montenegro":"382",
-        "Montserrat":"1-664",
+        "Montserrat":"1 664",
         "Morocco":"212",
         "Mozambique":"258",
         "Myanmar":"95",
@@ -253,10 +256,10 @@ class CountryViewController: UIViewController, CountryDisplayLogic
         "Norfolk Island":"672",
         "North Korea":"850",
         "Northern Cyprus":"90 392",
-        "Northern Mariana Islands":"1-670",
+        "Northern Mariana Islands":"1 670",
         "Norway":"47",
         "Oman":"968",
-        "Ossetia":"995-34",
+        "Ossetia":"995 34",
         "Pakistan":"92",
         "Palau":"680",
         "Palestine":"970",
@@ -268,15 +271,15 @@ class CountryViewController: UIViewController, CountryDisplayLogic
         "Pitcairn":"870",
         "Poland":"48",
         "Portugal":"351",
-        "Puerto Rico (1-787)":"1-787",
-        "Puerto Rico (1-939)":"1-939",
+        "Puerto Rico (1 787)":"1 787",
+        "Puerto Rico (1 939)":"1 939",
         "Qatar":"974",
         "Republic of the Congo":"242",
         "Romania":"40",
         "Russia":"7",
         "Rwanda":"250",
-        "Saba":"599-4",
-        "Saint Kitts and Nevis":"1-869",
+        "Saba":"599 4",
+        "Saint Kitts and Nevis":"1 869",
         "Samoa":"685",
         "San Marino":"378",
         "Sao Tome and Principe":"239",
@@ -286,7 +289,7 @@ class CountryViewController: UIViewController, CountryDisplayLogic
         "Seychelles":"248",
         "Sierra Leone":"232",
         "Singapore":"65",
-        "Sint Eustatius":"599-3",
+        "Sint Eustatius":"599 3",
         "Sint Maarten":"599",
         "Slovakia":"421",
         "Slovenia":"386",
@@ -299,8 +302,8 @@ class CountryViewController: UIViewController, CountryDisplayLogic
         "Sri Lanka":"94",
         "Saint Barthelemy":"590",
         "Saint Helena":"290",
-        "Saint Lucia":"1-758",
-        "Saint Vincent and the Grenadines":"1-784",
+        "Saint Lucia":"1 758",
+        "Saint Vincent and the Grenadines":"1 784",
         "Sudan":"249",
         "Suriname":"597",
         "Swaziland":"268",
@@ -314,20 +317,20 @@ class CountryViewController: UIViewController, CountryDisplayLogic
         "Togo":"228",
         "Tokelau":"690",
         "Tonga":"676",
-        "Transnistria (373-2)":"373-2",
-        "Transnistria (373-5)":"373-5",
-        "Trinidad and Tobago":"1-868",
+        "Transnistria (373 2)":"373 2",
+        "Transnistria (373 5)":"373 5",
+        "Trinidad and Tobago":"1 868",
         "Tunisia":"216",
         "Turkey":"90",
         "Turkmenistan":"993",
-        "Turks and Caicos Islands":"1-649",
+        "Turks and Caicos Islands":"1 649",
         "Tuvalu":"688",
         "Uganda":"256",
         "Ukraine":"380",
         "United Arab Emirates":"971",
         "United Kingdom":"44",
         "United States":"1",
-        "United States Virgin Islands":"1-340",
+        "United States Virgin Islands":"1 340",
         "Uruguay":"598",
         "Uzbekistan":"998",
         "Vanuatu":"678",
@@ -342,12 +345,17 @@ class CountryViewController: UIViewController, CountryDisplayLogic
     
     
     var selectedCellIndex = -1
+    var selectedCountryName = ""
     var defaultCountryName: String?
+    var defaultCountryCode: String?
     var sortedCountries: Array<String> = []
+    var filteredCountries: Array<String> = []
     var saveBarButton: UIBarButtonItem!
     var countrySelectionDelegate: CountrySelectionDelegate?
     
   @IBOutlet weak var countryTableView: UITableView!
+  @IBOutlet weak var searchTextField: UITextField!
+  @IBOutlet weak var countryTableViewBottomConstraint: NSLayoutConstraint!
   
   func doSomething()
   {
@@ -366,11 +374,22 @@ class CountryViewController: UIViewController, CountryDisplayLogic
         self.navigationItem.hidesBackButton = true
         setNavigationTitle(title: "Country")
         addSaveButton()
+        addKeyboardObservers()
+        configureSearchTextField()
         
         sortedCountries = Array(countriesAndCodes.keys).sorted()
+        filteredCountries = sortedCountries
+        
+        //Check if country is present by checking if image is there of same name
+        if defaultCountryName != nil {
+            if UIImage(named: defaultCountryName!) == nil {
+                defaultCountryName = "\(defaultCountryName!) (\(defaultCountryCode!))"
+            }
+        }
         
         if selectedCellIndex == -1 {
-            selectedCellIndex = sortedCountries.index(of: defaultCountryName ?? "United Kingdom") ?? 0
+            selectedCountryName = defaultCountryName ?? "United Kingdom"
+            selectedCellIndex = filteredCountries.index(of: selectedCountryName) ?? 0
         }
         countryTableView.reloadData()
         countryTableView.scrollToRow(at: IndexPath(row: selectedCellIndex, section: 0), at: .none, animated: false)
@@ -394,35 +413,93 @@ class CountryViewController: UIViewController, CountryDisplayLogic
         return button
     }
     
+    private func configureSearchTextField() {
+        let contentView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: searchTextField.frame.size.height))
+        let searchImageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 16, height: 16))
+        searchImageView.image = UIImage(named: "search")
+        searchImageView.contentMode = .center
+        
+        searchImageView.center = contentView.center
+        contentView.addSubview(searchImageView)
+        
+        searchTextField.leftView = contentView
+        searchTextField.leftViewMode = .always
+    }
+    
     @objc private func saveButtonTapped() {
         router?.saveCountryWithCodeAndDismiss()
     }
+    
+    override func keyboardWillShow(keyboardFrame: CGRect) {
+        countryTableViewBottomConstraint.constant = keyboardFrame.size.height
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    override func keyboardWillHide(keyboardFrame: CGRect) {
+        countryTableViewBottomConstraint.constant = 0
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func search(text: String) {
+        selectedCellIndex = -1
+        
+        filteredCountries = sortedCountries.filter({ (key) -> Bool in
+            return key.lowercased().range(of: text.lowercased()) != nil || countriesAndCodes[key]?.lowercased().range(of: text.lowercased()) != nil
+        })
+        if text == "" {
+            filteredCountries = sortedCountries
+        }
+        if let index = filteredCountries.index(of: selectedCountryName) {
+            selectedCellIndex = index
+        }
+        countryTableView.reloadData()
+        countryTableView.scrollToRow(at: IndexPath(row: filteredCountries.index(of: selectedCountryName) ?? 0, section: 0), at: .none, animated: false)
+    }
+    
 }
 
 extension CountryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sortedCountries.count
+        if filteredCountries.count != 0 {
+            return filteredCountries.count
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: countryCellIdentifier, for: indexPath)
-        let flagImageView: UIImageView = cell.viewWithTag(countryCellFlagImageViewTag) as! UIImageView
-        let countryNameButton: UIButton = cell.viewWithTag(countryCellCountryNameButtonTag) as! UIButton
-        let tickButton: UIButton = cell.viewWithTag(countryCellTickButtonTag) as! UIButton
-        
-        flagImageView.image = UIImage(named: sortedCountries[indexPath.row])
-        if selectedCellIndex == indexPath.row {
-            countryNameButton.isSelected = true
-            countryNameButton.setTitle(sortedCountries[indexPath.row], for: .selected)
-            tickButton.isSelected = true
+        if filteredCountries.count != 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: countryCellIdentifier, for: indexPath)
+            let flagImageView: UIImageView = cell.viewWithTag(countryCellFlagImageViewTag) as! UIImageView
+            let countryNameButton: UIButton = cell.viewWithTag(countryCellCountryNameButtonTag) as! UIButton
+            let tickButton: UIButton = cell.viewWithTag(countryCellTickButtonTag) as! UIButton
+            let borderView: UIView = cell.viewWithTag(countryCellBorderViewTag)!
+            
+            borderView.layer.borderColor = UIColor(white: 221/255, alpha: 1).cgColor
+            borderView.layer.borderWidth = 0.5
+            flagImageView.image = UIImage(named: filteredCountries[indexPath.row])
+            
+            if filteredCountries[indexPath.row] == selectedCountryName {
+                countryNameButton.isSelected = true
+                countryNameButton.setTitle(filteredCountries[indexPath.row], for: .selected)
+                tickButton.isSelected = true
+            } else {
+                countryNameButton.isSelected = false
+                countryNameButton.setTitle(filteredCountries[indexPath.row], for: .normal)
+                tickButton.isSelected = false
+            }
+            
+            return cell
         } else {
-            countryNameButton.isSelected = false
-            countryNameButton.setTitle(sortedCountries[indexPath.row], for: .normal)
-            tickButton.isSelected = false
+            let cell = tableView.dequeueReusableCell(withIdentifier: noResultsCellIdentifier, for: indexPath)
+            
+            return cell
         }
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -431,8 +508,26 @@ extension CountryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCellIndex = indexPath.row
+        selectedCountryName = filteredCountries[indexPath.row]
         tableView.reloadData()
     }
     
+}
+
+extension CountryViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let updatedText = textField.text!.replacingCharacters(in: Range(range, in: textField.text ?? "")!, with: string)
+        
+        search(text: updatedText)
+        
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        countryTableView.scrollToRow(at: IndexPath(row: filteredCountries.index(of: selectedCountryName) ?? 0, section: 0), at: .none, animated: false)
+        return false
+    }
     
 }

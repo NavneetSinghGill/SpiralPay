@@ -30,10 +30,12 @@ class CountryRouter: NSObject, CountryRoutingLogic, CountryDataPassing
   // MARK: Routing
     
     func saveCountryWithCodeAndDismiss() {
-        let countryName: String = viewController!.sortedCountries[viewController!.selectedCellIndex]
-        let countryCode: String = viewController!.countriesAndCodes[countryName] ?? ""
-        
-        viewController?.countrySelectionDelegate?.performActionWith(countryName: countryName, countryCode: countryCode)
+        if viewController?.selectedCellIndex != -1 {
+            let countryName: String = viewController!.filteredCountries[viewController!.selectedCellIndex]
+            let countryCode: String = viewController!.countriesAndCodes[countryName] ?? ""
+            
+            viewController?.countrySelectionDelegate?.performActionWith(countryName: countryName, countryCode: countryCode)
+        }
         viewController?.navigationController?.popViewController(animated: true)
     }
     
