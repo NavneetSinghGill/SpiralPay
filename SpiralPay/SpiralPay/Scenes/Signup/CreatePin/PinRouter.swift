@@ -14,7 +14,7 @@ import UIKit
 
 @objc protocol PinRoutingLogic
 {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToReEnterPinScreenWith(pin: String)
 }
 
 protocol PinDataPassing
@@ -22,39 +22,37 @@ protocol PinDataPassing
   var dataStore: PinDataStore? { get }
 }
 
-class PinRouter: NSObject, PinRoutingLogic, PinDataPassing
-{
+class PinRouter: NSObject, PinRoutingLogic, PinDataPassing {
+    
   weak var viewController: PinViewController?
   var dataStore: PinDataStore?
+    
+    var createdPin: String!
   
   // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
 
-  // MARK: Navigation
+    func routeToReEnterPinScreenWith(pin: String) {
+        createdPin = pin
+        
+        let reEnterPinViewController: PinViewController = PinViewController.create(of: .Main)
+        passDataTo(source: viewController!, destination: reEnterPinViewController)
+        navigateTo(source: viewController!, destination: reEnterPinViewController)
+    }
+
+    // MARK: Navigation
   
-  //func navigateToSomewhere(source: PinViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
+  func navigateTo(source: PinViewController, destination: UIViewController)
+  {
+    source.show(destination, sender: nil)
+  }
   
-  // MARK: Passing data
+//   MARK: Passing data
   
-  //func passDataToSomewhere(source: PinDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+  func passDataTo(source: PinViewController, destination: UIViewController)
+  {
+    if let reEnterPinViewController = destination as? PinViewController {
+        reEnterPinViewController.pinEntry = .ReEnter
+        reEnterPinViewController.createdPin = createdPin
+    }
+  }
 }

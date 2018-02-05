@@ -276,7 +276,7 @@
                                 <color key="textColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1iQ-Ym-Kms">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1iQ-Ym-Kms" userLabel="Pins View">
                                 <rect key="frame" x="85" y="237" width="150" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1V-uL-iTN">
@@ -348,19 +348,27 @@
                                 </constraints>
                                 <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <outlet property="delegate" destination="l5o-ZF-iEl" id="wrd-ri-HTt"/>
                                 </connections>
                             </textField>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password doesn't match" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aK-qM-sTU">
+                                <rect key="frame" x="96.5" y="277" width="127.5" height="14.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                <color key="textColor" red="0.99607843137254903" green="0.27450980392156865" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9Vo-VF-7TW" firstAttribute="top" secondItem="kdo-mY-3wb" secondAttribute="bottom" constant="35" id="0Yj-RR-fEU"/>
                             <constraint firstItem="mKy-hY-ekP" firstAttribute="leading" secondItem="nLA-mk-rbb" secondAttribute="leading" id="1mL-kK-V23"/>
                             <constraint firstItem="kdo-mY-3wb" firstAttribute="top" secondItem="nLA-mk-rbb" secondAttribute="top" constant="46" id="3M0-6n-vZR"/>
+                            <constraint firstItem="7aK-qM-sTU" firstAttribute="top" secondItem="1iQ-Ym-Kms" secondAttribute="bottom" constant="10" id="48f-aD-FXJ"/>
                             <constraint firstItem="1iQ-Ym-Kms" firstAttribute="centerX" secondItem="QLX-j9-t1z" secondAttribute="centerX" id="5dE-or-XV8"/>
                             <constraint firstItem="mKy-hY-ekP" firstAttribute="top" secondItem="QLX-j9-t1z" secondAttribute="top" id="6Ji-i1-3hv"/>
+                            <constraint firstItem="7aK-qM-sTU" firstAttribute="centerX" secondItem="QLX-j9-t1z" secondAttribute="centerX" id="9O6-Vh-dMe"/>
                             <constraint firstItem="kdo-mY-3wb" firstAttribute="width" secondItem="QLX-j9-t1z" secondAttribute="width" multiplier="0.525" id="H6m-Bi-yED"/>
                             <constraint firstItem="kdo-mY-3wb" firstAttribute="centerX" secondItem="QLX-j9-t1z" secondAttribute="centerX" id="McC-7r-FTl"/>
                             <constraint firstItem="7a7-dG-hTa" firstAttribute="top" secondItem="9Vo-VF-7TW" secondAttribute="bottom" constant="5" id="NMd-cS-peN"/>
@@ -373,6 +381,8 @@
                     <navigationItem key="navigationItem" id="zsi-jX-GZe"/>
                     <connections>
                         <outlet property="codeTextField" destination="mKy-hY-ekP" id="Dsm-vL-hnk"/>
+                        <outlet property="headingLabel" destination="9Vo-VF-7TW" id="WaL-zQ-OTn"/>
+                        <outlet property="passwordDoesntMatch" destination="7aK-qM-sTU" id="w8X-q8-y1t"/>
                         <outlet property="progressBar" destination="kdo-mY-3wb" id="j5P-oa-IHH"/>
                         <outletCollection property="pins" destination="k1V-uL-iTN" collectionClass="NSMutableArray" id="aZj-7T-maw"/>
                         <outletCollection property="pins" destination="jaQ-4Q-Y3i" collectionClass="NSMutableArray" id="2uG-5R-IKA"/>

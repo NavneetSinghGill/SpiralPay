@@ -14,12 +14,12 @@ extension UIStoryboard {
     
     enum Storyboard: String {
         case Main
-        case UniversalStoryboard
+
         var filename: String {
-            if rawValue == "Main"
-            {
-                return isiPad ? "Main~ipad" : "Main"
-            }
+//            if rawValue == "Main"
+//            {
+//                return isiPad ? "Main~ipad" : "Main"
+//            }
             return rawValue
         }
     }
@@ -42,7 +42,7 @@ extension UIStoryboard {
     // MARK: - View Controller Instantiation from Generics
     
     func instantiateViewController<T: UIViewController>() -> T where T: StoryboardIdentifiable {
-        guard let viewController = self.instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T else {
+        guard var viewController = self.instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T else {
             fatalError("Couldn't instantiate view controller with identifier \(T.storyboardIdentifier) ")
         }
         

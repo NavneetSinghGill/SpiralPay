@@ -12,6 +12,11 @@
 
 import UIKit
 
+enum PinEntry {
+    case Create
+    case ReEnter
+}
+
 protocol PinDisplayLogic: class
 {
   func displaySomething(viewModel: Pin.Something.ViewModel)
@@ -68,8 +73,9 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
   
   override func viewDidLoad()
   {
-    percentageOfProgressBar = CGFloat(2/numberOfProgressBarPages)
     super.viewDidLoad()
+    
+    initialSetup()
     doSomething()
   }
     
@@ -88,8 +94,12 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
   // MARK: Do something
     
     @IBOutlet weak var codeTextField: UITextField!
-      
+    @IBOutlet weak var headingLabel: UILabel!
+    @IBOutlet weak var passwordDoesntMatch: UILabel!
     @IBOutlet var pins: [UIButton]!
+    
+    var pinEntry: PinEntry = .Create
+    var createdPin: String?
     
     func doSomething()
   {
@@ -107,7 +117,15 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
     //MARK:- Private methods
     
     private func initialSetup() {
+        if pinEntry == .Create {
+            percentageOfProgressBar = CGFloat(2/numberOfProgressBarPages)
+        } else {
+            percentageOfProgressBar = CGFloat(3/numberOfProgressBarPages)
+        }
         
+        if pinEntry == .ReEnter {
+            headingLabel.text = "Re-enter PIN Code"
+        }
     }
     
     private func selectDotWith(count: Int) {
@@ -115,6 +133,18 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
         for pin in pins {
             pin.isSelected = pinCount <= count
             pinCount = pinCount + 1
+        }
+    }
+    
+    private func pinCreationAndMatchingDoneLocally() {
+        codeTextField.resignFirstResponder()
+        
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !codeTextField.isFirstResponder {
+            codeTextField.becomeFirstResponder()
         }
     }
 }
@@ -126,9 +156,29 @@ extension PinViewController: UITextFieldDelegate {
         
         selectDotWith(count: updatedText.count)
         
+        passwordDoesntMatch.isHidden = true
+        
         if updatedText.count <= 5 {
+            
+            if updatedText.count == 5 {
+                if pinEntry == .Create {
+                    router?.routeToReEnterPinScreenWith(pin: updatedText)
+                } else {
+                    if createdPin != updatedText {
+                        passwordDoesntMatch.isHidden = false
+                    } else {
+                        pinCreationAndMatchingDoneLocally()
+                    }
+                }
+            }
+            
             return true
+        } else {
+            if pinEntry == .ReEnter {
+                passwordDoesntMatch.isHidden = false
+            }
         }
+        
         return false
     }
     
