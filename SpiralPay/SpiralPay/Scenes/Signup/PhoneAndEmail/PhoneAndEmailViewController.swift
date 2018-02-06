@@ -102,6 +102,8 @@ class PhoneAndEmailViewController: ProgressBarViewController, PhoneAndEmailDispl
     //MARK:- IBAction methods
     
     @IBAction func nextButtonTapped(button: UIButton) {
+        User.shared.phone = mobileNumberTextField.text
+        User.shared.email = emailAddressTextField.text
         router?.routeToCreatePin()
     }
     

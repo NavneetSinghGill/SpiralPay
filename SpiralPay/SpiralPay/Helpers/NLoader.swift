@@ -84,7 +84,7 @@ class RoundCircling: NLoaderDelegate {
         animationY.keyTimes = [0, 0.16, 0.33, 0.50, 0.66, 0.83, 1]
         animationY.repeatCount = HUGE
         animationY.isRemovedOnCompletion = false
-        animationY.duration = 3
+        animationY.duration = 2
         
         let animationX = CAKeyframeAnimation()
         animationX.keyPath = "transform.translation.x"
@@ -93,7 +93,7 @@ class RoundCircling: NLoaderDelegate {
         animationX.keyTimes = aniXKeyTimes as [NSNumber]
         animationX.repeatCount = HUGE
         animationX.isRemovedOnCompletion = false
-        animationX.duration = 3
+        animationX.duration = 2
         
         let timingFunciton = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         animationY.timingFunctions = [timingFunciton,timingFunciton,timingFunciton,timingFunciton,timingFunciton,timingFunciton]

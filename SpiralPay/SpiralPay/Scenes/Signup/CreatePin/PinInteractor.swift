@@ -14,7 +14,7 @@ import UIKit
 
 protocol PinBusinessLogic
 {
-  func doSomething(request: Pin.Something.Request)
+  func doCustomerRegistration(request: Pin.CustomerRegistration.Request)
 }
 
 protocol PinDataStore
@@ -30,12 +30,17 @@ class PinInteractor: PinBusinessLogic, PinDataStore
   
   // MARK: Do something
   
-  func doSomething(request: Pin.Something.Request)
+  func doCustomerRegistration(request: Pin.CustomerRegistration.Request)
   {
     worker = PinWorker()
-    worker?.doSomeWork()
-    
-    let response = Pin.Something.Response()
-    presenter?.presentSomething(response: response)
+    worker?.postCustomerRegistrationWith(request: request, successCompletionHandler: { (response) in
+        User.shared.accessToken = response.accessToken
+        User.shared.storageEncryptionKey = response.storageEncryptionKey
+        User.shared.customerID = response.customerId
+        
+        self.presenter?.customerRegistrationSuccess(response: response)
+    }, failureCompletionHandler: { (response) in
+        self.presenter?.customerRegistrationFailed(response: response)
+    })
   }
 }

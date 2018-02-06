@@ -29,8 +29,6 @@ struct Constants {
     static let kNoNetworkMessage = "No network available"
     static let kContentTypeKey = "Content-Type"
     static let kContentTypeValue = "application/json"
-    static let kOriginKey = "Origin"
-    static let kOriginValue = "www.SpiralPay.com"
     static let kApiKey = "ApiKey"
     static let kApiKeyValue = "eX2DEXCjXbWVP54iehZmTq95NBS2B8zVyHUQHJNM52Q="
     

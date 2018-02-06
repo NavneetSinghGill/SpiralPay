@@ -7,11 +7,11 @@
 	<key>LocalURL</key>
 	<string>127.0.0.1</string>
 	<key>ProductionURL</key>
-	<string>api.SpiralPay.com/</string>
+	<string>spiral.envisionworld.co</string>
 	<key>StagingURL</key>
-	<string>api.aywa.com/</string>
+	<string>spiral-test.envisionworld.co</string>
 	<key>URLPathSubstring</key>
-	<string>api</string>
+	<string></string>
 	<key>EnableSecureConnection</key>
 	<true/>
 	<key>EnablePullToRefresh</key>

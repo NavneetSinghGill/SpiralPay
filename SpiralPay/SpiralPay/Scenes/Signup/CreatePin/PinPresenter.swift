@@ -14,18 +14,23 @@ import UIKit
 
 protocol PinPresentationLogic
 {
-  func presentSomething(response: Pin.Something.Response)
+    func customerRegistrationSuccess(response: Pin.CustomerRegistration.Response)
+    func customerRegistrationFailed(response: Pin.CustomerRegistration.Response)
 }
 
 class PinPresenter: PinPresentationLogic
 {
-  weak var viewController: PinDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: Pin.Something.Response)
-  {
-    let viewModel = Pin.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    weak var viewController: PinDisplayLogic?
+    
+    // MARK: Do something
+    
+    func customerRegistrationSuccess(response: Pin.CustomerRegistration.Response)
+    {
+        viewController?.customerRegistrationSuccess(response: response)
+    }
+    
+    func customerRegistrationFailed(response: Pin.CustomerRegistration.Response) {
+        viewController?.customerRegistrationFailed(response: response)
+    }
+    
 }

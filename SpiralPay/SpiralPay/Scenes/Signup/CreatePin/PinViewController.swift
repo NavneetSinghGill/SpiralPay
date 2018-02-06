@@ -19,7 +19,8 @@ enum PinEntry {
 
 protocol PinDisplayLogic: class
 {
-  func displaySomething(viewModel: Pin.Something.ViewModel)
+    func customerRegistrationSuccess(response: Pin.CustomerRegistration.Response)
+    func customerRegistrationFailed(response: Pin.CustomerRegistration.Response)
 }
 
 class PinViewController: ProgressBarViewController, PinDisplayLogic
@@ -76,8 +77,8 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
     super.viewDidLoad()
     
     initialSetup()
-    doSomething()
-  }
+
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -101,18 +102,27 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
     var pinEntry: PinEntry = .Create
     var createdPin: String?
     
-    func doSomething()
-  {
-    let request = Pin.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: Pin.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
     
+    //MARK: - API
+    //MARK: Customer registration
+    func doCustomerRegistration()
+    {
+        NLoader.shared.startNLoader()
+        
+        var request = Pin.CustomerRegistration.Request()
+        request.email = User.shared.email
+        request.pinCode = User.shared.countryCode
+        request.phone = User.shared.phone
+        interactor?.doCustomerRegistration(request: request)
+    }
     
+    func customerRegistrationSuccess(response: Pin.CustomerRegistration.Response) {
+        NLoader.shared.stopNLoader()
+    }
+    
+    func customerRegistrationFailed(response: Pin.CustomerRegistration.Response) {
+        NLoader.shared.stopNLoader()
+    }
     
     //MARK:- Private methods
     
@@ -139,7 +149,7 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
     private func pinCreationAndMatchingDoneLocally() {
         codeTextField.resignFirstResponder()
         
-        
+        doCustomerRegistration()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -167,6 +177,7 @@ extension PinViewController: UITextFieldDelegate {
                     if createdPin != updatedText {
                         passwordDoesntMatch.isHidden = false
                     } else {
+                        textField.text = updatedText
                         pinCreationAndMatchingDoneLocally()
                     }
                 }

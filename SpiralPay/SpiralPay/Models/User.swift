@@ -12,9 +12,12 @@ class User: NSObject {
     
     static var shared = User()
     
-    var mobile: String?
+    var phone: String?
     var email: String?
     var countryName: String?
     var countryCode: String?
+    var accessToken: String?
+    var customerID: String?
+    var storageEncryptionKey: String?
 
 }
