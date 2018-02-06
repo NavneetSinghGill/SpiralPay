@@ -15,6 +15,7 @@
 		180C160A202197C100818460 /* CountryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1604202197C100818460 /* CountryModels.swift */; };
 		180C160B202197C100818460 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1605202197C100818460 /* CountryViewController.swift */; };
 		180C160C202197C100818460 /* CountryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1606202197C100818460 /* CountryInteractor.swift */; };
+		180DAEDC20298B9E00193C39 /* NLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DAEDB20298B9D00193C39 /* NLoader.swift */; };
 		185C60AC20244835009D23BE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C60AB20244835009D23BE /* User.swift */; };
 		18943500202488F9000C2166 /* PinPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FA202488F9000C2166 /* PinPresenter.swift */; };
 		18943501202488F9000C2166 /* PinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FB202488F9000C2166 /* PinWorker.swift */; };
@@ -114,6 +115,7 @@
 		180C1604202197C100818460 /* CountryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModels.swift; sourceTree = "<group>"; };
 		180C1605202197C100818460 /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		180C1606202197C100818460 /* CountryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInteractor.swift; sourceTree = "<group>"; };
+		180DAEDB20298B9D00193C39 /* NLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLoader.swift; sourceTree = "<group>"; };
 		185C60AB20244835009D23BE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		189434FA202488F9000C2166 /* PinPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPresenter.swift; sourceTree = "<group>"; };
 		189434FB202488F9000C2166 /* PinWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinWorker.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				F16DF1F32018ADDB00FE3F94 /* ProgressBarView.swift */,
 				F16DF1F72019CDA200FE3F94 /* FloatingHeaderTextField.swift */,
 				F1E89B7C201F123C0052C723 /* SpiralPayButton.swift */,
+				180DAEDB20298B9D00193C39 /* NLoader.swift */,
 				F1D9BA8120185605004B42B7 /* Protocol */,
 				F1D9BA8420185605004B42B7 /* Extensions */,
 				F1D9BAA220185605004B42B7 /* Utils.swift */,
@@ -830,6 +833,7 @@
 				18943502202488F9000C2166 /* PinRouter.swift in Sources */,
 				185C60AC20244835009D23BE /* User.swift in Sources */,
 				F1D9BAD4201856D1004B42B7 /* BannerManager.swift in Sources */,
+				180DAEDC20298B9E00193C39 /* NLoader.swift in Sources */,
 				F1D9BAA720185605004B42B7 /* ArrayExtensions.swift in Sources */,
 				F1D9BABC20185605004B42B7 /* LocaleExtensions.swift in Sources */,
 				180C1609202197C100818460 /* CountryRouter.swift in Sources */,
