@@ -73,7 +73,6 @@ class CountryViewController: SpiralPayViewController, CountryDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomething()
     initialSetup()
   }
     

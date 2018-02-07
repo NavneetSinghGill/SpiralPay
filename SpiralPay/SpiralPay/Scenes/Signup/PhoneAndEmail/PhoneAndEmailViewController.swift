@@ -87,6 +87,9 @@ class PhoneAndEmailViewController: ProgressBarViewController, PhoneAndEmailDispl
     @IBOutlet weak var mobileNumberTextField: FloatingHeaderTextField!
     @IBOutlet weak var emailAddressTextField: FloatingHeaderTextField!
     @IBOutlet weak var nextButton: SpiralPayButton!
+    
+    var countryName: String?
+    var countryCode: String?
   
   func doSomething()
   {
@@ -102,6 +105,8 @@ class PhoneAndEmailViewController: ProgressBarViewController, PhoneAndEmailDispl
     //MARK:- IBAction methods
     
     @IBAction func nextButtonTapped(button: UIButton) {
+        User.shared.countryName = countryName
+        User.shared.countryCode = countryCode
         User.shared.phone = mobileNumberTextField.text
         User.shared.email = emailAddressTextField.text
         router?.routeToCreatePin()
@@ -174,9 +179,8 @@ extension PhoneAndEmailViewController: UITextFieldDelegate {
 extension PhoneAndEmailViewController: CountrySelectionDelegate {
     
     func performActionWith(countryName: String, countryCode: String) {
-        //Update user
-        User.shared.countryName = countryName
-        User.shared.countryCode = countryCode
+        self.countryName = countryName
+        self.countryCode = countryCode
         
         countryCodeLabel.text = "+\(countryCode)"
     }

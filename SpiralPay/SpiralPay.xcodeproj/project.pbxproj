@@ -16,6 +16,12 @@
 		180C160B202197C100818460 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1605202197C100818460 /* CountryViewController.swift */; };
 		180C160C202197C100818460 /* CountryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1606202197C100818460 /* CountryInteractor.swift */; };
 		180DAEDC20298B9E00193C39 /* NLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DAEDB20298B9D00193C39 /* NLoader.swift */; };
+		18529F65202B31CD00BD8D0E /* PhoneVerificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F5F202B31CD00BD8D0E /* PhoneVerificationPresenter.swift */; };
+		18529F66202B31CD00BD8D0E /* PhoneVerificationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F60202B31CD00BD8D0E /* PhoneVerificationWorker.swift */; };
+		18529F67202B31CD00BD8D0E /* PhoneVerificationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F61202B31CD00BD8D0E /* PhoneVerificationRouter.swift */; };
+		18529F68202B31CD00BD8D0E /* PhoneVerificationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F62202B31CD00BD8D0E /* PhoneVerificationModels.swift */; };
+		18529F69202B31CD00BD8D0E /* PhoneVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F63202B31CD00BD8D0E /* PhoneVerificationViewController.swift */; };
+		18529F6A202B31CD00BD8D0E /* PhoneVerificationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F64202B31CD00BD8D0E /* PhoneVerificationInteractor.swift */; };
 		185C60AC20244835009D23BE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C60AB20244835009D23BE /* User.swift */; };
 		18943500202488F9000C2166 /* PinPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FA202488F9000C2166 /* PinPresenter.swift */; };
 		18943501202488F9000C2166 /* PinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FB202488F9000C2166 /* PinWorker.swift */; };
@@ -116,6 +122,12 @@
 		180C1605202197C100818460 /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		180C1606202197C100818460 /* CountryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInteractor.swift; sourceTree = "<group>"; };
 		180DAEDB20298B9D00193C39 /* NLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLoader.swift; sourceTree = "<group>"; };
+		18529F5F202B31CD00BD8D0E /* PhoneVerificationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationPresenter.swift; sourceTree = "<group>"; };
+		18529F60202B31CD00BD8D0E /* PhoneVerificationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationWorker.swift; sourceTree = "<group>"; };
+		18529F61202B31CD00BD8D0E /* PhoneVerificationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationRouter.swift; sourceTree = "<group>"; };
+		18529F62202B31CD00BD8D0E /* PhoneVerificationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationModels.swift; sourceTree = "<group>"; };
+		18529F63202B31CD00BD8D0E /* PhoneVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewController.swift; sourceTree = "<group>"; };
+		18529F64202B31CD00BD8D0E /* PhoneVerificationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationInteractor.swift; sourceTree = "<group>"; };
 		185C60AB20244835009D23BE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		189434FA202488F9000C2166 /* PinPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPresenter.swift; sourceTree = "<group>"; };
 		189434FB202488F9000C2166 /* PinWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinWorker.swift; sourceTree = "<group>"; };
@@ -244,6 +256,19 @@
 				180C1606202197C100818460 /* CountryInteractor.swift */,
 			);
 			path = Country;
+			sourceTree = "<group>";
+		};
+		18529F5E202B17C500BD8D0E /* PhoneVerification */ = {
+			isa = PBXGroup;
+			children = (
+				18529F5F202B31CD00BD8D0E /* PhoneVerificationPresenter.swift */,
+				18529F60202B31CD00BD8D0E /* PhoneVerificationWorker.swift */,
+				18529F61202B31CD00BD8D0E /* PhoneVerificationRouter.swift */,
+				18529F62202B31CD00BD8D0E /* PhoneVerificationModels.swift */,
+				18529F63202B31CD00BD8D0E /* PhoneVerificationViewController.swift */,
+				18529F64202B31CD00BD8D0E /* PhoneVerificationInteractor.swift */,
+			);
+			path = PhoneVerification;
 			sourceTree = "<group>";
 		};
 		189434F9202488B8000C2166 /* CreatePin */ = {
@@ -492,6 +517,7 @@
 				F1E89B7B201F0E5C0052C723 /* PhoneAndEmail */,
 				180C160D202197C600818460 /* Country */,
 				189434F9202488B8000C2166 /* CreatePin */,
+				18529F5E202B17C500BD8D0E /* PhoneVerification */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -831,6 +857,7 @@
 				F1D9BAB420185605004B42B7 /* CGPointExtensions.swift in Sources */,
 				F1D9BAB220185605004B42B7 /* CGFloatExtensions.swift in Sources */,
 				18943502202488F9000C2166 /* PinRouter.swift in Sources */,
+				18529F68202B31CD00BD8D0E /* PhoneVerificationModels.swift in Sources */,
 				185C60AC20244835009D23BE /* User.swift in Sources */,
 				F1D9BAD4201856D1004B42B7 /* BannerManager.swift in Sources */,
 				180DAEDC20298B9E00193C39 /* NLoader.swift in Sources */,
@@ -843,6 +870,7 @@
 				F1D9BAB920185605004B42B7 /* CLLocationExtensions.swift in Sources */,
 				18943501202488F9000C2166 /* PinWorker.swift in Sources */,
 				180C160A202197C100818460 /* CountryModels.swift in Sources */,
+				18529F6A202B31CD00BD8D0E /* PhoneVerificationInteractor.swift in Sources */,
 				F1D9BABA20185605004B42B7 /* StringExtention.swift in Sources */,
 				F1D9BAC320185605004B42B7 /* Utils.swift in Sources */,
 				F1D9BAC020185605004B42B7 /* OptionalExtensions.swift in Sources */,
@@ -854,6 +882,7 @@
 				18943504202488F9000C2166 /* PinViewController.swift in Sources */,
 				F1D9BABE20185605004B42B7 /* DateExtensions.swift in Sources */,
 				F1D9BAB720185605004B42B7 /* NSViewExtensions.swift in Sources */,
+				18529F67202B31CD00BD8D0E /* PhoneVerificationRouter.swift in Sources */,
 				F1D9BAA620185605004B42B7 /* StoryboardInstantiable.swift in Sources */,
 				F1D9BAA820185605004B42B7 /* FloatExtensions.swift in Sources */,
 				18943505202488F9000C2166 /* PinInteractor.swift in Sources */,
@@ -866,6 +895,7 @@
 				F1D9BAD1201856D1004B42B7 /* AppSettings.swift in Sources */,
 				F1D9BAD7201856D1004B42B7 /* RequestManager.swift in Sources */,
 				F1D9BAE720185A8B004B42B7 /* BaseWorker.swift in Sources */,
+				18529F65202B31CD00BD8D0E /* PhoneVerificationPresenter.swift in Sources */,
 				F1D9BAF32018614A004B42B7 /* TokenInteractor.swift in Sources */,
 				F1D9BAD9201856D1004B42B7 /* RealAPI.swift in Sources */,
 				180C160B202197C100818460 /* CountryViewController.swift in Sources */,
@@ -891,9 +921,11 @@
 				F1E89B75201F0E540052C723 /* PhoneAndEmailPresenter.swift in Sources */,
 				F1D9BABD20185605004B42B7 /* SwifterSwift.swift in Sources */,
 				F1D9BAD8201856D1004B42B7 /* BaseRequest.swift in Sources */,
+				18529F66202B31CD00BD8D0E /* PhoneVerificationWorker.swift in Sources */,
 				F1E89B7A201F0E540052C723 /* PhoneAndEmailInteractor.swift in Sources */,
 				F1D9BAAD20185605004B42B7 /* DataExtensions.swift in Sources */,
 				F1E89B76201F0E540052C723 /* PhoneAndEmailWorker.swift in Sources */,
+				18529F69202B31CD00BD8D0E /* PhoneVerificationViewController.swift in Sources */,
 				180C1607202197C100818460 /* CountryPresenter.swift in Sources */,
 				F1D9BAAA20185605004B42B7 /* UIStoryboard+Storyboards.swift in Sources */,
 				F1D9BAAC20185605004B42B7 /* DictionaryExtensions.swift in Sources */,

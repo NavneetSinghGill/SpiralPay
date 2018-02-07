@@ -13,7 +13,7 @@ import UIKit
 public protocol StoryboardInstantiable { }
 
 extension StoryboardInstantiable where Self: UIViewController {
-    static func create(of storyboard: UIStoryboard.Storyboard) -> Self {
+    static func create(of storyboard: UIStoryboard.Storyboard = .Main) -> Self {
         return UIStoryboard(storyboard: storyboard).instantiateViewController()
     }
 }

@@ -8,6 +8,8 @@
 
 import UIKit
 
+let numberOfProgressBarPages: CGFloat = 6
+
 class ProgressBarViewController: SpiralPayViewController {
     
     var percentageOfProgressBar: CGFloat!

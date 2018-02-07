@@ -107,21 +107,25 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
     //MARK: Customer registration
     func doCustomerRegistration()
     {
-        NLoader.shared.startNLoader()
+        NLoader.startAnimating()
+        
+        //This removes space from country code
         
         var request = Pin.CustomerRegistration.Request()
         request.email = User.shared.email
-        request.pinCode = User.shared.countryCode
-        request.phone = User.shared.phone
+        request.pinCode = User.shared.pin
+        request.phone = User.shared.phoneWithCode
         interactor?.doCustomerRegistration(request: request)
     }
     
     func customerRegistrationSuccess(response: Pin.CustomerRegistration.Response) {
-        NLoader.shared.stopNLoader()
+        NLoader.stopAnimating()
+        
+        router?.routeToPhoneVerificationProcess()
     }
     
     func customerRegistrationFailed(response: Pin.CustomerRegistration.Response) {
-        NLoader.shared.stopNLoader()
+        NLoader.stopAnimating()
     }
     
     //MARK:- Private methods
@@ -148,6 +152,7 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
     
     private func pinCreationAndMatchingDoneLocally() {
         codeTextField.resignFirstResponder()
+        User.shared.pin = codeTextField.text
         
         doCustomerRegistration()
     }

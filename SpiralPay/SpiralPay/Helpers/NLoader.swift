@@ -66,6 +66,14 @@ class NLoader {
         NLoader.isLoaderShowing = false
     }
     
+    public final class func startAnimating() {
+        NLoader.shared.startNLoader()
+    }
+    
+    public final class func stopAnimating() {
+        NLoader.shared.stopNLoader()
+    }
+    
 }
 
 //MARK: Animations
@@ -122,7 +130,7 @@ class RoundCircling: NLoaderDelegate {
             animationY.beginTime = beginTime + beginTimes[i]
             circle.add(animationX, forKey: "animationX")
             circle.add(animationY, forKey: "animationY")
-            circleContainer.addSublayer(circle)
+            circleContainer.addSublayer(circle) 
         }
         parentLayer.addSublayer(circleContainer)
     }

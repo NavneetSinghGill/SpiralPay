@@ -42,4 +42,16 @@ class RequestManager: NSObject {
         }
     }
     
+    func sendSmsForPhoneVerification(request:BaseRequest, completion:@escaping CompletionHandler){
+        if ApplicationDelegate.isNetworkAvailable{
+            RealAPI().postObject(request:request, genericResponse: PhoneVerification.SmsPhoneVerification.Response.self, completion:completion)
+        }
+        else{
+            completion(false, Constants.kNoNetworkMessage)
+            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
+        }
+    }
+    
+    
+    
 }

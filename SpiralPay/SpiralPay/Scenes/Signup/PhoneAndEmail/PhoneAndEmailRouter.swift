@@ -33,8 +33,8 @@ class PhoneAndEmailRouter: NSObject, PhoneAndEmailRoutingLogic, PhoneAndEmailDat
     func routeToCountrySelection() {
         let countryViewController: CountryViewController = viewController?.storyboard?.instantiateViewController(withIdentifier: "CountryViewController") as! CountryViewController
         countryViewController.countrySelectionDelegate = viewController
-        countryViewController.defaultCountryName = User.shared.countryName
-        countryViewController.defaultCountryCode = User.shared.countryCode
+        countryViewController.defaultCountryName = viewController?.countryName
+        countryViewController.defaultCountryCode = viewController?.countryCode
         
         navigateToSomewhere(source: viewController!, destination: countryViewController)
     }

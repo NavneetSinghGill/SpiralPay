@@ -15,6 +15,7 @@ import UIKit
 @objc protocol PinRoutingLogic
 {
     func routeToReEnterPinScreenWith(pin: String)
+    func routeToPhoneVerificationProcess()
 }
 
 protocol PinDataPassing
@@ -30,13 +31,18 @@ class PinRouter: NSObject, PinRoutingLogic, PinDataPassing {
     var createdPin: String!
   
   // MARK: Routing
-
+    
     func routeToReEnterPinScreenWith(pin: String) {
         createdPin = pin
         
         let reEnterPinViewController: PinViewController = PinViewController.create(of: .Main)
         passDataTo(source: viewController!, destination: reEnterPinViewController)
         navigateTo(source: viewController!, destination: reEnterPinViewController)
+    }
+    
+    func routeToPhoneVerificationProcess() {
+        let phoneVerificationViewController: PhoneVerificationViewController = PhoneVerificationViewController.create(of: .Main)
+        navigateTo(source: viewController!, destination: phoneVerificationViewController)
     }
 
     // MARK: Navigation
