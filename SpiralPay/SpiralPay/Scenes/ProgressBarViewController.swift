@@ -8,7 +8,7 @@
 
 import UIKit
 
-let numberOfProgressBarPages: CGFloat = 6
+let numberOfProgressBarPages: CGFloat = 7
 
 class ProgressBarViewController: SpiralPayViewController {
     

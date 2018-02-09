@@ -18,6 +18,7 @@ import UIKit
     func routeToSuccessFulVerificationScreen()
     func routeToFailedVerificationScreen()
     func routeToFirstPhoneVerificationScreen()
+    func routeToConfirmDetailsScreen()
 }
 
 protocol PhoneVerificationDataPassing
@@ -69,6 +70,12 @@ class PhoneVerificationRouter: NSObject, PhoneVerificationRoutingLogic, PhoneVer
         }
         
         viewController?.navigationController?.setViewControllers(viewControllers, animated: true)
+    }
+    
+    func routeToConfirmDetailsScreen() {
+        let confirmDetailsViewController: ConfirmDetailsViewController = ConfirmDetailsViewController.create()
+        
+        navigate(source: viewController!, destination: confirmDetailsViewController)
     }
     
     // MARK: Navigation

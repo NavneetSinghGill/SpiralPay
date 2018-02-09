@@ -22,9 +22,9 @@ class TokenWorker:BaseWorker
         //call network etc.
         let manager = RequestManager()
         
-        manager.fetchJWTToken(request: request.baseRequest()) { (status, response) in
-            self.handleTokenResponse(success: success, fail: fail, status: status, response: response)
-        }
+//        manager.fetchJWTToken(request: request.baseRequest()) { (status, response) in
+//            self.handleTokenResponse(success: success, fail: fail, status: status, response: response)
+//        }
     }
     
     func fetchRefreshToken(refreshToken:String, success:@escaping(accessTokenResponseHandler), fail:@escaping(accessTokenResponseHandler))
@@ -32,9 +32,9 @@ class TokenWorker:BaseWorker
         //call network etc.
         let manager = RequestManager()
         
-        manager.fetchRefreshToken(request: Token.JWTToken.RefreshRequest().baseRequest(refreshToken: refreshToken)) { (status, response) in
-            self.handleTokenResponse(success: success, fail: fail, status: status, response: response)
-        }
+//        manager.fetchRefreshToken(request: Token.JWTToken.RefreshRequest().baseRequest(refreshToken: refreshToken)) { (status, response) in
+//            self.handleTokenResponse(success: success, fail: fail, status: status, response: response)
+//        }
     }
 }
 

@@ -27,24 +27,10 @@ class PhoneVerificationWorker
     //MARK: Parse methods
     
     public func handleSendSmsForPhoneVerificationResponse(success:@escaping(smsPhoneVerificationResponseHandler), fail:@escaping(smsPhoneVerificationResponseHandler), status: Bool, response: Any?) {
-        var message:String = Constants.kErrorMessage
+        let message:String = Constants.kErrorMessage
         if status {
-            if let result = response as? PhoneVerification.SmsPhoneVerification.Response {
-                success(result)
+            success(PhoneVerification.SmsPhoneVerification.Response(message: "Sms sent successfully")!)
                 return
-            }
-        }
-        else {
-            if let result = response as? PhoneVerification.SmsPhoneVerification.Response {
-                fail(result)
-                return
-            }
-            else
-            {
-                if let result = response as? String {
-                    message = result
-                }
-            }
         }
         fail(PhoneVerification.SmsPhoneVerification.Response(message:message)!)
     }

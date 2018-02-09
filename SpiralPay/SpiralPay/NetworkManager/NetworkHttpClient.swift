@@ -116,6 +116,15 @@ class NetworkHttpClient: NSObject {
         {
             Alamofire.request(completeURL, method: methodType, parameters: parameters, encoding: (methodType == .get ? URLEncoding.default : JSONEncoding.default), headers: headers).responseObject { (response: DataResponse<T>) in
                 
+                //Exception is for the ones when response is empty
+                let exceptionSuccess: AnyObject? = self.handleExceptionsFor(url: BaseRequest.getUrl(path: strURL), withResponseCode: response.response!.statusCode, response: response, genericResponse: genericResponse)
+                
+                if exceptionSuccess != nil {
+                    print("Exception success")
+                    success(exceptionSuccess)
+                    return
+                }
+                
                 switch response.result {
                 case .success(let value):
                     print(value)
@@ -155,6 +164,16 @@ class NetworkHttpClient: NSObject {
         }
         return header
     }
+    
+    func handleExceptionsFor<T:Mappable>(url: String, withResponseCode: Int, response: DataResponse<T>, genericResponse:T.Type) -> AnyObject? {
+        if url == sendSmsURL && withResponseCode == 202 {
+//            let response = PhoneVerification.SmsPhoneVerification.Response(message: "Sms sent successfully")
+//            response.response?.statusCode
+            return response as AnyObject
+        }
+        return nil
+    }
+    
 }
 
 

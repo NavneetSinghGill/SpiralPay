@@ -25,11 +25,11 @@ class PhoneVerificationPresenter: PhoneVerificationPresentationLogic
   // MARK: Do something
   
     func sendSmsForPhoneVerificationAPIsuccess(response: PhoneVerification.SmsPhoneVerification.Response) {
-        viewController?.sendSmsForPhoneVerificationAPIsuccess(viewModel: response)
+        viewController?.sendSmsForPhoneVerificationAPIsuccess(response: response)
     }
     
     func sendSmsForPhoneVerificationAPIfailure(response: PhoneVerification.SmsPhoneVerification.Response) {
-        viewController?.sendSmsForPhoneVerificationAPIfailure(viewModel: response)
+        viewController?.sendSmsForPhoneVerificationAPIfailure(response: response)
     }
     
 }

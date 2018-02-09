@@ -46,6 +46,15 @@ class FloatingHeaderTextField: UITextField {
         }
     }
     
+    override open var text: String? {
+        didSet {
+            super.text = text
+            self.placeholderLabel.text = placeholder
+            placeholder = nil
+            isActive ? setActiveState() : setInActiveStateIfShould()
+        }
+    }
+    
     open var placeholderFontScale: CGFloat = 0.7
     
     open var isActive: Bool = false {
@@ -218,6 +227,18 @@ class FloatingHeaderTextField: UITextField {
             return true
         } else {
             setErrorColor()
+            return false
+        }
+    }
+    
+    func isBirthdayIn(format: String) -> Bool {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = format
+        let someDate = self.text
+        
+        if dateFormatterGet.date(from: someDate!) != nil {
+            return true
+        } else {
             return false
         }
     }

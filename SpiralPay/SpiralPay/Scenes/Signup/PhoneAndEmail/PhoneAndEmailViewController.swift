@@ -126,7 +126,8 @@ class PhoneAndEmailViewController: ProgressBarViewController, PhoneAndEmailDispl
         countryCodeTextField.rightView = dropDownArrowImageView
         countryCodeTextField.rightViewMode = .always
         
-        
+        countryName = "United Kingdom"
+        countryCode = "44"
     }
     
     func checkIfEntriesValid() -> Bool {

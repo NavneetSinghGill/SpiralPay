@@ -16,6 +16,12 @@ import ObjectMapper
 let sendSmsURLPrefix = "/v1/wallet/customers/"
 let sendSmsURLSuffix = "/verify_number"
 
+var sendSmsURL: String {
+    get {
+        return "\(sendSmsURLPrefix)\(User.shared.customerID ?? "")\(sendSmsURLSuffix)"
+    }
+}
+
 enum PhoneVerification
 {
   // MARK: Use cases
@@ -29,7 +35,7 @@ enum PhoneVerification
         
         func baseRequest() -> BaseRequest {
             let baseRequest = BaseRequest()
-            baseRequest.urlPath = "\(sendSmsURLPrefix)\(User.shared.customerID!)\(sendSmsURLSuffix)"
+            baseRequest.urlPath = sendSmsURL
             baseRequest.parameters["phone"] = phone ?? ""
             baseRequest.parameters["code"] = code ?? ""
             return baseRequest

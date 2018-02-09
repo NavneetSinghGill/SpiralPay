@@ -33,8 +33,8 @@ enum PhoneVerificationScreenStatus {
 
 protocol PhoneVerificationDisplayLogic: class
 {
-    func sendSmsForPhoneVerificationAPIsuccess(viewModel: PhoneVerification.SmsPhoneVerification.Response)
-    func sendSmsForPhoneVerificationAPIfailure(viewModel: PhoneVerification.SmsPhoneVerification.Response)
+    func sendSmsForPhoneVerificationAPIsuccess(response: PhoneVerification.SmsPhoneVerification.Response)
+    func sendSmsForPhoneVerificationAPIfailure(response: PhoneVerification.SmsPhoneVerification.Response)
 }
 
 class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificationDisplayLogic
@@ -122,7 +122,7 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
     
     //MARK:- API response delegates
     
-    func sendSmsForPhoneVerificationAPIsuccess(viewModel: PhoneVerification.SmsPhoneVerification.Response) {
+    func sendSmsForPhoneVerificationAPIsuccess(response: PhoneVerification.SmsPhoneVerification.Response) {
         NLoader.stopAnimating()
         
         if screenStatus != .EnterPin {
@@ -130,12 +130,8 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
         }
     }
     
-    func sendSmsForPhoneVerificationAPIfailure(viewModel: PhoneVerification.SmsPhoneVerification.Response) {
+    func sendSmsForPhoneVerificationAPIfailure(response: PhoneVerification.SmsPhoneVerification.Response) {
         NLoader.stopAnimating()
-        //TODO: remove when api is successful
-        if screenStatus != .EnterPin {
-            router?.routeToEnterSmsPinScreen()
-        }
     }
     
     //MARK:- IBAction methods
@@ -144,7 +140,7 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
         if screenStatus == .SendSms {
             sendaRandomCodeToUser()
         } else if screenStatus == .Success {
-            
+            router?.routeToConfirmDetailsScreen()
         } else if screenStatus == .Failed {
             router?.routeToFirstPhoneVerificationScreen()
         }
@@ -206,6 +202,7 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
     private func sendaRandomCodeToUser() {
         NLoader.stopAnimating()
         
+        //6-digit code
         generatedCode = "\(arc4random_uniform(899999) + 100000)"
         print("Genegrated code: \(generatedCode!)")
         

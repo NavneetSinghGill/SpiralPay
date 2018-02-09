@@ -16,6 +16,13 @@
 		180C160B202197C100818460 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1605202197C100818460 /* CountryViewController.swift */; };
 		180C160C202197C100818460 /* CountryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1606202197C100818460 /* CountryInteractor.swift */; };
 		180DAEDC20298B9E00193C39 /* NLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DAEDB20298B9D00193C39 /* NLoader.swift */; };
+		184A4F9E202D8EB90019AD40 /* ConfirmDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F98202D8EB90019AD40 /* ConfirmDetailsPresenter.swift */; };
+		184A4F9F202D8EBA0019AD40 /* ConfirmDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F99202D8EB90019AD40 /* ConfirmDetailsWorker.swift */; };
+		184A4FA0202D8EBA0019AD40 /* ConfirmDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F9A202D8EB90019AD40 /* ConfirmDetailsRouter.swift */; };
+		184A4FA1202D8EBA0019AD40 /* ConfirmDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F9B202D8EB90019AD40 /* ConfirmDetailsModels.swift */; };
+		184A4FA2202D8EBA0019AD40 /* ConfirmDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F9C202D8EB90019AD40 /* ConfirmDetailsViewController.swift */; };
+		184A4FA3202D8EBA0019AD40 /* ConfirmDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F9D202D8EB90019AD40 /* ConfirmDetailsInteractor.swift */; };
+		184A4FA5202DB72B0019AD40 /* DateAndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4FA4202DB72B0019AD40 /* DateAndTimeViewController.swift */; };
 		18529F65202B31CD00BD8D0E /* PhoneVerificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F5F202B31CD00BD8D0E /* PhoneVerificationPresenter.swift */; };
 		18529F66202B31CD00BD8D0E /* PhoneVerificationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F60202B31CD00BD8D0E /* PhoneVerificationWorker.swift */; };
 		18529F67202B31CD00BD8D0E /* PhoneVerificationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F61202B31CD00BD8D0E /* PhoneVerificationRouter.swift */; };
@@ -122,6 +129,13 @@
 		180C1605202197C100818460 /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		180C1606202197C100818460 /* CountryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInteractor.swift; sourceTree = "<group>"; };
 		180DAEDB20298B9D00193C39 /* NLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLoader.swift; sourceTree = "<group>"; };
+		184A4F98202D8EB90019AD40 /* ConfirmDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsPresenter.swift; sourceTree = "<group>"; };
+		184A4F99202D8EB90019AD40 /* ConfirmDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsWorker.swift; sourceTree = "<group>"; };
+		184A4F9A202D8EB90019AD40 /* ConfirmDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsRouter.swift; sourceTree = "<group>"; };
+		184A4F9B202D8EB90019AD40 /* ConfirmDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsModels.swift; sourceTree = "<group>"; };
+		184A4F9C202D8EB90019AD40 /* ConfirmDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsViewController.swift; sourceTree = "<group>"; };
+		184A4F9D202D8EB90019AD40 /* ConfirmDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsInteractor.swift; sourceTree = "<group>"; };
+		184A4FA4202DB72B0019AD40 /* DateAndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeViewController.swift; sourceTree = "<group>"; };
 		18529F5F202B31CD00BD8D0E /* PhoneVerificationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationPresenter.swift; sourceTree = "<group>"; };
 		18529F60202B31CD00BD8D0E /* PhoneVerificationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationWorker.swift; sourceTree = "<group>"; };
 		18529F61202B31CD00BD8D0E /* PhoneVerificationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationRouter.swift; sourceTree = "<group>"; };
@@ -256,6 +270,19 @@
 				180C1606202197C100818460 /* CountryInteractor.swift */,
 			);
 			path = Country;
+			sourceTree = "<group>";
+		};
+		184A4F97202D8E540019AD40 /* ConfirmDetails */ = {
+			isa = PBXGroup;
+			children = (
+				184A4F98202D8EB90019AD40 /* ConfirmDetailsPresenter.swift */,
+				184A4F99202D8EB90019AD40 /* ConfirmDetailsWorker.swift */,
+				184A4F9A202D8EB90019AD40 /* ConfirmDetailsRouter.swift */,
+				184A4F9B202D8EB90019AD40 /* ConfirmDetailsModels.swift */,
+				184A4F9C202D8EB90019AD40 /* ConfirmDetailsViewController.swift */,
+				184A4F9D202D8EB90019AD40 /* ConfirmDetailsInteractor.swift */,
+			);
+			path = ConfirmDetails;
 			sourceTree = "<group>";
 		};
 		18529F5E202B17C500BD8D0E /* PhoneVerification */ = {
@@ -493,6 +520,7 @@
 			children = (
 				1894350620248D76000C2166 /* SpiralPayViewController.swift */,
 				1894350820248DA7000C2166 /* ProgressBarViewController.swift */,
+				184A4FA4202DB72B0019AD40 /* DateAndTimeViewController.swift */,
 				F1E89B6D201F09F10052C723 /* Signup */,
 				F1D9BAED2018614A004B42B7 /* Token */,
 			);
@@ -518,6 +546,7 @@
 				180C160D202197C600818460 /* Country */,
 				189434F9202488B8000C2166 /* CreatePin */,
 				18529F5E202B17C500BD8D0E /* PhoneVerification */,
+				184A4F97202D8E540019AD40 /* ConfirmDetails */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -860,6 +889,7 @@
 				18529F68202B31CD00BD8D0E /* PhoneVerificationModels.swift in Sources */,
 				185C60AC20244835009D23BE /* User.swift in Sources */,
 				F1D9BAD4201856D1004B42B7 /* BannerManager.swift in Sources */,
+				184A4FA2202D8EBA0019AD40 /* ConfirmDetailsViewController.swift in Sources */,
 				180DAEDC20298B9E00193C39 /* NLoader.swift in Sources */,
 				F1D9BAA720185605004B42B7 /* ArrayExtensions.swift in Sources */,
 				F1D9BABC20185605004B42B7 /* LocaleExtensions.swift in Sources */,
@@ -904,12 +934,16 @@
 				F1D9BAA520185605004B42B7 /* StoryboardIdentifiable.swift in Sources */,
 				F1D9BAB820185605004B42B7 /* NSAttributedStringExtensions.swift in Sources */,
 				F1D9BAB120185605004B42B7 /* URLExtensions.swift in Sources */,
+				184A4FA5202DB72B0019AD40 /* DateAndTimeViewController.swift in Sources */,
 				F1D9BAF62018614A004B42B7 /* TokenWorker.swift in Sources */,
 				F16DF1F82019CDA200FE3F94 /* FloatingHeaderTextField.swift in Sources */,
+				184A4F9E202D8EB90019AD40 /* ConfirmDetailsPresenter.swift in Sources */,
 				F1D9BAD5201856D1004B42B7 /* AppSettingsManager.swift in Sources */,
 				F1D9BAAF20185605004B42B7 /* GenericExtensions.swift in Sources */,
 				F1D9BAF52018614A004B42B7 /* TokenManager.swift in Sources */,
+				184A4FA0202D8EBA0019AD40 /* ConfirmDetailsRouter.swift in Sources */,
 				F1E89B7D201F123C0052C723 /* SpiralPayButton.swift in Sources */,
+				184A4FA1202D8EBA0019AD40 /* ConfirmDetailsModels.swift in Sources */,
 				F1D9BAF72018614A004B42B7 /* TokenModels.swift in Sources */,
 				F1E89B79201F0E540052C723 /* PhoneAndEmailViewController.swift in Sources */,
 				18943500202488F9000C2166 /* PinPresenter.swift in Sources */,
@@ -923,6 +957,8 @@
 				F1D9BAD8201856D1004B42B7 /* BaseRequest.swift in Sources */,
 				18529F66202B31CD00BD8D0E /* PhoneVerificationWorker.swift in Sources */,
 				F1E89B7A201F0E540052C723 /* PhoneAndEmailInteractor.swift in Sources */,
+				184A4FA3202D8EBA0019AD40 /* ConfirmDetailsInteractor.swift in Sources */,
+				184A4F9F202D8EBA0019AD40 /* ConfirmDetailsWorker.swift in Sources */,
 				F1D9BAAD20185605004B42B7 /* DataExtensions.swift in Sources */,
 				F1E89B76201F0E540052C723 /* PhoneAndEmailWorker.swift in Sources */,
 				18529F69202B31CD00BD8D0E /* PhoneVerificationViewController.swift in Sources */,
