@@ -17,7 +17,7 @@ lane :beta do
   # build your iOS app
   build_app(
     scheme: "SpiralPay",
-    export_method: "development"
+    export_method: "ad-hoc"
   )
 
   # upload to Beta by Crashlytics

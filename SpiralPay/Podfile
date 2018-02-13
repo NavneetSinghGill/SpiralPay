@@ -17,7 +17,7 @@ target 'SpiralPay' do
 #  pod 'FBSDKLoginKit'
   pod 'IQKeyboardManagerSwift', '5.0.0'
 
-    pod 'Crashlytics'
+  pod 'Crashlytics'
 
   target 'SpiralPayTests' do
     inherit! :search_paths

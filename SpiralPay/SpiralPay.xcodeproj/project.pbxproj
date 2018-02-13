@@ -577,6 +577,7 @@
 				F1D9BA4B201852E8004B42B7 /* Resources */,
 				3A556FDEAE2F6DB1291C0170 /* [CP] Embed Pods Frameworks */,
 				FAD96631B8200A7B952D21FC /* [CP] Copy Pods Resources */,
+				1845315420330F320003E936 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -707,6 +708,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1845315420330F320003E936 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 4dac4ae8e912e34b03ddbd36e2e6ced096355e43 c853a178822b64787a26905c693e9a785ab41620390133c2377158c0aec86abb";
+		};
 		1B0BEAF1103DD06C5CB6C0C0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1131,11 +1145,15 @@
 			baseConfigurationReference = 87F8290059BCB99401861392 /* Pods-SpiralPay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 2A498HB725;
 				INFOPLIST_FILE = SpiralPay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EnvisionWorld.SpiralPay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d2915cda-69f0-4aec-9d39-1029373ba95a";
+				PROVISIONING_PROFILE_SPECIFIER = SpiralPayAdhoc;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1146,11 +1164,15 @@
 			baseConfigurationReference = C38F4CF947AB8083F8E50A67 /* Pods-SpiralPay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 2A498HB725;
 				INFOPLIST_FILE = SpiralPay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EnvisionWorld.SpiralPay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d2915cda-69f0-4aec-9d39-1029373ba95a";
+				PROVISIONING_PROFILE_SPECIFIER = SpiralPayAdhoc;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
