@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## Alamofire
 
-Copyright (c) 2014-2018 Alamofire Software Foundation (http://alamofire.org/)
+Copyright (c) 2014-2017 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -50,6 +50,14 @@ SOFTWARE.
 
 
 
+## Crashlytics
+
+Fabric: Copyright 2017 Google, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Fabric Software and Services Agreement located at https://fabric.io/terms. Crashlytics Kit: Copyright 2017 Crashlytics, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Crashlytics Terms of Service located at http://try.crashlytics.com/terms/terms-of-service.pdf and the Crashlytics Privacy Policy located at http://try.crashlytics.com/terms/privacy-policy.pdf. OSS: http://get.fabric.io/terms/opensource.txt
+
+## Fabric
+
+Fabric: Copyright 2017 Google, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Fabric Software and Services Agreement located at https://fabric.io/terms. OSS: http://get.fabric.io/terms/opensource.txt
+
 ## IQKeyboardManagerSwift
 
 IQKeyboardManager license
@@ -80,7 +88,7 @@ SOFTWARE.
 
 ## MarqueeLabel
 
-Copyright (c) 2011-2018 Charles Powell
+Copyright (c) 2011-2017 Charles Powell
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
 documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
@@ -97,7 +105,7 @@ IN THE SOFTWARE.
 
 ## NotificationBannerSwift
 
-Copyright (c) 2018 Daltron <daltonhint4@gmail.com>
+Copyright (c) 2017 Daltron <daltonhint4@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -155,7 +163,7 @@ THE SOFTWARE.
 
 ## SDWebImage
 
-Copyright (c) 2009-2018 Olivier Poitrey rs@dailymotion.com
+Copyright (c) 2009-2017 Olivier Poitrey rs@dailymotion.com
  
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -179,7 +187,7 @@ THE SOFTWARE.
 
 ## SVProgressHUD
 
-Copyright (c) 2011-2018 Sam Vermette, Tobias Tiemerding and contributors.
+Copyright (c) 2011-2017 Sam Vermette, Tobias Tiemerding and contributors.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
