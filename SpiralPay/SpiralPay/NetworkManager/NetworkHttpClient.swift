@@ -157,7 +157,8 @@ class NetworkHttpClient: NSObject {
     
     class func getHeader() -> Dictionary<String, Any> {
         var header: HTTPHeaders = [String : String]()
-        if let accessToken = User.shared.accessToken {
+        if User.shared.accessToken != nil && User.shared.accessToken?.count != 0 {
+            let accessToken = User.shared.accessToken!
             header[Constants.kAuthorizationkey] = "\(Constants.kBearerkey)\(accessToken)"
             header[Constants.kContentTypeKey] = Constants.kContentTypeValue
             print("Header: \(header)")

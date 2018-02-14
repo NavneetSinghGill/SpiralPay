@@ -14,8 +14,11 @@ let ApplicationDelegate = UIApplication.shared.delegate as! AppDelegate
 typealias CompletionHandler = (_ success: Bool, _ response: Any?) -> Void
 
 let isiPad: Bool = UIDevice.current.userInterfaceIdiom == .pad
+let deviceUDID = UIDevice.current.identifierForVendor?.uuidString ?? "simulator"
 
 struct Constants {
+    
+    static let kHadAppRunBeforeAtleastOnce = "hadAppRunBeforeAtleastOnce"
     
     // MARK: - General Constants
     static let deviceIdentifier = "DeviceIdentifier"
@@ -40,6 +43,7 @@ struct Constants {
     static let kBearerkey = "Bearer "
     
     static let kAppName = "SpiralPay"
+    static let kCanShowLoginScreen = "CanShowLoginScreen"
     
     // MARK: - User Defaults
     

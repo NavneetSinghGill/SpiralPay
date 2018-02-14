@@ -40,8 +40,10 @@ class ProgressBarViewController: SpiralPayViewController {
     }
     
     func animateProgressBarIfShould() {
-        progressBar.animate(fromPercentage: Utils.currentProgressBarValue, toPercentage: percentageOfProgressBar)
-        Utils.currentProgressBarValue = percentageOfProgressBar
+        if percentageOfProgressBar != nil {
+            progressBar.animate(fromPercentage: Utils.currentProgressBarValue, toPercentage: percentageOfProgressBar)
+            Utils.currentProgressBarValue = percentageOfProgressBar
+        }
     }
 
 }

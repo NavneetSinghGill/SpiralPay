@@ -12,6 +12,17 @@ class Utils: NSObject {
     
     static var currentProgressBarValue: CGFloat = 0.0
     
+    static var canShowLoginScreen: Bool {
+        get {
+            let savedValue = UserDefaults.standard.bool(forKey: Constants.kCanShowLoginScreen)
+            return savedValue
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Constants.kCanShowLoginScreen)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
     class func deviceIdentifier() -> String {
         return UserDefaults.standard.string(forKey: Constants.deviceIdentifier) ?? (UIDevice.current.identifierForVendor?.uuidString)!
     }

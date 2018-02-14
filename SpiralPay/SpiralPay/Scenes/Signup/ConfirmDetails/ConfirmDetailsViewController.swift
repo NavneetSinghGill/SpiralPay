@@ -110,7 +110,15 @@ class ConfirmDetailsViewController: ProgressBarViewController, ConfirmDetailsDis
     }
     
     @IBAction func confirmButtonTapped() {
+        Utils.canShowLoginScreen = true
         
+        User.shared.name = nameTextField.text
+        User.shared.birthday = birthdayTextField.text
+        User.shared.address = addressTextField.text
+        User.shared.city = cityTextField.text
+        User.shared.postcode = postCodeTextField.text
+        
+        User.shared.save()
     }
     
     @IBAction func termsButtonTapped() {

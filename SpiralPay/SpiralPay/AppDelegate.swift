@@ -19,9 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var isNetworkAvailable: Bool = true
     let reachability = Reachability()!
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if !UserDefaults.standard.bool(forKey: Constants.kHadAppRunBeforeAtleastOnce) {
+            User.resetSavedValues()
+            UserDefaults.standard.set(true, forKey: Constants.kHadAppRunBeforeAtleastOnce)
+            UserDefaults.standard.synchronize()
+        }
+        
+        User.shared.restore()
+        
         Fabric.with([Crashlytics.self])
         
         setupNetworkMonitoring()
@@ -45,6 +53,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        if Utils.canShowLoginScreen {
+            showLoginScreen()
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -107,6 +119,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Network not reachable")
             self.isNetworkAvailable = false
             
+        }
+    }
+    
+    func showLoginScreen() {
+        let pinVC = PinViewController.create()
+        pinVC.pinEntry = .Login
+        let viewC = UIApplication.shared.keyWindow?.rootViewController
+        if viewC != nil {
+            viewC?.present(pinVC, animated: true, completion: nil)
         }
     }
 

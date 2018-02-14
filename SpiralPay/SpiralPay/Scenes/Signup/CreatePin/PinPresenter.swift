@@ -16,13 +16,16 @@ protocol PinPresentationLogic
 {
     func customerRegistrationSuccess(response: Pin.CustomerRegistration.Response)
     func customerRegistrationFailed(response: Pin.CustomerRegistration.Response)
+    
+    func loginSuccess(response: Pin.Login.Response)
+    func loginFailed(response: Pin.Login.Response)
 }
 
 class PinPresenter: PinPresentationLogic
 {
     weak var viewController: PinDisplayLogic?
     
-    // MARK: Do something
+    //MARK: Customer registration
     
     func customerRegistrationSuccess(response: Pin.CustomerRegistration.Response)
     {
@@ -31,6 +34,17 @@ class PinPresenter: PinPresentationLogic
     
     func customerRegistrationFailed(response: Pin.CustomerRegistration.Response) {
         viewController?.customerRegistrationFailed(response: response)
+    }
+    
+    //MARK: Login
+    
+    func loginSuccess(response: Pin.Login.Response)
+    {
+        viewController?.loginSuccess(response: response)
+    }
+    
+    func loginFailed(response: Pin.Login.Response) {
+        viewController?.loginFailed(response: response)
     }
     
 }

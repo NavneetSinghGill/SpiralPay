@@ -14,6 +14,7 @@ import UIKit
 import ObjectMapper
 
 let customerRegistrationURL = "/v1/wallet/customers"
+let loginURL = "/v1/wallet/customers/login"
 
 enum Pin
 {
@@ -24,7 +25,7 @@ enum Pin
     struct Request
     {
         var phone: String?
-        var deviceID:String! = UIDevice.current.identifierForVendor?.uuidString ?? "simulator"
+        var deviceID:String! = "did_\(deviceUDID)"
         var email: String?
         var pinCode: String?
         
@@ -32,7 +33,7 @@ enum Pin
             let baseRequest = BaseRequest()
             baseRequest.urlPath = customerRegistrationURL
             baseRequest.parameters["phone"] = phone ?? ""
-            baseRequest.parameters["device_id"] = "did_\(deviceID!)"
+            baseRequest.parameters["device_id"] = deviceID
             baseRequest.parameters["email"] = email ?? ""
             baseRequest.parameters["pin_code"] = pinCode ?? ""
             return baseRequest
@@ -85,4 +86,63 @@ enum Pin
         
     }
   }
+    
+    enum Login
+    {
+        struct Request
+        {
+            var deviceID:String! = "did_\(deviceUDID)"
+            var pinCode: String?
+            
+            func baseRequest() -> BaseRequest {
+                let baseRequest = BaseRequest()
+                baseRequest.urlPath = loginURL
+                baseRequest.parameters["device_id"] = deviceID
+                baseRequest.parameters["pin_code"] = pinCode ?? ""
+                return baseRequest
+            }
+        }
+        struct Response: Mappable {
+            
+            // MARK: Declaration for string constants to be used to decode and also serialize.
+            private struct SerializationKeys {
+                static let accessToken = "access_token"
+                static let message = "message"
+            }
+            
+            // MARK: Properties
+            public var accessToken: String?
+            public var message: String?
+            
+            // MARK: ObjectMapper Initializers
+            /// Map a JSON object to this class using ObjectMapper.
+            ///
+            /// - parameter map: A mapping from ObjectMapper.
+            public init?(map: Map){
+                
+            }
+            public init?(message: String){
+                self.message = message
+            }
+            
+            /// Map a JSON object to this class using ObjectMapper.
+            ///
+            /// - parameter map: A mapping from ObjectMapper.
+            public mutating func mapping(map: Map) {
+                accessToken <- map[SerializationKeys.accessToken]
+                message <- map[SerializationKeys.message]
+            }
+            
+            /// Generates description of the object in the form of a NSDictionary.
+            ///
+            /// - returns: A Key value pair containing all valid values in the object.
+            public func dictionaryRepresentation() -> [String: Any] {
+                var dictionary: [String: Any] = [:]
+                if let value = accessToken { dictionary[SerializationKeys.accessToken] = value }
+                if let value = message { dictionary[SerializationKeys.message] = value }
+                return dictionary
+            }
+            
+        }
+    }
 }
