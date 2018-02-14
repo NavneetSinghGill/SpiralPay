@@ -105,7 +105,7 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
     
     //MARK: - API
     //MARK: Customer registration
-    func doCustomerRegistration()
+    func doCustomerRegistrationWith(pin: String?)
     {
         NLoader.startAnimating()
         
@@ -113,7 +113,7 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
         
         var request = Pin.CustomerRegistration.Request()
         request.email = User.shared.email
-        request.pinCode = User.shared.pin
+        request.pinCode = pin
         request.phone = User.shared.phoneWithCode
         interactor?.doCustomerRegistration(request: request)
     }
@@ -152,9 +152,8 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
     
     private func pinCreationAndMatchingDoneLocally() {
         codeTextField.resignFirstResponder()
-        User.shared.pin = codeTextField.text
         
-        doCustomerRegistration()
+        doCustomerRegistrationWith(pin: codeTextField.text)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

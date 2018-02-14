@@ -35,7 +35,6 @@ class PinInteractor: PinBusinessLogic, PinDataStore
     worker = PinWorker()
     worker?.postCustomerRegistrationWith(request: request, successCompletionHandler: { (response) in
         User.shared.accessToken = response.accessToken
-        User.shared.storageEncryptionKey = response.storageEncryptionKey
         User.shared.customerID = response.customerId
         
         self.presenter?.customerRegistrationSuccess(response: response)

@@ -44,14 +44,12 @@ enum Pin
         private struct SerializationKeys {
             static let customerId = "customer_id"
             static let accessToken = "access_token"
-            static let storageEncryptionKey = "storage_encryption_key"
             static let message = "message"
         }
         
         // MARK: Properties
         public var customerId: String?
         public var accessToken: String?
-        public var storageEncryptionKey: String?
         public var message: String?
         
         // MARK: ObjectMapper Initializers
@@ -71,7 +69,6 @@ enum Pin
         public mutating func mapping(map: Map) {
             customerId <- map[SerializationKeys.customerId]
             accessToken <- map[SerializationKeys.accessToken]
-            storageEncryptionKey <- map[SerializationKeys.storageEncryptionKey]
             message <- map[SerializationKeys.message]
         }
         
@@ -82,7 +79,6 @@ enum Pin
             var dictionary: [String: Any] = [:]
             if let value = customerId { dictionary[SerializationKeys.customerId] = value }
             if let value = accessToken { dictionary[SerializationKeys.accessToken] = value }
-            if let value = storageEncryptionKey { dictionary[SerializationKeys.storageEncryptionKey] = value }
             if let value = message { dictionary[SerializationKeys.message] = value }
             return dictionary
         }

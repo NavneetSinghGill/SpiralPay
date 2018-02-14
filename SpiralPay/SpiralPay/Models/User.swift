@@ -16,10 +16,8 @@ class User: NSObject {
     var email: String?
     var countryName: String?
     var countryCode: String?
-    var pin: String?
     var accessToken: String?
     var customerID: String?
-    var storageEncryptionKey: String?
 
     var phoneWithCode: String? {
         get {
