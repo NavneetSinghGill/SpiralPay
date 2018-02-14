@@ -8,25 +8,11 @@ target 'SpiralPay' do
   # Pods for SpiralPay
   pod 'AlamofireObjectMapper', '~> 5.0'
   pod 'ReachabilitySwift'
-  pod 'NotificationBannerSwift'
+#  pod 'NotificationBannerSwift'
   pod 'SwiftKeychainWrapper', '~> 3.0'
-  pod 'SDWebImage', '~> 4.0'
-#  pod 'BPViewsSubviewsInOutAnimation'
-#  pod 'DropDown'
-  pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
-#  pod 'FBSDKLoginKit'
-  pod 'IQKeyboardManagerSwift', '5.0.0'
-
+#  pod 'SDWebImage', '~> 4.0'
+#  pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
+#  pod 'IQKeyboardManagerSwift', '5.0.0'
   pod 'Crashlytics'
-
-  target 'SpiralPayTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'SpiralPayUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
+  
 end

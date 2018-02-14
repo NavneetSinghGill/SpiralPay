@@ -8,7 +8,6 @@
 
 import UIKit
 import Reachability
-import IQKeyboardManagerSwift
 import Fabric
 import Crashlytics
 

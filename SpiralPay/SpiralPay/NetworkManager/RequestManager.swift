@@ -38,7 +38,7 @@ class RequestManager: NSObject {
         }
         else{
             completion(false, Constants.kNoNetworkMessage)
-            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
+//            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
         }
     }
     
@@ -48,7 +48,7 @@ class RequestManager: NSObject {
         }
         else{
             completion(false, Constants.kNoNetworkMessage)
-            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
+//            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
         }
     }
     
@@ -58,7 +58,7 @@ class RequestManager: NSObject {
         }
         else{
             completion(false, Constants.kNoNetworkMessage)
-            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
+//            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
         }
     }
     

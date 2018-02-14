@@ -7,18 +7,18 @@
 //
 
 import UIKit
-import NotificationBannerSwift
+//import NotificationBannerSwift
 
 class BannerManager: NSObject {
     
-    static func showSuccessBanner(title:String = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String, subtitle:String){
-        let banner = NotificationBanner(title: title, subtitle: subtitle, style: .success)
-        banner.show()
-    }
-    
-    static func showFailureBanner(title:String = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String, subtitle:String){
-        let banner = NotificationBanner(title: title, subtitle: subtitle, style: .danger)
-        banner.show()
-    }
+//    static func showSuccessBanner(title:String = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String, subtitle:String){
+//        let banner = NotificationBanner(title: title, subtitle: subtitle, style: .success)
+//        banner.show()
+//    }
+//    
+//    static func showFailureBanner(title:String = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String, subtitle:String){
+//        let banner = NotificationBanner(title: title, subtitle: subtitle, style: .danger)
+//        banner.show()
+//    }
 
 }
