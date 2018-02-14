@@ -642,7 +642,7 @@
 				TargetAttributes = {
 					F1D9BA4C201852E8004B42B7 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					F1D9BA60201852E8004B42B7 = {
 						CreatedOnToolsVersion = 9.2;
@@ -1150,7 +1150,7 @@
 				DEVELOPMENT_TEAM = 2A498HB725;
 				INFOPLIST_FILE = SpiralPay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = EnvisionWorld.SpiralPay;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SpiralPay.SpiralPay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d2915cda-69f0-4aec-9d39-1029373ba95a";
 				PROVISIONING_PROFILE_SPECIFIER = SpiralPayAdhoc;
@@ -1169,7 +1169,7 @@
 				DEVELOPMENT_TEAM = 2A498HB725;
 				INFOPLIST_FILE = SpiralPay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = EnvisionWorld.SpiralPay;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SpiralPay.SpiralPay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d2915cda-69f0-4aec-9d39-1029373ba95a";
 				PROVISIONING_PROFILE_SPECIFIER = SpiralPayAdhoc;
