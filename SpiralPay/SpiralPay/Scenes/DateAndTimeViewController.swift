@@ -12,20 +12,35 @@ protocol DateAndTimeDelegate {
     func getFinal(date: Date)
 }
 
+enum PickerType {
+    case DateMonthYear
+    case MonthYear
+}
+
 class DateAndTimeViewController: SpiralPayViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var dateYearPicker: MonthYearPickerView!
     var dateAndTimeDelegate: DateAndTimeDelegate?
-    
+    var pickerType: PickerType = .DateMonthYear
     var initialDate: Date?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        datePicker.maximumDate = Date()
-
-        if initialDate != nil {
-            datePicker.date = initialDate!
+        switch pickerType {
+        case .DateMonthYear:
+            datePicker.isHidden = false
+            dateYearPicker.isHidden = true
+            
+            if initialDate != nil {
+                datePicker.date = initialDate!
+            }
+            datePicker.maximumDate = Date()
+            
+        case .MonthYear:
+            datePicker.isHidden = true
+            dateYearPicker.isHidden = false
         }
     }
     
@@ -34,7 +49,12 @@ class DateAndTimeViewController: SpiralPayViewController {
     }
     
     @IBAction func doneButtonTapped() {
-        dateAndTimeDelegate?.getFinal(date: datePicker.date)
+        switch pickerType {
+        case .DateMonthYear:
+            dateAndTimeDelegate?.getFinal(date: datePicker.date)
+        case .MonthYear:
+            dateAndTimeDelegate?.getFinal(date: dateYearPicker.date)
+        }
         closeTheScreen()
     }
     

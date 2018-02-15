@@ -130,7 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pinVC.pinEntry = .Login
         let viewC = UIApplication.shared.keyWindow?.rootViewController
         if viewC != nil {
-            viewC?.present(pinVC, animated: true, completion: nil)
+            viewC?.present(pinVC, animated: false, completion: nil)
         }
     }
     

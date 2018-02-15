@@ -78,8 +78,7 @@ class PinWorker
                 }
             }
         }
-        //TODO:
-//        fail(Pin.Login.Response(message:message)!)
+        fail(Pin.Login.Response(message:message)!)
     }
     
 }

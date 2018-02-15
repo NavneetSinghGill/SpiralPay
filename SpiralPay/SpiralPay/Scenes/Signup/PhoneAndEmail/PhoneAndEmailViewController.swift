@@ -162,12 +162,16 @@ extension PhoneAndEmailViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
         if textField == mobileNumberTextField {
             let currentText = textField.text ?? ""
             guard let stringRange = Range(range, in: currentText) else { return false }
             
             let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-            if updatedText.count > 10 {
+            
+            let charSet = CharacterSet(charactersIn: "1234567890").inverted
+            
+            if updatedText.rangeOfCharacter(from: charSet) != nil || updatedText.count > 10 {
                 return false
             }
         }

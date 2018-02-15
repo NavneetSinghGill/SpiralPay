@@ -120,6 +120,7 @@ class FloatingHeaderTextField: UITextField {
         self.layer.addSublayer(underLineLayer)
         
         placeholderLabel = UILabel()
+        placeholderLabel.font = self.font
         if !(self.text?.isEmpty)! {
             placeholderLabel.text = placeholder
         }

@@ -18,10 +18,10 @@ class ProgressBarView: UIView {
         }
     }
     
-    var cornerRadius: CGFloat = 0 {
+    var progressCornerRadius: CGFloat = 0 {
         didSet {
-            self.layer.cornerRadius = cornerRadius
-            self.progressBar?.layer.cornerRadius = cornerRadius
+            self.layer.cornerRadius = progressCornerRadius
+            self.progressBar?.layer.cornerRadius = progressCornerRadius
         }
     }
     
@@ -53,7 +53,7 @@ class ProgressBarView: UIView {
         self.addSubview(progressBar!)
         
         self.clipsToBounds = true
-        self.cornerRadius = self.bounds.size.height/2
+        self.progressCornerRadius = self.bounds.size.height/2
     }
     
     func animate(fromPercentage: CGFloat, toPercentage: CGFloat, with completionBlock: @escaping () -> () = {}) {

@@ -24,7 +24,8 @@ class WelcomeViewController: SpiralPayViewController {
     //MARK: IBAction methods
     
     @IBAction func addCardButtonTapped() {
-        
+        let addCardManuallyScreen = AddCardManuallyViewController.create()
+        self.navigationController?.pushViewController(addCardManuallyScreen, animated: true)
     }
 
 }

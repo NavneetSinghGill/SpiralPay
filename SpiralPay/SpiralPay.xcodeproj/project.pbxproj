@@ -30,6 +30,8 @@
 		18529F6A202B31CD00BD8D0E /* PhoneVerificationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F64202B31CD00BD8D0E /* PhoneVerificationInteractor.swift */; };
 		185C60AC20244835009D23BE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C60AB20244835009D23BE /* User.swift */; };
 		18645D50203552140017E214 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D4F203552140017E214 /* WelcomeViewController.swift */; };
+		18645D52203577040017E214 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D51203577040017E214 /* UIViewExtension.swift */; };
+		18645D5420359B7F0017E214 /* AddCardOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */; };
 		18943500202488F9000C2166 /* PinPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FA202488F9000C2166 /* PinPresenter.swift */; };
 		18943501202488F9000C2166 /* PinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FB202488F9000C2166 /* PinWorker.swift */; };
 		18943502202488F9000C2166 /* PinRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FC202488F9000C2166 /* PinRouter.swift */; };
@@ -38,6 +40,8 @@
 		18943505202488F9000C2166 /* PinInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FF202488F9000C2166 /* PinInteractor.swift */; };
 		1894350720248D76000C2166 /* SpiralPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1894350620248D76000C2166 /* SpiralPayViewController.swift */; };
 		1894350920248DA7000C2166 /* ProgressBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1894350820248DA7000C2166 /* ProgressBarViewController.swift */; };
+		189F22F52035A5D600971AFD /* AddCardManuallyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F22F42035A5D600971AFD /* AddCardManuallyViewController.swift */; };
+		18D914EF2036C7B0008FFB60 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D914EE2036C7B0008FFB60 /* MonthYearPickerView.swift */; };
 		18F80F64203461F80089BF4D /* SecurityStorageWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F80F63203461F80089BF4D /* SecurityStorageWorker.swift */; };
 		F16DF1F42018ADDB00FE3F94 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16DF1F32018ADDB00FE3F94 /* ProgressBarView.swift */; };
 		F16DF1F82019CDA200FE3F94 /* FloatingHeaderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16DF1F72019CDA200FE3F94 /* FloatingHeaderTextField.swift */; };
@@ -68,7 +72,6 @@
 		F1D9BAB720185605004B42B7 /* NSViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9620185605004B42B7 /* NSViewExtensions.swift */; };
 		F1D9BAB820185605004B42B7 /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9720185605004B42B7 /* NSAttributedStringExtensions.swift */; };
 		F1D9BAB920185605004B42B7 /* CLLocationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9820185605004B42B7 /* CLLocationExtensions.swift */; };
-		F1D9BABA20185605004B42B7 /* StringExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9920185605004B42B7 /* StringExtention.swift */; };
 		F1D9BABB20185605004B42B7 /* SearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9A20185605004B42B7 /* SearchBarExtension.swift */; };
 		F1D9BABC20185605004B42B7 /* LocaleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9B20185605004B42B7 /* LocaleExtensions.swift */; };
 		F1D9BABD20185605004B42B7 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BA9C20185605004B42B7 /* SwifterSwift.swift */; };
@@ -144,6 +147,8 @@
 		18529F64202B31CD00BD8D0E /* PhoneVerificationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationInteractor.swift; sourceTree = "<group>"; };
 		185C60AB20244835009D23BE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		18645D4F203552140017E214 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		18645D51203577040017E214 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardOptionsViewController.swift; sourceTree = "<group>"; };
 		189434FA202488F9000C2166 /* PinPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPresenter.swift; sourceTree = "<group>"; };
 		189434FB202488F9000C2166 /* PinWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinWorker.swift; sourceTree = "<group>"; };
 		189434FC202488F9000C2166 /* PinRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinRouter.swift; sourceTree = "<group>"; };
@@ -152,6 +157,8 @@
 		189434FF202488F9000C2166 /* PinInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinInteractor.swift; sourceTree = "<group>"; };
 		1894350620248D76000C2166 /* SpiralPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralPayViewController.swift; sourceTree = "<group>"; };
 		1894350820248DA7000C2166 /* ProgressBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarViewController.swift; sourceTree = "<group>"; };
+		189F22F42035A5D600971AFD /* AddCardManuallyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardManuallyViewController.swift; sourceTree = "<group>"; };
+		18D914EE2036C7B0008FFB60 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		18F80F63203461F80089BF4D /* SecurityStorageWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityStorageWorker.swift; sourceTree = "<group>"; };
 		5EB660408693C4325D269D6D /* Pods_SpiralPayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpiralPayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F8290059BCB99401861392 /* Pods-SpiralPay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiralPay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpiralPay/Pods-SpiralPay.debug.xcconfig"; sourceTree = "<group>"; };
@@ -193,7 +200,6 @@
 		F1D9BA9620185605004B42B7 /* NSViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSViewExtensions.swift; sourceTree = "<group>"; };
 		F1D9BA9720185605004B42B7 /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		F1D9BA9820185605004B42B7 /* CLLocationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationExtensions.swift; sourceTree = "<group>"; };
-		F1D9BA9920185605004B42B7 /* StringExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtention.swift; sourceTree = "<group>"; };
 		F1D9BA9A20185605004B42B7 /* SearchBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarExtension.swift; sourceTree = "<group>"; };
 		F1D9BA9B20185605004B42B7 /* LocaleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocaleExtensions.swift; sourceTree = "<group>"; };
 		F1D9BA9C20185605004B42B7 /* SwifterSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterSwift.swift; sourceTree = "<group>"; };
@@ -392,6 +398,7 @@
 				F16DF1F72019CDA200FE3F94 /* FloatingHeaderTextField.swift */,
 				F1E89B7C201F123C0052C723 /* SpiralPayButton.swift */,
 				180DAEDB20298B9D00193C39 /* NLoader.swift */,
+				18D914EE2036C7B0008FFB60 /* MonthYearPickerView.swift */,
 				F1D9BA8120185605004B42B7 /* Protocol */,
 				F1D9BA8420185605004B42B7 /* Extensions */,
 				F1D9BAA220185605004B42B7 /* Utils.swift */,
@@ -421,8 +428,8 @@
 				F1D9BA8D20185605004B42B7 /* GenericExtensions.swift */,
 				F1D9BA8E20185605004B42B7 /* DoubleExtensions.swift */,
 				F1D9BA8F20185605004B42B7 /* URLExtensions.swift */,
+				18645D51203577040017E214 /* UIViewExtension.swift */,
 				F1D9BA9020185605004B42B7 /* Cocoa */,
-				F1D9BA9920185605004B42B7 /* StringExtention.swift */,
 				F1D9BA9A20185605004B42B7 /* SearchBarExtension.swift */,
 				F1D9BA9B20185605004B42B7 /* LocaleExtensions.swift */,
 				F1D9BA9C20185605004B42B7 /* SwifterSwift.swift */,
@@ -516,6 +523,8 @@
 				184A4FA4202DB72B0019AD40 /* DateAndTimeViewController.swift */,
 				F1E89B6D201F09F10052C723 /* Signup */,
 				18645D4F203552140017E214 /* WelcomeViewController.swift */,
+				18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */,
+				189F22F42035A5D600971AFD /* AddCardManuallyViewController.swift */,
 				F1D9BAED2018614A004B42B7 /* Token */,
 			);
 			path = Scenes;
@@ -791,13 +800,15 @@
 				180C1609202197C100818460 /* CountryRouter.swift in Sources */,
 				F1D9BAD6201856D1004B42B7 /* RemoteNotificationManager.swift in Sources */,
 				18943503202488F9000C2166 /* PinModels.swift in Sources */,
+				18645D52203577040017E214 /* UIViewExtension.swift in Sources */,
 				1894350720248D76000C2166 /* SpiralPayViewController.swift in Sources */,
 				F1D9BAB920185605004B42B7 /* CLLocationExtensions.swift in Sources */,
 				18943501202488F9000C2166 /* PinWorker.swift in Sources */,
+				18D914EF2036C7B0008FFB60 /* MonthYearPickerView.swift in Sources */,
 				180C160A202197C100818460 /* CountryModels.swift in Sources */,
 				18529F6A202B31CD00BD8D0E /* PhoneVerificationInteractor.swift in Sources */,
-				F1D9BABA20185605004B42B7 /* StringExtention.swift in Sources */,
 				F1D9BAC320185605004B42B7 /* Utils.swift in Sources */,
+				18645D5420359B7F0017E214 /* AddCardOptionsViewController.swift in Sources */,
 				F1D9BAC020185605004B42B7 /* OptionalExtensions.swift in Sources */,
 				F1D9BAD2201856D1004B42B7 /* CommonResponse.swift in Sources */,
 				F1D9BAA320185605004B42B7 /* Constants.swift in Sources */,
@@ -809,6 +820,7 @@
 				F1D9BAB720185605004B42B7 /* NSViewExtensions.swift in Sources */,
 				18529F67202B31CD00BD8D0E /* PhoneVerificationRouter.swift in Sources */,
 				F1D9BAA620185605004B42B7 /* StoryboardInstantiable.swift in Sources */,
+				189F22F52035A5D600971AFD /* AddCardManuallyViewController.swift in Sources */,
 				F1D9BAA820185605004B42B7 /* FloatExtensions.swift in Sources */,
 				18943505202488F9000C2166 /* PinInteractor.swift in Sources */,
 				F1D9BAB520185605004B42B7 /* CGColorExtensions.swift in Sources */,

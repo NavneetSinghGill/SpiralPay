@@ -14,8 +14,10 @@ class SpiralPayButton: UIButton {
         didSet {
             if isSelected {
                 self.alpha = 1
+                self.isUserInteractionEnabled = true
             } else {
                 self.alpha = 0.4
+                self.isUserInteractionEnabled = false
             }
         }
     }
