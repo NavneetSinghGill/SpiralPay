@@ -29,6 +29,7 @@
 		18529F69202B31CD00BD8D0E /* PhoneVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F63202B31CD00BD8D0E /* PhoneVerificationViewController.swift */; };
 		18529F6A202B31CD00BD8D0E /* PhoneVerificationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F64202B31CD00BD8D0E /* PhoneVerificationInteractor.swift */; };
 		185C60AC20244835009D23BE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C60AB20244835009D23BE /* User.swift */; };
+		18645D50203552140017E214 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D4F203552140017E214 /* WelcomeViewController.swift */; };
 		18943500202488F9000C2166 /* PinPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FA202488F9000C2166 /* PinPresenter.swift */; };
 		18943501202488F9000C2166 /* PinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FB202488F9000C2166 /* PinWorker.swift */; };
 		18943502202488F9000C2166 /* PinRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FC202488F9000C2166 /* PinRouter.swift */; };
@@ -142,6 +143,7 @@
 		18529F63202B31CD00BD8D0E /* PhoneVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewController.swift; sourceTree = "<group>"; };
 		18529F64202B31CD00BD8D0E /* PhoneVerificationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationInteractor.swift; sourceTree = "<group>"; };
 		185C60AB20244835009D23BE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		18645D4F203552140017E214 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		189434FA202488F9000C2166 /* PinPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPresenter.swift; sourceTree = "<group>"; };
 		189434FB202488F9000C2166 /* PinWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinWorker.swift; sourceTree = "<group>"; };
 		189434FC202488F9000C2166 /* PinRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinRouter.swift; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 				1894350820248DA7000C2166 /* ProgressBarViewController.swift */,
 				184A4FA4202DB72B0019AD40 /* DateAndTimeViewController.swift */,
 				F1E89B6D201F09F10052C723 /* Signup */,
+				18645D4F203552140017E214 /* WelcomeViewController.swift */,
 				F1D9BAED2018614A004B42B7 /* Token */,
 			);
 			path = Scenes;
@@ -831,6 +834,7 @@
 				F16DF1F82019CDA200FE3F94 /* FloatingHeaderTextField.swift in Sources */,
 				184A4F9E202D8EB90019AD40 /* ConfirmDetailsPresenter.swift in Sources */,
 				F1D9BAD5201856D1004B42B7 /* AppSettingsManager.swift in Sources */,
+				18645D50203552140017E214 /* WelcomeViewController.swift in Sources */,
 				F1D9BAAF20185605004B42B7 /* GenericExtensions.swift in Sources */,
 				F1D9BAF52018614A004B42B7 /* TokenManager.swift in Sources */,
 				184A4FA0202D8EBA0019AD40 /* ConfirmDetailsRouter.swift in Sources */,

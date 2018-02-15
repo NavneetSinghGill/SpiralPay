@@ -139,6 +139,7 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
         NLoader.shared.stopNLoader()
         
         User.shared.accessToken = response.accessToken
+        User.shared.save()
         self.dismiss(animated: true, completion: nil)
     }
     

@@ -15,6 +15,7 @@ import UIKit
 @objc protocol ConfirmDetailsRoutingLogic
 {
     func routeToShowDateAndTimeScreen()
+    func routeToWelcomeScreen()
 }
 
 protocol ConfirmDetailsDataPassing
@@ -44,4 +45,10 @@ class ConfirmDetailsRouter: NSObject, ConfirmDetailsRoutingLogic, ConfirmDetails
                                                       animated: true,
                                                       completion: nil)
     }
+    
+    func routeToWelcomeScreen() {
+        let welcomeScreen: WelcomeViewController = WelcomeViewController.create()
+        viewController?.navigationController?.setViewControllers([welcomeScreen], animated: true)
+    }
+    
 }

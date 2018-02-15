@@ -44,6 +44,7 @@ struct Constants {
     
     static let kAppName = "SpiralPay"
     static let kCanShowLoginScreen = "CanShowLoginScreen"
+    static let kDidCompleteOnboarding = "DidCompleteOnboarding"
     
     // MARK: - User Defaults
     

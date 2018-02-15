@@ -119,6 +119,9 @@ class ConfirmDetailsViewController: ProgressBarViewController, ConfirmDetailsDis
         User.shared.postcode = postCodeTextField.text
         
         User.shared.save()
+        
+        Utils.didCompleteOnboarding = true
+        router?.routeToWelcomeScreen()
     }
     
     @IBAction func termsButtonTapped() {
