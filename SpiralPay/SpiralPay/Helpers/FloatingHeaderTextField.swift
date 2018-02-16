@@ -49,7 +49,9 @@ class FloatingHeaderTextField: UITextField {
     override open var text: String? {
         didSet {
             super.text = text
-            self.placeholderLabel.text = placeholder
+            if placeholderLabel.text == nil && placeholder != nil {
+                self.placeholderLabel.text = placeholder
+            }
             placeholder = nil
             isActive ? setActiveState() : setInActiveStateIfShould()
         }
