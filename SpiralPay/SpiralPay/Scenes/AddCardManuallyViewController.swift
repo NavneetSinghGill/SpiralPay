@@ -41,6 +41,9 @@ class AddCardManuallyViewController: SpiralPayViewController {
         
         Card.shared.save()
         
+        User.shared.savedState = .CardAdded
+        User.shared.save()
+        
         let cardAddScreen = CardAddedViewController.create()
         self.navigationController?.pushViewController(cardAddScreen, animated: true)
     }

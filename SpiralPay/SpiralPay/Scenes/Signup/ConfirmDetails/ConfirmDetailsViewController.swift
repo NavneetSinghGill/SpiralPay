@@ -110,8 +110,8 @@ class ConfirmDetailsViewController: ProgressBarViewController, ConfirmDetailsDis
     }
     
     @IBAction func confirmButtonTapped() {
-        Utils.canShowLoginScreen = true
         
+        User.shared.savedState = SavedState.CustomerDetailsEntered
         User.shared.name = nameTextField.text
         User.shared.birthday = birthdayTextField.text
         User.shared.address = addressTextField.text
@@ -120,7 +120,6 @@ class ConfirmDetailsViewController: ProgressBarViewController, ConfirmDetailsDis
         
         User.shared.save()
         
-        Utils.didCompleteOnboarding = true
         router?.routeToWelcomeScreen()
     }
     
@@ -180,7 +179,17 @@ extension ConfirmDetailsViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         _ = self.checkIfEntriesValid()
-        textField.resignFirstResponder()
+        if textField == nameTextField {
+            addressTextField.becomeFirstResponder()
+        } else if textField == addressTextField {
+            cityTextField.becomeFirstResponder()
+        } else if textField == cityTextField {
+            countryTextField.becomeFirstResponder()
+        } else if textField == countryTextField {
+            postCodeTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
         return true
     }
     

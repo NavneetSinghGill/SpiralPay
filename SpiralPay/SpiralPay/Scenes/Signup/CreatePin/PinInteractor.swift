@@ -35,9 +35,6 @@ class PinInteractor: PinBusinessLogic, PinDataStore
   {
     worker = PinWorker()
     worker?.postCustomerRegistrationWith(request: request, successCompletionHandler: { (response) in
-        User.shared.accessToken = response.accessToken
-        User.shared.customerID = response.customerId
-        
         self.presenter?.customerRegistrationSuccess(response: response)
     }, failureCompletionHandler: { (response) in
         self.presenter?.customerRegistrationFailed(response: response)

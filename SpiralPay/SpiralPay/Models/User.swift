@@ -8,6 +8,29 @@
 
 import Foundation
 
+enum SavedState {
+    case None
+    case PinCreated
+    case PhoneVerified
+    case CustomerDetailsEntered
+    case CardAdded
+    
+    func rawValue() -> String {
+        switch self {
+        case .None:
+            return "None"
+        case .PinCreated:
+            return "PinCreated"
+        case .PhoneVerified:
+            return "PhoneVerified"
+        case .CustomerDetailsEntered:
+            return "CustomerDetailsEntered"
+        case .CardAdded:
+            return "CardAdded"
+        }
+    }
+}
+
 class User: NSObject {
     
     static var shared = User()
@@ -23,6 +46,7 @@ class User: NSObject {
     var address: String?
     var city: String?
     var postcode: String?
+    var savedState: SavedState = .None
 
     var phoneWithCode: String? {
         get {
@@ -47,6 +71,8 @@ class User: NSObject {
         _ = SecurityStorageWorker.shared.setTokenValue(address ?? "", key: "address")
         _ = SecurityStorageWorker.shared.setTokenValue(city ?? "", key: "city")
         _ = SecurityStorageWorker.shared.setTokenValue(postcode ?? "", key: "postcode")
+        
+        _ = SecurityStorageWorker.shared.setTokenValue(savedState.rawValue(), key: "savedState")
     }
     
     func restore() {
@@ -61,6 +87,21 @@ class User: NSObject {
         address = SecurityStorageWorker.shared.getKeychainValue(key: "address")
         city = SecurityStorageWorker.shared.getKeychainValue(key: "city")
         postcode = SecurityStorageWorker.shared.getKeychainValue(key: "postcode")
+        
+        switch SecurityStorageWorker.shared.getKeychainValue(key: "savedState")! {
+        case SavedState.None.rawValue():
+            savedState = SavedState.None
+        case SavedState.PinCreated.rawValue():
+            savedState = SavedState.PinCreated
+        case SavedState.PhoneVerified.rawValue():
+            savedState = SavedState.PhoneVerified
+        case SavedState.CustomerDetailsEntered.rawValue():
+            savedState = SavedState.CustomerDetailsEntered
+        case SavedState.CardAdded.rawValue():
+            savedState = SavedState.CardAdded
+        default:
+            savedState = SavedState.None
+        }
     }
     
     static func resetSavedValues() {
@@ -75,6 +116,7 @@ class User: NSObject {
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "address")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "city")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "postcode")
+        _ = SecurityStorageWorker.shared.setTokenValue("", key: "savedState")
     }
     
 }

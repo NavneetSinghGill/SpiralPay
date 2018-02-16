@@ -140,6 +140,8 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
         if screenStatus == .SendSms {
             sendaRandomCodeToUser()
         } else if screenStatus == .Success {
+            User.shared.savedState = .PhoneVerified
+            User.shared.save()
             router?.routeToConfirmDetailsScreen()
         } else if screenStatus == .Failed {
             router?.routeToFirstPhoneVerificationScreen()

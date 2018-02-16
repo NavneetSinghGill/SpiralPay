@@ -124,6 +124,10 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
     
     func customerRegistrationSuccess(response: Pin.CustomerRegistration.Response) {
         NLoader.stopAnimating()
+        
+        User.shared.accessToken = response.accessToken
+        User.shared.customerID = response.customerId
+        User.shared.savedState = SavedState.PinCreated
         User.shared.save()
         
         router?.routeToPhoneVerificationProcess()

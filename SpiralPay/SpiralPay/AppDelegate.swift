@@ -21,10 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        if Utils.didCompleteOnboarding {
-            showWelcomeScreen()
-        }
-        
         if !UserDefaults.standard.bool(forKey: Constants.kHadAppRunBeforeAtleastOnce) {
             User.resetSavedValues()
             Card.resetSavedValues()
@@ -32,11 +28,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.synchronize()
         }
         
-        User.shared.restore()
-        
         Fabric.with([Crashlytics.self])
         
         setupNetworkMonitoring()
+        
+        
+        User.shared.restore()
+        
+        switch User.shared.savedState {
+        case .None:
+            break
+        case .PinCreated:
+            showPhoneVerificationScreen()
+        case .PhoneVerified:
+            showConfirmDetailsScreen()
+        case .CustomerDetailsEntered:
+            showWelcomeScreen()
+        case .CardAdded:
+            showHomeScreen()
+        }
         
         return true
     }
@@ -58,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        if Utils.canShowLoginScreen {
+        if User.shared.savedState != .None { //every state is accepted except None
             showLoginScreen()
         }
     }
@@ -135,9 +145,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func showPhoneVerificationScreen() {
+        let phoneAndEmailScreen = PhoneAndEmailViewController.create()
+        
+        let phoneVerificationScreen = PhoneVerificationViewController.create()
+        
+        let navVC = UINavigationController(rootViewController: phoneAndEmailScreen)
+        navVC.setViewControllers([phoneAndEmailScreen, phoneVerificationScreen], animated: false)
+        navVC.navigationBar.isHidden = true
+        UIApplication.shared.windows.last!.rootViewController = navVC
+    }
+    
+    func showConfirmDetailsScreen() {
+        let confirmDetailsScreen = ConfirmDetailsViewController.create()
+        
+        let navVC = UINavigationController(rootViewController: confirmDetailsScreen)
+        navVC.navigationBar.isHidden = true
+        UIApplication.shared.windows.last!.rootViewController = navVC
+    }
+    
     func showWelcomeScreen() {
         let welcomeScreen = WelcomeViewController.create()
         let navVC = UINavigationController(rootViewController: welcomeScreen)
+        navVC.navigationBar.isHidden = true
+        UIApplication.shared.windows.last!.rootViewController = navVC
+    }
+    
+    func showHomeScreen() {
+        let cardAddedScreen = CardAddedViewController.create()
+        let navVC = UINavigationController(rootViewController: cardAddedScreen)
         navVC.navigationBar.isHidden = true
         UIApplication.shared.windows.last!.rootViewController = navVC
     }

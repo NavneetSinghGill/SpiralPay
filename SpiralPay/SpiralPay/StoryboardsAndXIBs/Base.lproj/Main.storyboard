@@ -737,7 +737,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="w53-Op-FHp" id="hVN-T5-LOs"/>
                                                 </connections>
@@ -767,7 +767,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="w53-Op-FHp" id="ulB-hD-D8i"/>
                                                 </connections>
@@ -779,7 +779,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="w53-Op-FHp" id="8DK-bS-tqS"/>
                                                 </connections>
@@ -791,7 +791,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="w53-Op-FHp" id="whY-dH-gXd"/>
                                                 </connections>
@@ -803,7 +803,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="w53-Op-FHp" id="Lq7-oN-lVL"/>
                                                 </connections>
@@ -1173,9 +1173,17 @@
                                             <action selector="captureOptionTapped" destination="mlX-eC-H0K" eventType="touchUpInside" id="PeU-gT-TRN"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cameraCard" translatesAutoresizingMaskIntoConstraints="NO" id="6ro-gh-wys">
+                                        <rect key="frame" x="152.5" y="10.5" width="20" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="gNL-vk-JhY"/>
+                                            <constraint firstAttribute="width" constant="20" id="zqX-KR-Rvx"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="6ro-gh-wys" firstAttribute="leading" secondItem="wUd-s6-aK1" secondAttribute="trailing" constant="19" id="0NH-u8-VWz"/>
                                     <constraint firstAttribute="height" constant="42" id="574-fp-4g7"/>
                                     <constraint firstAttribute="width" constant="197" id="9vd-mo-v8h"/>
                                     <constraint firstAttribute="bottom" secondItem="yDK-pV-XrO" secondAttribute="bottom" id="DNF-BI-Qes"/>
@@ -1188,6 +1196,7 @@
                                     <constraint firstItem="tXC-pM-tqx" firstAttribute="leading" secondItem="aIU-Nm-zJR" secondAttribute="leading" id="ekT-3k-OhT"/>
                                     <constraint firstAttribute="trailing" secondItem="yDK-pV-XrO" secondAttribute="trailing" id="qts-TQ-n2a"/>
                                     <constraint firstItem="tXC-pM-tqx" firstAttribute="top" secondItem="aIU-Nm-zJR" secondAttribute="top" id="u11-FT-As5"/>
+                                    <constraint firstItem="6ro-gh-wys" firstAttribute="centerY" secondItem="aIU-Nm-zJR" secondAttribute="centerY" id="wHO-ok-eea"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMg-ex-D2y" userLabel="DividerView">
@@ -1330,7 +1339,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S1R-mN-1iC" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5014" y="-665"/>
+            <point key="canvasLocation" x="5013.6000000000004" y="-665.21739130434787"/>
         </scene>
         <!--Add Card Manually View Controller-->
         <scene sceneID="u62-mg-S0k">
@@ -1632,6 +1641,7 @@
     </scenes>
     <resources>
         <image name="buttonBlueBackground" width="309" height="52"/>
+        <image name="cameraCard" width="21" height="20"/>
         <image name="cardBackground" width="138" height="80"/>
         <image name="fingerPrint" width="17" height="17"/>
         <image name="masterLogo" width="28" height="16"/>
