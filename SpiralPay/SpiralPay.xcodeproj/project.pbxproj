@@ -42,6 +42,8 @@
 		1894350920248DA7000C2166 /* ProgressBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1894350820248DA7000C2166 /* ProgressBarViewController.swift */; };
 		189F22F52035A5D600971AFD /* AddCardManuallyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F22F42035A5D600971AFD /* AddCardManuallyViewController.swift */; };
 		18D914EF2036C7B0008FFB60 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D914EE2036C7B0008FFB60 /* MonthYearPickerView.swift */; };
+		18D914EB2036B491008FFB60 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D914EA2036B491008FFB60 /* Card.swift */; };
+		18D914ED2036B824008FFB60 /* CardAddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D914EC2036B824008FFB60 /* CardAddedViewController.swift */; };
 		18F80F64203461F80089BF4D /* SecurityStorageWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F80F63203461F80089BF4D /* SecurityStorageWorker.swift */; };
 		F16DF1F42018ADDB00FE3F94 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16DF1F32018ADDB00FE3F94 /* ProgressBarView.swift */; };
 		F16DF1F82019CDA200FE3F94 /* FloatingHeaderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16DF1F72019CDA200FE3F94 /* FloatingHeaderTextField.swift */; };
@@ -159,6 +161,8 @@
 		1894350820248DA7000C2166 /* ProgressBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarViewController.swift; sourceTree = "<group>"; };
 		189F22F42035A5D600971AFD /* AddCardManuallyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardManuallyViewController.swift; sourceTree = "<group>"; };
 		18D914EE2036C7B0008FFB60 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
+		18D914EA2036B491008FFB60 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		18D914EC2036B824008FFB60 /* CardAddedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAddedViewController.swift; sourceTree = "<group>"; };
 		18F80F63203461F80089BF4D /* SecurityStorageWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityStorageWorker.swift; sourceTree = "<group>"; };
 		5EB660408693C4325D269D6D /* Pods_SpiralPayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpiralPayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F8290059BCB99401861392 /* Pods-SpiralPay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiralPay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpiralPay/Pods-SpiralPay.debug.xcconfig"; sourceTree = "<group>"; };
@@ -462,6 +466,7 @@
 				F1D9BAC5201856D1004B42B7 /* AppSettings.swift */,
 				F1D9BAC6201856D1004B42B7 /* CommonResponse.swift */,
 				185C60AB20244835009D23BE /* User.swift */,
+				18D914EA2036B491008FFB60 /* Card.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -525,6 +530,7 @@
 				18645D4F203552140017E214 /* WelcomeViewController.swift */,
 				18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */,
 				189F22F42035A5D600971AFD /* AddCardManuallyViewController.swift */,
+				18D914EC2036B824008FFB60 /* CardAddedViewController.swift */,
 				F1D9BAED2018614A004B42B7 /* Token */,
 			);
 			path = Scenes;
@@ -797,6 +803,7 @@
 				18F80F64203461F80089BF4D /* SecurityStorageWorker.swift in Sources */,
 				F1D9BAA720185605004B42B7 /* ArrayExtensions.swift in Sources */,
 				F1D9BABC20185605004B42B7 /* LocaleExtensions.swift in Sources */,
+				18D914EB2036B491008FFB60 /* Card.swift in Sources */,
 				180C1609202197C100818460 /* CountryRouter.swift in Sources */,
 				F1D9BAD6201856D1004B42B7 /* RemoteNotificationManager.swift in Sources */,
 				18943503202488F9000C2166 /* PinModels.swift in Sources */,
@@ -805,6 +812,7 @@
 				F1D9BAB920185605004B42B7 /* CLLocationExtensions.swift in Sources */,
 				18943501202488F9000C2166 /* PinWorker.swift in Sources */,
 				18D914EF2036C7B0008FFB60 /* MonthYearPickerView.swift in Sources */,
+				18D914ED2036B824008FFB60 /* CardAddedViewController.swift in Sources */,
 				180C160A202197C100818460 /* CountryModels.swift in Sources */,
 				18529F6A202B31CD00BD8D0E /* PhoneVerificationInteractor.swift in Sources */,
 				F1D9BAC320185605004B42B7 /* Utils.swift in Sources */,

@@ -14,6 +14,9 @@ class AddCardManuallyViewController: SpiralPayViewController {
     @IBOutlet weak var expiryTextField: FloatingHeaderTextField!
     @IBOutlet weak var cvvTextField: FloatingHeaderTextField!
     @IBOutlet weak var cardTypeImageView: UIImageView!
+    @IBOutlet weak var confirmButton: SpiralPayButton!
+    
+    let dateFormat = "MM/yy"
     
     let visaImage = UIImage(named: "visaLogo")
     let masterImage = UIImage(named: "masterLogo")
@@ -22,6 +25,7 @@ class AddCardManuallyViewController: SpiralPayViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        addKeyboardObservers()
     }
     
     //MARK:- IBAction methods
@@ -31,7 +35,14 @@ class AddCardManuallyViewController: SpiralPayViewController {
     }
     
     @IBAction func confirmButtonTapped() {
+        Card.shared.number = cardNumberTextField.text
+        Card.shared.expiry = expiryTextField.text
+        Card.shared.cvv = cvvTextField.text
         
+        Card.shared.save()
+        
+        let cardAddScreen = CardAddedViewController.create()
+        self.navigationController?.pushViewController(cardAddScreen, animated: true)
     }
     
     @IBAction func dateButtonTapped() {
@@ -49,8 +60,32 @@ class AddCardManuallyViewController: SpiralPayViewController {
     
     //MARK:- Private methods
     
-    func checkValidity() {
+    private func checkValidity() {
+        var areEntriesValid = true
+        if cardNumberTextField.text == nil || cardNumberTextField.text!.count < 12 {
+            cardNumberTextField.setErrorColor()
+            areEntriesValid = false
+        }
+        if expiryTextField.text == nil || expiryTextField.text!.count == 0 {
+            expiryTextField.setErrorColor()
+            areEntriesValid = false
+        } else {
+            expiryTextField.setDefaultColor()
+        }
+        if cvvTextField.text == nil || cvvTextField.text!.count < 3 {
+            cvvTextField.setErrorColor()
+            areEntriesValid = false
+        }
         
+        confirmButton.isSelected = areEntriesValid
+    }
+    
+    override func keyboardWillShow(keyboardFrame: CGRect) {
+        confirmButton.isSelected = false
+    }
+    
+    override func keyboardWillHide(keyboardFrame: CGRect) {
+        checkValidity()
     }
 
 }
@@ -59,8 +94,10 @@ extension AddCardManuallyViewController: DateAndTimeDelegate {
     
     func getFinal(date: Date) {       
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/yy"
+        dateFormatter.dateFormat = dateFormat
         expiryTextField.text = dateFormatter.string(from: date)
+        
+        checkValidity()
     }
 
 }
@@ -83,11 +120,15 @@ extension AddCardManuallyViewController: UITextFieldDelegate {
         }
         
         if textField == cardNumberTextField {
-            let index = updatedText.index(updatedText.startIndex, offsetBy: 1)
-            if updatedText[..<index] == "4" {
-                cardTypeImageView.image = visaImage
-            } else if updatedText[..<index] == "5" {
-                cardTypeImageView.image = masterImage
+            if updatedText.count != 0 {
+                let index = updatedText.index(updatedText.startIndex, offsetBy: 1)
+                if updatedText[..<index] == "4" {
+                    cardTypeImageView.image = visaImage
+                } else if updatedText[..<index] == "5" {
+                    cardTypeImageView.image = masterImage
+                } else {
+                    cardTypeImageView.image = nil
+                }
             } else {
                 cardTypeImageView.image = nil
             }

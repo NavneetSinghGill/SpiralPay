@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if !UserDefaults.standard.bool(forKey: Constants.kHadAppRunBeforeAtleastOnce) {
             User.resetSavedValues()
+            Card.resetSavedValues()
             UserDefaults.standard.set(true, forKey: Constants.kHadAppRunBeforeAtleastOnce)
             UserDefaults.standard.synchronize()
         }

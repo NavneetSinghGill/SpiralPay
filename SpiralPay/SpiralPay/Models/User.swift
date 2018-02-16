@@ -6,7 +6,7 @@
 //  Copyright © 2018 EnvisionWorld. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class User: NSObject {
     

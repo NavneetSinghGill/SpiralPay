@@ -191,6 +191,10 @@ class FloatingHeaderTextField: UITextField {
         self.textColor = errorTextColor
     }
     
+    func setDefaultColor() {
+        self.textColor = defaultTextColor
+    }
+    
     func shiftPlaceholderToCenter() {
         self.placeholderLabel.transform = CGAffineTransform.identity
         self.placeholderLabel.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.height)
