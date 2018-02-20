@@ -16,6 +16,9 @@ typealias CompletionHandler = (_ success: Bool, _ response: Any?) -> Void
 let isiPad: Bool = UIDevice.current.userInterfaceIdiom == .pad
 let deviceUDID = UIDevice.current.identifierForVendor?.uuidString ?? "simulator"
 
+let screenHeight = UIScreen.main.bounds.size.height
+let screenWidth = UIScreen.main.bounds.size.width
+
 struct Constants {
     
     static let kHadAppRunBeforeAtleastOnce = "hadAppRunBeforeAtleastOnce"
@@ -119,4 +122,6 @@ struct Colors {
     static let black = UIColor(displayP3Red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
     static let grey = UIColor(displayP3Red: 100/255, green: 100/255, blue: 100/255, alpha: 1)
     static let lightGrey = UIColor(displayP3Red: 195/255, green: 204/255, blue: 211/255, alpha: 1)
+    
+    static let pink = UIColor(red: 1, green: 0, blue: 133/255, alpha: 1)
 }

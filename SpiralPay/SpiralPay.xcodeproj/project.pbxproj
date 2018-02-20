@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		123F9D4C2AA191714DD024B1 /* Pods_SpiralPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDE718037355A683F8CD2F0 /* Pods_SpiralPay.framework */; };
+		180B4707203C041500775D06 /* HomeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B4706203C041500775D06 /* HomeContainerViewController.swift */; };
+		180B470D203C3C0700775D06 /* TabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B470C203C3C0700775D06 /* TabBarItemView.swift */; };
+		180B4713203C453100775D06 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B4712203C453100775D06 /* HomeViewController.swift */; };
+		180B4715203C461300775D06 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B4714203C461300775D06 /* SettingsViewController.swift */; };
 		180C1607202197C100818460 /* CountryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1601202197C100818460 /* CountryPresenter.swift */; };
 		180C1608202197C100818460 /* CountryWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1602202197C100818460 /* CountryWorker.swift */; };
 		180C1609202197C100818460 /* CountryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1603202197C100818460 /* CountryRouter.swift */; };
@@ -15,6 +19,8 @@
 		180C160B202197C100818460 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1605202197C100818460 /* CountryViewController.swift */; };
 		180C160C202197C100818460 /* CountryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1606202197C100818460 /* CountryInteractor.swift */; };
 		180DAEDC20298B9E00193C39 /* NLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DAEDB20298B9D00193C39 /* NLoader.swift */; };
+		1810DF0C203C62DC00722760 /* LoyaltyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1810DF0B203C62DC00722760 /* LoyaltyViewController.swift */; };
+		1810DF0E203C62F000722760 /* MySpiralPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1810DF0D203C62F000722760 /* MySpiralPayViewController.swift */; };
 		184A4F9E202D8EB90019AD40 /* ConfirmDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F98202D8EB90019AD40 /* ConfirmDetailsPresenter.swift */; };
 		184A4F9F202D8EBA0019AD40 /* ConfirmDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F99202D8EB90019AD40 /* ConfirmDetailsWorker.swift */; };
 		184A4FA0202D8EBA0019AD40 /* ConfirmDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F9A202D8EB90019AD40 /* ConfirmDetailsRouter.swift */; };
@@ -32,6 +38,8 @@
 		18645D50203552140017E214 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D4F203552140017E214 /* WelcomeViewController.swift */; };
 		18645D52203577040017E214 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D51203577040017E214 /* UIViewExtension.swift */; };
 		18645D5420359B7F0017E214 /* AddCardOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */; };
+		1871E896203D5730008BDEF8 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1871E895203D572D008BDEF8 /* Lato-Bold.ttf */; };
+		1871E898203DA401008BDEF8 /* BezierPathExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1871E897203DA401008BDEF8 /* BezierPathExtenstion.swift */; };
 		18943500202488F9000C2166 /* PinPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FA202488F9000C2166 /* PinPresenter.swift */; };
 		18943501202488F9000C2166 /* PinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FB202488F9000C2166 /* PinWorker.swift */; };
 		18943502202488F9000C2166 /* PinRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FC202488F9000C2166 /* PinRouter.swift */; };
@@ -41,9 +49,9 @@
 		1894350720248D76000C2166 /* SpiralPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1894350620248D76000C2166 /* SpiralPayViewController.swift */; };
 		1894350920248DA7000C2166 /* ProgressBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1894350820248DA7000C2166 /* ProgressBarViewController.swift */; };
 		189F22F52035A5D600971AFD /* AddCardManuallyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F22F42035A5D600971AFD /* AddCardManuallyViewController.swift */; };
-		18D914EF2036C7B0008FFB60 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D914EE2036C7B0008FFB60 /* MonthYearPickerView.swift */; };
 		18D914EB2036B491008FFB60 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D914EA2036B491008FFB60 /* Card.swift */; };
 		18D914ED2036B824008FFB60 /* CardAddedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D914EC2036B824008FFB60 /* CardAddedViewController.swift */; };
+		18D914EF2036C7B0008FFB60 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D914EE2036C7B0008FFB60 /* MonthYearPickerView.swift */; };
 		18F80F64203461F80089BF4D /* SecurityStorageWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F80F63203461F80089BF4D /* SecurityStorageWorker.swift */; };
 		F16DF1F42018ADDB00FE3F94 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16DF1F32018ADDB00FE3F94 /* ProgressBarView.swift */; };
 		F16DF1F82019CDA200FE3F94 /* FloatingHeaderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16DF1F72019CDA200FE3F94 /* FloatingHeaderTextField.swift */; };
@@ -127,6 +135,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		180B4706203C041500775D06 /* HomeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerViewController.swift; sourceTree = "<group>"; };
+		180B470C203C3C0700775D06 /* TabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemView.swift; sourceTree = "<group>"; };
+		180B4712203C453100775D06 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		180B4714203C461300775D06 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		180C1601202197C100818460 /* CountryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPresenter.swift; sourceTree = "<group>"; };
 		180C1602202197C100818460 /* CountryWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryWorker.swift; sourceTree = "<group>"; };
 		180C1603202197C100818460 /* CountryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryRouter.swift; sourceTree = "<group>"; };
@@ -134,6 +146,8 @@
 		180C1605202197C100818460 /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		180C1606202197C100818460 /* CountryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInteractor.swift; sourceTree = "<group>"; };
 		180DAEDB20298B9D00193C39 /* NLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLoader.swift; sourceTree = "<group>"; };
+		1810DF0B203C62DC00722760 /* LoyaltyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyViewController.swift; sourceTree = "<group>"; };
+		1810DF0D203C62F000722760 /* MySpiralPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpiralPayViewController.swift; sourceTree = "<group>"; };
 		184A4F98202D8EB90019AD40 /* ConfirmDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsPresenter.swift; sourceTree = "<group>"; };
 		184A4F99202D8EB90019AD40 /* ConfirmDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsWorker.swift; sourceTree = "<group>"; };
 		184A4F9A202D8EB90019AD40 /* ConfirmDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsRouter.swift; sourceTree = "<group>"; };
@@ -151,6 +165,8 @@
 		18645D4F203552140017E214 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		18645D51203577040017E214 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardOptionsViewController.swift; sourceTree = "<group>"; };
+		1871E895203D572D008BDEF8 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		1871E897203DA401008BDEF8 /* BezierPathExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathExtenstion.swift; sourceTree = "<group>"; };
 		189434FA202488F9000C2166 /* PinPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPresenter.swift; sourceTree = "<group>"; };
 		189434FB202488F9000C2166 /* PinWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinWorker.swift; sourceTree = "<group>"; };
 		189434FC202488F9000C2166 /* PinRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinRouter.swift; sourceTree = "<group>"; };
@@ -160,9 +176,9 @@
 		1894350620248D76000C2166 /* SpiralPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralPayViewController.swift; sourceTree = "<group>"; };
 		1894350820248DA7000C2166 /* ProgressBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarViewController.swift; sourceTree = "<group>"; };
 		189F22F42035A5D600971AFD /* AddCardManuallyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardManuallyViewController.swift; sourceTree = "<group>"; };
-		18D914EE2036C7B0008FFB60 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		18D914EA2036B491008FFB60 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		18D914EC2036B824008FFB60 /* CardAddedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAddedViewController.swift; sourceTree = "<group>"; };
+		18D914EE2036C7B0008FFB60 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		18F80F63203461F80089BF4D /* SecurityStorageWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityStorageWorker.swift; sourceTree = "<group>"; };
 		5EB660408693C4325D269D6D /* Pods_SpiralPayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpiralPayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F8290059BCB99401861392 /* Pods-SpiralPay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiralPay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpiralPay/Pods-SpiralPay.debug.xcconfig"; sourceTree = "<group>"; };
@@ -265,6 +281,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180B4709203C043D00775D06 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				180B4706203C041500775D06 /* HomeContainerViewController.swift */,
+				180B4712203C453100775D06 /* HomeViewController.swift */,
+				1810DF0B203C62DC00722760 /* LoyaltyViewController.swift */,
+				1810DF0D203C62F000722760 /* MySpiralPayViewController.swift */,
+				180B4714203C461300775D06 /* SettingsViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		180C160D202197C600818460 /* Country */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,6 +431,7 @@
 				F1E89B7C201F123C0052C723 /* SpiralPayButton.swift */,
 				180DAEDB20298B9D00193C39 /* NLoader.swift */,
 				18D914EE2036C7B0008FFB60 /* MonthYearPickerView.swift */,
+				1871E897203DA401008BDEF8 /* BezierPathExtenstion.swift */,
 				F1D9BA8120185605004B42B7 /* Protocol */,
 				F1D9BA8420185605004B42B7 /* Extensions */,
 				F1D9BAA220185605004B42B7 /* Utils.swift */,
@@ -507,6 +536,7 @@
 				F1D9BAE320185A8B004B42B7 /* AppSettings.plist */,
 				F1E89B492019D29D0052C723 /* Lato-Medium.ttf */,
 				F1E89B5B2019D2FD0052C723 /* Lato-Regular.ttf */,
+				1871E895203D572D008BDEF8 /* Lato-Bold.ttf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -516,6 +546,7 @@
 			children = (
 				F1D9BA54201852E8004B42B7 /* Main.storyboard */,
 				F1D9BA59201852E8004B42B7 /* LaunchScreen.storyboard */,
+				180B470C203C3C0700775D06 /* TabBarItemView.swift */,
 			);
 			path = StoryboardsAndXIBs;
 			sourceTree = "<group>";
@@ -531,6 +562,7 @@
 				18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */,
 				189F22F42035A5D600971AFD /* AddCardManuallyViewController.swift */,
 				18D914EC2036B824008FFB60 /* CardAddedViewController.swift */,
+				180B4709203C043D00775D06 /* Home */,
 				F1D9BAED2018614A004B42B7 /* Token */,
 			);
 			path = Scenes;
@@ -685,6 +717,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1871E896203D5730008BDEF8 /* Lato-Bold.ttf in Resources */,
 				F1E89B6B2019D2FD0052C723 /* Lato-Regular.ttf in Resources */,
 				F1E89B4B2019D29D0052C723 /* Lato-Medium.ttf in Resources */,
 				F1D9BA5B201852E8004B42B7 /* LaunchScreen.storyboard in Resources */,
@@ -801,13 +834,16 @@
 				184A4FA2202D8EBA0019AD40 /* ConfirmDetailsViewController.swift in Sources */,
 				180DAEDC20298B9E00193C39 /* NLoader.swift in Sources */,
 				18F80F64203461F80089BF4D /* SecurityStorageWorker.swift in Sources */,
+				180B470D203C3C0700775D06 /* TabBarItemView.swift in Sources */,
 				F1D9BAA720185605004B42B7 /* ArrayExtensions.swift in Sources */,
 				F1D9BABC20185605004B42B7 /* LocaleExtensions.swift in Sources */,
 				18D914EB2036B491008FFB60 /* Card.swift in Sources */,
 				180C1609202197C100818460 /* CountryRouter.swift in Sources */,
+				1871E898203DA401008BDEF8 /* BezierPathExtenstion.swift in Sources */,
 				F1D9BAD6201856D1004B42B7 /* RemoteNotificationManager.swift in Sources */,
 				18943503202488F9000C2166 /* PinModels.swift in Sources */,
 				18645D52203577040017E214 /* UIViewExtension.swift in Sources */,
+				180B4713203C453100775D06 /* HomeViewController.swift in Sources */,
 				1894350720248D76000C2166 /* SpiralPayViewController.swift in Sources */,
 				F1D9BAB920185605004B42B7 /* CLLocationExtensions.swift in Sources */,
 				18943501202488F9000C2166 /* PinWorker.swift in Sources */,
@@ -819,6 +855,7 @@
 				18645D5420359B7F0017E214 /* AddCardOptionsViewController.swift in Sources */,
 				F1D9BAC020185605004B42B7 /* OptionalExtensions.swift in Sources */,
 				F1D9BAD2201856D1004B42B7 /* CommonResponse.swift in Sources */,
+				1810DF0C203C62DC00722760 /* LoyaltyViewController.swift in Sources */,
 				F1D9BAA320185605004B42B7 /* Constants.swift in Sources */,
 				F1D9BAAE20185605004B42B7 /* BoolExtensions.swift in Sources */,
 				180C1608202197C100818460 /* CountryWorker.swift in Sources */,
@@ -831,6 +868,7 @@
 				189F22F52035A5D600971AFD /* AddCardManuallyViewController.swift in Sources */,
 				F1D9BAA820185605004B42B7 /* FloatExtensions.swift in Sources */,
 				18943505202488F9000C2166 /* PinInteractor.swift in Sources */,
+				180B4715203C461300775D06 /* SettingsViewController.swift in Sources */,
 				F1D9BAB520185605004B42B7 /* CGColorExtensions.swift in Sources */,
 				F16DF1F42018ADDB00FE3F94 /* ProgressBarView.swift in Sources */,
 				F1D9BAB320185605004B42B7 /* CGSizeExtensions.swift in Sources */,
@@ -847,6 +885,7 @@
 				F1D9BAB620185605004B42B7 /* NSColorExtensions.swift in Sources */,
 				F1D9BADA201856D1004B42B7 /* NetworkHttpClient.swift in Sources */,
 				F1D9BAA520185605004B42B7 /* StoryboardIdentifiable.swift in Sources */,
+				180B4707203C041500775D06 /* HomeContainerViewController.swift in Sources */,
 				F1D9BAB820185605004B42B7 /* NSAttributedStringExtensions.swift in Sources */,
 				F1D9BAB120185605004B42B7 /* URLExtensions.swift in Sources */,
 				184A4FA5202DB72B0019AD40 /* DateAndTimeViewController.swift in Sources */,
@@ -874,6 +913,7 @@
 				18529F66202B31CD00BD8D0E /* PhoneVerificationWorker.swift in Sources */,
 				F1E89B7A201F0E540052C723 /* PhoneAndEmailInteractor.swift in Sources */,
 				184A4FA3202D8EBA0019AD40 /* ConfirmDetailsInteractor.swift in Sources */,
+				1810DF0E203C62F000722760 /* MySpiralPayViewController.swift in Sources */,
 				184A4F9F202D8EBA0019AD40 /* ConfirmDetailsWorker.swift in Sources */,
 				F1D9BAAD20185605004B42B7 /* DataExtensions.swift in Sources */,
 				F1E89B76201F0E540052C723 /* PhoneAndEmailWorker.swift in Sources */,

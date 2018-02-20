@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case .CustomerDetailsEntered:
             showWelcomeScreen()
         case .CardAdded:
-            showHomeScreen()
+            showHomeTabBarScreen()
         }
         
         return true
@@ -153,7 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navVC = UINavigationController(rootViewController: phoneAndEmailScreen)
         navVC.setViewControllers([phoneAndEmailScreen, phoneVerificationScreen], animated: false)
         navVC.navigationBar.isHidden = true
-        UIApplication.shared.windows.last!.rootViewController = navVC
+        self.getWindow().rootViewController = navVC
     }
     
     func showConfirmDetailsScreen() {
@@ -161,21 +161,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navVC = UINavigationController(rootViewController: confirmDetailsScreen)
         navVC.navigationBar.isHidden = true
-        UIApplication.shared.windows.last!.rootViewController = navVC
+        self.getWindow().rootViewController = navVC
     }
     
     func showWelcomeScreen() {
         let welcomeScreen = WelcomeViewController.create()
         let navVC = UINavigationController(rootViewController: welcomeScreen)
         navVC.navigationBar.isHidden = true
-        UIApplication.shared.windows.last!.rootViewController = navVC
+        self.getWindow().rootViewController = navVC
     }
     
-    func showHomeScreen() {
-        let cardAddedScreen = CardAddedViewController.create()
-        let navVC = UINavigationController(rootViewController: cardAddedScreen)
-        navVC.navigationBar.isHidden = true
-        UIApplication.shared.windows.last!.rootViewController = navVC
+    func showHomeTabBarScreen() {
+        let homeTabBar = HomeContainerViewController.create()
+        ApplicationDelegate.getWindow().rootViewController = homeTabBar
+    }
+    
+    func getWindow() -> UIWindow {
+        if UIApplication.shared.keyWindow == nil {
+            return UIApplication.shared.windows.first!
+        } else {
+            return UIApplication.shared.keyWindow!
+        }
     }
 
 }

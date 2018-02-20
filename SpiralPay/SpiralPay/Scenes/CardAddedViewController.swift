@@ -21,7 +21,8 @@ class CardAddedViewController: SpiralPayViewController {
     //MARK: IBAction methods
     
     @IBAction func spiralPayButtonTapped() {
-        
+        let homeTabBar = HomeContainerViewController.create()
+        ApplicationDelegate.getWindow().rootViewController = homeTabBar
     }
 
 }
