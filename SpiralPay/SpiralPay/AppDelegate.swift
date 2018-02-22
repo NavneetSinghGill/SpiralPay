@@ -17,10 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var isNetworkAvailable: Bool = true
     let reachability = Reachability()!
+    var didOpenFromDidFinishLaunchingWithOptions: Bool = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        //Remove all previous saved data
         if !UserDefaults.standard.bool(forKey: Constants.kHadAppRunBeforeAtleastOnce) {
             User.resetSavedValues()
             Card.resetSavedValues()
@@ -28,25 +30,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.synchronize()
         }
         
-        Fabric.with([Crashlytics.self])
-        
         setupNetworkMonitoring()
         
+        Fabric.with([Crashlytics.self])
         
         User.shared.restore()
         
-        switch User.shared.savedState {
-        case .None:
-            break
-        case .PinCreated:
-            showPhoneVerificationScreen()
-        case .PhoneVerified:
-            showConfirmDetailsScreen()
-        case .CustomerDetailsEntered:
-            showWelcomeScreen()
-        case .CardAdded:
-            showHomeTabBarScreen()
-        }
+        didOpenFromDidFinishLaunchingWithOptions = true
+        showLoginScreenIfShould()
         
         return true
     }
@@ -68,8 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        if User.shared.savedState != .None { //every state is accepted except None
-            showLoginScreen()
+        if didOpenFromDidFinishLaunchingWithOptions {
+            didOpenFromDidFinishLaunchingWithOptions = false
+        } else {
+            showLoginScreenIfShould()
         }
     }
 
@@ -136,12 +129,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func showLoginScreen() {
+    func openIntendedScreen() {
+        switch User.shared.savedState {
+        case .None:
+            break
+        case .PinCreated:
+            showPhoneVerificationScreen()
+        case .PhoneVerified:
+            showConfirmDetailsScreen()
+        case .CustomerDetailsEntered:
+            showWelcomeScreen()
+        case .CardAdded:
+            showHomeTabBarScreen()
+        }
+    }
+    
+    func showLoginScreenIfShould() {
+        if User.shared.savedState == .None { //every state is accepted except None
+            return
+        }
         let pinVC = PinViewController.create()
         pinVC.pinEntry = .Login
         let viewC = UIApplication.shared.keyWindow?.rootViewController
         if viewC != nil {
             viewC?.present(pinVC, animated: false, completion: nil)
+        } else {
+            UIApplication.shared.windows.first?.rootViewController = pinVC
         }
     }
     

@@ -144,14 +144,22 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
         
         User.shared.accessToken = response.accessToken
         User.shared.save()
-        self.dismiss(animated: true, completion: nil)
+
+        if self == ApplicationDelegate.getWindow().rootViewController { //If its the very first screen of app
+            ApplicationDelegate.openIntendedScreen()
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     func loginFailed(response: Pin.Login.Response) {
         NLoader.shared.stopNLoader()
         
-        codeTextField.becomeFirstResponder()
         self.passwordDoesntMatch.isHidden = false
+
+        selectDotWith(count: 0)
+        codeTextField.text = ""
+        codeTextField.becomeFirstResponder()
     }
     
     //MARK:- Private methods

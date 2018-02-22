@@ -57,7 +57,7 @@ class FloatingHeaderTextField: UITextField {
         }
     }
     
-    open var placeholderFontScale: CGFloat = 0.7
+    open var placeholderFontScale: CGFloat = 0.85
     
     open var isActive: Bool = false {
         didSet {

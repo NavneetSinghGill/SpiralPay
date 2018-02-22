@@ -13,6 +13,20 @@ class TabBarItemView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleImageButton: UIButton!
     
+    var isSelected: Bool! {
+        didSet {
+            if titleImageButton != nil && titleLabel != nil {
+                if isSelected {
+                    self.titleImageButton.isSelected = true
+                    self.titleLabel.textColor = Colors.mediumBlue
+                } else {
+                    self.titleImageButton.isSelected = false
+                    self.titleLabel.textColor = Colors.grey
+                }
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -26,7 +40,7 @@ class TabBarItemView: UIView {
     }
     
     func setup() {
-        
+        self.isSelected = false
     }
     
 }

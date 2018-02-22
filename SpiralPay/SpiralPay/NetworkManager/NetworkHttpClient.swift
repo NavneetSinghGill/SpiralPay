@@ -117,7 +117,7 @@ class NetworkHttpClient: NSObject {
             Alamofire.request(completeURL, method: methodType, parameters: parameters, encoding: (methodType == .get ? URLEncoding.default : JSONEncoding.default), headers: headers).responseObject { (response: DataResponse<T>) in
                 
                 //Exception is for the ones when response is empty
-                let exceptionSuccess: AnyObject? = self.handleExceptionsFor(url: BaseRequest.getUrl(path: strURL), withResponseCode: response.response!.statusCode, response: response, genericResponse: genericResponse)
+                let exceptionSuccess: AnyObject? = self.handleExceptionsFor(url: BaseRequest.getUrl(path: strURL), withResponseCode: response.response?.statusCode ?? 0, response: response, genericResponse: genericResponse)
                 
                 if exceptionSuccess != nil {
                     print("Exception success")

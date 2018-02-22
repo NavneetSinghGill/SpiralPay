@@ -88,6 +88,7 @@ class HomeContainerViewController: UIViewController {
     }
     
     @IBAction func tabButtonTapped(button: UIButton) {
+        return
         resetUIAllTabs()
         selectItemWith(tag: button.tag)
         switch button.tag {
@@ -112,16 +113,14 @@ class HomeContainerViewController: UIViewController {
     
     private func resetUIAllTabs() {
         for tabBarItemView in tabBarItemViews {
-            tabBarItemView.titleImageButton.isSelected = false
-            tabBarItemView.titleLabel.textColor = Colors.grey
+            tabBarItemView.isSelected = false
         }
     }
     
     private func selectItemWith(tag: Int) {
         for tabBarItemView in tabBarItemViews {
             if tabBarItemView.tag == tag {
-                tabBarItemView.titleImageButton.isSelected = true
-                tabBarItemView.titleLabel.textColor = Colors.mediumBlue
+                tabBarItemView.isSelected = true
                 break
             }
         }

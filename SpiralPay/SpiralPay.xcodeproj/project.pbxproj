@@ -10,7 +10,6 @@
 		123F9D4C2AA191714DD024B1 /* Pods_SpiralPay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDE718037355A683F8CD2F0 /* Pods_SpiralPay.framework */; };
 		180B4707203C041500775D06 /* HomeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B4706203C041500775D06 /* HomeContainerViewController.swift */; };
 		180B470D203C3C0700775D06 /* TabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B470C203C3C0700775D06 /* TabBarItemView.swift */; };
-		180B4713203C453100775D06 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B4712203C453100775D06 /* HomeViewController.swift */; };
 		180B4715203C461300775D06 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B4714203C461300775D06 /* SettingsViewController.swift */; };
 		180C1607202197C100818460 /* CountryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1601202197C100818460 /* CountryPresenter.swift */; };
 		180C1608202197C100818460 /* CountryWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1602202197C100818460 /* CountryWorker.swift */; };
@@ -21,6 +20,12 @@
 		180DAEDC20298B9E00193C39 /* NLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DAEDB20298B9D00193C39 /* NLoader.swift */; };
 		1810DF0C203C62DC00722760 /* LoyaltyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1810DF0B203C62DC00722760 /* LoyaltyViewController.swift */; };
 		1810DF0E203C62F000722760 /* MySpiralPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1810DF0D203C62F000722760 /* MySpiralPayViewController.swift */; };
+		181287AE204441A600779850 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181287A8204441A500779850 /* HomeRouter.swift */; };
+		181287AF204441A600779850 /* HomeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181287A9204441A600779850 /* HomeWorker.swift */; };
+		181287B0204441A600779850 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181287AA204441A600779850 /* HomeViewController.swift */; };
+		181287B1204441A600779850 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181287AB204441A600779850 /* HomeInteractor.swift */; };
+		181287B2204441A600779850 /* HomeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181287AC204441A600779850 /* HomeModels.swift */; };
+		181287B3204441A600779850 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181287AD204441A600779850 /* HomePresenter.swift */; };
 		184A4F9E202D8EB90019AD40 /* ConfirmDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F98202D8EB90019AD40 /* ConfirmDetailsPresenter.swift */; };
 		184A4F9F202D8EBA0019AD40 /* ConfirmDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F99202D8EB90019AD40 /* ConfirmDetailsWorker.swift */; };
 		184A4FA0202D8EBA0019AD40 /* ConfirmDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F9A202D8EB90019AD40 /* ConfirmDetailsRouter.swift */; };
@@ -137,7 +142,6 @@
 /* Begin PBXFileReference section */
 		180B4706203C041500775D06 /* HomeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerViewController.swift; sourceTree = "<group>"; };
 		180B470C203C3C0700775D06 /* TabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemView.swift; sourceTree = "<group>"; };
-		180B4712203C453100775D06 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		180B4714203C461300775D06 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		180C1601202197C100818460 /* CountryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPresenter.swift; sourceTree = "<group>"; };
 		180C1602202197C100818460 /* CountryWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryWorker.swift; sourceTree = "<group>"; };
@@ -148,6 +152,12 @@
 		180DAEDB20298B9D00193C39 /* NLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLoader.swift; sourceTree = "<group>"; };
 		1810DF0B203C62DC00722760 /* LoyaltyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyViewController.swift; sourceTree = "<group>"; };
 		1810DF0D203C62F000722760 /* MySpiralPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpiralPayViewController.swift; sourceTree = "<group>"; };
+		181287A8204441A500779850 /* HomeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		181287A9204441A600779850 /* HomeWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWorker.swift; sourceTree = "<group>"; };
+		181287AA204441A600779850 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		181287AB204441A600779850 /* HomeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		181287AC204441A600779850 /* HomeModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModels.swift; sourceTree = "<group>"; };
+		181287AD204441A600779850 /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		184A4F98202D8EB90019AD40 /* ConfirmDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsPresenter.swift; sourceTree = "<group>"; };
 		184A4F99202D8EB90019AD40 /* ConfirmDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsWorker.swift; sourceTree = "<group>"; };
 		184A4F9A202D8EB90019AD40 /* ConfirmDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsRouter.swift; sourceTree = "<group>"; };
@@ -285,8 +295,8 @@
 			isa = PBXGroup;
 			children = (
 				180B4706203C041500775D06 /* HomeContainerViewController.swift */,
-				180B4712203C453100775D06 /* HomeViewController.swift */,
 				1810DF0B203C62DC00722760 /* LoyaltyViewController.swift */,
+				181287B4204441B700779850 /* HomeScreen */,
 				1810DF0D203C62F000722760 /* MySpiralPayViewController.swift */,
 				180B4714203C461300775D06 /* SettingsViewController.swift */,
 			);
@@ -304,6 +314,19 @@
 				180C1606202197C100818460 /* CountryInteractor.swift */,
 			);
 			path = Country;
+			sourceTree = "<group>";
+		};
+		181287B4204441B700779850 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				181287AB204441A600779850 /* HomeInteractor.swift */,
+				181287AC204441A600779850 /* HomeModels.swift */,
+				181287AD204441A600779850 /* HomePresenter.swift */,
+				181287A8204441A500779850 /* HomeRouter.swift */,
+				181287AA204441A600779850 /* HomeViewController.swift */,
+				181287A9204441A600779850 /* HomeWorker.swift */,
+			);
+			path = HomeScreen;
 			sourceTree = "<group>";
 		};
 		184A4F97202D8E540019AD40 /* ConfirmDetails */ = {
@@ -432,6 +455,7 @@
 				180DAEDB20298B9D00193C39 /* NLoader.swift */,
 				18D914EE2036C7B0008FFB60 /* MonthYearPickerView.swift */,
 				1871E897203DA401008BDEF8 /* BezierPathExtenstion.swift */,
+				180B470C203C3C0700775D06 /* TabBarItemView.swift */,
 				F1D9BA8120185605004B42B7 /* Protocol */,
 				F1D9BA8420185605004B42B7 /* Extensions */,
 				F1D9BAA220185605004B42B7 /* Utils.swift */,
@@ -546,7 +570,6 @@
 			children = (
 				F1D9BA54201852E8004B42B7 /* Main.storyboard */,
 				F1D9BA59201852E8004B42B7 /* LaunchScreen.storyboard */,
-				180B470C203C3C0700775D06 /* TabBarItemView.swift */,
 			);
 			path = StoryboardsAndXIBs;
 			sourceTree = "<group>";
@@ -832,6 +855,7 @@
 				185C60AC20244835009D23BE /* User.swift in Sources */,
 				F1D9BAD4201856D1004B42B7 /* BannerManager.swift in Sources */,
 				184A4FA2202D8EBA0019AD40 /* ConfirmDetailsViewController.swift in Sources */,
+				181287AE204441A600779850 /* HomeRouter.swift in Sources */,
 				180DAEDC20298B9E00193C39 /* NLoader.swift in Sources */,
 				18F80F64203461F80089BF4D /* SecurityStorageWorker.swift in Sources */,
 				180B470D203C3C0700775D06 /* TabBarItemView.swift in Sources */,
@@ -843,9 +867,10 @@
 				F1D9BAD6201856D1004B42B7 /* RemoteNotificationManager.swift in Sources */,
 				18943503202488F9000C2166 /* PinModels.swift in Sources */,
 				18645D52203577040017E214 /* UIViewExtension.swift in Sources */,
-				180B4713203C453100775D06 /* HomeViewController.swift in Sources */,
 				1894350720248D76000C2166 /* SpiralPayViewController.swift in Sources */,
+				181287B2204441A600779850 /* HomeModels.swift in Sources */,
 				F1D9BAB920185605004B42B7 /* CLLocationExtensions.swift in Sources */,
+				181287B1204441A600779850 /* HomeInteractor.swift in Sources */,
 				18943501202488F9000C2166 /* PinWorker.swift in Sources */,
 				18D914EF2036C7B0008FFB60 /* MonthYearPickerView.swift in Sources */,
 				18D914ED2036B824008FFB60 /* CardAddedViewController.swift in Sources */,
@@ -860,6 +885,7 @@
 				F1D9BAAE20185605004B42B7 /* BoolExtensions.swift in Sources */,
 				180C1608202197C100818460 /* CountryWorker.swift in Sources */,
 				F1D9BAF42018614A004B42B7 /* TokenPresenter.swift in Sources */,
+				181287AF204441A600779850 /* HomeWorker.swift in Sources */,
 				18943504202488F9000C2166 /* PinViewController.swift in Sources */,
 				F1D9BABE20185605004B42B7 /* DateExtensions.swift in Sources */,
 				F1D9BAB720185605004B42B7 /* NSViewExtensions.swift in Sources */,
@@ -879,6 +905,7 @@
 				F1D9BAD7201856D1004B42B7 /* RequestManager.swift in Sources */,
 				F1D9BAE720185A8B004B42B7 /* BaseWorker.swift in Sources */,
 				18529F65202B31CD00BD8D0E /* PhoneVerificationPresenter.swift in Sources */,
+				181287B3204441A600779850 /* HomePresenter.swift in Sources */,
 				F1D9BAF32018614A004B42B7 /* TokenInteractor.swift in Sources */,
 				F1D9BAD9201856D1004B42B7 /* RealAPI.swift in Sources */,
 				180C160B202197C100818460 /* CountryViewController.swift in Sources */,
@@ -897,6 +924,7 @@
 				F1D9BAAF20185605004B42B7 /* GenericExtensions.swift in Sources */,
 				F1D9BAF52018614A004B42B7 /* TokenManager.swift in Sources */,
 				184A4FA0202D8EBA0019AD40 /* ConfirmDetailsRouter.swift in Sources */,
+				181287B0204441A600779850 /* HomeViewController.swift in Sources */,
 				F1E89B7D201F123C0052C723 /* SpiralPayButton.swift in Sources */,
 				184A4FA1202D8EBA0019AD40 /* ConfirmDetailsModels.swift in Sources */,
 				F1D9BAF72018614A004B42B7 /* TokenModels.swift in Sources */,
