@@ -42,62 +42,62 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please provide us your mobile number and email address." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMs-qh-Z50">
-                                <rect key="frame" x="22" y="103" width="331" height="37.5"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                <rect key="frame" x="22" y="103" width="331" height="41"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text=" " placeholder="Country" textAlignment="natural" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="kR5-iN-6vD" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
-                                <rect key="frame" x="22" y="211.5" width="75" height="45"/>
+                                <rect key="frame" x="22" y="215" width="75" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Msq-E7-tx0"/>
                                 </constraints>
                                 <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="sdQ-vN-pDc"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+44" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="n9w-WP-2Zm">
-                                <rect key="frame" x="22" y="211.5" width="55" height="45"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                <rect key="frame" x="22" y="215" width="55" height="45"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1B5-En-pwf" userLabel="Country Button">
-                                <rect key="frame" x="22" y="211.5" width="75" height="45"/>
+                                <rect key="frame" x="22" y="215" width="75" height="45"/>
                                 <connections>
                                     <action selector="countryButtonTappedWithButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fxh-D5-2K1"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hvr-xA-Q1F" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
-                                <rect key="frame" x="115" y="212" width="238" height="45"/>
+                                <rect key="frame" x="115" y="215.5" width="238" height="45"/>
                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="mjk-Ik-L7l"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QBT-Mf-zXw" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
-                                <rect key="frame" x="22" y="276" width="331" height="45"/>
+                                <rect key="frame" x="22" y="279.5" width="331" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="SSV-fc-rzO"/>
                                 </constraints>
                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Nlg-14-GgA"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVY-mL-WxN" customClass="SpiralPayButton" customModule="SpiralPay" customModuleProvider="target">
-                                <rect key="frame" x="34" y="368" width="307.5" height="52"/>
+                                <rect key="frame" x="34" y="371.5" width="307.5" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="8CO-Uc-5a7"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
                                 <state key="normal" title="Next" backgroundImage="buttonBlueBackground"/>
                                 <connections>
                                     <action selector="nextButtonTappedWithButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kzs-H3-Xme"/>
@@ -164,7 +164,7 @@
                                     <constraint firstAttribute="height" constant="30" id="LrC-n0-QFj"/>
                                 </constraints>
                                 <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="QTl-k3-FUd" id="Flj-YF-9a4"/>
@@ -195,7 +195,7 @@
                                                 </view>
                                                 <button opaque="NO" userInteractionEnabled="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWe-Wx-sX7" userLabel="Flag name">
                                                     <rect key="frame" x="74" y="0.0" width="301" height="54.5"/>
-                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
                                                     <state key="normal">
                                                         <color key="titleColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -233,8 +233,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No matching results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnJ-GF-SDC">
-                                                    <rect key="frame" x="112" y="12" width="152.5" height="20"/>
-                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                                    <rect key="frame" x="104.5" y="10.5" width="166.5" height="23"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -307,19 +307,19 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create PIN Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vo-VF-7TW">
-                                <rect key="frame" x="112.5" y="105" width="151.5" height="24"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
+                                <rect key="frame" x="106.5" y="105" width="162.5" height="26.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                 <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your personal 5 digit pin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7a7-dG-hTa">
-                                <rect key="frame" x="87" y="134" width="201.5" height="18"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                <rect key="frame" x="76" y="136.5" width="224" height="20.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                 <color key="textColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1iQ-Ym-Kms" userLabel="Pins View">
-                                <rect key="frame" x="112.5" y="237" width="150" height="30"/>
+                                <rect key="frame" x="112.5" y="242" width="150" height="30"/>
                                 <subviews>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1V-uL-iTN">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -396,8 +396,8 @@
                                 </connections>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password doesn't match" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aK-qM-sTU">
-                                <rect key="frame" x="121" y="277" width="134" height="14"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                <rect key="frame" x="113" y="282" width="149" height="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <color key="textColor" red="0.99607843137254903" green="0.27450980392156865" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -459,20 +459,20 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your phone" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juG-eD-fYZ">
-                                <rect key="frame" x="109.5" y="294" width="156" height="24"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
+                                <rect key="frame" x="101.5" y="294" width="172" height="26.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are going to send a verification code to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ntz-JI-zDQ">
-                                <rect key="frame" x="75" y="323" width="225.5" height="14"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                <rect key="frame" x="56.5" y="325.5" width="263" height="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <color key="textColor" red="0.47058823529411764" green="0.47058823529411764" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+441212121212" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBI-QP-zH0">
-                                <rect key="frame" x="138.5" y="337" width="98.5" height="16"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                <rect key="frame" x="131.5" y="342.5" width="113.5" height="18"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <color key="textColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -481,7 +481,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="y7N-rd-4s2" secondAttribute="height" multiplier="310:52" id="Kwo-aa-Wme"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
                                 <state key="normal" title="Send" backgroundImage="buttonBlueBackground"/>
                                 <connections>
                                     <action selector="actionButtonTapped" destination="WMr-6X-WmR" eventType="touchUpInside" id="JqW-07-nzr"/>
@@ -492,13 +492,13 @@
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Verification Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCA-JE-sPe">
-                                        <rect key="frame" x="86" y="35" width="203" height="24"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
+                                        <rect key="frame" x="76" y="35" width="223.5" height="26.5"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                         <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kF-7P-VeH" userLabel="Pins View">
-                                        <rect key="frame" x="47" y="167" width="280" height="30"/>
+                                        <rect key="frame" x="47" y="172" width="280" height="30"/>
                                         <subviews>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWt-T3-Kw3">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -586,11 +586,11 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v29-BN-ngL">
-                                        <rect key="frame" x="161.5" y="212" width="51" height="35"/>
+                                        <rect key="frame" x="158" y="217" width="58" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Odq-cS-TyX"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                         <state key="normal" title="RESEND">
                                             <color key="titleColor" red="0.0" green="0.58431372550000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -599,17 +599,17 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xo8-gv-tZ7">
-                                        <rect key="frame" x="77" y="64" width="221.5" height="18"/>
+                                        <rect key="frame" x="63.5" y="66.5" width="250" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We've sent it to " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UJ-Xd-9L4">
-                                                <rect key="frame" x="0.0" y="0.0" width="108" height="18"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="121.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                                 <color key="textColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+990000000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vg-Da-wc9">
-                                                <rect key="frame" x="108" y="0.0" width="113.5" height="18"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                                <rect key="frame" x="121.5" y="0.0" width="128.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                                 <color key="textColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -641,11 +641,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXl-DA-A5l">
-                                <rect key="frame" x="20" y="30" width="30" height="35"/>
+                                <rect key="frame" x="20" y="30" width="32" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Bcr-HN-8Ez"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" red="0.0" green="0.58431372549019611" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -715,7 +715,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="780"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9c-TK-nDS" userLabel="Container View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="821"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="832"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYw-M2-ie8" customClass="ProgressBarView" customModule="SpiralPay" customModuleProvider="target">
                                                 <rect key="frame" x="76" y="46" width="168" height="4"/>
@@ -725,113 +725,114 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm your detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blH-q5-ObQ">
-                                                <rect key="frame" x="75" y="82" width="170.5" height="24"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
+                                                <rect key="frame" x="68" y="82" width="185" height="26.5"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please check if all information is correct." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAK-fQ-ozv">
-                                                <rect key="frame" x="52.5" y="111" width="216.5" height="14"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <rect key="frame" x="37.5" y="113.5" width="246" height="17"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                 <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Sz-B0-SIf" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="160" width="270" height="45"/>
+                                                <rect key="frame" x="25" y="165.5" width="270" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="hJa-fI-nbV"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="w53-Op-FHp" id="hVN-T5-LOs"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Birthday" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jDk-PY-0g5" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="225" width="270" height="45"/>
+                                                <rect key="frame" x="25" y="230.5" width="270" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="qkt-aH-zqG"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="w53-Op-FHp" id="aHh-EL-Hxa"/>
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sX1-gv-oYY">
-                                                <rect key="frame" x="25" y="224.5" width="270" height="45"/>
+                                                <rect key="frame" x="25" y="230" width="270" height="45"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <connections>
                                                     <action selector="birthdayButtonTapped" destination="w53-Op-FHp" eventType="touchUpInside" id="TJS-u7-day"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RA1-KQ-6dp" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="290" width="270" height="45"/>
+                                                <rect key="frame" x="25" y="295.5" width="270" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="riZ-JW-twD"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="w53-Op-FHp" id="ulB-hD-D8i"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x0D-c0-R6G" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="355" width="135" height="45"/>
+                                                <rect key="frame" x="25" y="360.5" width="135" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="StC-q1-SCF"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="w53-Op-FHp" id="8DK-bS-tqS"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HhB-DW-161" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
-                                                <rect key="frame" x="160" y="355" width="135" height="45"/>
+                                                <rect key="frame" x="160" y="360.5" width="135" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="LWx-DY-awc"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="w53-Op-FHp" id="whY-dH-gXd"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Post Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ug-Cl-Sbi" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="420" width="270" height="45"/>
+                                                <rect key="frame" x="25" y="425.5" width="270" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="MKa-dl-RsQ"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="w53-Op-FHp" id="Lq7-oN-lVL"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eqi-vG-cO8" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="485" width="270" height="45"/>
+                                                <rect key="frame" x="25" y="490.5" width="270" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="end-ro-8AH"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="w53-Op-FHp" id="mtL-cg-D0h"/>
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Mv-sv-csm" customClass="SpiralPayButton" customModule="SpiralPay" customModuleProvider="target">
-                                                <rect key="frame" x="29.5" y="629" width="262" height="52"/>
+                                                <rect key="frame" x="29.5" y="634.5" width="262" height="52"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="52" id="j0F-KK-JXe"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
                                                 <state key="normal" title="Confirm" backgroundImage="buttonBlueBackground"/>
                                                 <connections>
                                                     <action selector="confirmButtonTapped" destination="w53-Op-FHp" eventType="touchUpInside" id="wEO-mk-28R"/>
@@ -839,21 +840,21 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By clicking confirm you confirm to SpiralPay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SqP-eW-vKt">
-                                                <rect key="frame" x="47" y="706" width="227.5" height="14"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11.5"/>
+                                                <rect key="frame" x="31" y="711.5" width="258.5" height="16.5"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13.5"/>
                                                 <color key="textColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jsA-aS-Zri" userLabel="UnderlineTermsView">
-                                                <rect key="frame" x="101" y="733" width="118" height="1"/>
+                                                <rect key="frame" x="93.5" y="742.5" width="133" height="1"/>
                                                 <color key="backgroundColor" red="0.0" green="0.58431372550000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="0.5" id="BWw-5Z-Atb"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnp-WJ-BkN">
-                                                <rect key="frame" x="101" y="715" width="118" height="26"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <rect key="frame" x="93.5" y="723" width="133" height="29"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                 <state key="normal" title="Terms and Conditions">
                                                     <color key="titleColor" red="0.0" green="0.58431372550000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -862,21 +863,21 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Drb-fR-6dw" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
-                                                <rect key="frame" x="104.5" y="550" width="190.5" height="45"/>
+                                                <rect key="frame" x="104.5" y="555.5" width="190.5" height="45"/>
                                                 <color key="textColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="w53-Op-FHp" id="rSR-sz-LAO"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text=" " placeholder="Country" textAlignment="natural" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="50A-Jg-vIQ" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
-                                                <rect key="frame" x="25" y="550" width="61.5" height="45"/>
+                                                <rect key="frame" x="25" y="555.5" width="61.5" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="t4Z-9h-2jV"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="w53-Op-FHp" id="uUh-IS-j1S"/>
@@ -1004,8 +1005,8 @@
                                 </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3Y-Iv-maa">
-                                <rect key="frame" x="314" y="30" width="41" height="32"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <rect key="frame" x="309" y="30" width="46" height="35"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
                                 <state key="normal" title="Done">
                                     <color key="titleColor" red="0.0" green="0.58431372550000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1014,8 +1015,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mS2-nL-OVZ">
-                                <rect key="frame" x="20" y="30" width="56" height="33"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
+                                <rect key="frame" x="20" y="30" width="60" height="36"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.0" green="0.58431372550000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1066,7 +1067,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Kxs-UH-EJw" secondAttribute="height" multiplier="310:52" id="IAD-8Y-8f2"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
                                 <state key="normal" title="Add card" backgroundImage="buttonBlueBackground"/>
                                 <connections>
                                     <action selector="addCardButtonTapped" destination="9kz-Qi-MBF" eventType="touchUpInside" id="829-iC-7Lh"/>
@@ -1132,7 +1133,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="c9P-Tk-dan" secondAttribute="height" multiplier="310:52" id="HZN-Dp-Lch"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
                                 <state key="normal" title="Confirm" backgroundImage="buttonBlueBackground"/>
                                 <connections>
                                     <action selector="nextButtonTappedWithButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="V6F-Mr-hhc"/>
@@ -1140,23 +1141,23 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBi-ql-4WO">
-                                <rect key="frame" x="305" y="30" width="50" height="35"/>
+                                <rect key="frame" x="297" y="30" width="58" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="LIT-mK-Cgb"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <state key="normal" title="Not now">
                                     <color key="titleColor" red="0.0" green="0.58431372550000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your card detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kiT-q0-Q5X">
-                                <rect key="frame" x="118.5" y="104" width="139.5" height="24"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
+                                <rect key="frame" x="113" y="104" width="149.5" height="26.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aIU-Nm-zJR" userLabel="CaptureCardView">
-                                <rect key="frame" x="89" y="155" width="197" height="42"/>
+                                <rect key="frame" x="89" y="157.5" width="197" height="42"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yDK-pV-XrO" userLabel="Blue View">
                                         <rect key="frame" x="0.0" y="0.0" width="197" height="42"/>
@@ -1168,8 +1169,8 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capture card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUd-s6-aK1">
-                                        <rect key="frame" x="36.5" y="11" width="99.5" height="20"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                        <rect key="frame" x="32" y="9.5" width="107.5" height="23"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1180,7 +1181,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cameraCard" translatesAutoresizingMaskIntoConstraints="NO" id="6ro-gh-wys">
-                                        <rect key="frame" x="155" y="10.5" width="20" height="21"/>
+                                        <rect key="frame" x="158.5" y="10.5" width="20" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="gNL-vk-JhY"/>
                                             <constraint firstAttribute="width" constant="20" id="zqX-KR-Rvx"/>
@@ -1206,7 +1207,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMg-ex-D2y" userLabel="DividerView">
-                                <rect key="frame" x="88.5" y="224" width="197" height="2"/>
+                                <rect key="frame" x="88.5" y="226.5" width="197" height="2"/>
                                 <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="Rq0-jf-tfD"/>
@@ -1214,13 +1215,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or type manually" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyd-7u-8ZN">
-                                <rect key="frame" x="135" y="236" width="106.5" height="17"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                <rect key="frame" x="127.5" y="238.5" width="120.5" height="19.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                 <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGB-Ly-cTy" userLabel="CardTypeView">
-                                <rect key="frame" x="152" y="293" width="71" height="16.5"/>
+                                <rect key="frame" x="152" y="298" width="71" height="16.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="masterLogo" translatesAutoresizingMaskIntoConstraints="NO" id="x5K-KC-ERF">
                                         <rect key="frame" x="0.0" y="0.0" width="29" height="16.5"/>
@@ -1248,7 +1249,7 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9tZ-r6-nzQ" userLabel="CardView">
-                                <rect key="frame" x="67" y="319.5" width="242" height="137"/>
+                                <rect key="frame" x="67" y="324.5" width="242" height="137"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBackground" translatesAutoresizingMaskIntoConstraints="NO" id="gzh-7Y-YhV">
                                         <rect key="frame" x="0.0" y="0.0" width="242" height="137"/>
@@ -1259,7 +1260,7 @@
                                             <constraint firstAttribute="height" constant="45" id="7bh-uF-6YD"/>
                                         </constraints>
                                         <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Card number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ntt-Y9-0V6" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
@@ -1268,7 +1269,7 @@
                                             <constraint firstAttribute="height" constant="45" id="Km4-Hu-FWz"/>
                                         </constraints>
                                         <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Expiry" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IpT-tZ-1fV" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
@@ -1277,7 +1278,7 @@
                                             <constraint firstAttribute="height" constant="45" id="Rwx-n0-F3F"/>
                                         </constraints>
                                         <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="laj-ln-wPi">
@@ -1356,11 +1357,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cLw-rd-Rum">
-                                <rect key="frame" x="281" y="30" width="74" height="35"/>
+                                <rect key="frame" x="270" y="30" width="85" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Z6X-wI-Pi4"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <state key="normal" title="Card capture">
                                     <color key="titleColor" red="0.0" green="0.58431372550000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1420,7 +1421,7 @@
                                             <constraint firstAttribute="height" constant="45" id="7f4-zW-3pb"/>
                                         </constraints>
                                         <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
                                             <outlet property="delegate" destination="Ne0-uy-ZUy" id="x9E-0p-KCr"/>
@@ -1432,7 +1433,7 @@
                                             <constraint firstAttribute="height" constant="45" id="7kp-lw-VKW"/>
                                         </constraints>
                                         <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
                                             <outlet property="delegate" destination="Ne0-uy-ZUy" id="X4V-vT-x6I"/>
@@ -1444,7 +1445,7 @@
                                             <constraint firstAttribute="height" constant="45" id="iBA-ct-zq7"/>
                                         </constraints>
                                         <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
                                             <outlet property="delegate" destination="Ne0-uy-ZUy" id="XGR-PT-6sl"/>
@@ -1491,23 +1492,23 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p8k-lN-BAO" userLabel="TouchView">
-                                <rect key="frame" x="93" y="310.5" width="189" height="31"/>
+                                <rect key="frame" x="85" y="310.5" width="206" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capture finger print" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srs-fm-wfk">
-                                        <rect key="frame" x="0.0" y="8.5" width="108" height="15"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12.5"/>
+                                        <rect key="frame" x="0.0" y="7.5" width="125" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14.5"/>
                                         <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fingerPrint" translatesAutoresizingMaskIntoConstraints="NO" id="oeo-WT-4ze">
-                                        <rect key="frame" x="113" y="7" width="17" height="17"/>
+                                        <rect key="frame" x="130" y="7" width="17" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="oeo-WT-4ze" secondAttribute="height" id="dpu-kI-qUf"/>
                                             <constraint firstAttribute="width" constant="17" id="uTI-rf-ZXU"/>
                                         </constraints>
                                     </imageView>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWH-dK-4gu">
-                                        <rect key="frame" x="140" y="0.0" width="51" height="31"/>
+                                        <rect key="frame" x="157" y="0.0" width="51" height="31"/>
                                         <color key="onTintColor" red="0.0" green="0.58431372550000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </switch>
                                 </subviews>
@@ -1528,7 +1529,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lxm-xu-S7a" secondAttribute="height" multiplier="310:52" id="RBu-UF-SI6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
                                 <state key="normal" title="Confirm" backgroundImage="buttonBlueBackground"/>
                                 <connections>
                                     <action selector="confirmButtonTapped" destination="Ne0-uy-ZUy" eventType="touchUpInside" id="dM4-mV-7Yz"/>
@@ -1578,7 +1579,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="czc-CO-eB0" secondAttribute="height" multiplier="310:52" id="b7j-jN-uw7"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
                                 <state key="normal" title="SpiralPay Home" backgroundImage="buttonBlueBackground"/>
                                 <connections>
                                     <action selector="nextButtonTappedWithButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AAY-Ag-eI3"/>
@@ -1586,8 +1587,8 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hooray!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjU-sj-sHg">
-                                <rect key="frame" x="134.5" y="230.5" width="106" height="36"/>
-                                <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="30"/>
+                                <rect key="frame" x="131.5" y="230.5" width="113" height="38.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="32"/>
                                 <color key="textColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1599,20 +1600,20 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card successfully added" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gv-7G-hl1">
-                                <rect key="frame" x="99" y="301.5" width="178.5" height="20"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <rect key="frame" x="88" y="304" width="199.5" height="23"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
                                 <color key="textColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A confirmation email has been sent." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJO-PT-UOp">
-                                <rect key="frame" x="94.5" y="331.5" width="187.5" height="14"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                <rect key="frame" x="78.5" y="337" width="218.5" height="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are now ready to make online payments!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rj-fK-fi8">
-                                <rect key="frame" x="70.5" y="345.5" width="235" height="14"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                <rect key="frame" x="51.5" y="354" width="274" height="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1671,11 +1672,11 @@
                                         <rect key="frame" x="20" y="0.0" width="63" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loyalty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFg-lj-hvw">
-                                                <rect key="frame" x="12" y="26" width="38" height="24"/>
+                                                <rect key="frame" x="9" y="26" width="44" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="9cq-iP-viR"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                 <color key="textColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1715,11 +1716,11 @@
                                         <rect key="frame" x="83" y="0.0" width="81" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4M-Ku-aTY">
-                                                <rect key="frame" x="10.5" y="26" width="60.5" height="24"/>
+                                                <rect key="frame" x="5.5" y="26" width="71" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="o8A-qI-U65"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                 <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1758,11 +1759,11 @@
                                         <rect key="frame" x="211" y="0.0" width="96" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My SpiralPay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99u-UM-pyk">
-                                                <rect key="frame" x="14" y="26" width="68" height="24"/>
+                                                <rect key="frame" x="8.5" y="26" width="79.5" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="rRx-bB-7m9"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                 <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1801,11 +1802,11 @@
                                         <rect key="frame" x="307" y="0.0" width="48" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euM-6m-cEz">
-                                                <rect key="frame" x="6" y="26" width="37" height="24"/>
+                                                <rect key="frame" x="3" y="26" width="43.5" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="6ZY-6o-dIq"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                 <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1945,28 +1946,28 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYU-me-T7A" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="628"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="633.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7d-MP-oG3">
-                                                <rect key="frame" x="166" y="60" width="43" height="26"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="22"/>
+                                                <rect key="frame" x="164" y="60" width="47.5" height="29"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Up to date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4JQ-aX-B0Z">
-                                                <rect key="frame" x="163.5" y="86" width="47" height="12"/>
-                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="10"/>
+                                                <rect key="frame" x="159" y="89" width="56.5" height="14.5"/>
+                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="12"/>
                                                 <color key="textColor" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYY-7S-hSs">
-                                                <rect key="frame" x="157" y="63" width="6" height="13"/>
-                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="11"/>
+                                                <rect key="frame" x="153" y="63" width="8" height="16"/>
+                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63S-1K-Lo6" userLabel="SwitchView">
-                                                <rect key="frame" x="109" y="113" width="156" height="30"/>
+                                                <rect key="frame" x="109" y="118.5" width="156" height="30"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9u-rC-4cy" userLabel="BlueView">
                                                         <rect key="frame" x="78" y="-0.5" width="78" height="30"/>
@@ -1979,7 +1980,7 @@
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gmO-KT-N2a">
                                                         <rect key="frame" x="0.0" y="0.0" width="78" height="30"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                         <state key="normal" title="This month">
                                                             <color key="titleColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
@@ -1989,7 +1990,7 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="639-QF-XeG">
                                                         <rect key="frame" x="78" y="0.0" width="78" height="30"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                                         <state key="normal" title="This week">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
@@ -2022,7 +2023,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="83e-7S-2Va" userLabel="Graph Container View">
-                                                <rect key="frame" x="0.0" y="178" width="374" height="165"/>
+                                                <rect key="frame" x="0.0" y="183.5" width="374" height="165"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCr-y3-EeM">
                                                         <rect key="frame" x="25" y="10" width="324" height="145"/>
@@ -2039,7 +2040,7 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mlm-NK-zA7">
-                                                <rect key="frame" x="0.0" y="343" width="374" height="250"/>
+                                                <rect key="frame" x="0.0" y="348.5" width="374" height="250"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="250" id="dZO-80-BLZ"/>
@@ -2059,14 +2060,14 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E shopping mall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HD8-Fv-RI2">
-                                                                    <rect key="frame" x="90" y="20" width="83" height="14"/>
-                                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                                    <rect key="frame" x="90" y="18.5" width="96.5" height="17"/>
+                                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                                     <color key="textColor" red="0.47058823529411764" green="0.47058823529411764" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50.92" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kW8-6c-sK7">
-                                                                    <rect key="frame" x="300" y="18" width="41" height="19"/>
-                                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                                                    <rect key="frame" x="294.5" y="17" width="46.5" height="22"/>
+                                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                                                     <color key="textColor" red="0.3529411764705882" green="0.3529411764705882" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -2090,8 +2091,8 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fri, 20 Jan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxN-sg-x1e">
-                                                                    <rect key="frame" x="40" y="33" width="53.5" height="14"/>
-                                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                                    <rect key="frame" x="40" y="31.5" width="62.5" height="17"/>
+                                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                                     <color key="textColor" red="0.47058823529411764" green="0.47058823529411764" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
