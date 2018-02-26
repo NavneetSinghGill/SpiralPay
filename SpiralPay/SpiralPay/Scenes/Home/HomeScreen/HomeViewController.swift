@@ -97,6 +97,7 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
     @IBOutlet weak var customSegmentBlueViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var paymentTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var paymentTableView: UITableView!
+    @IBOutlet weak var noDataLabel: UILabel!
         
     var shapeL: CAShapeLayer?
     var dotsL: CAShapeLayer?
@@ -112,6 +113,7 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
     //MARK:- APIs
     
     func getPaymentHistory() {
+        noDataLabel.isHidden = true
         NLoader.shared.startNLoader()
         var request = Home.PaymentHistory.Request()
         
@@ -130,6 +132,9 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
     func getPaymentHistorySuccessWith(response: [Home.PaymentHistory.Response]) {
         NLoader.shared.stopNLoader()
         
+        if response.count == 0 {
+            noDataLabel.isHidden = false
+        }
         read(response: response)
         
         reloadPaymentTableViewData()
@@ -137,6 +142,9 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
     
     func getPaymentHistoryFailureWith(response: Home.PaymentHistory.Response) {
         NLoader.shared.stopNLoader()
+        payments = []
+        clearGraph()
+        reloadPaymentTableViewData()
     }
     
     func read(response: [Home.PaymentHistory.Response]) {
@@ -245,20 +253,22 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
     private func addLineGraphWith(points: [CGPoint]) {
         let aPath = UIBezierPath.interpolateCGPointsWithHermite(pointsAsNSValues: points as Array<AnyObject>, closed: false)
         
-        shapeL = CAShapeLayer()
-        shapeL!.path = aPath!.cgPath
-        shapeL!.fillColor = UIColor.clear.cgColor
-        shapeL!.strokeColor = Colors.pink.cgColor
-        shapeL!.lineWidth = 1
-        
-        shapeL!.masksToBounds = false
-        shapeL!.shadowColor = UIColor.black.cgColor
-        shapeL!.shadowOpacity = 0.2
-        shapeL!.shadowOffset = CGSize(width: 0, height: 2)
-        shapeL!.shadowRadius = 2
-        shapeL!.shouldRasterize = true
-        
-        graphView.layer.addSublayer(shapeL!)
+        if aPath != nil {
+            shapeL = CAShapeLayer()
+            shapeL!.path = aPath!.cgPath
+            shapeL!.fillColor = UIColor.clear.cgColor
+            shapeL!.strokeColor = Colors.pink.cgColor
+            shapeL!.lineWidth = 1
+            
+            shapeL!.masksToBounds = false
+            shapeL!.shadowColor = UIColor.black.cgColor
+            shapeL!.shadowOpacity = 0.2
+            shapeL!.shadowOffset = CGSize(width: 0, height: 2)
+            shapeL!.shadowRadius = 2
+            shapeL!.shouldRasterize = true
+            
+            graphView.layer.addSublayer(shapeL!)
+        }
     }
     
     private func addDotsTo(points: [CGPoint]) {

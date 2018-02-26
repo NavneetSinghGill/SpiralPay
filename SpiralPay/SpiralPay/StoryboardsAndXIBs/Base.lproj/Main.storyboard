@@ -599,7 +599,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xo8-gv-tZ7">
-                                        <rect key="frame" x="63.5" y="66.5" width="250" height="20.5"/>
+                                        <rect key="frame" x="62.5" y="66.5" width="250" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We've sent it to " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UJ-Xd-9L4">
                                                 <rect key="frame" x="0.0" y="0.0" width="121.5" height="20.5"/>
@@ -1612,7 +1612,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are now ready to make online payments!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rj-fK-fi8">
-                                <rect key="frame" x="51.5" y="354" width="274" height="17"/>
+                                <rect key="frame" x="50.5" y="354" width="274" height="17"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2109,6 +2109,12 @@
                                                     <outlet property="delegate" destination="aYI-ae-VcT" id="Fsb-gP-PR2"/>
                                                 </connections>
                                             </tableView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dnz-v3-WC2">
+                                                <rect key="frame" x="327" y="161.5" width="37" height="17"/>
+                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
+                                                <color key="textColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2116,6 +2122,7 @@
                                             <constraint firstItem="n7d-MP-oG3" firstAttribute="centerX" secondItem="IYU-me-T7A" secondAttribute="centerX" id="0iV-Il-7yF"/>
                                             <constraint firstItem="n7d-MP-oG3" firstAttribute="leading" secondItem="cYY-7S-hSs" secondAttribute="trailing" constant="3" id="7eb-ag-esN"/>
                                             <constraint firstItem="4JQ-aX-B0Z" firstAttribute="top" secondItem="n7d-MP-oG3" secondAttribute="bottom" id="8St-lf-tD0"/>
+                                            <constraint firstAttribute="trailing" secondItem="Dnz-v3-WC2" secondAttribute="trailing" constant="10" id="D9l-sS-CHY"/>
                                             <constraint firstItem="mlm-NK-zA7" firstAttribute="top" secondItem="83e-7S-2Va" secondAttribute="bottom" id="GYo-le-DL9"/>
                                             <constraint firstItem="83e-7S-2Va" firstAttribute="top" secondItem="63S-1K-Lo6" secondAttribute="bottom" constant="35" id="GpB-GV-BDD"/>
                                             <constraint firstAttribute="trailing" secondItem="83e-7S-2Va" secondAttribute="trailing" id="PZ4-qS-2VY"/>
@@ -2125,6 +2132,7 @@
                                             <constraint firstAttribute="bottom" secondItem="mlm-NK-zA7" secondAttribute="bottom" constant="35" id="ekH-l9-R3W"/>
                                             <constraint firstItem="n7d-MP-oG3" firstAttribute="top" secondItem="IYU-me-T7A" secondAttribute="top" constant="60" id="fxw-Mg-PmP"/>
                                             <constraint firstItem="83e-7S-2Va" firstAttribute="leading" secondItem="IYU-me-T7A" secondAttribute="leading" id="nki-BT-qEB"/>
+                                            <constraint firstItem="83e-7S-2Va" firstAttribute="top" secondItem="Dnz-v3-WC2" secondAttribute="bottom" constant="5" id="pjD-qB-aVC"/>
                                             <constraint firstItem="mlm-NK-zA7" firstAttribute="leading" secondItem="IYU-me-T7A" secondAttribute="leading" id="qLp-bu-JbW"/>
                                             <constraint firstItem="4JQ-aX-B0Z" firstAttribute="centerX" secondItem="IYU-me-T7A" secondAttribute="centerX" id="sgb-ar-uhi"/>
                                         </constraints>
@@ -2138,10 +2146,18 @@
                                     <constraint firstItem="IYU-me-T7A" firstAttribute="top" secondItem="SVz-Qs-sEu" secondAttribute="top" id="qUV-cO-kMN"/>
                                 </constraints>
                             </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No matching results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KzR-Iy-FCh">
+                                <rect key="frame" x="104" y="322" width="166.5" height="23"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="KzR-Iy-FCh" firstAttribute="centerY" secondItem="fG8-Zf-llx" secondAttribute="centerY" id="1nf-sc-kiD"/>
                             <constraint firstItem="xFn-ic-kx1" firstAttribute="trailing" secondItem="SVz-Qs-sEu" secondAttribute="trailing" id="8vV-HM-i2n"/>
+                            <constraint firstItem="KzR-Iy-FCh" firstAttribute="centerX" secondItem="fG8-Zf-llx" secondAttribute="centerX" id="HCd-am-hQX"/>
                             <constraint firstItem="xFn-ic-kx1" firstAttribute="bottom" secondItem="SVz-Qs-sEu" secondAttribute="bottom" id="Lr4-Bv-ofr"/>
                             <constraint firstItem="SVz-Qs-sEu" firstAttribute="top" secondItem="xFn-ic-kx1" secondAttribute="top" id="YUu-CR-P3L"/>
                             <constraint firstItem="SVz-Qs-sEu" firstAttribute="leading" secondItem="xFn-ic-kx1" secondAttribute="leading" id="cyg-mI-ZLN"/>
@@ -2153,6 +2169,7 @@
                         <outlet property="customSegmentBlueViewTrailingConstraint" destination="KmV-RS-fAU" id="oF8-zG-iJg"/>
                         <outlet property="graphView" destination="RCr-y3-EeM" id="iuD-Xb-xF0"/>
                         <outlet property="monthButton" destination="gmO-KT-N2a" id="LtA-GK-PBT"/>
+                        <outlet property="noDataLabel" destination="KzR-Iy-FCh" id="0YE-SD-6KO"/>
                         <outlet property="paymentTableView" destination="mlm-NK-zA7" id="9tQ-Bz-KMY"/>
                         <outlet property="paymentTableViewHeightConstraint" destination="dZO-80-BLZ" id="G92-Xi-PbW"/>
                         <outlet property="weekButton" destination="639-QF-XeG" id="MXM-EU-9G8"/>
