@@ -51,6 +51,7 @@
 		18902871204D6E15008D903C /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18902872204D6E15008D903C /* Reachability.framework */; };
 		18902873204D6E20008D903C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18902874204D6E20008D903C /* Alamofire.framework */; };
 		18902875204D6E41008D903C /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18902876204D6E41008D903C /* AlamofireObjectMapper.framework */; };
+		1873FB3B204533B1003CA863 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873FB3A204533B1003CA863 /* ScannerViewController.swift */; };
 		18943500202488F9000C2166 /* PinPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FA202488F9000C2166 /* PinPresenter.swift */; };
 		18943501202488F9000C2166 /* PinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FB202488F9000C2166 /* PinWorker.swift */; };
 		18943502202488F9000C2166 /* PinRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FC202488F9000C2166 /* PinRouter.swift */; };
@@ -194,6 +195,7 @@
 		18902872204D6E15008D903C /* Reachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Reachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18902874204D6E20008D903C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18902876204D6E41008D903C /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1873FB3A204533B1003CA863 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		189434FA202488F9000C2166 /* PinPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPresenter.swift; sourceTree = "<group>"; };
 		189434FB202488F9000C2166 /* PinWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinWorker.swift; sourceTree = "<group>"; };
 		189434FC202488F9000C2166 /* PinRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinRouter.swift; sourceTree = "<group>"; };
@@ -622,6 +624,7 @@
 				189F22F42035A5D600971AFD /* AddCardManuallyViewController.swift */,
 				18D914EC2036B824008FFB60 /* CardAddedViewController.swift */,
 				180B4709203C043D00775D06 /* Home */,
+				1873FB3A204533B1003CA863 /* ScannerViewController.swift */,
 				F1D9BAED2018614A004B42B7 /* Token */,
 			);
 			path = Scenes;
@@ -909,6 +912,7 @@
 				18645D52203577040017E214 /* UIViewExtension.swift in Sources */,
 				1894350720248D76000C2166 /* SpiralPayViewController.swift in Sources */,
 				181287B2204441A600779850 /* HomeModels.swift in Sources */,
+				1873FB3B204533B1003CA863 /* ScannerViewController.swift in Sources */,
 				F1D9BAB920185605004B42B7 /* CLLocationExtensions.swift in Sources */,
 				181287B1204441A600779850 /* HomeInteractor.swift in Sources */,
 				18943501202488F9000C2166 /* PinWorker.swift in Sources */,
@@ -1157,7 +1161,8 @@
 			baseConfigurationReference = 87F8290059BCB99401861392 /* Pods-SpiralPay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2A498HB725;
 				INFOPLIST_FILE = SpiralPay/Info.plist;
@@ -1165,8 +1170,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.SpiralPay.SpiralPay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d2915cda-69f0-4aec-9d39-1029373ba95a";
-				PROVISIONING_PROFILE_SPECIFIER = SpiralPayAdhoc;
+				PROVISIONING_PROFILE = "f14ee3f7-c40c-4ece-8bfb-0d5fcea85b85";
+				PROVISIONING_PROFILE_SPECIFIER = SpiralPayDevelopment;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1177,6 +1182,7 @@
 			baseConfigurationReference = C38F4CF947AB8083F8E50A67 /* Pods-SpiralPay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2A498HB725;

@@ -106,7 +106,9 @@ class HomeContainerViewController: UIViewController {
     }
     
     @IBAction func payButtonTapped() {
-        
+        let scannerVC = ScannerViewController.create()
+        scannerVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.present(scannerVC, animated: true, completion: nil)
     }
     
     //MARK:- Private methods
