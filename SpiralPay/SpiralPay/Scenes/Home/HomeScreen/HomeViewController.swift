@@ -213,8 +213,49 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
             points.append(CGPoint(x: xValue, y: yValue))
         }
         
-        addLineGraphWith(points: points)
+        let zerothPoints = getZerothPointsWith(payments: payments1Darray, currentDate: currentDate)
+        addLineGraphWith(points: zerothPoints) // a straight Line
+        // zerothPoints would contain only 2 points
+        // 1st object is 1previous day and 2nd is 31 days earlier date
+        if let zeroth = zerothPoints.first {
+            addLineGraphWith(points: points + [zeroth])
+        } else {
+            addLineGraphWith(points: points)
+        }
         addDotsTo(points: points)
+    }
+    
+    private func getZerothPointsWith(payments: [Home.PaymentHistory.Response], currentDate: Date) -> [CGPoint] {
+        var zerothPoints = [CGPoint]()
+        var dateComponents = DateComponents()
+        
+        if let lastPayment = payments.last {
+            let oneDayPreviousDate = getNewDateWith(dateInterval: lastPayment.created ?? 0, decreatedBy: 1)
+            var xValue = getPointFor(dateInterval: Int(oneDayPreviousDate.timeIntervalSince1970) * 1000,
+                                     currentDate: currentDate,
+                                     dateComponent: &dateComponents)
+            
+            zerothPoints.append(CGPoint(x: xValue, y: self.graphView.frame.size.height))
+            
+            let thirtyOneDaysPreviousDate = getNewDateWith(dateInterval: lastPayment.created ?? 0, decreatedBy: 31)
+            xValue = getPointFor(dateInterval: Int(thirtyOneDaysPreviousDate.timeIntervalSince1970) * 1000,
+                                 currentDate: currentDate,
+                                 dateComponent: &dateComponents)
+            
+            zerothPoints.append(CGPoint(x: xValue, y: self.graphView.frame.size.height))
+        } else {
+            //TODO:
+            //Add straight line at 0
+        }
+        return zerothPoints
+    }
+    
+    private func getNewDateWith(dateInterval: Int, decreatedBy daysCount: Int) -> Date {
+        var dateComponent = DateComponents()
+        dateComponent.day = -daysCount
+        let decreasedDate = Calendar.current.date(byAdding: dateComponent, to: Date(timeIntervalSince1970: TimeInterval(dateInterval)/1000))!
+        
+        return decreasedDate
     }
     
     private func getPointFor(dateInterval: Int, currentDate: Date, dateComponent: inout DateComponents) -> CGFloat {
@@ -238,7 +279,8 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
     }
     
     private func getPointFor(amount: Int) -> CGFloat {
-        let percentage = CGFloat(amount) / CGFloat(maxAmount)
+        // substracted from 1 to reverse Y axis
+        let percentage = 1 - (CGFloat(amount) / CGFloat(maxAmount))
         return percentage * graphView.frame.size.height
     }
     
@@ -323,6 +365,8 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
                 }.resume()
         }
     }
+    
+    
     
     //MARK:- IBAction methods
     

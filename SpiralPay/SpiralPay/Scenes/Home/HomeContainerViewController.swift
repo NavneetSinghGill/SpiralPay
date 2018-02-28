@@ -78,8 +78,8 @@ class HomeContainerViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        shadowView.dropShadow()
-        tabBarCustomView.dropShadow()
+//        shadowView.dropShadow()
+//        tabBarCustomView.dropShadow()
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,7 +88,7 @@ class HomeContainerViewController: UIViewController {
     }
     
     @IBAction func tabButtonTapped(button: UIButton) {
-        return
+        return ()
         resetUIAllTabs()
         selectItemWith(tag: button.tag)
         switch button.tag {
