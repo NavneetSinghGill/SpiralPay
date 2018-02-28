@@ -177,17 +177,55 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         
         self.reloadPaymentTableViewData()
         
-        drawGraphWith(payments1Darray: response)
-    }
-    
-    func getFormatterStringWith(timeInterval: Int?) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E, dd MMM"
+        //Club the same day payments and create a single object
+        var singlePaymentPerDayPayments = [Home.PaymentHistory.Response]()
         
-        let paymentDate = Date(timeIntervalSince1970: Double(timeInterval ?? 0)/1000)
-        let paymentDateString = dateFormatter.string(from: paymentDate)
+        for singleDayPayments in payments {
+            var amountAndCreatedDayPayment = Home.PaymentHistory.Response()
+            amountAndCreatedDayPayment.amount = 0
+            amountAndCreatedDayPayment.created = 0
+            for payment in singleDayPayments {
+                amountAndCreatedDayPayment.amount = (amountAndCreatedDayPayment.amount ?? 0) + (payment.amount ?? 0)
+            }
+            
+            if singleDayPayments.count != 0 {
+                let newDate = removeAllSmallerTimeOf(dateInterval: ((singleDayPayments.last!.created ?? 0)/1000))
+                amountAndCreatedDayPayment.created = Int(newDate.timeIntervalSince1970) * 1000
+            }
+            
+            singlePaymentPerDayPayments.append(amountAndCreatedDayPayment)
+        }
         
-        return paymentDateString
+        var allPayments = [Home.PaymentHistory.Response]()
+        let latestDate = removeAllSmallerTimeOf(dateInterval: Int(Date().timeIntervalSince1970))
+        var limit = 0
+        if durationType == .Week {
+            limit = 7
+        } else {
+            limit = 30
+        }
+        for count in 0...(limit-1) {
+            let newDate = getNewDateWith(dateInterval: Int(latestDate.timeIntervalSince1970 * 1000), decreatedBy: count)
+            
+            var didMatchAnyPayment = false
+            for payment in singlePaymentPerDayPayments {
+                if getFormatterStringWith(timeInterval: payment.created) == getFormatterStringWith(timeInterval: Int(newDate.timeIntervalSince1970 * 1000)) {
+                    allPayments.append(payment)
+                    didMatchAnyPayment = true
+                    break
+                }
+            }
+            
+            if !didMatchAnyPayment {
+                var newAmountAndCreatedDayPayment = Home.PaymentHistory.Response()
+                newAmountAndCreatedDayPayment.amount = 0
+                newAmountAndCreatedDayPayment.created = Int(newDate.timeIntervalSince1970) * 1000
+                
+                allPayments.append(newAmountAndCreatedDayPayment)
+            }
+        }
+        
+        drawGraphWith(payments1Darray: allPayments)
     }
     
     //MARK:- Private methods
@@ -213,41 +251,39 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
             points.append(CGPoint(x: xValue, y: yValue))
         }
         
-        let zerothPoints = getZerothPointsWith(payments: payments1Darray, currentDate: currentDate)
-        addLineGraphWith(points: zerothPoints) // a straight Line
-        // zerothPoints would contain only 2 points
-        // 1st object is 1previous day and 2nd is 31 days earlier date
-        if let zeroth = zerothPoints.first {
-            addLineGraphWith(points: points + [zeroth])
-        } else {
-            addLineGraphWith(points: points)
+//        addLineGraphWith(points: points)
+        var traversedPoints = [CGPoint]()
+        var count = 0
+        for point in points {
+            if point ==  points.first {
+                traversedPoints.append(point)
+                count = count + 1
+                continue
+            }
+            if point == points.last {
+                traversedPoints.append(point)
+                addLineGraphWith(points: traversedPoints)
+                count = count + 1
+                continue
+            }
+            if (points[count - 1].y == self.graphView.frame.size.height &&
+                points[count + 1].y != self.graphView.frame.size.height) ||
+                (points[count - 1].y != self.graphView.frame.size.height &&
+                    points[count + 1].y == self.graphView.frame.size.height) {
+                traversedPoints.append(point)
+                addLineGraphWith(points: traversedPoints)
+                
+                traversedPoints.removeAll()
+                traversedPoints.append(point)
+            } else {
+                traversedPoints.append(point)
+            }
+            count = count + 1
         }
-        addDotsTo(points: points)
-    }
-    
-    private func getZerothPointsWith(payments: [Home.PaymentHistory.Response], currentDate: Date) -> [CGPoint] {
-        var zerothPoints = [CGPoint]()
-        var dateComponents = DateComponents()
-        
-        if let lastPayment = payments.last {
-            let oneDayPreviousDate = getNewDateWith(dateInterval: lastPayment.created ?? 0, decreatedBy: 1)
-            var xValue = getPointFor(dateInterval: Int(oneDayPreviousDate.timeIntervalSince1970) * 1000,
-                                     currentDate: currentDate,
-                                     dateComponent: &dateComponents)
-            
-            zerothPoints.append(CGPoint(x: xValue, y: self.graphView.frame.size.height))
-            
-            let thirtyOneDaysPreviousDate = getNewDateWith(dateInterval: lastPayment.created ?? 0, decreatedBy: 31)
-            xValue = getPointFor(dateInterval: Int(thirtyOneDaysPreviousDate.timeIntervalSince1970) * 1000,
-                                 currentDate: currentDate,
-                                 dateComponent: &dateComponents)
-            
-            zerothPoints.append(CGPoint(x: xValue, y: self.graphView.frame.size.height))
-        } else {
-            //TODO:
-            //Add straight line at 0
+//        addDotsTo(points: points)
+        if let firstPoint = points.first {
+            addDotsTo(points: [firstPoint])
         }
-        return zerothPoints
     }
     
     private func getNewDateWith(dateInterval: Int, decreatedBy daysCount: Int) -> Date {
@@ -304,9 +340,9 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
             
             shapeL!.masksToBounds = false
             shapeL!.shadowColor = UIColor.black.cgColor
-            shapeL!.shadowOpacity = 0.2
+            shapeL!.shadowOpacity = 0.3
             shapeL!.shadowOffset = CGSize(width: 0, height: 2)
-            shapeL!.shadowRadius = 2
+            shapeL!.shadowRadius = 0
             shapeL!.shouldRasterize = true
             
             graphView.layer.addSublayer(shapeL!)
@@ -366,7 +402,28 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         }
     }
     
+    private func removeAllSmallerTimeOf(dateInterval: Int) -> Date {
+        let date = Date(timeIntervalSince1970: TimeInterval(dateInterval))
+        
+        var dateComponent = DateComponents()
+        dateComponent.nanosecond = -date.nanosecond
+        dateComponent.second = -date.second
+        dateComponent.minute = -date.minute
+        dateComponent.hour = -date.hour + 12 //12 to increase by half day
+        
+        let newDate = Calendar.current.date(byAdding: dateComponent, to: date)
+        return newDate!
+    }
     
+    private func getFormatterStringWith(timeInterval: Int?) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E, dd MMM"
+        
+        let paymentDate = Date(timeIntervalSince1970: Double(timeInterval ?? 0)/1000)
+        let paymentDateString = dateFormatter.string(from: paymentDate)
+        
+        return paymentDateString
+    }
     
     //MARK:- IBAction methods
     

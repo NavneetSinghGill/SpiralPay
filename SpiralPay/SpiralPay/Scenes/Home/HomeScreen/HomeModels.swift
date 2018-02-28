@@ -62,6 +62,9 @@ enum Home
             public init?(message: String){
                 self.message = message
             }
+            public init(){
+                
+            }
             
             public mutating func mapping(map: Map) {
                 paymentId <- map[SerializationKeys.paymentId]
