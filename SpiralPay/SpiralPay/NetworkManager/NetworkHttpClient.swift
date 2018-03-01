@@ -67,17 +67,26 @@ class NetworkHttpClient: NSObject {
     }
     
     func performAPICall<T:Mappable>(_ strURL : String, methodType: HTTPMethod, parameters : Dictionary<String, Any>?, requestHeaders : [String : String]?, genericResponse:T.Type, success:@escaping successBlock, failure:@escaping failureBlock){
-        let completeURL:String = NetworkHttpClient.baseUrl() + BaseRequest.getUrl(path: strURL)
+        
+        
+        var completeURL:String = NetworkHttpClient.baseUrl() + BaseRequest.getUrl(path: strURL)
+        if parameters != nil && parameters![Constants.kShouldRunOnlyOnLive] as? Bool == true {
+            completeURL = AppSettingsManager.sharedInstance.appSettings.ProductionURL + BaseRequest.getUrl(path: strURL)
+        }
+        
+        
         var headers = requestHeaders
         if headers == nil {
             headers = NetworkHttpClient.getHeader() as? HTTPHeaders
         }
+        
+        
         if parameters?[BaseRequest.hasArrayResponse] != nil {
             var params:Dictionary<String, Any> = parameters!
             params[BaseRequest.hasArrayResponse] = nil
             
             Alamofire.request(completeURL, method: methodType, parameters: params, encoding: (methodType == .get ? URLEncoding.default : JSONEncoding.default), headers: headers).responseArray { (response: DataResponse<[T]>) in
-                
+                print("Response array: \(response)")
                 switch response.result {
                 case .success(let value):
                     print(value)
@@ -93,6 +102,8 @@ class NetworkHttpClient: NSObject {
             var params:Dictionary<String, Any> = parameters!
             params[BaseRequest.hasArrayResponse] = nil
             Alamofire.request(completeURL, method: methodType, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { (response) -> Void in
+                
+                print("Response null: \(response)")
                 switch response.result {
                 case .success(let value):
                     print(value)
@@ -115,6 +126,8 @@ class NetworkHttpClient: NSObject {
         else
         {
             Alamofire.request(completeURL, method: methodType, parameters: parameters, encoding: (methodType == .get ? URLEncoding.default : JSONEncoding.default), headers: headers).responseObject { (response: DataResponse<T>) in
+                
+                print("Response regular: \(response)")
                 
                 //Exception is for the ones when response is empty
                 let exceptionSuccess: AnyObject? = self.handleExceptionsFor(url: BaseRequest.getUrl(path: strURL), withResponseCode: response.response?.statusCode ?? 0, response: response, genericResponse: genericResponse)

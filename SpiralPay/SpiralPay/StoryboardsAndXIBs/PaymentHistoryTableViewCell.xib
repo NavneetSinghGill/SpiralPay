@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PaymentHistoryTableViewCell" rowHeight="56" id="KGk-i7-Jjw" customClass="PaymentHistoryTableViewCell" customModule="SpiralPay" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="286" height="55.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfg-oH-60u" userLabel="DefaultView">
+                        <rect key="frame" x="0.0" y="0.0" width="286" height="55"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Glb-OV-La3">
+                                <rect key="frame" x="30" y="-0.5" width="35" height="54.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="apd-Dn-eqk"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E shopping mall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhi-Hl-nUt">
+                                <rect key="frame" x="80" y="18.5" width="96.5" height="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                <color key="textColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50.92" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFL-VD-27q">
+                                <rect key="frame" x="234.5" y="16.5" width="46.5" height="22"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
+                                <color key="textColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrM-uA-Cet">
+                                <rect key="frame" x="207" y="10" width="34" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mrM-uA-Cet" secondAttribute="height" multiplier="1:1" id="VYv-8C-r9A"/>
+                                    <constraint firstAttribute="width" constant="34" id="hwc-3H-Biw"/>
+                                </constraints>
+                                <state key="normal" image="exportPayment"/>
+                                <connections>
+                                    <action selector="exportButtonTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="W0R-3b-cB1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mrM-uA-Cet" firstAttribute="centerY" secondItem="Jfg-oH-60u" secondAttribute="centerY" id="3LP-25-t4V"/>
+                            <constraint firstItem="zFL-VD-27q" firstAttribute="centerY" secondItem="Jfg-oH-60u" secondAttribute="centerY" id="C4G-sy-eQU"/>
+                            <constraint firstItem="Glb-OV-La3" firstAttribute="leading" secondItem="Jfg-oH-60u" secondAttribute="leading" constant="30" id="L8M-bo-g4u"/>
+                            <constraint firstAttribute="trailing" secondItem="zFL-VD-27q" secondAttribute="trailing" constant="5" id="OAI-Zb-uK2"/>
+                            <constraint firstItem="vhi-Hl-nUt" firstAttribute="leading" secondItem="Glb-OV-La3" secondAttribute="trailing" constant="15" id="Pwo-Ec-eAK"/>
+                            <constraint firstItem="Glb-OV-La3" firstAttribute="centerY" secondItem="Jfg-oH-60u" secondAttribute="centerY" id="QiJ-yz-Oho"/>
+                            <constraint firstItem="Glb-OV-La3" firstAttribute="height" secondItem="Jfg-oH-60u" secondAttribute="height" id="c8t-Ba-XmK"/>
+                            <constraint firstAttribute="height" constant="55" id="osK-7x-lym"/>
+                            <constraint firstAttribute="trailing" secondItem="mrM-uA-Cet" secondAttribute="trailing" constant="45" id="wcg-KP-8xq"/>
+                            <constraint firstItem="vhi-Hl-nUt" firstAttribute="centerY" secondItem="Jfg-oH-60u" secondAttribute="centerY" id="zee-ZO-tP3"/>
+                        </constraints>
+                    </view>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0u5-kn-fRz">
+                        <rect key="frame" x="0.0" y="55" width="286" height="0.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="J7E-oQ-q9W"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="dataSource" destination="KGk-i7-Jjw" id="MxE-B0-9XH"/>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="HZM-b4-Xc9"/>
+                        </connections>
+                    </tableView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Jfg-oH-60u" secondAttribute="trailing" id="0ey-Ly-O0g"/>
+                    <constraint firstItem="Jfg-oH-60u" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2j7-gw-Sah"/>
+                    <constraint firstAttribute="trailing" secondItem="0u5-kn-fRz" secondAttribute="trailing" id="FyK-S0-imG"/>
+                    <constraint firstItem="0u5-kn-fRz" firstAttribute="top" secondItem="Jfg-oH-60u" secondAttribute="bottom" id="GjN-Yc-lJz"/>
+                    <constraint firstAttribute="bottom" secondItem="0u5-kn-fRz" secondAttribute="bottom" id="UWY-N3-Hs3"/>
+                    <constraint firstItem="Jfg-oH-60u" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Wxp-L3-wbK"/>
+                    <constraint firstItem="0u5-kn-fRz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="etV-Je-Yuf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="amountLabel" destination="zFL-VD-27q" id="cgV-hm-K57"/>
+                <outlet property="detailsTableView" destination="0u5-kn-fRz" id="vmY-Fp-W01"/>
+                <outlet property="detailsTableViewHeightConstraint" destination="J7E-oQ-q9W" id="sOy-He-RQL"/>
+                <outlet property="exportButton" destination="mrM-uA-Cet" id="aIE-em-R5Q"/>
+                <outlet property="merchantImageView" destination="Glb-OV-La3" id="xbv-43-8MM"/>
+                <outlet property="merchantNameLabel" destination="vhi-Hl-nUt" id="AER-tZ-Q9t"/>
+            </connections>
+            <point key="canvasLocation" x="18" y="-73"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="exportPayment" width="34" height="34"/>
+    </resources>
+</document>

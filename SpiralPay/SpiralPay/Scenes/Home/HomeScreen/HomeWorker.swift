@@ -16,12 +16,22 @@ typealias paymentHistorySuccessResponseHandler = (_ response:Array<Home.PaymentH
 
 typealias paymentHistoryFailureResponseHandler = (_ response:Home.PaymentHistory.Response) ->()
 
+typealias paymentDetailResponseHandler = (_ response:Home.PaymentDetail.Response) ->()
+
 class HomeWorker
 {
+    
     func getPaymentHistoryWith(request: Home.PaymentHistory.Request, successCompletionHandler: @escaping paymentHistorySuccessResponseHandler, failureCompletionHandler: @escaping paymentHistoryFailureResponseHandler)
     {
         RequestManager().getPaymentHistory(request: request.baseRequest()) { (status, response) in
             self.handleGetPaymentHistoryResponse(success: successCompletionHandler, fail: failureCompletionHandler, status: status, response: response)
+        }
+    }
+    
+    func getPaymentDetailWith(request: Home.PaymentDetail.Request, payment: Home.PaymentHistory.Response, successCompletionHandler: @escaping paymentDetailResponseHandler, failureCompletionHandler: @escaping paymentDetailResponseHandler)
+    {
+        RequestManager().getPaymentDetail(request: request.baseRequest()) { (status, response) in
+            self.handleGetPaymentDetailResponse(success: successCompletionHandler, fail: failureCompletionHandler, status: status, response: response)
         }
     }
     
@@ -48,5 +58,28 @@ class HomeWorker
             }
         }
         fail(Home.PaymentHistory.Response(message:message)!)
+    }
+    
+    public func handleGetPaymentDetailResponse(success:@escaping(paymentDetailResponseHandler), fail:@escaping(paymentDetailResponseHandler), status: Bool, response: Any?) {
+        var message:String = Constants.kErrorMessage
+        if status {
+            if let result = response as? Home.PaymentDetail.Response {
+                success(result)
+                return
+            }
+        }
+        else {
+            if let result = response as? Home.PaymentDetail.Response {
+                fail(result)
+                return
+            }
+            else
+            {
+                if let result = response as? String {
+                    message = result
+                }
+            }
+        }
+        fail(Home.PaymentDetail.Response(message:message)!)
     }
 }

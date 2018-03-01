@@ -15,6 +15,7 @@ import UIKit
 protocol HomeBusinessLogic
 {
     func getPaymentHistory(request: Home.PaymentHistory.Request)
+    func getPaymentDetails(request: Home.PaymentDetail.Request, payment: Home.PaymentHistory.Response)
 }
 
 protocol HomeDataStore
@@ -36,6 +37,19 @@ class HomeInteractor: HomeBusinessLogic, HomeDataStore
             self.presenter?.getPaymentHistorySuccessWith(response: response)
         }, failureCompletionHandler: { (response) in
             self.presenter?.getPaymentHistoryFailureWith(response: response)
+        })
+        
+    }
+    
+    // MARK: Get Payment Detail
+    
+    func getPaymentDetails(request: Home.PaymentDetail.Request, payment: Home.PaymentHistory.Response)
+    {
+        worker = HomeWorker()
+        worker?.getPaymentDetailWith(request: request, payment: payment, successCompletionHandler: { (response) in
+            self.presenter?.getPaymentDetailSuccessWith(response: response, payment: payment)
+        }, failureCompletionHandler: { (response) in
+            self.presenter?.getPaymentDetailFailureWith(response: response, payment: payment)
         })
         
     }

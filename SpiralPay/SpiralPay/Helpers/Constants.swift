@@ -72,39 +72,8 @@ struct Constants {
     static let StagingEnviroment = "STAGING"
     static let LiveEnviroment = "LIVE"
     
-    //MARK: - Signup keys
-    static let kEmailKey = "Email"
-    static let kPasswordKey = "Password"
-    static let kConfirmPassword = "confirmPassword"
-    static let kNameKey = "Name"
-    static let kBirthdayKey = "Birthday"
-    static let kAgeGroupKey = "AgeGroup"
-    static let kGenderKey = "Gender"
-    static let kCountryKey = "Country"
-    static let kCountryNameKey = "CountryName"
-    static let kPhoneKey = "Phone"
-    static let kIPAddressKey = "IPAddress"
-    static let kEmailForEmptyKey = "NoData"
-    //MARK: - Login keys
-    static let kUserName = "UserName"
-    static let kFbToken = "Token"
-    //MARK: - SliderBanner keys
-    static let kClientTypeKey = "clientType"
-    static let kClientTypeValue = 2 // 2 for mobile
-    static let kCatalogIdKey = "catalogId"
     
-    //MARK: - Section Keys
-    static let kMenuSectionsOnlyKey = "MenuSectionsOnly"
-    static let kMenuSectionsOnlyValue = "false"
-    static let kMenuSectionsTrueValue = "true"
-    
-    static let kShowTypeKey = "ShowType"
-    static let kIncludeShowsKey = "IncludeShows" 
-    static let kIncludeShowsValue = "true"
-    //MARK: Catalogs Key
-    static let kIdKey = "id"
-    // MARK:- MyList Movies
-    static let kShowTypesKey = "ShowTypes"
+    static let kShouldRunOnlyOnLive = "shouldRunOnlyOnLive"
     
 }
 

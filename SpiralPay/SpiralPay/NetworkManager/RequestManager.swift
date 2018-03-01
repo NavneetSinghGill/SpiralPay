@@ -68,7 +68,17 @@ class RequestManager: NSObject {
         }
         else{
             completion(false, Constants.kNoNetworkMessage)
-//            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
+            //            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
+        }
+    }
+    
+    func getPaymentDetail(request:BaseRequest, completion:@escaping CompletionHandler){
+        if ApplicationDelegate.isNetworkAvailable{
+            RealAPI().getObject(request:request, genericResponse: Home.PaymentDetail.Response.self, completion:completion)
+        }
+        else{
+            completion(false, Constants.kNoNetworkMessage)
+            //            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
         }
     }
     

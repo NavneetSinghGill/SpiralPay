@@ -16,6 +16,9 @@ protocol HomeDisplayLogic: class
 {
     func getPaymentHistorySuccessWith(response: [Home.PaymentHistory.Response])
     func getPaymentHistoryFailureWith(response: Home.PaymentHistory.Response)
+    
+    func getPaymentDetailSuccessWith(response: Home.PaymentDetail.Response, payment: Home.PaymentHistory.Response)
+    func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response, payment: Home.PaymentHistory.Response)
 }
 
 enum DurationType {
@@ -81,6 +84,14 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         paymentTableView.estimatedSectionFooterHeight = 0
         
         getPaymentHistory()
+        
+        let nib = UINib(nibName: "PaymentHistoryTableViewCell", bundle: nil)
+        paymentTableView.register(nib, forCellReuseIdentifier: "PaymentHistoryTableViewCell")
+        
+        amountLabelTopConstraintDefaultValue = amountLabelTopConstraint.constant
+        
+        paymentTableView.estimatedRowHeight = 60
+        paymentTableView.rowHeight = UITableViewAutomaticDimension
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +101,9 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
     }
     
     //MARK:- Variables
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var amountLabelTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var graphView: UIView!
     @IBOutlet weak var monthButton: UIButton!
     @IBOutlet weak var weekButton: UIButton!
@@ -98,12 +112,16 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
     @IBOutlet weak var paymentTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var paymentTableView: UITableView!
     @IBOutlet weak var noDataLabel: UILabel!
-        
+    @IBOutlet weak var backButton: UIButton!
+    
+    var expandedCellIndexPath: IndexPath?
+    var amountLabelTopConstraintDefaultValue: CGFloat = 0
+    
     var shapeL: CAShapeLayer?
     var dotsL: CAShapeLayer?
     
     var payments = [[Home.PaymentHistory.Response]]()
-    var maxAmount = 0
+    var maxAmount: CGFloat = 0
     var durationType: DurationType = .Week
     
     let imageCache = NSCache<NSString, AnyObject>()
@@ -153,19 +171,19 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         payments = []
         
         var count = 0
-        var dayWiseMaxAmount = 0
+        var dayWiseMaxAmount: CGFloat = 0
         maxAmount = 0
         for payment in response {
             let paymentDateString = self.getFormatterStringWith(timeInterval: payment.created)
             
             if paymentDateString == previousDateString {
                 payments[payments.count - 1].append(response[count])
-                dayWiseMaxAmount = dayWiseMaxAmount + (response[count].amount ?? 0)
+                dayWiseMaxAmount = dayWiseMaxAmount + CGFloat(response[count].amount ?? 0)
             } else {
                 payments.append([response[count]])
                 previousDateString = paymentDateString
                 
-                dayWiseMaxAmount = response[count].amount ?? 0
+                dayWiseMaxAmount = CGFloat(response[count].amount ?? 0)
             }
             
             if maxAmount < dayWiseMaxAmount {
@@ -228,11 +246,74 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         drawGraphWith(payments1Darray: allPayments)
     }
     
+    func getPaymentDetailSuccessWith(response: Home.PaymentDetail.Response, payment: Home.PaymentHistory.Response) {
+        NLoader.shared.stopNLoader()
+        var tempPayment: Home.PaymentHistory.Response?
+        
+        var column: Int?
+        var row: Int?
+        
+        for singleDayPaymentsCount in 0..<payments.count {
+            let singleDayPayments = payments[singleDayPaymentsCount]
+            
+            for singlePaymentCount in 0..<singleDayPayments.count {
+                let singlePayment = singleDayPayments[singlePaymentCount]
+                if singlePayment.paymentId == payment.paymentId {
+                    column = singleDayPaymentsCount
+                    row = singlePaymentCount
+                    tempPayment = singlePayment
+                    break
+                }
+            }
+        }
+        if tempPayment != nil {
+            tempPayment!.details = response
+            payments[column!][row!] = tempPayment!
+        }
+        
+        if expandedCellIndexPath != nil, let cell = paymentTableView.cellForRow(at: expandedCellIndexPath!) as?  PaymentHistoryTableViewCell {
+            
+            cell.shouldExpand = true
+            if amountLabelTopConstraint.constant == amountLabelTopConstraintDefaultValue {
+                amountLabelTopConstraint.constant = -paymentTableView.frame.origin.y + 40
+            }
+            backButton.isHidden = false
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+            
+            self.reloadPaymentTableViewData()
+        }
+    }
+    
+    func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response, payment: Home.PaymentHistory.Response) {
+        NLoader.shared.stopNLoader()
+        
+        if expandedCellIndexPath != nil, let cell = paymentTableView.cellForRow(at: expandedCellIndexPath!) as?  PaymentHistoryTableViewCell {
+            
+            cell.shouldExpand = false
+            amountLabelTopConstraint.constant = amountLabelTopConstraintDefaultValue
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+            
+            self.reloadPaymentTableViewData()
+        }
+    }
+    
     //MARK:- Private methods
     
     private func reloadPaymentTableViewData() {
         paymentTableView.reloadData()
-        self.paymentTableViewHeightConstraint.constant = self.paymentTableView.contentSize.height
+        if (expandedCellIndexPath != nil) {
+            self.paymentTableViewHeightConstraint.constant = self.view.frame.size.height
+            self.scrollView.isScrollEnabled = false
+        } else {
+            self.paymentTableViewHeightConstraint.constant = self.paymentTableView.contentSize.height
+            self.scrollView.isScrollEnabled = true
+        }
         self.view.layoutIfNeeded()
     }
     
@@ -316,7 +397,7 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
     
     private func getPointFor(amount: Int) -> CGFloat {
         // substracted from 1 to reverse Y axis
-        let percentage = 1 - (CGFloat(amount) / CGFloat(maxAmount))
+        let percentage = 1 - (CGFloat(amount) / CGFloat(maxAmount == 0 ? 1 : maxAmount))
         return percentage * graphView.frame.size.height
     }
     
@@ -479,9 +560,31 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         getPaymentHistory()
     }
     
+    @IBAction func backButtonTapped() {
+        expandedCellIndexPath = nil
+        amountLabelTopConstraint.constant = amountLabelTopConstraintDefaultValue
+        backButton.isHidden = true
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+        
+        //Because of this reload the old data is refreshed and if apip is called then the new cell is refrshed on getting api response
+        self.reloadPaymentTableViewData()
+    }
+    
     private func getURLfor(payment: Home.PaymentHistory.Response) -> URL {
         let url = "\(baseURL)/v1/file/\(payment.merchantLogoId ?? "")/public"
         return URL(string: url)!
+    }
+    
+    private func getPaymentDetailFor(payment: Home.PaymentHistory.Response) {
+        NLoader.shared.startNLoader()
+        var request = Home.PaymentDetail.Request()
+        request.paymentID = payment.paymentId
+        
+        interactor?.getPaymentDetails(request: request,
+                                      payment: payment)
     }
 }
 
@@ -501,42 +604,94 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentHeaderCell", for: indexPath)
             
-            if let label = cell.viewWithTag(101) as? UILabel {
-                let created = payments[indexPath.section][indexPath.row].created
-                label.text = self.getFormatterStringWith(timeInterval: created)
+            guard let label1 = cell.viewWithTag(101) as? UILabel else {
+                return cell
+            }
+            
+            guard let label2 = cell.viewWithTag(102) as? UILabel else {
+                return cell
+            }
+            
+            let created = payments[indexPath.section][indexPath.row].created
+            label1.text = self.getFormatterStringWith(timeInterval: created)
+            label2.text = self.getFormatterStringWith(timeInterval: created)
+            
+            if expandedCellIndexPath != nil {
+                label1.isHidden = true
+                label2.isHidden = false
+            } else {
+                label1.isHidden = false
+                label2.isHidden = true
             }
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentCell", for: indexPath)
-            guard let merchantImageView = cell.viewWithTag(101) as? UIImageView else {
-                return cell
-            }
-            guard let merchantNameLabel = cell.viewWithTag(102) as? UILabel else {
-                return cell
-            }
-            guard let amountLabel = cell.viewWithTag(103) as? UILabel else {
-                return cell
-            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentHistoryTableViewCell", for: indexPath) as! PaymentHistoryTableViewCell
             let payment = payments[indexPath.section][indexPath.row - 1] // 1 substract as section is 1st always
+            cell.payment = payment
             
-            merchantNameLabel.text = payment.merchantName
-            downloadImageFrom(url: getURLfor(payment: payment), for: merchantImageView)
+            cell.merchantNameLabel.text = payment.merchantName
+            downloadImageFrom(url: getURLfor(payment: payment), for: cell.merchantImageView)
             if payment.currency == "GBP" {
-                amountLabel.text = "£\(payment.amount ?? 0)"
+                cell.amountLabel.text = "£\(payment.amount ?? 0)"
             } else {
-                amountLabel.text = "\(payment.amount ?? 0) \(payment.currency ?? "")"
+                cell.amountLabel.text = "\(payment.amount ?? 0) \(payment.currency ?? "")"
+            }
+            
+            if expandedCellIndexPath == indexPath {
+                cell.shouldExpand = true
+            } else {
+                cell.shouldExpand = false
             }
             
             return cell
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 60
-        } else {
-            return 55
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if indexPath.row == 0 {
+//            return 60
+//        } else {
+//            if let cell = tableView.cellForRow(at: indexPath) as?  PaymentHistoryTableViewCell {
+//                cell.reloadTableView()
+//                return cell.detailsTableView.frame.origin.y + cell.detailsTableViewHeightConstraint.constant
+//            }
+//            return 55
+//        }
+//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as?  PaymentHistoryTableViewCell {
+            var indexPathToSetAfterEverything: IndexPath? = nil
+            
+            if expandedCellIndexPath == nil {
+                if cell.payment != nil {
+                    indexPathToSetAfterEverything = indexPath
+                    getPaymentDetailFor(payment: cell.payment!)
+                }
+            } else if expandedCellIndexPath != indexPath {
+                if let previousCell = tableView.cellForRow(at: expandedCellIndexPath!) as? PaymentHistoryTableViewCell {
+                    previousCell.shouldExpand = false
+                }
+
+                if cell.payment != nil {
+                    indexPathToSetAfterEverything = indexPath
+                    getPaymentDetailFor(payment: cell.payment!)
+                }
+            } else if expandedCellIndexPath == indexPath {
+                expandedCellIndexPath = nil
+                amountLabelTopConstraint.constant = amountLabelTopConstraintDefaultValue
+                backButton.isHidden = true
+            }
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+            
+            //Because of this reload the old data is refreshed and if apip is called then the new cell is refrshed on getting api response
+            self.reloadPaymentTableViewData()
+            
+            expandedCellIndexPath = indexPathToSetAfterEverything
         }
     }
     

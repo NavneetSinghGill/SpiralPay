@@ -16,6 +16,9 @@ protocol HomePresentationLogic
 {
     func getPaymentHistorySuccessWith(response: [Home.PaymentHistory.Response])
     func getPaymentHistoryFailureWith(response: Home.PaymentHistory.Response)
+    
+    func getPaymentDetailSuccessWith(response: Home.PaymentDetail.Response, payment: Home.PaymentHistory.Response)
+    func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response, payment: Home.PaymentHistory.Response)
 }
 
 class HomePresenter: HomePresentationLogic
@@ -28,6 +31,14 @@ class HomePresenter: HomePresentationLogic
     
     func getPaymentHistoryFailureWith(response: Home.PaymentHistory.Response) {
         viewController?.getPaymentHistoryFailureWith(response: response)
+    }
+    
+    func getPaymentDetailSuccessWith(response: Home.PaymentDetail.Response, payment: Home.PaymentHistory.Response) {
+        viewController?.getPaymentDetailSuccessWith(response: response, payment: payment)
+    }
+    
+    func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response, payment: Home.PaymentHistory.Response) {
+        viewController?.getPaymentDetailFailureWith(response: response, payment: payment)
     }
     
 }

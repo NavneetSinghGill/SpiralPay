@@ -232,7 +232,7 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !codeTextField.isFirstResponder {
+        if !codeTextField.isFirstResponder && screenStatus == .EnterPin {
             codeTextField.becomeFirstResponder()
         }
     }

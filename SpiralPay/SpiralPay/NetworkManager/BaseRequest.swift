@@ -20,7 +20,7 @@ class BaseRequest: NSObject {
     var mimeType: String
     var headers: [String: String]?
     var parameters: Dictionary<String, Any>
-    
+        
     override init() {
         urlPath = ""
         requestType = 0
