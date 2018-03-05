@@ -40,18 +40,21 @@
 		18529F68202B31CD00BD8D0E /* PhoneVerificationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F62202B31CD00BD8D0E /* PhoneVerificationModels.swift */; };
 		18529F69202B31CD00BD8D0E /* PhoneVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F63202B31CD00BD8D0E /* PhoneVerificationViewController.swift */; };
 		18529F6A202B31CD00BD8D0E /* PhoneVerificationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F64202B31CD00BD8D0E /* PhoneVerificationInteractor.swift */; };
+		1859768320514B1F0063A647 /* ShoppingCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859768220514B1F0063A647 /* ShoppingCartViewController.swift */; };
+		185C34EF20500F2A0006EB17 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C34EE20500F2A0006EB17 /* CheckoutViewController.swift */; };
 		185C60AC20244835009D23BE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C60AB20244835009D23BE /* User.swift */; };
 		18645D50203552140017E214 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D4F203552140017E214 /* WelcomeViewController.swift */; };
 		18645D52203577040017E214 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D51203577040017E214 /* UIViewExtension.swift */; };
 		18645D5420359B7F0017E214 /* AddCardOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */; };
 		1871E896203D5730008BDEF8 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1871E895203D572D008BDEF8 /* Lato-Bold.ttf */; };
 		1871E898203DA401008BDEF8 /* BezierPathExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1871E897203DA401008BDEF8 /* BezierPathExtenstion.swift */; };
+		1873FB3B204533B1003CA863 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873FB3A204533B1003CA863 /* ScannerViewController.swift */; };
+		1890286C204D2424008D903C /* PaymentStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890286B204D2424008D903C /* PaymentStatusViewController.swift */; };
 		1890286D204D6DE1008D903C /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1890286E204D6DE1008D903C /* ObjectMapper.framework */; };
 		1890286F204D6E00008D903C /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18902870204D6E00008D903C /* SwiftKeychainWrapper.framework */; };
 		18902871204D6E15008D903C /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18902872204D6E15008D903C /* Reachability.framework */; };
 		18902873204D6E20008D903C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18902874204D6E20008D903C /* Alamofire.framework */; };
 		18902875204D6E41008D903C /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18902876204D6E41008D903C /* AlamofireObjectMapper.framework */; };
-		1873FB3B204533B1003CA863 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873FB3A204533B1003CA863 /* ScannerViewController.swift */; };
 		18943500202488F9000C2166 /* PinPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FA202488F9000C2166 /* PinPresenter.swift */; };
 		18943501202488F9000C2166 /* PinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FB202488F9000C2166 /* PinWorker.swift */; };
 		18943502202488F9000C2166 /* PinRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FC202488F9000C2166 /* PinRouter.swift */; };
@@ -184,18 +187,21 @@
 		18529F62202B31CD00BD8D0E /* PhoneVerificationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationModels.swift; sourceTree = "<group>"; };
 		18529F63202B31CD00BD8D0E /* PhoneVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationViewController.swift; sourceTree = "<group>"; };
 		18529F64202B31CD00BD8D0E /* PhoneVerificationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationInteractor.swift; sourceTree = "<group>"; };
+		1859768220514B1F0063A647 /* ShoppingCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewController.swift; sourceTree = "<group>"; };
+		185C34EE20500F2A0006EB17 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		185C60AB20244835009D23BE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		18645D4F203552140017E214 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		18645D51203577040017E214 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardOptionsViewController.swift; sourceTree = "<group>"; };
 		1871E895203D572D008BDEF8 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		1871E897203DA401008BDEF8 /* BezierPathExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathExtenstion.swift; sourceTree = "<group>"; };
+		1873FB3A204533B1003CA863 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		1890286B204D2424008D903C /* PaymentStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentStatusViewController.swift; sourceTree = "<group>"; };
 		1890286E204D6DE1008D903C /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18902870204D6E00008D903C /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18902872204D6E15008D903C /* Reachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Reachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18902874204D6E20008D903C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18902876204D6E41008D903C /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1873FB3A204533B1003CA863 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		189434FA202488F9000C2166 /* PinPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPresenter.swift; sourceTree = "<group>"; };
 		189434FB202488F9000C2166 /* PinWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinWorker.swift; sourceTree = "<group>"; };
 		189434FC202488F9000C2166 /* PinRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinRouter.swift; sourceTree = "<group>"; };
@@ -380,6 +386,16 @@
 				18529F64202B31CD00BD8D0E /* PhoneVerificationInteractor.swift */,
 			);
 			path = PhoneVerification;
+			sourceTree = "<group>";
+		};
+		1859768420514B350063A647 /* PaymentFlow */ = {
+			isa = PBXGroup;
+			children = (
+				1890286B204D2424008D903C /* PaymentStatusViewController.swift */,
+				185C34EE20500F2A0006EB17 /* CheckoutViewController.swift */,
+				1859768220514B1F0063A647 /* ShoppingCartViewController.swift */,
+			);
+			path = PaymentFlow;
 			sourceTree = "<group>";
 		};
 		189434F9202488B8000C2166 /* CreatePin */ = {
@@ -625,6 +641,7 @@
 				18D914EC2036B824008FFB60 /* CardAddedViewController.swift */,
 				180B4709203C043D00775D06 /* Home */,
 				1873FB3A204533B1003CA863 /* ScannerViewController.swift */,
+				1859768420514B350063A647 /* PaymentFlow */,
 				F1D9BAED2018614A004B42B7 /* Token */,
 			);
 			path = Scenes;
@@ -911,6 +928,7 @@
 				18943503202488F9000C2166 /* PinModels.swift in Sources */,
 				18645D52203577040017E214 /* UIViewExtension.swift in Sources */,
 				1894350720248D76000C2166 /* SpiralPayViewController.swift in Sources */,
+				185C34EF20500F2A0006EB17 /* CheckoutViewController.swift in Sources */,
 				181287B2204441A600779850 /* HomeModels.swift in Sources */,
 				1873FB3B204533B1003CA863 /* ScannerViewController.swift in Sources */,
 				F1D9BAB920185605004B42B7 /* CLLocationExtensions.swift in Sources */,
@@ -951,6 +969,7 @@
 				18529F65202B31CD00BD8D0E /* PhoneVerificationPresenter.swift in Sources */,
 				181287B3204441A600779850 /* HomePresenter.swift in Sources */,
 				F1D9BAF32018614A004B42B7 /* TokenInteractor.swift in Sources */,
+				1859768320514B1F0063A647 /* ShoppingCartViewController.swift in Sources */,
 				F1D9BAD9201856D1004B42B7 /* RealAPI.swift in Sources */,
 				180C160B202197C100818460 /* CountryViewController.swift in Sources */,
 				F1D9BAB620185605004B42B7 /* NSColorExtensions.swift in Sources */,
@@ -983,6 +1002,7 @@
 				F1E89B75201F0E540052C723 /* PhoneAndEmailPresenter.swift in Sources */,
 				F1D9BABD20185605004B42B7 /* SwifterSwift.swift in Sources */,
 				F1D9BAD8201856D1004B42B7 /* BaseRequest.swift in Sources */,
+				1890286C204D2424008D903C /* PaymentStatusViewController.swift in Sources */,
 				18529F66202B31CD00BD8D0E /* PhoneVerificationWorker.swift in Sources */,
 				F1E89B7A201F0E540052C723 /* PhoneAndEmailInteractor.swift in Sources */,
 				184A4FA3202D8EBA0019AD40 /* ConfirmDetailsInteractor.swift in Sources */,

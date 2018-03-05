@@ -140,9 +140,13 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
     //MARK: Login
     
     func loginSuccess(response: Pin.Login.Response) {
+        
+        Utils.shared.startAccessTokenExpiryTimer()
+        
         NLoader.shared.stopNLoader()
         
         User.shared.accessToken = response.accessToken
+//        User.shared.accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjpudWxsLCJ1c2VyX25hbWUiOiJkaWRfMDc5MTlDRTktMUU1RC00MTZELTgzRTYtREY0MTQzNzcyNkZGIiwic2NvcGUiOlsicXJfcGF5bWVudF9jcmVhdGUiLCJxcl9wYXltZW50X3ZpZXciLCJtZXJjaGFudF92aWV3IiwicXJfcGF5bWVudF9wcm9jZXNzIiwiY3VzdG9tZXJfbWFuYWdlIiwicGF5bWVudF92aWV3Il0sIm1lcmNoYW50X2lkIjpudWxsLCJleHAiOjE1MjAyNTY4NDEsImN1c3RvbWVyX2lkIjoiNGRkODI5MDItNzNhNi00MzZiLTk4ZjQtMTk0MTMyOTdhODk1IiwiYXV0aG9yaXRpZXMiOlsibWVyY2hhbnRfdmlldyIsInFyX3BheW1lbnRfY3JlYXRlIiwicXJfcGF5bWVudF92aWV3IiwicGF5bWVudF92aWV3IiwicXJfcGF5bWVudF9wcm9jZXNzIiwiY3VzdG9tZXJfbWFuYWdlIl0sImp0aSI6IjRjOGI1MmQwLWVkMDgtNGFmMC04ODc0LWEyMzcyMWQ4ZTFlOCIsImNsaWVudF9pZCI6InByb21ldGhldXMiLCJ1c2VybmFtZSI6ImRpZF8wNzkxOUNFOS0xRTVELTQxNkQtODNFNi1ERjQxNDM3NzI2RkYifQ.b-I08eqY_EFYCU7clItw7whLcEAonq-_PHgBRlWsfAQ"
         User.shared.save()
 
         if self == ApplicationDelegate.getWindow().rootViewController { //If its the very first screen of app
@@ -178,6 +182,7 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
         } else if pinEntry == .Login {
             headingLabel.text = "Enter PIN Code"
             passwordDoesntMatch.text = "PIN code doesn't match"
+            Utils.shared.stopAccessTokenExpiryTimer()
         }
     }
     

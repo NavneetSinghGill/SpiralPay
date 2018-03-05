@@ -194,6 +194,8 @@ enum Home
                 static let amount = "amount"
                 static let currency = "currency"
                 static let count = "count"
+                static let errorDescription = "error_description"
+                static let error = "error"
             }
             
             // MARK: Properties
@@ -202,6 +204,8 @@ enum Home
             public var amount: Int?
             public var currency: String?
             public var count: Int?
+            public var errorDescription: String?
+            public var error: String?
             
             // MARK: ObjectMapper Initializers
             /// Map a JSON object to this class using ObjectMapper.
@@ -220,6 +224,8 @@ enum Home
                 amount <- map[SerializationKeys.amount]
                 currency <- map[SerializationKeys.currency]
                 count <- map[SerializationKeys.count]
+                errorDescription <- map[SerializationKeys.errorDescription]
+                error <- map[SerializationKeys.error]
             }
             
             /// Generates description of the object in the form of a NSDictionary.
@@ -232,6 +238,8 @@ enum Home
                 if let value = amount { dictionary[SerializationKeys.amount] = value }
                 if let value = currency { dictionary[SerializationKeys.currency] = value }
                 if let value = count { dictionary[SerializationKeys.count] = value }
+                if let value = errorDescription { dictionary[SerializationKeys.errorDescription] = value }
+                if let value = error { dictionary[SerializationKeys.error] = value }
                 return dictionary
             }
             

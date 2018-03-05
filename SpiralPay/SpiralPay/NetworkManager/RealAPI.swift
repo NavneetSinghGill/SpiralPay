@@ -187,7 +187,9 @@ class RealAPI: NSObject {
         self.loginWithSavedValues()
     }
     
-    func loginWithSavedValues() {}
+    func loginWithSavedValues() {
+        
+    }
     
     func getLoginDetails() -> (email:String?, password:String?) {
         

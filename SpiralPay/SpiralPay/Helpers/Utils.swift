@@ -12,6 +12,26 @@ class Utils: NSObject {
     
     static var currentProgressBarValue: CGFloat = 0.0
     
+    static var shared = {
+        return Utils()
+    }()
+    
+    var accessTokenExpiryTimer: Timer?
+    var accessTokenExpiryTime: TimeInterval = 15*60
+    
+    func startAccessTokenExpiryTimer() {
+        accessTokenExpiryTimer?.invalidate()
+        accessTokenExpiryTimer = Timer.scheduledTimer(withTimeInterval: accessTokenExpiryTime, repeats: false, block: { (timer) in
+            DispatchQueue.main.async {
+                ApplicationDelegate.showLoginScreenIfShould()
+            }
+        })
+    }
+    
+    func stopAccessTokenExpiryTimer() {
+        accessTokenExpiryTimer?.invalidate()
+    }
+    
     class func deviceIdentifier() -> String {
         return UserDefaults.standard.string(forKey: Constants.deviceIdentifier) ?? (UIDevice.current.identifierForVendor?.uuidString)!
     }

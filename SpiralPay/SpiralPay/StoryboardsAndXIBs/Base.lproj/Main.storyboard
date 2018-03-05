@@ -3015,6 +3015,318 @@
             </objects>
             <point key="canvasLocation" x="7508" y="321"/>
         </scene>
+        <!--Shopping Cart View Controller-->
+        <scene sceneID="MhK-Pi-DI2">
+            <objects>
+                <viewController storyboardIdentifier="ShoppingCartViewController" id="KOp-N0-gxM" customClass="ShoppingCartViewController" customModule="SpiralPay" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="alR-DF-9ac">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="265.12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ij-zN-XvM">
+                                <rect key="frame" x="131" y="363" width="113" height="43.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="£" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQx-8W-WH6">
+                                <rect key="frame" x="120" y="366" width="8" height="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="E Shopping mall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWo-b9-Xcp">
+                                <rect key="frame" x="138.5" y="416.5" width="98" height="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="20/Nov/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSN-AM-Sdc">
+                                <rect key="frame" x="144" y="438.5" width="87" height="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoJ-sm-wkQ">
+                                <rect key="frame" x="101" y="540.5" width="173" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.63921568630000003" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="cPa-iz-aLu"/>
+                                    <constraint firstAttribute="width" constant="173" id="tFT-Be-4Ov"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                <state key="normal" title="Okay! Thanks">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="thanksButtonTapped" destination="KOp-N0-gxM" eventType="touchUpInside" id="t66-Qz-h12"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hcb-Yt-HoZ">
+                                <rect key="frame" x="101" y="520.5" width="173" height="101"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oEw-qk-wQV">
+                                        <rect key="frame" x="0.0" y="0.0" width="173" height="44"/>
+                                        <color key="backgroundColor" red="0.0" green="0.63921568630000003" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="173" id="RoY-Vz-T4T"/>
+                                            <constraint firstAttribute="height" constant="44" id="wRh-an-TiO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                        <state key="normal" title="Pay with another card">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="payWithAnotherCardButtonTapped" destination="KOp-N0-gxM" eventType="touchUpInside" id="dYM-Kh-ctD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOQ-Ta-d0z">
+                                        <rect key="frame" x="0.0" y="57" width="173" height="44"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="ahq-Hu-Mph"/>
+                                            <constraint firstAttribute="width" constant="173" id="anb-at-glZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                        <state key="normal" title="Go To MySpiralPay">
+                                            <color key="titleColor" red="0.0" green="0.63921568630000003" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.63921568630000003" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="goToSpiralPayButtonTapped" destination="KOp-N0-gxM" eventType="touchUpInside" id="uF8-Vt-bCz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="FOQ-Ta-d0z" firstAttribute="top" secondItem="oEw-qk-wQV" secondAttribute="bottom" constant="13" id="2L1-aI-NQK"/>
+                                    <constraint firstItem="FOQ-Ta-d0z" firstAttribute="leading" secondItem="Hcb-Yt-HoZ" secondAttribute="leading" id="Nfe-OW-GbB"/>
+                                    <constraint firstAttribute="trailing" secondItem="oEw-qk-wQV" secondAttribute="trailing" id="dez-a8-S0p"/>
+                                    <constraint firstAttribute="bottom" secondItem="FOQ-Ta-d0z" secondAttribute="bottom" id="hBd-aK-niA"/>
+                                    <constraint firstItem="oEw-qk-wQV" firstAttribute="top" secondItem="Hcb-Yt-HoZ" secondAttribute="top" id="oUe-U5-Qmg"/>
+                                    <constraint firstAttribute="trailing" secondItem="FOQ-Ta-d0z" secondAttribute="trailing" id="wzG-In-4nb"/>
+                                    <constraint firstItem="oEw-qk-wQV" firstAttribute="leading" secondItem="Hcb-Yt-HoZ" secondAttribute="leading" id="zzs-jo-d8u"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Hcb-Yt-HoZ" firstAttribute="centerX" secondItem="alR-DF-9ac" secondAttribute="centerX" id="0yN-az-t9k"/>
+                            <constraint firstItem="8ij-zN-XvM" firstAttribute="centerX" secondItem="alR-DF-9ac" secondAttribute="centerX" id="5VZ-Bb-18z"/>
+                            <constraint firstItem="GQx-8W-WH6" firstAttribute="top" secondItem="8ij-zN-XvM" secondAttribute="top" constant="3" id="E7P-0F-9QT"/>
+                            <constraint firstItem="8ij-zN-XvM" firstAttribute="leading" secondItem="GQx-8W-WH6" secondAttribute="trailing" constant="3" id="Eh6-3P-fBY"/>
+                            <constraint firstItem="EoJ-sm-wkQ" firstAttribute="centerX" secondItem="alR-DF-9ac" secondAttribute="centerX" id="PK9-R4-0dg"/>
+                            <constraint firstItem="Hcb-Yt-HoZ" firstAttribute="top" secondItem="dSN-AM-Sdc" secondAttribute="bottom" constant="65" id="XVx-eT-ZOC"/>
+                            <constraint firstItem="dSN-AM-Sdc" firstAttribute="centerX" secondItem="alR-DF-9ac" secondAttribute="centerX" id="arH-PE-wLx"/>
+                            <constraint firstItem="DWo-b9-Xcp" firstAttribute="centerX" secondItem="alR-DF-9ac" secondAttribute="centerX" id="erc-ZZ-oZi"/>
+                            <constraint firstItem="DWo-b9-Xcp" firstAttribute="top" secondItem="8ij-zN-XvM" secondAttribute="bottom" constant="10" id="i4i-3F-esA"/>
+                            <constraint firstItem="dSN-AM-Sdc" firstAttribute="top" secondItem="DWo-b9-Xcp" secondAttribute="bottom" constant="5" id="wAz-Oa-FKj"/>
+                            <constraint firstItem="EoJ-sm-wkQ" firstAttribute="top" secondItem="dSN-AM-Sdc" secondAttribute="bottom" constant="85" id="x3S-Vi-3Ti"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jtW-kW-W8p"/>
+                    </view>
+                    <connections>
+                        <outlet property="amountLabel" destination="8ij-zN-XvM" id="w3V-Yd-nGe"/>
+                        <outlet property="currencyLabel" destination="GQx-8W-WH6" id="Kh1-qD-DcW"/>
+                        <outlet property="dateLabel" destination="dSN-AM-Sdc" id="2WN-wq-0Ma"/>
+                        <outlet property="failedViewOfButton" destination="Hcb-Yt-HoZ" id="4gQ-3M-XDG"/>
+                        <outlet property="merchantNameLabel" destination="DWo-b9-Xcp" id="ZAu-D4-QUe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G66-yE-Seb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8215" y="1260"/>
+        </scene>
+        <!--Payment Status View Controller-->
+        <scene sceneID="zWl-Ep-ckO">
+            <objects>
+                <viewController storyboardIdentifier="PaymentStatusViewController" id="Ctk-60-5d9" customClass="PaymentStatusViewController" customModule="SpiralPay" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IFt-Qz-tYs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIg-AN-Z9Y">
+                                <rect key="frame" x="162.5" y="78" width="51" height="23"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paymentDoneTick" translatesAutoresizingMaskIntoConstraints="NO" id="zSC-xr-BM4">
+                                <rect key="frame" x="143" y="141" width="89" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zSC-xr-BM4" secondAttribute="height" multiplier="1.05" id="UTo-HJ-7Zp"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your payment has been approved!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nyh-kO-CaQ">
+                                <rect key="frame" x="84" y="271" width="208.5" height="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="265.12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iew-Nd-KDn">
+                                <rect key="frame" x="131" y="363" width="113" height="43.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lp8-Fq-tFd">
+                                <rect key="frame" x="120" y="366" width="8" height="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E Shopping mall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piP-nn-yYw">
+                                <rect key="frame" x="138.5" y="416.5" width="98" height="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20/Nov/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D18-ES-VEF">
+                                <rect key="frame" x="144" y="438.5" width="87" height="17"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                <color key="textColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWG-7D-qvR">
+                                <rect key="frame" x="101" y="540.5" width="173" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.63921568630000003" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="173" id="OHe-Kn-FMb"/>
+                                    <constraint firstAttribute="height" constant="44" id="sis-Yx-LpE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                <state key="normal" title="Okay! Thanks">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="thanksButtonTapped" destination="Ctk-60-5d9" eventType="touchUpInside" id="ic5-uu-g1r"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UG2-vr-RGY">
+                                <rect key="frame" x="101" y="520.5" width="173" height="101"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4i-wK-zTs">
+                                        <rect key="frame" x="0.0" y="0.0" width="173" height="44"/>
+                                        <color key="backgroundColor" red="0.0" green="0.63921568630000003" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="173" id="0FZ-eN-7wf"/>
+                                            <constraint firstAttribute="height" constant="44" id="X1D-wP-oFN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                        <state key="normal" title="Pay with another card">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="payWithAnotherCardButtonTapped" destination="Ctk-60-5d9" eventType="touchUpInside" id="SQE-Jx-H5Z"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iO8-au-GSv">
+                                        <rect key="frame" x="0.0" y="57" width="173" height="44"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="173" id="rVM-19-E00"/>
+                                            <constraint firstAttribute="height" constant="44" id="vcC-uW-BfV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                        <state key="normal" title="Go To MySpiralPay">
+                                            <color key="titleColor" red="0.0" green="0.63921568630000003" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="22"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.63921568630000003" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="goToSpiralPayButtonTapped" destination="Ctk-60-5d9" eventType="touchUpInside" id="9FQ-S0-Zh6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="iO8-au-GSv" firstAttribute="top" secondItem="K4i-wK-zTs" secondAttribute="bottom" constant="13" id="83r-Ce-H9z"/>
+                                    <constraint firstAttribute="trailing" secondItem="K4i-wK-zTs" secondAttribute="trailing" id="Myj-dD-VfW"/>
+                                    <constraint firstItem="iO8-au-GSv" firstAttribute="leading" secondItem="UG2-vr-RGY" secondAttribute="leading" id="fes-pL-oWf"/>
+                                    <constraint firstItem="K4i-wK-zTs" firstAttribute="top" secondItem="UG2-vr-RGY" secondAttribute="top" id="kj6-B8-QHv"/>
+                                    <constraint firstAttribute="bottom" secondItem="iO8-au-GSv" secondAttribute="bottom" id="rhO-ti-kzX"/>
+                                    <constraint firstItem="K4i-wK-zTs" firstAttribute="leading" secondItem="UG2-vr-RGY" secondAttribute="leading" id="tZ6-LG-XKf"/>
+                                    <constraint firstAttribute="trailing" secondItem="iO8-au-GSv" secondAttribute="trailing" id="xa9-n4-Ont"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="D18-ES-VEF" firstAttribute="top" secondItem="piP-nn-yYw" secondAttribute="bottom" constant="5" id="3xS-Nj-eXB"/>
+                            <constraint firstItem="oIg-AN-Z9Y" firstAttribute="centerX" secondItem="IFt-Qz-tYs" secondAttribute="centerX" id="40E-sD-717"/>
+                            <constraint firstItem="piP-nn-yYw" firstAttribute="centerX" secondItem="IFt-Qz-tYs" secondAttribute="centerX" id="6L0-zb-7su"/>
+                            <constraint firstItem="Nyh-kO-CaQ" firstAttribute="centerX" secondItem="IFt-Qz-tYs" secondAttribute="centerX" id="71Y-34-GUU"/>
+                            <constraint firstItem="pWG-7D-qvR" firstAttribute="centerX" secondItem="IFt-Qz-tYs" secondAttribute="centerX" id="72n-v9-jWh"/>
+                            <constraint firstItem="Iew-Nd-KDn" firstAttribute="centerX" secondItem="IFt-Qz-tYs" secondAttribute="centerX" id="9SX-cH-vAC"/>
+                            <constraint firstItem="UG2-vr-RGY" firstAttribute="centerX" secondItem="IFt-Qz-tYs" secondAttribute="centerX" id="JmZ-yU-ShO"/>
+                            <constraint firstItem="zSC-xr-BM4" firstAttribute="top" secondItem="oIg-AN-Z9Y" secondAttribute="bottom" constant="40" id="Nop-Rf-jZu"/>
+                            <constraint firstItem="piP-nn-yYw" firstAttribute="top" secondItem="Iew-Nd-KDn" secondAttribute="bottom" constant="10" id="Rcb-eg-shZ"/>
+                            <constraint firstItem="Iew-Nd-KDn" firstAttribute="top" secondItem="Nyh-kO-CaQ" secondAttribute="bottom" constant="75" id="Xms-vL-4On"/>
+                            <constraint firstItem="D18-ES-VEF" firstAttribute="centerX" secondItem="IFt-Qz-tYs" secondAttribute="centerX" id="dDj-Sr-vVj"/>
+                            <constraint firstItem="oIg-AN-Z9Y" firstAttribute="top" secondItem="tJb-U6-yvv" secondAttribute="top" constant="58" id="e1s-7U-Srm"/>
+                            <constraint firstItem="Iew-Nd-KDn" firstAttribute="leading" secondItem="lp8-Fq-tFd" secondAttribute="trailing" constant="3" id="eG7-oZ-8iO"/>
+                            <constraint firstItem="zSC-xr-BM4" firstAttribute="centerX" secondItem="IFt-Qz-tYs" secondAttribute="centerX" id="h5R-mY-7XD"/>
+                            <constraint firstItem="UG2-vr-RGY" firstAttribute="top" secondItem="D18-ES-VEF" secondAttribute="bottom" constant="65" id="uDg-6v-7Zm"/>
+                            <constraint firstItem="lp8-Fq-tFd" firstAttribute="top" secondItem="Iew-Nd-KDn" secondAttribute="top" constant="3" id="vBB-Pr-BIe"/>
+                            <constraint firstItem="Nyh-kO-CaQ" firstAttribute="top" secondItem="zSC-xr-BM4" secondAttribute="bottom" constant="45" id="xS2-nY-M8e"/>
+                            <constraint firstItem="pWG-7D-qvR" firstAttribute="top" secondItem="D18-ES-VEF" secondAttribute="bottom" constant="85" id="zn3-OP-eW1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tJb-U6-yvv"/>
+                    </view>
+                    <connections>
+                        <outlet property="amountLabel" destination="Iew-Nd-KDn" id="6d4-KM-pao"/>
+                        <outlet property="currencyLabel" destination="lp8-Fq-tFd" id="c9w-DW-1IR"/>
+                        <outlet property="dateLabel" destination="D18-ES-VEF" id="f5y-6v-zhM"/>
+                        <outlet property="failedViewOfButton" destination="UG2-vr-RGY" id="1Pm-ty-sbx"/>
+                        <outlet property="infoMessageLabel" destination="Nyh-kO-CaQ" id="K7i-YK-MT1"/>
+                        <outlet property="merchantNameLabel" destination="piP-nn-yYw" id="sJy-ga-TyU"/>
+                        <outlet property="statusImageView" destination="zSC-xr-BM4" id="8ff-yJ-DsP"/>
+                        <outlet property="statusMessageLabel" destination="oIg-AN-Z9Y" id="a60-N4-dfN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i3a-pQ-w5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9014" y="1260"/>
+        </scene>
     </scenes>
     <resources>
         <image name="acceptPayment" width="75" height="75"/>
@@ -3027,7 +3339,7 @@
         <image name="borderTopRight" width="50" height="51"/>
         <image name="buttonBlueBackground" width="309" height="52"/>
         <image name="cameraCard" width="21" height="20"/>
-        <image name="cancelPayment" width="16" height="16"/>
+        <image name="cancelPayment" width="75" height="75"/>
         <image name="cardBackground" width="138" height="80"/>
         <image name="fingerPrint" width="17" height="17"/>
         <image name="horizontalDots" width="310" height="4"/>
@@ -3038,6 +3350,7 @@
         <image name="moreSelected" width="19" height="4"/>
         <image name="mySpiralPay" width="16" height="17"/>
         <image name="mySpiralPaySelected" width="16" height="17"/>
+        <image name="paymentDoneTick" width="89" height="84"/>
         <image name="phoneConnect" width="72" height="74"/>
         <image name="phonePinSelected" width="40" height="40"/>
         <image name="phonePinUnSelected" width="40" height="40"/>

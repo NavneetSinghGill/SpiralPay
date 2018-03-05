@@ -20,7 +20,7 @@ class ScannerViewController: SpiralPayViewController, AVCaptureMetadataOutputObj
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.black
+//        view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
         
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
@@ -54,7 +54,7 @@ class ScannerViewController: SpiralPayViewController, AVCaptureMetadataOutputObj
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = view.layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
-        view.layer.addSublayer(previewLayer)
+        mainView.layer.addSublayer(previewLayer)
         
         captureSession.startRunning()
     }
@@ -124,4 +124,12 @@ class ScannerViewController: SpiralPayViewController, AVCaptureMetadataOutputObj
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
+    
+    //MARK:- IBAction methods
+    
+    @IBAction func outsideAreaTapped() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }

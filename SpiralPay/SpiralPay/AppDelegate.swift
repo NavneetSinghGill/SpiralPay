@@ -151,7 +151,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let pinVC = PinViewController.create()
         pinVC.pinEntry = .Login
         let viewC = UIApplication.shared.keyWindow?.rootViewController
-        if viewC != nil {
+        let presentedVC = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController
+        
+        if let loginVC = presentedVC as? PinViewController {
+            if loginVC.pinEntry == .Login {
+                return
+            }
+        }
+        if presentedVC != nil {
+            presentedVC?.present(pinVC, animated: false, completion: nil)
+        } else if viewC != nil {
             viewC?.present(pinVC, animated: false, completion: nil)
         } else {
             UIApplication.shared.windows.first?.rootViewController = pinVC
