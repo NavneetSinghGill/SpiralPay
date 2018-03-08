@@ -195,7 +195,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func showHomeTabBarScreen() {
         let homeTabBar = HomeContainerViewController.create()
-        ApplicationDelegate.getWindow().rootViewController = homeTabBar
+        let navC = UINavigationController(rootViewController: homeTabBar)
+        navC.navigationBar.isHidden = true
+        ApplicationDelegate.getWindow().rootViewController = navC
     }
     
     func getWindow() -> UIWindow {

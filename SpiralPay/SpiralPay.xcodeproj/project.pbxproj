@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		180B4707203C041500775D06 /* HomeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B4706203C041500775D06 /* HomeContainerViewController.swift */; };
 		180B470D203C3C0700775D06 /* TabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B470C203C3C0700775D06 /* TabBarItemView.swift */; };
 		180B4715203C461300775D06 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B4714203C461300775D06 /* SettingsViewController.swift */; };
 		180C1607202197C100818460 /* CountryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1601202197C100818460 /* CountryPresenter.swift */; };
@@ -27,6 +26,12 @@
 		181287B3204441A600779850 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181287AD204441A600779850 /* HomePresenter.swift */; };
 		1815BC832047D8C20001E392 /* PaymentPriceDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815BC812047D8C20001E392 /* PaymentPriceDetailsTableViewCell.swift */; };
 		1815BC842047D8C20001E392 /* PaymentPriceDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1815BC822047D8C20001E392 /* PaymentPriceDetailsTableViewCell.xib */; };
+		18256FDE20527AB2007FA954 /* HomeContainerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18256FD820527AB2007FA954 /* HomeContainerPresenter.swift */; };
+		18256FDF20527AB2007FA954 /* HomeContainerWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18256FD920527AB2007FA954 /* HomeContainerWorker.swift */; };
+		18256FE020527AB2007FA954 /* HomeContainerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18256FDA20527AB2007FA954 /* HomeContainerRouter.swift */; };
+		18256FE120527AB2007FA954 /* HomeContainerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18256FDB20527AB2007FA954 /* HomeContainerModels.swift */; };
+		18256FE220527AB2007FA954 /* HomeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18256FDC20527AB2007FA954 /* HomeContainerViewController.swift */; };
+		18256FE320527AB2007FA954 /* HomeContainerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18256FDD20527AB2007FA954 /* HomeContainerInteractor.swift */; };
 		184A4F9E202D8EB90019AD40 /* ConfirmDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F98202D8EB90019AD40 /* ConfirmDetailsPresenter.swift */; };
 		184A4F9F202D8EBA0019AD40 /* ConfirmDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F99202D8EB90019AD40 /* ConfirmDetailsWorker.swift */; };
 		184A4FA0202D8EBA0019AD40 /* ConfirmDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F9A202D8EB90019AD40 /* ConfirmDetailsRouter.swift */; };
@@ -154,7 +159,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		180B4706203C041500775D06 /* HomeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerViewController.swift; sourceTree = "<group>"; };
 		180B470C203C3C0700775D06 /* TabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemView.swift; sourceTree = "<group>"; };
 		180B4714203C461300775D06 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		180C1601202197C100818460 /* CountryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPresenter.swift; sourceTree = "<group>"; };
@@ -174,6 +178,12 @@
 		181287AD204441A600779850 /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		1815BC812047D8C20001E392 /* PaymentPriceDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPriceDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		1815BC822047D8C20001E392 /* PaymentPriceDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentPriceDetailsTableViewCell.xib; sourceTree = "<group>"; };
+		18256FD820527AB2007FA954 /* HomeContainerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerPresenter.swift; sourceTree = "<group>"; };
+		18256FD920527AB2007FA954 /* HomeContainerWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerWorker.swift; sourceTree = "<group>"; };
+		18256FDA20527AB2007FA954 /* HomeContainerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerRouter.swift; sourceTree = "<group>"; };
+		18256FDB20527AB2007FA954 /* HomeContainerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerModels.swift; sourceTree = "<group>"; };
+		18256FDC20527AB2007FA954 /* HomeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerViewController.swift; sourceTree = "<group>"; };
+		18256FDD20527AB2007FA954 /* HomeContainerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerInteractor.swift; sourceTree = "<group>"; };
 		184A4F98202D8EB90019AD40 /* ConfirmDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsPresenter.swift; sourceTree = "<group>"; };
 		184A4F99202D8EB90019AD40 /* ConfirmDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsWorker.swift; sourceTree = "<group>"; };
 		184A4F9A202D8EB90019AD40 /* ConfirmDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsRouter.swift; sourceTree = "<group>"; };
@@ -327,7 +337,7 @@
 		180B4709203C043D00775D06 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				180B4706203C041500775D06 /* HomeContainerViewController.swift */,
+				18256FCB205279D5007FA954 /* HomeContainer */,
 				1810DF0B203C62DC00722760 /* LoyaltyViewController.swift */,
 				181287B4204441B700779850 /* HomeScreen */,
 				1810DF0D203C62F000722760 /* MySpiralPayViewController.swift */,
@@ -360,6 +370,19 @@
 				181287A9204441A600779850 /* HomeWorker.swift */,
 			);
 			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		18256FCB205279D5007FA954 /* HomeContainer */ = {
+			isa = PBXGroup;
+			children = (
+				18256FDD20527AB2007FA954 /* HomeContainerInteractor.swift */,
+				18256FDB20527AB2007FA954 /* HomeContainerModels.swift */,
+				18256FD820527AB2007FA954 /* HomeContainerPresenter.swift */,
+				18256FDA20527AB2007FA954 /* HomeContainerRouter.swift */,
+				18256FDC20527AB2007FA954 /* HomeContainerViewController.swift */,
+				18256FD920527AB2007FA954 /* HomeContainerWorker.swift */,
+			);
+			path = HomeContainer;
 			sourceTree = "<group>";
 		};
 		184A4F97202D8E540019AD40 /* ConfirmDetails */ = {
@@ -947,6 +970,7 @@
 				F1D9BAAE20185605004B42B7 /* BoolExtensions.swift in Sources */,
 				180C1608202197C100818460 /* CountryWorker.swift in Sources */,
 				F1D9BAF42018614A004B42B7 /* TokenPresenter.swift in Sources */,
+				18256FDF20527AB2007FA954 /* HomeContainerWorker.swift in Sources */,
 				181287AF204441A600779850 /* HomeWorker.swift in Sources */,
 				18943504202488F9000C2166 /* PinViewController.swift in Sources */,
 				F1D9BABE20185605004B42B7 /* DateExtensions.swift in Sources */,
@@ -956,6 +980,7 @@
 				189F22F52035A5D600971AFD /* AddCardManuallyViewController.swift in Sources */,
 				F1D9BAA820185605004B42B7 /* FloatExtensions.swift in Sources */,
 				18943505202488F9000C2166 /* PinInteractor.swift in Sources */,
+				18256FE020527AB2007FA954 /* HomeContainerRouter.swift in Sources */,
 				180B4715203C461300775D06 /* SettingsViewController.swift in Sources */,
 				F1D9BAB520185605004B42B7 /* CGColorExtensions.swift in Sources */,
 				F16DF1F42018ADDB00FE3F94 /* ProgressBarView.swift in Sources */,
@@ -975,7 +1000,6 @@
 				F1D9BAB620185605004B42B7 /* NSColorExtensions.swift in Sources */,
 				F1D9BADA201856D1004B42B7 /* NetworkHttpClient.swift in Sources */,
 				F1D9BAA520185605004B42B7 /* StoryboardIdentifiable.swift in Sources */,
-				180B4707203C041500775D06 /* HomeContainerViewController.swift in Sources */,
 				F1D9BAB820185605004B42B7 /* NSAttributedStringExtensions.swift in Sources */,
 				F1D9BAB120185605004B42B7 /* URLExtensions.swift in Sources */,
 				184A4FA5202DB72B0019AD40 /* DateAndTimeViewController.swift in Sources */,
@@ -985,6 +1009,8 @@
 				F1D9BAD5201856D1004B42B7 /* AppSettingsManager.swift in Sources */,
 				18645D50203552140017E214 /* WelcomeViewController.swift in Sources */,
 				F1D9BAAF20185605004B42B7 /* GenericExtensions.swift in Sources */,
+				18256FDE20527AB2007FA954 /* HomeContainerPresenter.swift in Sources */,
+				18256FE320527AB2007FA954 /* HomeContainerInteractor.swift in Sources */,
 				F1D9BAF52018614A004B42B7 /* TokenManager.swift in Sources */,
 				184A4FA0202D8EBA0019AD40 /* ConfirmDetailsRouter.swift in Sources */,
 				181287B0204441A600779850 /* HomeViewController.swift in Sources */,
@@ -994,6 +1020,7 @@
 				F1D9BAF72018614A004B42B7 /* TokenModels.swift in Sources */,
 				F1E89B79201F0E540052C723 /* PhoneAndEmailViewController.swift in Sources */,
 				18943500202488F9000C2166 /* PinPresenter.swift in Sources */,
+				18256FE220527AB2007FA954 /* HomeContainerViewController.swift in Sources */,
 				F1E89B77201F0E540052C723 /* PhoneAndEmailRouter.swift in Sources */,
 				1894350920248DA7000C2166 /* ProgressBarViewController.swift in Sources */,
 				F1E89B78201F0E540052C723 /* PhoneAndEmailModels.swift in Sources */,
@@ -1014,6 +1041,7 @@
 				18529F69202B31CD00BD8D0E /* PhoneVerificationViewController.swift in Sources */,
 				180C1607202197C100818460 /* CountryPresenter.swift in Sources */,
 				F1D9BAAA20185605004B42B7 /* UIStoryboard+Storyboards.swift in Sources */,
+				18256FE120527AB2007FA954 /* HomeContainerModels.swift in Sources */,
 				F1D9BAAC20185605004B42B7 /* DictionaryExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

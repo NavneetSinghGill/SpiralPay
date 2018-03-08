@@ -395,9 +395,9 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         return percentage * graphView.frame.size.width
     }
     
-    private func getPointFor(amount: Int) -> CGFloat {
+    private func getPointFor(amount: CGFloat) -> CGFloat {
         // substracted from 1 to reverse Y axis
-        let percentage = 1 - (CGFloat(amount) / CGFloat(maxAmount == 0 ? 1 : maxAmount))
+        let percentage = 1 - (amount / CGFloat(maxAmount == 0 ? 1 : maxAmount))
         return percentage * graphView.frame.size.height
     }
     
@@ -632,11 +632,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.merchantNameLabel.text = payment.merchantName
             downloadImageFrom(url: getURLfor(payment: payment), for: cell.merchantImageView)
-            if payment.currency == "GBP" {
-                cell.amountLabel.text = "£\(payment.amount ?? 0)"
-            } else {
-                cell.amountLabel.text = "\(payment.amount ?? 0) \(payment.currency ?? "")"
-            }
+
+            cell.amountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: payment.currency, amount: CGFloat(payment.amount ?? 0))
             
             if expandedCellIndexPath == indexPath {
                 cell.shouldExpand = true

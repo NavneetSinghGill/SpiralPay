@@ -8,31 +8,48 @@
 
 import UIKit
 
+enum ShutterAction {
+    case Open
+    case Close
+    case Reverse
+}
+
 class CheckoutViewController: SpiralPayViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var chooseCardView: UIView!
     @IBOutlet weak var entensionView1: UIView!
     @IBOutlet weak var entensionView2: UIView!
+    @IBOutlet weak var seeMoreView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var dottedImageView: UIImageView!
+    
+    @IBOutlet weak var seemoreButton: UIButton!
+    
     @IBOutlet weak var totalAmountLabel: UILabel!
     @IBOutlet weak var last4CardDigitsLabel: UILabel!
-    @IBOutlet weak var dottedImageView: UIImageView!
+    @IBOutlet weak var boldTotalAmountLabel: UILabel!
+    @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     
     @IBOutlet weak var blueViewLeadingContraint: NSLayoutConstraint!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var seeMoreViewHeightConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var seeMoreView: UIView!
-    
     var defaultTableViewHeight: CGFloat = 0
     var defaultSeeMoreViewHeight: CGFloat = 0
+    var currency: String?
     
-    var items = ["asdasd"]//,"asdasds122", "ad222sx","ni","as","asd","22ws"]
+    var subTotal: CGFloat = 0
+    var vat: CGFloat = 0.2
+    
+    var items = [Home.PaymentDetail.Response]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +60,8 @@ class CheckoutViewController: SpiralPayViewController {
     //MARK:- IBAction methods
     
     @IBAction func chooseCardButtonTapped() {
+        doChangesToShutterAsPer(shutterAction: .Close)
+        
         blueViewLeadingContraint.constant = 0
         UIView.animate(withDuration: 0.3) {
             self.chooseCardView.superview?.layoutIfNeeded()
@@ -61,28 +80,49 @@ class CheckoutViewController: SpiralPayViewController {
     }
     
     @IBAction func seeMoreButtonTapped(button: UIButton) {
-        button.isSelected = !button.isSelected
-        if button.isSelected {
-            tableViewHeightConstraint.constant = tableView.contentSize.height
-        } else {
-            tableViewHeightConstraint.constant = defaultTableViewHeight
-        }
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        })
+        doChangesToShutterAsPer()
+    }
+    
+    @IBAction func declineButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func acceptButtonTapped() {
+
     }
     
     //MARK:- Private methods
     
     private func initialSetup() {
-        tableView.estimatedRowHeight = 0
+        setUIwithProduct()
+        
+        tableView.estimatedRowHeight = 19
         tableView.estimatedSectionHeaderHeight = 0
         tableView.estimatedSectionFooterHeight = 0
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         defaultTableViewHeight = tableViewHeightConstraint.constant
         defaultSeeMoreViewHeight = seeMoreViewHeightConstraint.constant
         
         reloadTableViewData()
+        
+        addressLabel.text = "\(User.shared.address ?? "") \(User.shared.city ?? "") \(User.shared.countryName ?? "") \(User.shared.postcode ?? "")"
+    }
+    
+    private func setUIwithProduct() {
+        subTotal = 0
+        for item in items {
+            subTotal = subTotal + (item.amount ?? 0)
+        }
+        
+        if let item = items.first {
+            currency = Utils.shared.getCurrencyStringWith(currency: item.currency)
+        }
+        
+        let totalAmountString = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: subTotal * (1 + vat))
+        totalAmountLabel.text = totalAmountString
+        boldTotalAmountLabel.text = "\(subTotal * (1 + vat))"
+        currencyLabel.text = currency
     }
     
     private func reloadTableViewData() {
@@ -101,6 +141,25 @@ class CheckoutViewController: SpiralPayViewController {
             seeMoreViewHeightConstraint.constant = defaultSeeMoreViewHeight
             self.view.layoutIfNeeded()
         }
+    }
+    
+    private func doChangesToShutterAsPer(shutterAction: ShutterAction = .Reverse) {
+        if shutterAction == .Reverse {
+            seemoreButton.isSelected = !seemoreButton.isSelected
+        } else if shutterAction == .Open {
+            seemoreButton.isSelected = true
+        } else if shutterAction == .Close {
+            seemoreButton.isSelected = false
+        }
+        
+        if seemoreButton.isSelected {
+            tableViewHeightConstraint.constant = tableView.contentSize.height
+        } else {
+            tableViewHeightConstraint.constant = defaultTableViewHeight
+        }
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
 
 }
@@ -126,8 +185,8 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
                 return itemCell
             }
             
-            itemNameLabel.text = "\(indexPath.row)"
-            itemAmountLabel.text = "£\(indexPath.row).00"
+            itemNameLabel.text = "1x \(items[indexPath.row].merchantName ?? "-")"
+            itemAmountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: items[indexPath.row].currency, amount: items[indexPath.row].amount)
             
             return itemCell
         } else {
@@ -142,18 +201,14 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
             
             if indexPath.row == items.count {
                 headingLabel.text = "Sub total"
-                amountLabel.text = "£0.00"
+                amountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: subTotal)
             } else if indexPath.row == items.count + 1 {
                 headingLabel.text = "VAT paid"
-                amountLabel.text = "£0.00"
+                amountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: subTotal * vat)
             }
             
             return itemCell
         }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 19
     }
     
 }

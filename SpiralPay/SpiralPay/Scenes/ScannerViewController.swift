@@ -9,6 +9,10 @@
 import AVFoundation
 import UIKit
 
+protocol ScannerDelegate {
+    func scanSuccessWith(code: String)
+}
+
 class ScannerViewController: SpiralPayViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     @IBOutlet weak var mainView: UIView!
@@ -16,6 +20,8 @@ class ScannerViewController: SpiralPayViewController, AVCaptureMetadataOutputObj
     
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
+    
+    var scannerDelegate: ScannerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,17 +110,12 @@ class ScannerViewController: SpiralPayViewController, AVCaptureMetadataOutputObj
                 guard let stringValue = readableObject.stringValue else { return }
                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                 
-                found(code: stringValue)
-                
                 captureSession.stopRunning()
-                dismiss(animated: true)
-                
+                dismiss(animated: true, completion: {
+                    self.scannerDelegate?.scanSuccessWith(code: stringValue)
+                })
             }
         }
-    }
-    
-    func found(code: String) {
-        print(code)
     }
     
     override var prefersStatusBarHidden: Bool {

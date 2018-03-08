@@ -103,11 +103,7 @@ extension PaymentHistoryTableViewCell: UITableViewDataSource, UITableViewDelegat
         if indexPath.row == payment!.details!.customerItems!.count { //last cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentPriceDetailsTableViewCell", for: indexPath) as! PaymentPriceDetailsTableViewCell
             
-            if currency == "GBP" {
-                cell.totalAmountLabel.text = "£\(totalAmount)"
-            } else {
-                cell.totalAmountLabel.text = "\(totalAmount) \(currency ?? "")"
-            }
+            cell.totalAmountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: totalAmount)
             
             return cell
         } else {

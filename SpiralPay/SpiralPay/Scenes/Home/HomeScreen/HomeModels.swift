@@ -51,7 +51,7 @@ enum Home
             public var created: Int?
             public var merchantLogoId: String?
             public var currency: String?
-            public var amount: Int?
+            public var amount: CGFloat?
             public var merchantId: String?
             public var message: String?
             
@@ -135,7 +135,7 @@ enum Home
             public var merchantLogoId: String?
             public var customerItems: [CustomerItems]?
             public var currency: String?
-            public var amount: Int?
+            public var amount: CGFloat?
             public var merchantId: String?
             public var redirectUrl: String?
             public var message: String?

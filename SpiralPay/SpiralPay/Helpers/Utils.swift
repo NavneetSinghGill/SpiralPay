@@ -32,6 +32,21 @@ class Utils: NSObject {
         accessTokenExpiryTimer?.invalidate()
     }
     
+    func getFormattedAmountStringWith(currency: String?, amount: CGFloat?) -> String! {
+        if currency == "GBP" {
+            return "£\(amount ?? 0)"
+        } else {
+            return "\(amount ?? 0) \(currency ?? "")"
+        }
+    }
+    
+    func getCurrencyStringWith(currency: String?) -> String! {
+        if currency == "GBP" {
+            return "£"
+        }
+        return currency
+    }
+    
     class func deviceIdentifier() -> String {
         return UserDefaults.standard.string(forKey: Constants.deviceIdentifier) ?? (UIDevice.current.identifierForVendor?.uuidString)!
     }
