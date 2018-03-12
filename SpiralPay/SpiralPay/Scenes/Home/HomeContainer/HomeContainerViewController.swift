@@ -130,6 +130,7 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         selectItemWith(tag: 102)
         showScreen(newScreen: homeViewController)
     }
@@ -159,9 +160,12 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
     func getPaymentDetailSuccessWith(response: Home.PaymentDetail.Response) {
         NLoader.shared.stopNLoader()
 
-        let checkoutScreen = CheckoutViewController.create()
-        checkoutScreen.items = [response]
-        self.navigationController?.pushViewController(checkoutScreen, animated: true)
+        let productDetailsScreen = ProductDetailsViewController.create()
+        if response.customerItems != nil && response.customerItems!.count > 0 {
+            productDetailsScreen.paymentDetail = response
+            productDetailsScreen.items = response.customerItems!
+            self.navigationController?.pushViewController(productDetailsScreen, animated: true)
+        }
     }
     
     func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response) {

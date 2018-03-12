@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         
         User.shared.restore()
+        Card.shared.restore()
         
         didOpenFromDidFinishLaunchingWithOptions = true
         showLoginScreenIfShould()

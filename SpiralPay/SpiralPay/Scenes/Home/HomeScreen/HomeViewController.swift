@@ -103,6 +103,7 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
     //MARK:- Variables
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var amountLabelTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var graphView: UIView!
     @IBOutlet weak var monthButton: UIButton!
@@ -163,12 +164,15 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         payments = []
         clearGraph()
         reloadPaymentTableViewData()
+        amountLabel.text = "0.00"
+        currencyLabel.text = ""
     }
     
     func read(response: [Home.PaymentHistory.Response]) {
         
         var previousDateString = ".."
         payments = []
+        var totalAmount: CGFloat = 0
         
         var count = 0
         var dayWiseMaxAmount: CGFloat = 0
@@ -189,9 +193,19 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
             if maxAmount < dayWiseMaxAmount {
                 maxAmount = dayWiseMaxAmount
             }
-                
+            
+            print("\n .....\(payment.amount!)  ..... \(totalAmount)")
+            totalAmount = totalAmount + (payment.amount ?? 0)
             count = count + 1
         }
+        
+        if let payment = response.first {
+            currencyLabel.text = Utils.shared.getCurrencyStringWith(currency: payment.currency)
+        } else {
+            currencyLabel.text = ""
+        }
+        
+        amountLabel.text = "\(totalAmount/100)"
         
         self.reloadPaymentTableViewData()
         

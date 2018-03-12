@@ -123,6 +123,7 @@ enum Home
                 static let amount = "amount"
                 static let merchantId = "merchant_id"
                 static let redirectUrl = "redirect_url"
+                static let vat = "vat"
                 static let message = "message"
             }
             
@@ -138,6 +139,7 @@ enum Home
             public var amount: CGFloat?
             public var merchantId: String?
             public var redirectUrl: String?
+            public var vat: Int?
             public var message: String?
             
             public init?(map: Map){
@@ -163,6 +165,7 @@ enum Home
                 amount <- map[SerializationKeys.amount]
                 merchantId <- map[SerializationKeys.merchantId]
                 redirectUrl <- map[SerializationKeys.redirectUrl]
+                vat <- map[SerializationKeys.vat]
                 message <- map[SerializationKeys.message]
             }
             
@@ -179,6 +182,7 @@ enum Home
                 if let value = amount { dictionary[SerializationKeys.amount] = value }
                 if let value = merchantId { dictionary[SerializationKeys.merchantId] = value }
                 if let value = redirectUrl { dictionary[SerializationKeys.redirectUrl] = value }
+                if let value = vat { dictionary[SerializationKeys.vat] = value }
                 if let value = message { dictionary[SerializationKeys.message] = value }
                 return dictionary
             }
@@ -194,6 +198,7 @@ enum Home
                 static let amount = "amount"
                 static let currency = "currency"
                 static let count = "count"
+                static let vat = "vat"
                 static let errorDescription = "error_description"
                 static let error = "error"
             }
@@ -201,9 +206,10 @@ enum Home
             // MARK: Properties
             public var descriptionValue: String?
             public var name: String?
-            public var amount: Int?
+            public var amount: CGFloat?
             public var currency: String?
             public var count: Int?
+            public var vat: Int?
             public var errorDescription: String?
             public var error: String?
             
@@ -224,6 +230,7 @@ enum Home
                 amount <- map[SerializationKeys.amount]
                 currency <- map[SerializationKeys.currency]
                 count <- map[SerializationKeys.count]
+                vat <- map[SerializationKeys.vat]
                 errorDescription <- map[SerializationKeys.errorDescription]
                 error <- map[SerializationKeys.error]
             }
@@ -238,6 +245,7 @@ enum Home
                 if let value = amount { dictionary[SerializationKeys.amount] = value }
                 if let value = currency { dictionary[SerializationKeys.currency] = value }
                 if let value = count { dictionary[SerializationKeys.count] = value }
+                if let value = vat { dictionary[SerializationKeys.vat] = value }
                 if let value = errorDescription { dictionary[SerializationKeys.errorDescription] = value }
                 if let value = error { dictionary[SerializationKeys.error] = value }
                 return dictionary
