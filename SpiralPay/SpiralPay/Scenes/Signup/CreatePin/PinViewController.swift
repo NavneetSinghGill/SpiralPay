@@ -208,8 +208,8 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
         
         var request = Pin.Login.Request()
         request.pinCode = pin
-        
-        interactor?.doLogin(request: request)
+
+        self.interactor?.doLogin(request: request)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

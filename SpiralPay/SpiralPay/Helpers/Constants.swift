@@ -14,7 +14,6 @@ let ApplicationDelegate = UIApplication.shared.delegate as! AppDelegate
 typealias CompletionHandler = (_ success: Bool, _ response: Any?) -> Void
 
 let isiPad: Bool = UIDevice.current.userInterfaceIdiom == .pad
-let deviceUDID = UIDevice.current.identifierForVendor?.uuidString ?? "simulator"
 
 let screenHeight = UIScreen.main.bounds.size.height
 let screenWidth = UIScreen.main.bounds.size.width

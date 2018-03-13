@@ -27,7 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             User.resetSavedValues()
             Card.resetSavedValues()
             UserDefaults.standard.set(true, forKey: Constants.kHadAppRunBeforeAtleastOnce)
+            UserDefaults.standard.set(UIDevice.current.identifierForVendor?.uuidString, forKey: Constants.deviceIdentifier)
             UserDefaults.standard.synchronize()
+            
         }
         
         setupNetworkMonitoring()

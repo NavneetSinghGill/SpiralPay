@@ -25,7 +25,7 @@ enum Pin
     struct Request
     {
         var phone: String?
-        var deviceID:String! = "did_\(deviceUDID)"
+        var deviceID:String! = "did_\(UserDefaults.standard.value(forKey: Constants.deviceIdentifier)!)"
         var email: String?
         var pinCode: String?
         
@@ -91,7 +91,7 @@ enum Pin
     {
         struct Request
         {
-            var deviceID:String! = "did_\(deviceUDID)"
+            var deviceID:String! = "did_\(UserDefaults.standard.value(forKey: Constants.deviceIdentifier)!)"
             var pinCode: String?
             
             func baseRequest() -> BaseRequest {

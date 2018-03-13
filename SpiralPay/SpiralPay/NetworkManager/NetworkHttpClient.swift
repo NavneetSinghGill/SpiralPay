@@ -76,7 +76,7 @@ class NetworkHttpClient: NSObject {
         
         
         var headers = requestHeaders
-        if headers == nil {
+        if headers == nil && strURL != loginURL {
             headers = NetworkHttpClient.getHeader() as? HTTPHeaders
         }
         
@@ -86,6 +86,7 @@ class NetworkHttpClient: NSObject {
             params[BaseRequest.hasArrayResponse] = nil
             
             Alamofire.request(completeURL, method: methodType, parameters: params, encoding: (methodType == .get ? URLEncoding.default : JSONEncoding.default), headers: headers).responseArray { (response: DataResponse<[T]>) in
+                self.showAlertWith(message: "1\(response)")
                 print("Response array: \(response)")
                 switch response.result {
                 case .success(let value):
@@ -102,7 +103,7 @@ class NetworkHttpClient: NSObject {
             var params:Dictionary<String, Any> = parameters!
             params[BaseRequest.hasArrayResponse] = nil
             Alamofire.request(completeURL, method: methodType, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { (response) -> Void in
-                
+                self.showAlertWith(message: "2\(response)")
                 print("Response null: \(response)")
                 switch response.result {
                 case .success(let value):
@@ -126,7 +127,7 @@ class NetworkHttpClient: NSObject {
         else
         {
             Alamofire.request(completeURL, method: methodType, parameters: parameters, encoding: (methodType == .get ? URLEncoding.default : JSONEncoding.default), headers: headers).responseObject { (response: DataResponse<T>) in
-                
+                self.showAlertWith(message: "3\(response)")
                 print("Response regular: \(response)")
                 
                 //Exception is for the ones when response is empty
@@ -177,6 +178,13 @@ class NetworkHttpClient: NSObject {
             print("Header: \(header)")
         }
         return header
+    }
+    
+    func showAlertWith(message: String) {
+        return
+        let alert = UIAlertController(title: nil, message: "\(UserDefaults.standard.value(forKey: Constants.deviceIdentifier)!) \(message)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
     func handleExceptionsFor<T:Mappable>(url: String, withResponseCode: Int, response: DataResponse<T>, genericResponse:T.Type) -> AnyObject? {
