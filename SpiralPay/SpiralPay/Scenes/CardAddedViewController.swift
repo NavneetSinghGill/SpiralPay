@@ -22,7 +22,9 @@ class CardAddedViewController: SpiralPayViewController {
     
     @IBAction func spiralPayButtonTapped() {
         let homeTabBar = HomeContainerViewController.create()
-        ApplicationDelegate.getWindow().rootViewController = homeTabBar
+        let navC = UINavigationController(rootViewController: homeTabBar)
+        navC.navigationBar.isHidden = true
+        ApplicationDelegate.getWindow().rootViewController = navC
     }
 
 }

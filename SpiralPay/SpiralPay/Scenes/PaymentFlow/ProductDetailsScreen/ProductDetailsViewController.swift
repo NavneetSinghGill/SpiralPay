@@ -12,6 +12,11 @@
 
 import UIKit
 
+enum DetailsType {
+    case Payment
+    case Campaign
+}
+
 enum ShutterAction {
     case Open
     case Close
@@ -23,8 +28,14 @@ protocol ProductDetailsDisplayLogic: class
     func processPaymentSuccessWith(response: ProductDetails.ProcessPayment.Response)
     func processPaymentFailureWith(response: ProductDetails.ProcessPayment.Response)
     
+    func createPaymentSuccessWith(response: ProductDetails.CreatePayment.Response)
+    func createPaymentFailureWith(response: ProductDetails.CreatePayment.Response)
+    
     func getCardTokenSuccessWith(response: ProductDetails.CardToken.Response)
     func getCardTokenFailureWith(response: ProductDetails.CardToken.Response)
+    
+    func getPaymentDetailSuccessWith(response: Home.PaymentDetail.Response)
+    func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response)
 }
 
 class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDisplayLogic
@@ -89,6 +100,8 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var dottedImageView: UIImageView!
+    @IBOutlet weak var visaImageView: UIImageView!
+    @IBOutlet weak var masterCardImageView: UIImageView!
     
     @IBOutlet weak var seemoreButton: UIButton!
     
@@ -97,10 +110,13 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     @IBOutlet weak var boldTotalAmountLabel: UILabel!
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var merchantNameLabel: UILabel!
     
     @IBOutlet weak var blueViewLeadingContraint: NSLayoutConstraint!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var seeMoreViewHeightConstraint: NSLayoutConstraint!
+    
+    var detailsType: DetailsType?
     
     var defaultTableViewHeight: CGFloat = 0
     var defaultSeeMoreViewHeight: CGFloat = 0
@@ -109,7 +125,21 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     var subTotal: CGFloat = 0
     
     var paymentDetail: Home.PaymentDetail.Response!
+    var campaignDetail: Home.GetCampaigns.Response!
     var items = [Home.PaymentDetail.CustomerItems]()
+    
+    var campaignPaymentID: String?
+    
+    var paymentDetailsTimer : Timer?
+    var didGetPaymentDetails: Bool = false { 
+        didSet {
+            if didGetPaymentDetails {
+                self.resetTimer()
+            }
+        }
+    }
+    
+    var numberOfTimesApiWasFired = 0
     
     //MARK:- View Life cycle methods
     
@@ -121,31 +151,22 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     
     //MARK:- APIs
     
-    func processPaymentWith(paymentID: String) {
-        NLoader.shared.startNLoader()
-        var request = ProductDetails.ProcessPayment.Request()
-        request.paymentId = paymentID
-        
-        interactor?.processPayment(request: request)
-    }
-    
-    func processPaymentSuccessWith(response: ProductDetails.ProcessPayment.Response) {
-        NLoader.shared.stopNLoader()
-    }
-    
-    func processPaymentFailureWith(response: ProductDetails.ProcessPayment.Response) {
-        NLoader.shared.stopNLoader()
-    }
+    //MARK: Get card token
     
     func getCardToken() {
         var request = ProductDetails.CardToken.Request()
         request.clientIP = Utils.shared.getWiFiAddress()
         request.locale = "\(Locale.current.languageCode ?? "")-\(Locale.current.regionCode ?? "")"
-        request.currency = paymentDetail.currency
-        request.amount = paymentDetail.amount
+        if detailsType == DetailsType.Payment {
+            request.currency = paymentDetail.currency
+            request.amount = paymentDetail.amount
+        } else {
+            request.currency = campaignDetail.currency
+            request.amount = campaignDetail.amount
+        }
         request.userAgent = ""
         request.city = User.shared.city
-        request.country = User.shared.countryName
+        request.country = Utils.shared.getCountryCodeFor(country: User.shared.countryName ?? "")
         request.line1 = User.shared.address
         request.line2 = ""
         request.state = ""
@@ -154,7 +175,7 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         request.email = User.shared.email
         request.cvv = Card.shared.cvv
         request.number = Card.shared.number
-        request.name = User.shared.name
+        request.name = ".."
         if let range = Card.shared.expiry?.range(of: "/") {
             request.expiryMonth = Int(Card.shared.expiry![Card.shared.expiry!.startIndex..<range.lowerBound])
             request.expiryYear = Int(Card.shared.expiry![range.upperBound..<Card.shared.expiry!.endIndex])
@@ -168,11 +189,96 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     }
     
     func getCardTokenSuccessWith(response: ProductDetails.CardToken.Response) {
-        NLoader.shared.stopNLoader()
+        if response.token != nil {
+            NLoader.shared.startNLoader()
+            var request = ProductDetails.ProcessPayment.Request()
+            if detailsType == DetailsType.Payment {
+                request.paymentId = paymentDetail.paymentId
+            } else {
+                request.paymentId = campaignPaymentID
+            }
+            request.cardToken = response.token
+            request.customerEmail = User.shared.email
+            request.customerPhone = User.shared.phoneWithCode
+            
+            interactor?.processPayment(request: request)
+        } else {
+            NLoader.shared.stopNLoader()
+        }
     }
     
     func getCardTokenFailureWith(response: ProductDetails.CardToken.Response) {
         NLoader.shared.stopNLoader()
+    }
+    
+    //MARK: Process payment
+    
+    func processPaymentSuccessWith(response: ProductDetails.ProcessPayment.Response) {
+        doMultiplePaymentDetailsAPI()
+    }
+    
+    func processPaymentFailureWith(response: ProductDetails.ProcessPayment.Response) {
+        NLoader.shared.stopNLoader()
+    }
+    
+    //MARK: Get payment details
+    
+    func getPaymentDetailSuccessWith(response: Home.PaymentDetail.Response) {
+        NLoader.shared.stopNLoader()
+        
+        if !didGetPaymentDetails {
+            didGetPaymentDetails = true
+            
+            if response.status == "PAY_COMPLETED" {
+                showPaymentSuccessScreenWith(paymentDetail: response)
+            } else if response.status == "PAY_FAILED" {
+                showPaymentFailedScreenWith(paymentDetail: response)
+            }
+        }
+    }
+    
+    func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response) {
+        NLoader.shared.stopNLoader()
+        
+        if !didGetPaymentDetails {
+            didGetPaymentDetails = true
+            
+            showPaymentFailedScreenWith(paymentDetail: paymentDetail)
+        }
+    }
+    
+    //MARK: Create payment
+    
+    func createPayment() {
+        if detailsType == DetailsType.Campaign {
+            NLoader.shared.startNLoader()
+            
+            var request = ProductDetails.CreatePayment.Request()
+            request.merchantID = campaignDetail.merchantId
+            request.description = ""
+            request.currency = campaignDetail.currency
+            request.amount = campaignDetail.amount
+            request.redirectUrl = nil
+            request.items = campaignDetail.items
+            request.vat = campaignDetail.vat
+            
+            interactor?.createPayment(request: request)
+        }
+    }
+    
+    func createPaymentSuccessWith(response: ProductDetails.CreatePayment.Response) {
+        if response.paymentId != nil {
+            campaignPaymentID = response.paymentId
+            getCardToken()
+        } else {
+            NLoader.shared.stopNLoader()
+        }
+    }
+    
+    func createPaymentFailureWith(response: ProductDetails.CreatePayment.Response) {
+        NLoader.shared.stopNLoader()
+        //TODO: ask
+//        showPaymentFailedScreen()
     }
     
     //MARK:- IBAction methods
@@ -206,8 +312,11 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     }
     
     @IBAction func acceptButtonTapped() {
-//        getCardToken()
-//        processPaymentWith(paymentID: paymentDetail.paymentId!)
+        if detailsType == DetailsType.Payment {
+            getCardToken()
+        } else {
+            createPayment()
+        }
     }
     
     //MARK:- Private methods
@@ -232,6 +341,17 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
             last4CardDigitsLabel.text = "----"
         }
         
+        if Utils.shared.isVisa(text: Card.shared.number ?? "") {
+            visaImageView.isHidden = false
+            masterCardImageView.isHidden = true
+        } else if Utils.shared.isMasterCard(text: Card.shared.number ?? "") {
+            visaImageView.isHidden = true
+            masterCardImageView.isHidden = false
+        } else {
+            visaImageView.isHidden = true
+            masterCardImageView.isHidden = true
+        }
+        
     }
     
     private func setUIwithProduct() {
@@ -248,6 +368,11 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         totalAmountLabel.text = totalAmountString
         boldTotalAmountLabel.text = "\(subTotal/100)"
         currencyLabel.text = currency
+        if detailsType == DetailsType.Payment {
+            merchantNameLabel.text = paymentDetail.merchantName
+        } else {
+            merchantNameLabel.text = campaignDetail.name
+        }
     }
     
     private func reloadTableViewData() {
@@ -285,6 +410,50 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
         })
+    }
+    
+    func doMultiplePaymentDetailsAPI() {
+        paymentDetailsTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { (timer) in
+            self.numberOfTimesApiWasFired = self.numberOfTimesApiWasFired + 1
+            // 5 * 36 = 180 = 3minutes so show failed after that
+            if self.numberOfTimesApiWasFired == 37 {
+                self.resetTimer()
+                self.showPaymentFailedScreenWith(paymentDetail: self.paymentDetail)
+            } else {
+                self.getPaymentDetails()
+            }
+        })
+    }
+    
+    func getPaymentDetails() {
+        var request = Home.PaymentDetail.Request()
+        if detailsType == DetailsType.Payment {
+            request.paymentID = paymentDetail.paymentId
+        } else {
+            request.paymentID = campaignPaymentID
+        }
+        self.interactor?.getPaymentDetails(request: request)
+    }
+    
+    func resetTimer() {
+        paymentDetailsTimer?.invalidate()
+        paymentDetailsTimer = nil
+    }
+    
+    func showPaymentSuccessScreenWith(paymentDetail: Home.PaymentDetail.Response) {
+        let paymentStatusScreen = PaymentStatusViewController.create()
+        paymentStatusScreen.paymentDetail = paymentDetail
+        paymentStatusScreen.paymentStatus = .Completed
+        
+        self.navigationController?.pushViewController(paymentStatusScreen, animated: true)
+    }
+    
+    func showPaymentFailedScreenWith(paymentDetail: Home.PaymentDetail.Response) {
+        let paymentStatusScreen = PaymentStatusViewController.create()
+        paymentStatusScreen.paymentDetail = paymentDetail
+        paymentStatusScreen.paymentStatus = .Failed
+        
+        self.navigationController?.pushViewController(paymentStatusScreen, animated: true)
     }
     
 }

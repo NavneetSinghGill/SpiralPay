@@ -12,6 +12,8 @@
 
 import UIKit
 
+typealias getCampaignsResponseHandler = (_ response:Home.GetCampaigns.Response) ->()
+
 class HomeContainerWorker
 {
     
@@ -19,6 +21,13 @@ class HomeContainerWorker
     {
         RequestManager().getPaymentDetail(request: request.baseRequest()) { (status, response) in
             self.handleGetPaymentDetailResponse(success: successCompletionHandler, fail: failureCompletionHandler, status: status, response: response)
+        }
+    }
+    
+    func getCampaignsWith(request: Home.GetCampaigns.Request, successCompletionHandler: @escaping getCampaignsResponseHandler, failureCompletionHandler: @escaping getCampaignsResponseHandler)
+    {
+        RequestManager().getCampaigns(request: request.baseRequest()) { (status, response) in
+            self.handleGetCampaignsResponse(success: successCompletionHandler, fail: failureCompletionHandler, status: status, response: response)
         }
     }
     
@@ -45,6 +54,29 @@ class HomeContainerWorker
             }
         }
         fail(Home.PaymentDetail.Response(message:message)!)
+    }
+    
+    public func handleGetCampaignsResponse(success:@escaping(getCampaignsResponseHandler), fail:@escaping(getCampaignsResponseHandler), status: Bool, response: Any?) {
+        var message:String = Constants.kErrorMessage
+        if status {
+            if let result = response as? Home.GetCampaigns.Response {
+                success(result)
+                return
+            }
+        }
+        else {
+            if let result = response as? Home.GetCampaigns.Response {
+                fail(result)
+                return
+            }
+            else
+            {
+                if let result = response as? String {
+                    message = result
+                }
+            }
+        }
+        fail(Home.GetCampaigns.Response(message:message)!)
     }
     
 }

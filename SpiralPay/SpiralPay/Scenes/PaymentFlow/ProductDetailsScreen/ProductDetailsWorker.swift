@@ -13,7 +13,7 @@
 import UIKit
 
 typealias processPaymentResponseHandler = (_ response:ProductDetails.ProcessPayment.Response) ->()
-
+typealias createPaymentResponseHandler = (_ response:ProductDetails.CreatePayment.Response) ->()
 typealias cardTokenResponseHandler = (_ response:ProductDetails.CardToken.Response) ->()
 
 class ProductDetailsWorker
@@ -22,6 +22,13 @@ class ProductDetailsWorker
     {
         RequestManager().processPayment(request: request.baseRequest()) { (status, response) in
             self.handleProcessPaymentHistoryResponse(success: successCompletionHandler, fail: failureCompletionHandler, status: status, response: response)
+        }
+    }
+    
+    func createPaymentWith(request: ProductDetails.CreatePayment.Request, successCompletionHandler: @escaping createPaymentResponseHandler, failureCompletionHandler: @escaping createPaymentResponseHandler)
+    {
+        RequestManager().createPayment(request: request.baseRequest()) { (status, response) in
+            self.handleCreatePaymentResponse(success: successCompletionHandler, fail: failureCompletionHandler, status: status, response: response)
         }
     }
     
@@ -35,24 +42,10 @@ class ProductDetailsWorker
     //MARK: Parse methods
     
     public func handleProcessPaymentHistoryResponse(success:@escaping(processPaymentResponseHandler), fail:@escaping(processPaymentResponseHandler), status: Bool, response: Any?) {
-        var message:String = Constants.kErrorMessage
+        let message:String = Constants.kErrorMessage
         if status {
-            if let result = response as? ProductDetails.ProcessPayment.Response {
-                success(result)
-                return
-            }
-        }
-        else {
-            if let result = response as? ProductDetails.ProcessPayment.Response {
-                fail(result)
-                return
-            }
-            else
-            {
-                if let result = response as? String {
-                    message = result
-                }
-            }
+            success(ProductDetails.ProcessPayment.Response(message: "Payment process successful")!)
+            return
         }
         fail(ProductDetails.ProcessPayment.Response(message:message)!)
     }
@@ -78,6 +71,29 @@ class ProductDetailsWorker
             }
         }
         fail(ProductDetails.CardToken.Response(message:message)!)
+    }
+    
+    public func handleCreatePaymentResponse(success:@escaping(createPaymentResponseHandler), fail:@escaping(createPaymentResponseHandler), status: Bool, response: Any?) {
+        var message:String = Constants.kErrorMessage
+        if status {
+            if let result = response as? ProductDetails.CreatePayment.Response {
+                success(result)
+                return
+            }
+        }
+        else {
+            if let result = response as? ProductDetails.CreatePayment.Response {
+                fail(result)
+                return
+            }
+            else
+            {
+                if let result = response as? String {
+                    message = result
+                }
+            }
+        }
+        fail(ProductDetails.CreatePayment.Response(message:message)!)
     }
     
 }

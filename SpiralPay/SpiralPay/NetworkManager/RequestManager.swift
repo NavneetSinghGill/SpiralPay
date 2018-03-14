@@ -92,9 +92,29 @@ class RequestManager: NSObject {
         }
     }
     
+    func createPayment(request:BaseRequest, completion:@escaping CompletionHandler){
+        if ApplicationDelegate.isNetworkAvailable{
+            RealAPI().postObject(request:request, genericResponse: ProductDetails.CreatePayment.Response.self, completion:completion)
+        }
+        else{
+            completion(false, Constants.kNoNetworkMessage)
+            //            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
+        }
+    }
+    
     func getCardToken(request:BaseRequest, completion:@escaping CompletionHandler){
         if ApplicationDelegate.isNetworkAvailable{
             RealAPI().postObject(request:request, genericResponse: ProductDetails.CardToken.Response.self, completion:completion)
+        }
+        else{
+            completion(false, Constants.kNoNetworkMessage)
+            //            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
+        }
+    }
+    
+    func getCampaigns(request:BaseRequest, completion:@escaping CompletionHandler){
+        if ApplicationDelegate.isNetworkAvailable{
+            RealAPI().getObject(request:request, genericResponse: Home.GetCampaigns.Response.self, completion:completion)
         }
         else{
             completion(false, Constants.kNoNetworkMessage)

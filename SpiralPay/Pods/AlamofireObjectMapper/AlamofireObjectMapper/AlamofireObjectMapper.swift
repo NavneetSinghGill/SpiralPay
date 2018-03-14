@@ -82,7 +82,7 @@ extension DataRequest {
             }
             
             let JSONObject = processResponse(request: request, response: response, data: data, keyPath: keyPath)
-            
+            print("\n\n\n\(JSONObject)\n\n\n")
             if let object = object {
                 _ = Mapper<T>(context: context, shouldIncludeNilValues: false).map(JSONObject: JSONObject, toObject: object)
                 return .success(object)

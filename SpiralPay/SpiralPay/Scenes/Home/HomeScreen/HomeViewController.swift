@@ -98,6 +98,11 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         super.viewWillAppear(animated)
         
         self.paymentTableView.reloadData()
+        
+        if shouldRefreshOnNextAppearance {
+            shouldRefreshOnNextAppearance = false
+            getPaymentHistory()
+        }
     }
     
     //MARK:- Variables
@@ -124,6 +129,8 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
     var payments = [[Home.PaymentHistory.Response]]()
     var maxAmount: CGFloat = 0
     var durationType: DurationType = .Week
+    
+    var shouldRefreshOnNextAppearance = false
     
     let imageCache = NSCache<NSString, AnyObject>()
     
@@ -365,11 +372,16 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
                 points[count + 1].y != self.graphView.frame.size.height) ||
                 (points[count - 1].y != self.graphView.frame.size.height &&
                     points[count + 1].y == self.graphView.frame.size.height) {
-                traversedPoints.append(point)
-                addLineGraphWith(points: traversedPoints)
-                
-                traversedPoints.removeAll()
-                traversedPoints.append(point)
+                if points[count].y == self.graphView.frame.size.height {
+                    //Self y = 0
+                    traversedPoints.append(point)
+                    addLineGraphWith(points: traversedPoints)
+                    
+                    traversedPoints.removeAll()
+                    traversedPoints.append(point)
+                } else {
+                    traversedPoints.append(point)
+                }
             } else {
                 traversedPoints.append(point)
             }

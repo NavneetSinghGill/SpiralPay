@@ -9,7 +9,7 @@
 import UIKit
 
 enum PaymentStatus {
-    case Done
+    case Completed
     case Failed
     case None
 }
@@ -26,6 +26,8 @@ class PaymentStatusViewController: SpiralPayViewController {
     
     @IBOutlet weak var failedViewOfButton: UIView!
     
+    var paymentDetail: Home.PaymentDetail.Response?
+    
     var paymentStatus: PaymentStatus = .None
 
     override func viewDidLoad() {
@@ -37,7 +39,7 @@ class PaymentStatusViewController: SpiralPayViewController {
     //MARK:- Private methods
     
     func initialSetup() {
-        if paymentStatus == .Done {
+        if paymentStatus == .Completed {
             statusMessageLabel.text = "Done!"
             statusImageView.image = UIImage(named: "paymentDoneTick")
             infoMessageLabel.text = "Your payment has been approved!"
@@ -49,15 +51,19 @@ class PaymentStatusViewController: SpiralPayViewController {
             failedViewOfButton.isHidden = false
         }
         
-        amountLabel.text = "265.12"
-        currencyLabel.text = "£"
-        dateLabel.text = "20/Nov/2018"
+        amountLabel.text = "\((paymentDetail?.amount ?? 0)/CGFloat(100))"
+        currencyLabel.text = Utils.shared.getCurrencyStringWith(currency: paymentDetail?.currency)
+        merchantNameLabel.text = paymentDetail?.merchantName
+        
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "dd/MM/yyyy"
+        dateLabel.text = dateformatter.string(from: Date())
     }
     
     //MARK:- IBAction methods
     
     @IBAction func thanksButtonTapped() {
-        
+        shouldPopToHome()
     }
     
     @IBAction func payWithAnotherCardButtonTapped() {
@@ -65,7 +71,18 @@ class PaymentStatusViewController: SpiralPayViewController {
     }
     
     @IBAction func goToSpiralPayButtonTapped() {
-        
+        shouldPopToHome()
+    }
+    
+    //MARK:- Private methods
+    
+    func shouldPopToHome() {
+        for viewcontroller in self.navigationController!.viewControllers {
+            if let vc = viewcontroller as? HomeContainerViewController {
+                vc.homeViewController.shouldRefreshOnNextAppearance = true
+            }
+        }
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
 }

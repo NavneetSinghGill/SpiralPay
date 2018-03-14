@@ -70,8 +70,10 @@ class NetworkHttpClient: NSObject {
         
         
         var completeURL:String = NetworkHttpClient.baseUrl() + BaseRequest.getUrl(path: strURL)
-        if parameters != nil && parameters![Constants.kShouldRunOnlyOnLive] as? Bool == true {
-            completeURL = AppSettingsManager.sharedInstance.appSettings.ProductionURL + BaseRequest.getUrl(path: strURL)
+        if parameters != nil && (parameters![Constants.kShouldRunOnlyOnLive] as? Bool == true) {
+            var params:Dictionary<String, Any> = parameters!
+            params[Constants.kShouldRunOnlyOnLive] = nil
+            completeURL = "https://\(AppSettingsManager.sharedInstance.appSettings.ProductionURL)\(BaseRequest.getUrl(path: strURL))"
         }
         
         
@@ -101,7 +103,7 @@ class NetworkHttpClient: NSObject {
         else if parameters?[BaseRequest.hasNullResponse] != nil {
             
             var params:Dictionary<String, Any> = parameters!
-            params[BaseRequest.hasArrayResponse] = nil
+            params[BaseRequest.hasNullResponse] = nil
             Alamofire.request(completeURL, method: methodType, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { (response) -> Void in
                 self.showAlertWith(message: "2\(response)")
                 print("Response null: \(response)")
@@ -192,7 +194,13 @@ class NetworkHttpClient: NSObject {
 //            let response = PhoneVerification.SmsPhoneVerification.Response(message: "Sms sent successfully")
 //            response.response?.statusCode
             return response as AnyObject
+        } else if (url.range(of: processPaymentUrlSuffix) != nil && url.range(of: processPaymentUrlPrefix) != nil)
+            && withResponseCode == 202 {
+            
+            return response as AnyObject
         }
+        
+        
         return nil
     }
     

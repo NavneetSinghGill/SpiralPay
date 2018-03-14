@@ -17,8 +17,14 @@ protocol ProductDetailsPresentationLogic
     func processPaymentSuccessWith(response: ProductDetails.ProcessPayment.Response)
     func processPaymentFailureWith(response: ProductDetails.ProcessPayment.Response)
     
+    func createPaymentSuccessWith(response: ProductDetails.CreatePayment.Response)
+    func createPaymentFailureWith(response: ProductDetails.CreatePayment.Response)
+    
     func getCardTokenSuccessWith(response: ProductDetails.CardToken.Response)
     func getCardTokenFailureWith(response: ProductDetails.CardToken.Response)
+    
+    func getPaymentDetailSuccessWith(response: Home.PaymentDetail.Response)
+    func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response)
 }
 
 class ProductDetailsPresenter: ProductDetailsPresentationLogic
@@ -33,12 +39,34 @@ class ProductDetailsPresenter: ProductDetailsPresentationLogic
         viewController?.processPaymentFailureWith(response: response)
     }
     
+    
+    
+    func createPaymentSuccessWith(response: ProductDetails.CreatePayment.Response) {
+        viewController?.createPaymentSuccessWith(response: response)
+    }
+    
+    func createPaymentFailureWith(response: ProductDetails.CreatePayment.Response) {
+        viewController?.createPaymentFailureWith(response: response)
+    }
+    
+    
+    
     func getCardTokenSuccessWith(response: ProductDetails.CardToken.Response) {
         viewController?.getCardTokenSuccessWith(response: response)
     }
     
     func getCardTokenFailureWith(response: ProductDetails.CardToken.Response) {
         viewController?.getCardTokenFailureWith(response: response)
+    }
+    
+    
+    
+    func getPaymentDetailSuccessWith(response: Home.PaymentDetail.Response) {
+        viewController?.getPaymentDetailSuccessWith(response: response)
+    }
+    
+    func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response) {
+        viewController?.getPaymentDetailFailureWith(response: response)
     }
     
 }

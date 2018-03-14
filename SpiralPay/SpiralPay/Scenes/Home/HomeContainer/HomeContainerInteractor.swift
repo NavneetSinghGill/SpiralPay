@@ -15,6 +15,7 @@ import UIKit
 protocol HomeContainerBusinessLogic
 {
     func getPaymentDetails(request: Home.PaymentDetail.Request)
+    func getCampaign(request: Home.GetCampaigns.Request)
 }
 
 protocol HomeContainerDataStore
@@ -38,5 +39,14 @@ class HomeContainerInteractor: HomeContainerBusinessLogic, HomeContainerDataStor
             self.presenter?.getPaymentDetailFailureWith(response: response)
         })
         
+    }
+    
+    func getCampaign(request: Home.GetCampaigns.Request) {
+        worker = HomeContainerWorker()
+        worker?.getCampaignsWith(request: request, successCompletionHandler: { (response) in
+            self.presenter?.getCampaignsSuccessWith(response: response)
+        }, failureCompletionHandler: { (response) in
+            self.presenter?.getCampaignsFailureWith(response: response)
+        })
     }
 }

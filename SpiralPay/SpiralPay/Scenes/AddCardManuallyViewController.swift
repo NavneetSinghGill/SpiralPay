@@ -124,10 +124,9 @@ extension AddCardManuallyViewController: UITextFieldDelegate {
         
         if textField == cardNumberTextField {
             if updatedText.count != 0 {
-                let index = updatedText.index(updatedText.startIndex, offsetBy: 1)
-                if updatedText[..<index] == "4" {
+                if Utils.shared.isVisa(text: updatedText) {
                     cardTypeImageView.image = visaImage
-                } else if updatedText[..<index] == "5" {
+                } else if Utils.shared.isMasterCard(text: updatedText) {
                     cardTypeImageView.image = masterImage
                 } else {
                     cardTypeImageView.image = nil

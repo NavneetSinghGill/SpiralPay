@@ -199,6 +199,7 @@ enum Home
                 static let currency = "currency"
                 static let count = "count"
                 static let vat = "vat"
+                static let imageID = "image_id"
                 static let errorDescription = "error_description"
                 static let error = "error"
             }
@@ -209,7 +210,8 @@ enum Home
             public var amount: CGFloat?
             public var currency: String?
             public var count: Int?
-            public var vat: Int?
+            public var vat: CGFloat?
+            public var imageID: String?
             public var errorDescription: String?
             public var error: String?
             
@@ -231,6 +233,7 @@ enum Home
                 currency <- map[SerializationKeys.currency]
                 count <- map[SerializationKeys.count]
                 vat <- map[SerializationKeys.vat]
+                imageID <- map[SerializationKeys.imageID]
                 errorDescription <- map[SerializationKeys.errorDescription]
                 error <- map[SerializationKeys.error]
             }
@@ -246,11 +249,122 @@ enum Home
                 if let value = currency { dictionary[SerializationKeys.currency] = value }
                 if let value = count { dictionary[SerializationKeys.count] = value }
                 if let value = vat { dictionary[SerializationKeys.vat] = value }
+                if let value = imageID { dictionary[SerializationKeys.imageID] = value }
                 if let value = errorDescription { dictionary[SerializationKeys.errorDescription] = value }
                 if let value = error { dictionary[SerializationKeys.error] = value }
                 return dictionary
             }
             
         }
+    }
+    
+    enum GetCampaigns {
+        struct Request
+        {
+            var campaignID: String?
+            
+            func baseRequest() -> BaseRequest {
+                let baseRequest = BaseRequest()
+                baseRequest.urlPath = "/v1/campaigns/\(campaignID ?? "")"
+                
+                baseRequest.parameters[Constants.kShouldRunOnlyOnLive] = true
+                
+                return baseRequest
+            }
+        }
+        struct Response: Mappable {
+            
+            private struct SerializationKeys {
+                static let active = "active"
+                static let items = "items"
+                static let merchantId = "merchant_id"
+                static let campaignId = "campaign_id"
+                static let name = "name"
+                static let errors = "errors"
+                static let message = "message"
+            }
+            
+            
+            public var active: Bool?
+            public var items: [PaymentDetail.CustomerItems]?
+            public var merchantId: String?
+            public var campaignId: String?
+            public var name: String?
+            public var errors: [Any]?
+            public var message: String?
+            
+            public var currency: String? {
+                get {
+                    if items?.first?.currency != nil {
+                        return items!.first?.currency
+                    } else {
+                        return ""
+                    }
+                }
+            }
+            
+            public var amount: CGFloat? {
+                get {
+                    if items != nil {
+                        var totalAmount: CGFloat = 0
+                        for item in items! {
+                            totalAmount = totalAmount + (item.amount ?? 0)
+                        }
+                        return totalAmount
+                    } else {
+                        return 0
+                    }
+                }
+            }
+            
+            public var vat: CGFloat? {
+                get {
+                    if items != nil {
+                        var totalVat: CGFloat = 0
+                        for item in items! {
+                            totalVat = totalVat + (item.vat ?? 0)
+                        }
+                        return totalVat
+                    } else {
+                        return 0
+                    }
+                }
+            }
+            
+            public init?(map: Map){
+                
+            }
+            
+            public init?(message: String){
+                self.message = message
+            }
+            public init(){
+                
+            }
+            
+            public mutating func mapping(map: Map) {
+                active <- map[SerializationKeys.active]
+                items <- map[SerializationKeys.items]
+                merchantId <- map[SerializationKeys.merchantId]
+                campaignId <- map[SerializationKeys.campaignId]
+                name <- map[SerializationKeys.name]
+                errors <- map[SerializationKeys.errors]
+                message <- map[SerializationKeys.message]
+            }
+            
+            public func dictionaryRepresentation() -> [String: Any] {
+                var dictionary: [String: Any] = [:]
+                if let value = active { dictionary[SerializationKeys.active] = value }
+                if let value = items { dictionary[SerializationKeys.items] = value }
+                if let value = merchantId { dictionary[SerializationKeys.merchantId] = value }
+                if let value = campaignId { dictionary[SerializationKeys.campaignId] = value }
+                if let value = name { dictionary[SerializationKeys.name] = value }
+                if let value = errors { dictionary[SerializationKeys.errors] = value }
+                if let value = message { dictionary[SerializationKeys.message] = value }
+                return dictionary
+            }
+            
+        }
+        
     }
 }

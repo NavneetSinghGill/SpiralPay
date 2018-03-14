@@ -13,6 +13,9 @@
 import UIKit
 import ObjectMapper
 
+let processPaymentUrlPrefix = "/v1/qr_payments/"
+let processPaymentUrlSuffix = "/process"
+
 enum ProductDetails
 {
     // MARK: Use cases
@@ -22,27 +25,33 @@ enum ProductDetails
         struct Request
         {
             var paymentId: String?
+            var cardToken: String?
+            var customerEmail: String?
+            var customerPhone: String?
             
             func baseRequest() -> BaseRequest {
                 let baseRequest = BaseRequest()
-                baseRequest.urlPath = "/v1/qr_payments/\(paymentId ?? "")"
-                
+                baseRequest.urlPath = "\(processPaymentUrlPrefix)\(paymentId ?? "")\(processPaymentUrlSuffix)"
+                baseRequest.parameters["card_token"] = cardToken
+                baseRequest.parameters["customer_email"] = customerEmail
+                baseRequest.parameters["customer_phone"] = customerPhone
+                                
                 return baseRequest
             }
         }
         struct Response: Mappable {
             
             private struct SerializationKeys {
-                static let customerEmail = "customer_email"
-                static let cardToken = "card_token"
-                static let customerPhone = "customer_phone"
+//                static let customerEmail = "customer_email"
+//                static let cardToken = "card_token"
+//                static let customerPhone = "customer_phone"
                 static let message = "message"
                 static let errors = "errors"
             }
             
-            public var customerEmail: String?
-            public var cardToken: String?
-            public var customerPhone: String?
+//            public var customerEmail: String?
+//            public var cardToken: String?
+//            public var customerPhone: String?
             public var message: String?
             public var errors: String?
             
@@ -55,18 +64,18 @@ enum ProductDetails
             }
             
             public mutating func mapping(map: Map) {
-                customerEmail <- map[SerializationKeys.customerEmail]
-                cardToken <- map[SerializationKeys.cardToken]
-                customerPhone <- map[SerializationKeys.customerPhone]
+//                customerEmail <- map[SerializationKeys.customerEmail]
+//                cardToken <- map[SerializationKeys.cardToken]
+//                customerPhone <- map[SerializationKeys.customerPhone]
                 message <- map[SerializationKeys.message]
                 errors <- map[SerializationKeys.errors]
             }
             
             public func dictionaryRepresentation() -> [String: Any] {
                 var dictionary: [String: Any] = [:]
-                if let value = customerEmail { dictionary[SerializationKeys.customerEmail] = value }
-                if let value = cardToken { dictionary[SerializationKeys.cardToken] = value }
-                if let value = customerPhone { dictionary[SerializationKeys.customerPhone] = value }
+//                if let value = customerEmail { dictionary[SerializationKeys.customerEmail] = value }
+//                if let value = cardToken { dictionary[SerializationKeys.cardToken] = value }
+//                if let value = customerPhone { dictionary[SerializationKeys.customerPhone] = value }
                 if let value = message { dictionary[SerializationKeys.message] = value }
                 if let value = errors { dictionary[SerializationKeys.errors] = value }
                 return dictionary
@@ -161,6 +170,81 @@ enum ProductDetails
             public func dictionaryRepresentation() -> [String: Any] {
                 var dictionary: [String: Any] = [:]
                 if let value = token { dictionary[SerializationKeys.token] = value }
+                if let value = message { dictionary[SerializationKeys.message] = value }
+                if let value = errors { dictionary[SerializationKeys.errors] = value }
+                return dictionary
+            }
+            
+        }
+    }
+    
+    
+    enum CreatePayment
+    {
+        struct Request
+        {
+            var merchantID: String?
+            var description: String?
+            var currency: String?
+            var amount: CGFloat?
+            var redirectUrl: String?
+            var items: [Home.PaymentDetail.CustomerItems]?
+            var vat: CGFloat?
+            
+            func baseRequest() -> BaseRequest {
+                let baseRequest = BaseRequest()
+                baseRequest.urlPath = "/v1/qr_payments"
+                
+                baseRequest.parameters["merchant_id"] = merchantID ?? ""
+                baseRequest.parameters["description"] = description ?? ""
+                baseRequest.parameters["currency"] = currency ?? ""
+                baseRequest.parameters["amount"] = amount ?? 0
+                baseRequest.parameters["redirect_url"] = redirectUrl ?? "https://envisionworld.co/"
+                baseRequest.parameters["vat"] = vat ?? 0
+                
+                var customerItems = [AnyObject]()
+                if let items = items {
+                    for item in items {
+                        customerItems.append(item.dictionaryRepresentation() as AnyObject)
+                    }
+                }
+                if customerItems.count != 0 {
+                    baseRequest.parameters["customer_items"] = customerItems
+                }
+                
+                return baseRequest
+            }
+        }
+        
+        struct Response: Mappable {
+            
+            private struct SerializationKeys {
+                static let paymentId = "payment_id"
+                static let message = "message"
+                static let errors = "errors"
+            }
+            
+            public var paymentId: String?
+            public var message: String?
+            public var errors: String?
+            
+            public init?(map: Map){
+                
+            }
+            
+            public init?(message: String){
+                self.message = message
+            }
+            
+            public mutating func mapping(map: Map) {
+                paymentId <- map[SerializationKeys.paymentId]
+                message <- map[SerializationKeys.message]
+                errors <- map[SerializationKeys.errors]
+            }
+            
+            public func dictionaryRepresentation() -> [String: Any] {
+                var dictionary: [String: Any] = [:]
+                if let value = paymentId { dictionary[SerializationKeys.paymentId] = value }
                 if let value = message { dictionary[SerializationKeys.message] = value }
                 if let value = errors { dictionary[SerializationKeys.errors] = value }
                 return dictionary

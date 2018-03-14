@@ -16,6 +16,9 @@ protocol HomeContainerDisplayLogic: class
 {
     func getPaymentDetailSuccessWith(response: Home.PaymentDetail.Response)
     func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response)
+    
+    func getCampaignsSuccessWith(response: Home.GetCampaigns.Response)
+    func getCampaignsFailureWith(response: Home.GetCampaigns.Response)
 }
 
 class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplayLogic
@@ -86,7 +89,7 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
         return viewController
     }()
     
-    private lazy var homeViewController: HomeViewController = {
+    lazy var homeViewController: HomeViewController = {
         // Load Storyboard
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
@@ -149,6 +152,8 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
     
     //MARK:- APIs
     
+    //MARK: Product details PID
+    
     func getProductDetailsWith(udid: String!) {
         NLoader.shared.startNLoader()
         var request = Home.PaymentDetail.Request()
@@ -162,6 +167,7 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
 
         let productDetailsScreen = ProductDetailsViewController.create()
         if response.customerItems != nil && response.customerItems!.count > 0 {
+            productDetailsScreen.detailsType = DetailsType.Payment
             productDetailsScreen.paymentDetail = response
             productDetailsScreen.items = response.customerItems!
             self.navigationController?.pushViewController(productDetailsScreen, animated: true)
@@ -169,6 +175,32 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
     }
     
     func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response) {
+        NLoader.shared.stopNLoader()
+    }
+    
+    //MARK: Get Campaigns CID
+    
+    func getCampaignsWith(udid: String!) {
+        NLoader.shared.startNLoader()
+        var request = Home.GetCampaigns.Request()
+        request.campaignID = udid
+        
+        interactor?.getCampaign(request: request)
+    }
+    
+    func getCampaignsSuccessWith(response: Home.GetCampaigns.Response) {
+        NLoader.shared.stopNLoader()
+        
+        let productDetailsScreen = ProductDetailsViewController.create()
+        if response.items != nil && response.items!.count > 0 {
+            productDetailsScreen.detailsType = DetailsType.Campaign
+            productDetailsScreen.campaignDetail = response
+            productDetailsScreen.items = response.items!
+            self.navigationController?.pushViewController(productDetailsScreen, animated: true)
+        }
+    }
+    
+    func getCampaignsFailureWith(response: Home.GetCampaigns.Response) {
         NLoader.shared.stopNLoader()
     }
     
@@ -273,6 +305,8 @@ extension HomeContainerViewController: ScannerDelegate {
             getProductDetailsWith(udid: slicedUDID)
         } else if let range = code.range(of: "cid_") {
             slicedUDID = String(code[range.upperBound..<code.endIndex])
+            
+            getCampaignsWith(udid: slicedUDID)
         }
     }
     

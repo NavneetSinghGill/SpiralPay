@@ -16,6 +16,9 @@ protocol HomeContainerPresentationLogic
 {
     func getPaymentDetailSuccessWith(response: Home.PaymentDetail.Response)
     func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response)
+    
+    func getCampaignsSuccessWith(response: Home.GetCampaigns.Response)
+    func getCampaignsFailureWith(response: Home.GetCampaigns.Response)
 }
 
 class HomeContainerPresenter: HomeContainerPresentationLogic
@@ -28,6 +31,14 @@ class HomeContainerPresenter: HomeContainerPresentationLogic
     
     func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response) {
         viewController?.getPaymentDetailFailureWith(response: response)
+    }
+    
+    func getCampaignsSuccessWith(response: Home.GetCampaigns.Response) {
+        viewController?.getCampaignsSuccessWith(response: response)
+    }
+    
+    func getCampaignsFailureWith(response: Home.GetCampaigns.Response) {
+        viewController?.getCampaignsFailureWith(response: response)
     }
     
 }

@@ -103,7 +103,7 @@ class RealAPI: NSObject {
             realAPIBlock = block
             renewLogin()
             return
-        } else if request.urlPath == sendSmsURL && responseStatus?.statusCode == 202 {
+        } else if (request.urlPath == sendSmsURL || (request.urlPath.range(of: processPaymentUrlSuffix) != nil && request.urlPath.range(of: processPaymentUrlPrefix) != nil)) && responseStatus?.statusCode == Constants.ResponseStatusAccepted {
             //Exception success
             block(true, response)
             return

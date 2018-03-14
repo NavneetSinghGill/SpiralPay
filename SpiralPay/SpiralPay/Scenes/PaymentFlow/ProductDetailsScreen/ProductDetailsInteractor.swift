@@ -16,6 +16,9 @@ protocol ProductDetailsBusinessLogic
 {
     func processPayment(request: ProductDetails.ProcessPayment.Request)
     func getCardToken(request: ProductDetails.CardToken.Request)
+    func createPayment(request: ProductDetails.CreatePayment.Request)
+    
+    func getPaymentDetails(request: Home.PaymentDetail.Request)
 }
 
 protocol ProductDetailsDataStore
@@ -39,6 +42,15 @@ class ProductDetailsInteractor: ProductDetailsBusinessLogic, ProductDetailsDataS
         })
     }
     
+    func createPayment(request: ProductDetails.CreatePayment.Request) {
+        worker = ProductDetailsWorker()
+        worker?.createPaymentWith(request: request, successCompletionHandler: { (response) in
+            self.presenter?.createPaymentSuccessWith(response: response)
+        }, failureCompletionHandler: { (response) in
+            self.presenter?.createPaymentFailureWith(response: response)
+        })
+    }
+    
     func getCardToken(request: ProductDetails.CardToken.Request) {
         worker = ProductDetailsWorker()
         worker?.getCardTokenWith(request: request, successCompletionHandler: { (response) in
@@ -46,6 +58,16 @@ class ProductDetailsInteractor: ProductDetailsBusinessLogic, ProductDetailsDataS
         }, failureCompletionHandler: { (response) in
             self.presenter?.getCardTokenFailureWith(response: response)
         })
+    }
+    
+    func getPaymentDetails(request: Home.PaymentDetail.Request)
+    {
+        HomeContainerWorker().getPaymentDetailWith(request: request, successCompletionHandler: { (response) in
+            self.presenter?.getPaymentDetailSuccessWith(response: response)
+        }, failureCompletionHandler: { (response) in
+            self.presenter?.getPaymentDetailFailureWith(response: response)
+        })
+        
     }
     
 }
