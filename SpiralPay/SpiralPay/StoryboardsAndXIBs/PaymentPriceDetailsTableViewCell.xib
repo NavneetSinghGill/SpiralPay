@@ -138,8 +138,8 @@
                 <outlet property="refNoLabel" destination="II9-HT-eOq" id="peL-SD-ZVk"/>
                 <outlet property="subTotalAmountLabel" destination="lLx-Mp-sMg" id="gXN-Eh-Hr9"/>
                 <outlet property="totalAmountLabel" destination="vLl-DT-0dL" id="oYW-E4-bva"/>
+                <outlet property="vatLabel" destination="MEt-Kx-6yC" id="6e0-UX-W4X"/>
                 <outlet property="vatNoLabel" destination="XcP-QG-L5Y" id="wbc-08-Ys1"/>
-                <outlet property="vatStandardRateAmountLabel" destination="MEt-Kx-6yC" id="Kgm-8o-4GV"/>
             </connections>
             <point key="canvasLocation" x="24.5" y="159"/>
         </tableViewCell>

@@ -132,6 +132,9 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
     
     var shouldRefreshOnNextAppearance = false
     
+    let daysToCoverForWeek = 6
+    let daysToCoverForMonth = 29
+    
     let imageCache = NSCache<NSString, AnyObject>()
     
     let baseURL = "\(AppSettingsManager.sharedInstance.appSettings.EnableSecureConnection ? Constants.SecureProtocol : Constants.InsecureProtocol)\(AppSettingsManager.sharedInstance.appSettings.ProductionURL)"
@@ -145,9 +148,9 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         
         var dayComp = DateComponents()
         if durationType == .Week {
-            dayComp.day = -7
+            dayComp.day = -daysToCoverForWeek
         } else {
-            dayComp.month = -1
+            dayComp.day = -daysToCoverForMonth
         }
         let date = Calendar.current.date(byAdding: dayComp, to: Date())!
         
@@ -201,7 +204,6 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
                 maxAmount = dayWiseMaxAmount
             }
             
-            print("\n .....\(payment.amount!)  ..... \(totalAmount)")
             totalAmount = totalAmount + (payment.amount ?? 0)
             count = count + 1
         }
@@ -293,10 +295,10 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         }
         
         if expandedCellIndexPath != nil, let cell = paymentTableView.cellForRow(at: expandedCellIndexPath!) as?  PaymentHistoryTableViewCell {
-            
+
             cell.shouldExpand = true
             if amountLabelTopConstraint.constant == amountLabelTopConstraintDefaultValue {
-                amountLabelTopConstraint.constant = -paymentTableView.frame.origin.y + 40
+                amountLabelTopConstraint.constant = amountLabelTopConstraintDefaultValue - paymentTableView.frame.origin.y
             }
             backButton.isHidden = false
             
@@ -305,23 +307,24 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
             })
             
             self.reloadPaymentTableViewData()
+            
+            //Fixes the issue of tableview getting cut off on expansion
+            var fr = paymentTableView.frame
+            fr.size.height = 1
+            scrollView.scrollRectToVisible(fr, animated: true)
         }
     }
     
     func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response, payment: Home.PaymentHistory.Response) {
         NLoader.shared.stopNLoader()
         
-        if expandedCellIndexPath != nil, let cell = paymentTableView.cellForRow(at: expandedCellIndexPath!) as?  PaymentHistoryTableViewCell {
-            
-            cell.shouldExpand = false
-            amountLabelTopConstraint.constant = amountLabelTopConstraintDefaultValue
-            
-            UIView.animate(withDuration: 0.3, animations: {
-                self.view.layoutIfNeeded()
-            })
-            
-            self.reloadPaymentTableViewData()
-        }
+        expandedCellIndexPath = nil
+        amountLabelTopConstraint.constant = amountLabelTopConstraintDefaultValue
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+        
+        self.reloadPaymentTableViewData()
     }
     
     //MARK:- Private methods
@@ -336,16 +339,19 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
             self.scrollView.isScrollEnabled = true
         }
         self.view.layoutIfNeeded()
+        if expandedCellIndexPath != nil {
+            paymentTableView.scrollToRow(at: expandedCellIndexPath!, at: .top, animated: true)
+        }
     }
     
     private func drawGraphWith(payments1Darray: [Home.PaymentHistory.Response]) {
         clearGraph()
         var points = Array<CGPoint>()
-        let currentDate = Date()
+        let currentDate = self.removeAllSmallerTimeOf(date: Date())
         var dayComp = DateComponents()
         
         for payment in payments1Darray {
-            let xValue = getPointFor(dateInterval: payment.created ?? 0,
+            let xValue = getPointFor(dateInterval: Int(timeIntervalAfterRemovingAllSmallerTimeOf(dateInterval: payment.created ?? 0)),
                                      currentDate: currentDate,
                                      dateComponent: &dayComp)
             let yValue = getPointFor(amount: payment.amount ?? 0)
@@ -387,7 +393,6 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
             }
             count = count + 1
         }
-//        addDotsTo(points: points)
         if let firstPoint = points.first {
             addDotsTo(points: [firstPoint])
         }
@@ -405,19 +410,18 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         
         var startingDate: Date?
         if durationType == .Week {
-            dateComponent.day = -7
+            dateComponent.day = -daysToCoverForWeek
             dateComponent.month = 0
             startingDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)!
         } else {
-            dateComponent.day = 0
-            dateComponent.month = -1
+            dateComponent.day = -daysToCoverForMonth
+            dateComponent.month = 0
             startingDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)!
         }
         let startingDateInterval = CGFloat(startingDate!.timeIntervalSince1970)
         let currentDateInterval = CGFloat(currentDate.timeIntervalSince1970)
         
         let percentage = ((CGFloat(dateInterval)/1000 - startingDateInterval) / (currentDateInterval - startingDateInterval))
-        
         return percentage * graphView.frame.size.width
     }
     
@@ -512,14 +516,30 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
     private func removeAllSmallerTimeOf(dateInterval: Int) -> Date {
         let date = Date(timeIntervalSince1970: TimeInterval(dateInterval))
         
+        let newDate = Calendar.current.date(byAdding: getDateComponentWithNoSmallTimeValuesFrom(date: date), to: date)
+        return newDate!
+    }
+    
+    private func removeAllSmallerTimeOf(date: Date) -> Date {
+        let newDate = Calendar.current.date(byAdding: getDateComponentWithNoSmallTimeValuesFrom(date: date), to: date)
+        return newDate!
+    }
+    
+    private func timeIntervalAfterRemovingAllSmallerTimeOf(dateInterval: Int) -> TimeInterval {
+        let date = Date(timeIntervalSince1970: TimeInterval(dateInterval))
+        
+        let newDate = Calendar.current.date(byAdding: getDateComponentWithNoSmallTimeValuesFrom(date: date), to: date)
+        return newDate!.timeIntervalSince1970
+    }
+    
+    private func getDateComponentWithNoSmallTimeValuesFrom(date: Date) -> DateComponents {
         var dateComponent = DateComponents()
         dateComponent.nanosecond = -date.nanosecond
         dateComponent.second = -date.second
         dateComponent.minute = -date.minute
-        dateComponent.hour = -date.hour + 12 //12 to increase by half day
+        dateComponent.hour = -date.hour //12 to increase by half day
         
-        let newDate = Calendar.current.date(byAdding: dateComponent, to: date)
-        return newDate!
+        return dateComponent
     }
     
     private func getFormatterStringWith(timeInterval: Int?) -> String {
@@ -685,6 +705,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as?  PaymentHistoryTableViewCell {
+            //This indexpath will be used after api response
             var indexPathToSetAfterEverything: IndexPath? = nil
             
             if expandedCellIndexPath == nil {

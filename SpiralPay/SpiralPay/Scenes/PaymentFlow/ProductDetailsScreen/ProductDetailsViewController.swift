@@ -122,7 +122,8 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     var defaultSeeMoreViewHeight: CGFloat = 0
     var currency: String?
     
-    var subTotal: CGFloat = 0
+    var total: CGFloat = 0
+    var vatTotal: CGFloat = 0
     
     var paymentDetail: Home.PaymentDetail.Response!
     var campaignDetail: Home.GetCampaigns.Response!
@@ -277,8 +278,13 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     
     func createPaymentFailureWith(response: ProductDetails.CreatePayment.Response) {
         NLoader.shared.stopNLoader()
-        //TODO: ask
-//        showPaymentFailedScreen()
+        if detailsType == DetailsType.Campaign {
+            //Doing this removes the headache of managing another useless campaign object in payment status screen
+            paymentDetail.amount = campaignDetail.amount
+            paymentDetail.currency = campaignDetail.currency
+            paymentDetail.merchantName = campaignDetail.name
+        }
+        showPaymentFailedScreenWith(paymentDetail: paymentDetail)
     }
     
     //MARK:- IBAction methods
@@ -355,18 +361,20 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     }
     
     private func setUIwithProduct() {
-        subTotal = 0
+        total = 0
+        vatTotal = 0
         for item in items {
-            subTotal = subTotal + (item.amount ?? 0)
+            total = total + (item.amount ?? 0)
+            vatTotal = vatTotal + (item.vat ?? 0)
         }
         
         if let item = items.first {
             currency = Utils.shared.getCurrencyStringWith(currency: item.currency)
         }
         
-        let totalAmountString = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: subTotal)
+        let totalAmountString = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: total)
         totalAmountLabel.text = totalAmountString
-        boldTotalAmountLabel.text = "\(subTotal/100)"
+        boldTotalAmountLabel.text = "\(total/100)"
         currencyLabel.text = currency
         if detailsType == DetailsType.Payment {
             merchantNameLabel.text = paymentDetail.merchantName
@@ -495,10 +503,10 @@ extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSour
             
             if indexPath.row == items.count {
                 headingLabel.text = "Sub total"
-                amountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: subTotal)
+                amountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: total - vatTotal)
             } else if indexPath.row == items.count + 1 {
                 headingLabel.text = "VAT paid"
-                amountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: subTotal) //TODO: pass vat instead of subTotal
+                amountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: vatTotal)
             }
             
             return itemCell

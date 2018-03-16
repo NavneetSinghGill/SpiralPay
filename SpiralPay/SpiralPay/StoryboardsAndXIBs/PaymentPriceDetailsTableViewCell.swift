@@ -11,7 +11,7 @@ import UIKit
 class PaymentPriceDetailsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var subTotalAmountLabel: UILabel!
-    @IBOutlet weak var vatStandardRateAmountLabel: UILabel!
+    @IBOutlet weak var vatLabel: UILabel!
     @IBOutlet weak var totalAmountLabel: UILabel!
     @IBOutlet weak var refNoLabel: UILabel!
     @IBOutlet weak var vatNoLabel: UILabel!

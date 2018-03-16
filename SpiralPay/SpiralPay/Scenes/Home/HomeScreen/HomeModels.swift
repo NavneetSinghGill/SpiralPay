@@ -139,7 +139,7 @@ enum Home
             public var amount: CGFloat?
             public var merchantId: String?
             public var redirectUrl: String?
-            public var vat: Int?
+            public var vat: CGFloat?
             public var message: String?
             
             public init?(map: Map){

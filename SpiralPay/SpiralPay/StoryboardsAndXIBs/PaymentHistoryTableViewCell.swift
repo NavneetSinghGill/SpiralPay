@@ -26,6 +26,7 @@ class PaymentHistoryTableViewCell: UITableViewCell {
     
     var payment: Home.PaymentHistory.Response?
     var totalAmount: CGFloat = 0
+    var vat: CGFloat = 0
     var currency: String?
 
     override func awakeFromNib() {
@@ -59,13 +60,9 @@ class PaymentHistoryTableViewCell: UITableViewCell {
             exportButton.isHidden = true
         }
         
-        totalAmount = 0
-        if payment?.details?.customerItems != nil {
-            for customerItem in payment!.details!.customerItems! {
-                totalAmount = totalAmount + CGFloat(customerItem.amount ?? 0)
-                currency = customerItem.currency
-            }
-        }
+        totalAmount = payment?.details?.amount ?? 0
+        currency = payment?.details?.currency ?? ""
+        vat = payment?.details?.vat ?? 0
         
         detailsTableView.reloadData()
         
@@ -104,24 +101,18 @@ extension PaymentHistoryTableViewCell: UITableViewDataSource, UITableViewDelegat
             let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentPriceDetailsTableViewCell", for: indexPath) as! PaymentPriceDetailsTableViewCell
             
             cell.totalAmountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: totalAmount)
+            cell.vatLabel.text = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: vat)
+            cell.subTotalAmountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: totalAmount - vat)
             
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath) as! ProductTableViewCell
             let customItem = payment!.details!.customerItems![indexPath.row]
-            cell.productNameLabel.text = customItem.name
+            cell.productNameLabel.text = "\(customItem.name ?? "--") x\(customItem.count ?? 1)"
 
-            cell.productAmountLabel.text = getFormattedAmount(customItem: customItem)
+            cell.productAmountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: customItem.currency, amount: customItem.amount)
             
             return cell
-        }
-    }
-    
-    func getFormattedAmount(customItem: Home.PaymentDetail.CustomerItems) -> String {
-        if customItem.currency == "GBP" {
-            return "£\(customItem.amount ?? 0)"
-        } else {
-            return "\(customItem.amount ?? 0) \(customItem.currency ?? "")"
         }
     }
     
