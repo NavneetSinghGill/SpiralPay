@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class Utils: NSObject {
     
@@ -18,6 +19,14 @@ class Utils: NSObject {
     
     var accessTokenExpiryTimer: Timer?
     var accessTokenExpiryTime: TimeInterval = 15*60
+    
+    let imageCache = NSCache<NSString, AnyObject>()
+    
+    var productionURL: String {
+        get {
+            return "\(AppSettingsManager.sharedInstance.appSettings.EnableSecureConnection ? Constants.SecureProtocol : Constants.InsecureProtocol)\(AppSettingsManager.sharedInstance.appSettings.ProductionURL)"
+        }
+    }
     
     func startAccessTokenExpiryTimer() {
         accessTokenExpiryTimer?.invalidate()
@@ -89,6 +98,27 @@ class Utils: NSObject {
         
         return address
     }
+    
+    func getURLfor(id: String?) -> URL {
+        let url = "\(productionURL)/v1/file/\(id ?? "")/public"
+        return URL(string: url)!
+    }
+    
+    func downloadImageFrom(url: URL, for imageView: UIImageView) {
+        
+        if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) as? UIImage {
+            imageView.image = cachedImage
+        } else {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                guard let data = data, error == nil, data.count == 0 else { return }
+                DispatchQueue.main.async {
+                    let imageToCache = UIImage(data: data)
+                    self.imageCache.setObject(imageToCache!, forKey: url.absoluteString as NSString)
+                    imageView.image = imageToCache
+                }
+                }.resume()
+        }
+    }
    
     //MARK: - Validation Methods
     public class func isValid(email:String) -> Bool {
@@ -126,6 +156,101 @@ class Utils: NSObject {
             return true
         }
         return false
+    }
+    
+    //MARK:- Coredata
+    
+    func getPaymentObjectFor(payment: Home.PaymentDetail.Response, context: NSManagedObjectContext = ApplicationDelegate.mainContext) -> Payment {
+        let paymentCoredataObject = Payment(context: context)
+        
+        paymentCoredataObject.paymentID = payment.paymentId ?? ""
+        paymentCoredataObject.status = payment.status ?? ""
+        paymentCoredataObject.merchantName = payment.merchantName ?? ""
+        paymentCoredataObject.created = Int64(payment.created ?? 0)
+        paymentCoredataObject.merchantLogoID = payment.merchantLogoId ?? ""
+        paymentCoredataObject.customerItems = getCustomerItemsObjectFor(customerItems: payment.customerItems, withMerchantID: payment.merchantId, context: context)
+        paymentCoredataObject.currency = payment.currency ?? ""
+        paymentCoredataObject.amount = Int64(payment.amount ?? 0)
+        paymentCoredataObject.merchantID = payment.merchantId ?? ""
+        paymentCoredataObject.vat = Int64(payment.vat ?? 0)
+        
+        return paymentCoredataObject
+    }
+    
+    func getCampaignObjectFor(campaign: Home.GetCampaigns.Response, context: NSManagedObjectContext = ApplicationDelegate.mainContext) -> Campaign {
+        let campaignCoredataObject = Campaign(context: context)
+        
+        campaignCoredataObject.active = campaign.active ?? false
+        campaignCoredataObject.name = campaign.name ?? ""
+        campaignCoredataObject.campaignID = campaign.campaignId ?? ""
+        campaignCoredataObject.merchantID = campaign.merchantId
+        campaignCoredataObject.items = getCustomerItemsObjectFor(customerItems: campaign.items, withMerchantID: campaign.merchantId, context: context)
+        
+        return campaignCoredataObject
+    }
+    
+    func getCustomerItemsObjectFor(customerItems: [Home.PaymentDetail.CustomerItems]?, withMerchantID: String?, context: NSManagedObjectContext = ApplicationDelegate.mainContext) -> NSSet? {
+        guard let customerItems = customerItems else {
+            return nil
+        }
+        var customerCoredataObjects = [Item]()
+        
+        for customerItem in customerItems {
+            let customerCoredataObject = Item(context: context)
+            customerCoredataObject.descriptionValue = customerItem.descriptionValue ?? ""
+            customerCoredataObject.name = customerItem.name ?? ""
+            customerCoredataObject.amount = Int64(customerItem.amount ?? 0)
+            customerCoredataObject.currency = customerItem.currency ?? ""
+            customerCoredataObject.count = Int64(customerItem.count ?? 0)
+            customerCoredataObject.vat = Int64(customerItem.vat ?? 0)
+            customerCoredataObject.imageID = customerItem.imageID ?? ""
+            
+            customerCoredataObject.combinedItem = getCombinedItemObjectFor(item: customerCoredataObject, withMerchantID: withMerchantID, context: context)
+            
+            customerCoredataObjects.append(customerCoredataObject)
+        }
+        
+        return NSSet(array: customerCoredataObjects)
+    }
+    
+    func getCombinedItemObjectFor(item: Item, withMerchantID: String?, context: NSManagedObjectContext = ApplicationDelegate.mainContext) -> CombinedItem? {
+        
+        var existingCombinedItems: [CombinedItem]? = nil
+        do {
+            let fetchRequest = NSFetchRequest<CombinedItem>(entityName: "CombinedItem")
+            fetchRequest.predicate = NSPredicate(format: "merchantID == %@ AND name == %@", withMerchantID ?? "-", item.name ?? "-")
+            existingCombinedItems = try context.fetch(fetchRequest)
+        } catch {
+            print("Fetching combined items Failed")
+        }
+        if let existingCombinedItem = existingCombinedItems?.first {
+            if existingCombinedItem.items == nil {
+                existingCombinedItem.items = NSSet(object: item)
+            } else {
+                existingCombinedItem.items = existingCombinedItem.items!.adding(item) as NSSet
+            }
+            existingCombinedItem.count = existingCombinedItem.count + item.count
+            return existingCombinedItem
+        }
+        
+        //Create new combined item
+        
+        let combinedItemCoredataObject = CombinedItem(context: context)
+        combinedItemCoredataObject.descriptionValue = item.descriptionValue
+        combinedItemCoredataObject.name = item.name
+        combinedItemCoredataObject.amount = item.amount
+        combinedItemCoredataObject.currency = item.currency
+        combinedItemCoredataObject.count = item.count
+        combinedItemCoredataObject.vat = item.vat
+        combinedItemCoredataObject.imageID = item.imageID
+        combinedItemCoredataObject.merchantID = withMerchantID
+    
+        if combinedItemCoredataObject.items == nil {
+            combinedItemCoredataObject.items = NSSet(object: item)
+        } else {
+            combinedItemCoredataObject.items = combinedItemCoredataObject.items!.adding(item) as NSSet
+        }
+        return combinedItemCoredataObject
     }
     
     //MARK: - Show Alert

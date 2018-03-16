@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import CoreData
 
 enum DetailsType {
     case Payment
@@ -328,6 +329,8 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     //MARK:- Private methods
     
     private func initialSetup() {
+        addCartIcon(parentView: self.view)
+        
         setUIwithProduct()
         
         tableView.estimatedRowHeight = 19
@@ -462,6 +465,35 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         paymentStatusScreen.paymentStatus = .Failed
         
         self.navigationController?.pushViewController(paymentStatusScreen, animated: true)
+    }
+    
+    //MARK:- Overridden methods
+    
+    @objc override func cartButtonTapped() {
+        if detailsType == DetailsType.Payment {
+            let context = ApplicationDelegate.mainContext
+            _ = Utils.shared.getPaymentObjectFor(payment: paymentDetail, context: context)
+            do {
+                try context.save()
+            } catch let nserror as NSError {
+                print("\nFailed to save payment details: \(nserror), \(nserror.userInfo)")
+            }
+        } else {
+            let context = ApplicationDelegate.mainContext
+           _ = Utils.shared.getCampaignObjectFor(campaign: campaignDetail, context: context)
+            do {
+                try context.save()
+            } catch let nserror as NSError {
+                print("\nFailed to save campaign details: \(nserror), \(nserror.userInfo)")
+            }
+        }
+        
+        let cartScreen = ShoppingCartViewController.create()
+        if self.navigationController != nil {
+            navigationController?.pushViewController(cartScreen, animated: true)
+        } else {
+            present(cartScreen, animated: true, completion: nil)
+        }
     }
     
 }

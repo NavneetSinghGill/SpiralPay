@@ -50,6 +50,9 @@
 		18645D50203552140017E214 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D4F203552140017E214 /* WelcomeViewController.swift */; };
 		18645D52203577040017E214 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D51203577040017E214 /* UIViewExtension.swift */; };
 		18645D5420359B7F0017E214 /* AddCardOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */; };
+		1865601B205BDB5000536D4F /* ShoppingCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18656019205BDB5000536D4F /* ShoppingCartTableViewCell.swift */; };
+		1865601C205BDB5000536D4F /* ShoppingCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */; };
+		186A1DC1206153B30021BC0F /* SpiralPay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 186A1DBF206153B30021BC0F /* SpiralPay.xcdatamodeld */; };
 		1871E896203D5730008BDEF8 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1871E895203D572D008BDEF8 /* Lato-Bold.ttf */; };
 		1871E898203DA401008BDEF8 /* BezierPathExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1871E897203DA401008BDEF8 /* BezierPathExtenstion.swift */; };
 		1873FB3B204533B1003CA863 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873FB3A204533B1003CA863 /* ScannerViewController.swift */; };
@@ -207,6 +210,9 @@
 		18645D4F203552140017E214 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		18645D51203577040017E214 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardOptionsViewController.swift; sourceTree = "<group>"; };
+		18656019205BDB5000536D4F /* ShoppingCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartTableViewCell.swift; sourceTree = "<group>"; };
+		1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartTableViewCell.xib; sourceTree = "<group>"; };
+		186A1DC0206153B30021BC0F /* SpiralPay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpiralPay.xcdatamodel; sourceTree = "<group>"; };
 		1871E895203D572D008BDEF8 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		1871E897203DA401008BDEF8 /* BezierPathExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathExtenstion.swift; sourceTree = "<group>"; };
 		1873FB3A204533B1003CA863 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -517,6 +523,7 @@
 				F1D9BAEB20185ACC004B42B7 /* StoryboardsAndXIBs */,
 				F1D9BADB20185A8B004B42B7 /* Workers */,
 				F1D9BA5C201852E8004B42B7 /* Info.plist */,
+				186A1DBF206153B30021BC0F /* SpiralPay.xcdatamodeld */,
 			);
 			path = SpiralPay;
 			sourceTree = "<group>";
@@ -670,6 +677,8 @@
 				18D2D1CB2048440700E1B988 /* ProductTableViewCell.xib */,
 				1815BC812047D8C20001E392 /* PaymentPriceDetailsTableViewCell.swift */,
 				1815BC822047D8C20001E392 /* PaymentPriceDetailsTableViewCell.xib */,
+				18656019205BDB5000536D4F /* ShoppingCartTableViewCell.swift */,
+				1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */,
 			);
 			path = StoryboardsAndXIBs;
 			sourceTree = "<group>";
@@ -848,6 +857,7 @@
 				F1D9BA5B201852E8004B42B7 /* LaunchScreen.storyboard in Resources */,
 				18D2D1C920480CE700E1B988 /* PaymentHistoryTableViewCell.xib in Resources */,
 				F1D9BA58201852E8004B42B7 /* Assets.xcassets in Resources */,
+				1865601C205BDB5000536D4F /* ShoppingCartTableViewCell.xib in Resources */,
 				F1D9BAE920185A8B004B42B7 /* AppSettings.plist in Resources */,
 				18D2D1CD2048440700E1B988 /* ProductTableViewCell.xib in Resources */,
 				F1D9BA56201852E8004B42B7 /* Main.storyboard in Resources */,
@@ -960,6 +970,7 @@
 				185C60AC20244835009D23BE /* User.swift in Sources */,
 				F1D9BAD4201856D1004B42B7 /* BannerManager.swift in Sources */,
 				184A4FA2202D8EBA0019AD40 /* ConfirmDetailsViewController.swift in Sources */,
+				186A1DC1206153B30021BC0F /* SpiralPay.xcdatamodeld in Sources */,
 				18D2D1C820480CE700E1B988 /* PaymentHistoryTableViewCell.swift in Sources */,
 				181287AE204441A600779850 /* HomeRouter.swift in Sources */,
 				180DAEDC20298B9E00193C39 /* NLoader.swift in Sources */,
@@ -999,6 +1010,7 @@
 				18256FDF20527AB2007FA954 /* HomeContainerWorker.swift in Sources */,
 				181287AF204441A600779850 /* HomeWorker.swift in Sources */,
 				18943504202488F9000C2166 /* PinViewController.swift in Sources */,
+				1865601B205BDB5000536D4F /* ShoppingCartTableViewCell.swift in Sources */,
 				F1D9BABE20185605004B42B7 /* DateExtensions.swift in Sources */,
 				F1D9BAB720185605004B42B7 /* NSViewExtensions.swift in Sources */,
 				18529F67202B31CD00BD8D0E /* PhoneVerificationRouter.swift in Sources */,
@@ -1376,6 +1388,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		186A1DBF206153B30021BC0F /* SpiralPay.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				186A1DC0206153B30021BC0F /* SpiralPay.xcdatamodel */,
+			);
+			currentVersion = 186A1DC0206153B30021BC0F /* SpiralPay.xcdatamodel */;
+			path = SpiralPay.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F1D9BA45201852E8004B42B7 /* Project object */;
 }

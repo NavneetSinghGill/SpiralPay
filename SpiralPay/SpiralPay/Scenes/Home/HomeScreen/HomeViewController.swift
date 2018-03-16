@@ -79,6 +79,8 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
     {
         super.viewDidLoad()
         
+        addCartIcon(parentView: scrollViewContainerChildView)
+        
         paymentTableView.estimatedRowHeight = 0
         paymentTableView.estimatedSectionHeaderHeight = 0
         paymentTableView.estimatedSectionFooterHeight = 0
@@ -107,6 +109,7 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
     
     //MARK:- Variables
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollViewContainerChildView: UIView!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var amountLabelTopConstraint: NSLayoutConstraint!
@@ -134,10 +137,6 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
     
     let daysToCoverForWeek = 6
     let daysToCoverForMonth = 29
-    
-    let imageCache = NSCache<NSString, AnyObject>()
-    
-    let baseURL = "\(AppSettingsManager.sharedInstance.appSettings.EnableSecureConnection ? Constants.SecureProtocol : Constants.InsecureProtocol)\(AppSettingsManager.sharedInstance.appSettings.ProductionURL)"
     
     //MARK:- APIs
     
@@ -301,6 +300,7 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
                 amountLabelTopConstraint.constant = amountLabelTopConstraintDefaultValue - paymentTableView.frame.origin.y
             }
             backButton.isHidden = false
+            cartView?.isHidden = true
             
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
@@ -497,22 +497,6 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         graphView.layer.addSublayer(dotsL!)
     }
     
-    func downloadImageFrom(url: URL, for imageView: UIImageView) {
-        
-        if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) as? UIImage {
-            imageView.image = cachedImage
-        } else {
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                guard let data = data, error == nil else { return }
-                DispatchQueue.main.async {
-                    let imageToCache = UIImage(data: data)
-                    self.imageCache.setObject(imageToCache!, forKey: url.absoluteString as NSString)
-                    imageView.image = imageToCache
-                }
-                }.resume()
-        }
-    }
-    
     private func removeAllSmallerTimeOf(dateInterval: Int) -> Date {
         let date = Date(timeIntervalSince1970: TimeInterval(dateInterval))
         
@@ -610,6 +594,7 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         expandedCellIndexPath = nil
         amountLabelTopConstraint.constant = amountLabelTopConstraintDefaultValue
         backButton.isHidden = true
+        cartView?.isHidden = false
         
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
@@ -617,11 +602,6 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         
         //Because of this reload the old data is refreshed and if apip is called then the new cell is refrshed on getting api response
         self.reloadPaymentTableViewData()
-    }
-    
-    private func getURLfor(payment: Home.PaymentHistory.Response) -> URL {
-        let url = "\(baseURL)/v1/file/\(payment.merchantLogoId ?? "")/public"
-        return URL(string: url)!
     }
     
     private func getPaymentDetailFor(payment: Home.PaymentHistory.Response) {
@@ -632,6 +612,20 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         interactor?.getPaymentDetails(request: request,
                                       payment: payment)
     }
+    
+    //MARK:- Overridden methods
+    
+    override func cartButtonTapped() {
+        if badge == 0 {
+            return
+        }
+        
+        let cartScreen = ShoppingCartViewController.create()
+        if self.navigationController != nil {
+            self.parent?.navigationController?.pushViewController(cartScreen, animated: true)
+        }
+    }
+    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -677,7 +671,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.payment = payment
             
             cell.merchantNameLabel.text = payment.merchantName
-            downloadImageFrom(url: getURLfor(payment: payment), for: cell.merchantImageView)
+            Utils.shared.downloadImageFrom(url: Utils.shared.getURLfor(id: payment.merchantLogoId), for: cell.merchantImageView)
 
             cell.amountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: payment.currency, amount: CGFloat(payment.amount ?? 0))
             
@@ -726,6 +720,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 expandedCellIndexPath = nil
                 amountLabelTopConstraint.constant = amountLabelTopConstraintDefaultValue
                 backButton.isHidden = true
+                cartView?.isHidden = false
             }
             
             UIView.animate(withDuration: 0.3, animations: {

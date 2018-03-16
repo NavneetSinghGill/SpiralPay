@@ -225,6 +225,13 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
     }
     
     @IBAction func payButtonTapped() {
+        
+        #if (arch(i386) || arch(x86_64)) && (os(iOS) || os(watchOS) || os(tvOS))
+            let code = "051e1657-03da-4ad5-9004-8e9774aa3aa0"
+            getCampaignsWith(udid: code)
+            return
+        #endif
+        
         let scannerVC = ScannerViewController.create()
         scannerVC.scannerDelegate = self
         scannerVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
