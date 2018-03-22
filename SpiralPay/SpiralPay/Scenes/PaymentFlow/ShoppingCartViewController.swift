@@ -25,7 +25,7 @@ class ShoppingCartViewController: SpiralPayViewController {
     @IBOutlet weak var topDividerImageView: UIImageView!
     @IBOutlet weak var bottomDividerImageView: UIImageView!
     
-    var combinedItems = [CombinedItem]()
+    var combinedItems: [CombinedItem]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +48,12 @@ class ShoppingCartViewController: SpiralPayViewController {
     }
     
     @IBAction func checkout() {
-        
+        let productDetailsScreen = ProductDetailsViewController.create()
+        if let combinedItems = combinedItems, combinedItems.count > 0 {
+            productDetailsScreen.detailsType = DetailsType.Multiple
+            productDetailsScreen.combinedItems = combinedItems
+            self.navigationController?.pushViewController(productDetailsScreen, animated: true)
+        }
     }
     
     //MARK:- Private methods
@@ -66,14 +71,14 @@ class ShoppingCartViewController: SpiralPayViewController {
         combinedItems = fetchCombinedItems()
         
         setTotalAmount()
-        shoppingCartLabel.text = "Shopping Cart (\(combinedItems.count))"
+        shoppingCartLabel.text = "Shopping Cart (\(combinedItems?.count ?? 0))"
     }
     
     func setTotalAmount() {
         var totalAmount: CGFloat = 0
         var currency = ""
         
-        for combinedItem in combinedItems {
+        for combinedItem in combinedItems ?? [] {
             totalAmount = totalAmount + CGFloat(combinedItem.count * combinedItem.amount)
             currency = combinedItem.currency ?? ""
         }
@@ -108,7 +113,7 @@ class ShoppingCartViewController: SpiralPayViewController {
 extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return combinedItems.count
+        return combinedItems?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -118,13 +123,12 @@ extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource
         
         cell.sizeLabel.text = "Size: -"
         
-        let combinedItem = combinedItems[indexPath.row]
+        let combinedItem = combinedItems![indexPath.row]
         cell.itemName.text = combinedItem.name
         cell.amountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: combinedItem.currency, amount: CGFloat(combinedItem.amount * combinedItem.count))
         cell.quantityLabel.text = "Quantity: \(combinedItem.count)"
         cell.combinedItem = combinedItem
-        //TODO:
-//        Utils.shared.downloadImageFrom(url: Utils.shared.getURLfor(id: item.itemImageID), for: cell.itemImageView)
+        Utils.shared.downloadImageFrom(url: Utils.shared.getURLfor(id: combinedItem.imageID), for: cell.itemImageView)
         return cell
     }
     
@@ -137,7 +141,7 @@ extension ShoppingCartViewController: UITableViewDelegate, UITableViewDataSource
 extension ShoppingCartViewController: ShoppingCartTableViewCellDelegate {
     
     func deleteCellWith(indexPath: IndexPath, combinedItem: CombinedItem?) {
-        let alertController = UIAlertController(title: "Delete", message: "Are you sure you want to delete this item?", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Delete", message: "Are you sure you want to delete:\n\(combinedItem?.count ?? 0)x \(combinedItem?.name ?? "-")", preferredStyle: .actionSheet)
         let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
             
             if let combinedItem = combinedItem {

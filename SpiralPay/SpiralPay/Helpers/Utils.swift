@@ -110,7 +110,7 @@ class Utils: NSObject {
             imageView.image = cachedImage
         } else {
             URLSession.shared.dataTask(with: url) { data, response, error in
-                guard let data = data, error == nil, data.count == 0 else { return }
+                guard let data = data, error == nil, data.count != 0 else { return }
                 DispatchQueue.main.async {
                     let imageToCache = UIImage(data: data)
                     self.imageCache.setObject(imageToCache!, forKey: url.absoluteString as NSString)
@@ -251,6 +251,129 @@ class Utils: NSObject {
             combinedItemCoredataObject.items = combinedItemCoredataObject.items!.adding(item) as NSSet
         }
         return combinedItemCoredataObject
+    }
+    
+    func fetchRecordsIn(context: NSManagedObjectContext) -> [NSManagedObject] {
+        var paymentAndCampaigns = [NSManagedObject]()
+        do {
+            paymentAndCampaigns = try context.fetch(Payment.fetchRequest())
+        } catch {
+            print("Fetching payments Failed")
+        }
+        
+        do {
+            let campaigns: [NSManagedObject] = try context.fetch(Campaign.fetchRequest())
+            paymentAndCampaigns.append(contentsOf: campaigns)
+        } catch {
+            print("Fetching campaigns Failed")
+        }
+        
+        return paymentAndCampaigns
+    }
+    
+    func deleteDanglingDataIn(context: NSManagedObjectContext) {
+        deleteDanglingCombinedItemsIn(context: context)
+        deleteDanglingItemsIn(context: context)
+        
+        let paymentAndCampaigns = fetchRecordsIn(context: context)
+        var paymentAndCampaignsWithItems = [NSManagedObject]()
+        
+        for paymentAndCampaign in paymentAndCampaigns {
+            if let payment = paymentAndCampaign as? Payment {
+                if payment.customerItems == nil || payment.customerItems?.count == 0 {
+                    context.delete(payment)
+                    continue
+                } else {
+                    paymentAndCampaignsWithItems.append(payment)
+                }
+            } else if let campaign = paymentAndCampaign as? Campaign {
+                if campaign.items == nil || campaign.items?.count == 0 {
+                    context.delete(campaign)
+                    continue
+                } else {
+                    paymentAndCampaignsWithItems.append(campaign)
+                }
+            }
+        }
+        
+        save(context: context)
+    }
+    
+    func deleteDanglingItemsIn(context: NSManagedObjectContext) {
+        
+        var items = [Item]()
+        do {
+            items = try context.fetch(Item.fetchRequest())
+        } catch {
+            print("Fetching items Failed")
+        }
+        
+        for item in items {
+            if ((item.payment == nil) && (item.campaign == nil)) ||
+                item.combinedItem == nil {
+                context.delete(item)
+            }
+        }
+    }
+    
+    func deleteDanglingCombinedItemsIn(context: NSManagedObjectContext) {
+        
+        let combinedItems = getCombinedItemsIn(context: context)
+        
+        var filteredCombinedItems = [CombinedItem]()
+        for combinedItem in combinedItems {
+            if combinedItem.items == nil || combinedItem.items!.count == 0 {
+                context.delete(combinedItem)
+            } else {
+                filteredCombinedItems.append(combinedItem)
+            }
+        }
+    }
+    
+    func getCombinedItemsIn(context: NSManagedObjectContext) -> [CombinedItem] {
+        var combinedItems = [CombinedItem]()
+        do {
+            combinedItems = try context.fetch(CombinedItem.fetchRequest())
+        } catch {
+            print("Fetching combined items Failed")
+        }
+        return combinedItems
+    }
+    
+    func save(context: NSManagedObjectContext) {
+        if context == ApplicationDelegate.mainContext {
+            ApplicationDelegate.saveContext()
+        } else {
+            do {
+                if context.hasChanges {
+                    try context.save()
+                }
+            } catch {
+                print("Failed to save general context")
+            }
+        }
+    }
+    
+    func deleteCombinedItemsWith(merchantID: String?) {
+        var combinedItems: [CombinedItem]? = nil
+        do {
+            let fetchRequest = NSFetchRequest<CombinedItem>(entityName: "CombinedItem")
+            fetchRequest.predicate = NSPredicate(format: "merchantID == %@", merchantID ?? "-")
+            combinedItems = try ApplicationDelegate.mainContext.fetch(fetchRequest)
+        } catch {
+            print("Fetching combined items Failed")
+        }
+        
+        if let combinedItems = combinedItems {
+            for combinedItem in combinedItems {
+                ApplicationDelegate.mainContext.delete(combinedItem)
+            }
+        }
+        
+        ApplicationDelegate.saveContext()
+        
+        //Just to make this function delete all dangling data
+        _ = fetchRecordsIn(context: ApplicationDelegate.mainContext)
     }
     
     //MARK: - Show Alert

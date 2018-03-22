@@ -16,6 +16,7 @@ import CoreData
 enum DetailsType {
     case Payment
     case Campaign
+    case Multiple
 }
 
 enum ShutterAction {
@@ -129,8 +130,13 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     var paymentDetail: Home.PaymentDetail.Response!
     var campaignDetail: Home.GetCampaigns.Response!
     var items = [Home.PaymentDetail.CustomerItems]()
+    var combinedItems: [CombinedItem]?
     
     var campaignPaymentID: String?
+    var combinedItemPaymentID: String?
+    
+    var createdPayments: [ProductDetails.CreatePayment.Request]?
+    var indexOfPaymentInProgress: Int = -1
     
     var paymentDetailsTimer : Timer?
     var didGetPaymentDetails: Bool = false { 
@@ -162,9 +168,12 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         if detailsType == DetailsType.Payment {
             request.currency = paymentDetail.currency
             request.amount = paymentDetail.amount
-        } else {
+        } else if detailsType == DetailsType.Campaign {
             request.currency = campaignDetail.currency
             request.amount = campaignDetail.amount
+        } else if detailsType == DetailsType.Multiple {
+            request.currency = createdPayments![indexOfPaymentInProgress].currency
+            request.amount = createdPayments![indexOfPaymentInProgress].amount
         }
         request.userAgent = ""
         request.city = User.shared.city
@@ -196,8 +205,10 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
             var request = ProductDetails.ProcessPayment.Request()
             if detailsType == DetailsType.Payment {
                 request.paymentId = paymentDetail.paymentId
-            } else {
+            } else if detailsType == DetailsType.Campaign {
                 request.paymentId = campaignPaymentID
+            } else if detailsType == DetailsType.Multiple {
+                request.paymentId = combinedItemPaymentID
             }
             request.cardToken = response.token
             request.customerEmail = User.shared.email
@@ -206,11 +217,13 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
             interactor?.processPayment(request: request)
         } else {
             NLoader.shared.stopNLoader()
+            paymentFailed()
         }
     }
     
     func getCardTokenFailureWith(response: ProductDetails.CardToken.Response) {
         NLoader.shared.stopNLoader()
+        paymentFailed()
     }
     
     //MARK: Process payment
@@ -221,6 +234,7 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     
     func processPaymentFailureWith(response: ProductDetails.ProcessPayment.Response) {
         NLoader.shared.stopNLoader()
+        paymentFailed()
     }
     
     //MARK: Get payment details
@@ -232,7 +246,17 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
             didGetPaymentDetails = true
             
             if response.status == "PAY_COMPLETED" {
-                showPaymentSuccessScreenWith(paymentDetail: response)
+                if detailsType != DetailsType.Multiple {
+                    showPaymentSuccessScreenWith(paymentDetail: response)
+                } else if detailsType == DetailsType.Multiple && createdPayments!.count == indexOfPaymentInProgress + 1 {
+                    //TODO: Here success is shown of last payment only.. wait for designs
+                    showPaymentSuccessScreenWith(paymentDetail: response)
+                    
+                    Utils.shared.deleteCombinedItemsWith(merchantID: createdPayments![indexOfPaymentInProgress].merchantID)
+                } else {
+                    Utils.shared.deleteCombinedItemsWith(merchantID: createdPayments![indexOfPaymentInProgress].merchantID)
+                    doNextPaymentInCaseOfMultipleMerchants()
+                }
             } else if response.status == "PAY_FAILED" {
                 showPaymentFailedScreenWith(paymentDetail: response)
             }
@@ -270,20 +294,35 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     
     func createPaymentSuccessWith(response: ProductDetails.CreatePayment.Response) {
         if response.paymentId != nil {
-            campaignPaymentID = response.paymentId
+            if detailsType == .Campaign {
+                campaignPaymentID = response.paymentId
+            } else if detailsType == .Multiple {
+                combinedItemPaymentID = response.paymentId
+            }
             getCardToken()
         } else {
             NLoader.shared.stopNLoader()
+            paymentFailed()
         }
     }
     
     func createPaymentFailureWith(response: ProductDetails.CreatePayment.Response) {
         NLoader.shared.stopNLoader()
+        paymentFailed()
+    }
+    
+    func paymentFailed() {
+        //Filling paymentDetail object removes the headache of managing another useless campaign/combinedItems object in payment status screen
         if detailsType == DetailsType.Campaign {
-            //Doing this removes the headache of managing another useless campaign object in payment status screen
             paymentDetail.amount = campaignDetail.amount
             paymentDetail.currency = campaignDetail.currency
             paymentDetail.merchantName = campaignDetail.name
+        } else if detailsType == DetailsType.Multiple {
+            paymentDetail.amount = createdPayments![indexOfPaymentInProgress].amount
+            paymentDetail.currency = createdPayments![indexOfPaymentInProgress].currency
+            //TODO:
+//            paymentDetail.merchantName = createdPayments![indexOfPaymentInProgress].name
+            paymentDetail.merchantName = ""
         }
         showPaymentFailedScreenWith(paymentDetail: paymentDetail)
     }
@@ -321,15 +360,24 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     @IBAction func acceptButtonTapped() {
         if detailsType == DetailsType.Payment {
             getCardToken()
-        } else {
+        } else if detailsType == DetailsType.Campaign {
             createPayment()
+        } else if detailsType == DetailsType.Multiple {
+            indexOfPaymentInProgress = -1
+            doNextPaymentInCaseOfMultipleMerchants()
         }
     }
     
     //MARK:- Private methods
     
     private func initialSetup() {
-        addCartIcon(parentView: self.view)
+        if detailsType != DetailsType.Multiple {
+            addCartIcon(parentView: self.view)
+        } else {
+            createPaymentsForCombinedItem()
+        }
+        
+        combinedItems = fetchCombinedItems()
         
         setUIwithProduct()
         
@@ -366,23 +414,39 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     private func setUIwithProduct() {
         total = 0
         vatTotal = 0
-        for item in items {
-            total = total + (item.amount ?? 0)
-            vatTotal = vatTotal + (item.vat ?? 0)
-        }
-        
-        if let item = items.first {
-            currency = Utils.shared.getCurrencyStringWith(currency: item.currency)
+        if detailsType != DetailsType.Multiple {
+            for item in items {
+                total = total + ((item.amount ?? 0) * CGFloat(item.count ?? 0))
+                vatTotal = vatTotal + ((item.vat ?? 0) * CGFloat(item.count ?? 0))
+            }
+            
+            if let item = items.first {
+                currency = Utils.shared.getCurrencyStringWith(currency: item.currency)
+            }
+        } else {
+            if let combinedItems = combinedItems {
+                for combinedItem in combinedItems {
+                    total = total + (CGFloat(combinedItem.amount) * CGFloat(combinedItem.count))
+                    vatTotal = vatTotal + (CGFloat(combinedItem.vat) * CGFloat(combinedItem.count))
+                }
+                
+                if let combinedItem = combinedItems.first {
+                    currency = Utils.shared.getCurrencyStringWith(currency: combinedItem.currency)
+                }
+            }
         }
         
         let totalAmountString = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: total)
         totalAmountLabel.text = totalAmountString
         boldTotalAmountLabel.text = "\(total/100)"
         currencyLabel.text = currency
-        if detailsType == DetailsType.Payment {
+        switch detailsType! {
+        case .Payment:
             merchantNameLabel.text = paymentDetail.merchantName
-        } else {
+        case .Campaign:
             merchantNameLabel.text = campaignDetail.name
+        case .Multiple:
+            merchantNameLabel.text = ""
         }
     }
     
@@ -424,6 +488,7 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     }
     
     func doMultiplePaymentDetailsAPI() {
+        self.numberOfTimesApiWasFired = 0
         paymentDetailsTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { (timer) in
             self.numberOfTimesApiWasFired = self.numberOfTimesApiWasFired + 1
             // 5 * 36 = 180 = 3minutes so show failed after that
@@ -440,8 +505,10 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         var request = Home.PaymentDetail.Request()
         if detailsType == DetailsType.Payment {
             request.paymentID = paymentDetail.paymentId
-        } else {
+        } else if detailsType == DetailsType.Campaign {
             request.paymentID = campaignPaymentID
+        } else if detailsType == DetailsType.Multiple {
+            request.paymentID = combinedItemPaymentID
         }
         self.interactor?.getPaymentDetails(request: request)
     }
@@ -465,6 +532,88 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         paymentStatusScreen.paymentStatus = .Failed
         
         self.navigationController?.pushViewController(paymentStatusScreen, animated: true)
+    }
+    
+    func createPaymentsForCombinedItem() {
+        createdPayments = [ProductDetails.CreatePayment.Request]()
+        
+        //Find all merchants from CombinedItems data
+        var merchantIdDictionaries: Array<AnyObject>?
+        do {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CombinedItem")
+            fetchRequest.returnsObjectsAsFaults = false
+            fetchRequest.propertiesToGroupBy = ["merchantID"]
+            fetchRequest.propertiesToFetch = ["merchantID"]
+            fetchRequest.resultType = .dictionaryResultType
+            merchantIdDictionaries = try ApplicationDelegate.mainContext.fetch(fetchRequest)
+        } catch {
+            print("Fetching combined items Failed")
+            return
+        }
+        
+        if let merchantIdDictionaries = merchantIdDictionaries {
+            
+            for merchantIdDictionary in merchantIdDictionaries {
+                if let merchantIdDictionary = merchantIdDictionary as? Dictionary<String,String>,
+                    let merchantID = merchantIdDictionary["merchantID"] {
+                    
+                    createPaymentAndAddToArrayWith(merchantID: merchantID)
+                }
+            }
+            
+        }
+        
+        
+    }
+    
+    func createPaymentAndAddToArrayWith(merchantID: String) {
+        var combinedItemsWithCommonMerchant: [CombinedItem]? = nil
+        do {
+            let fetchRequest = NSFetchRequest<CombinedItem>(entityName: "CombinedItem")
+            fetchRequest.predicate = NSPredicate(format: "merchantID == %@", merchantID)
+            combinedItemsWithCommonMerchant = try ApplicationDelegate.mainContext.fetch(fetchRequest)
+        } catch {
+            print("Fetching combined items Failed")
+            return
+        }
+        
+        //Create payment request object with combined items
+        if let combinedItem = combinedItemsWithCommonMerchant?.first {
+            
+            var request = ProductDetails.CreatePayment.Request()
+            request.merchantID = combinedItem.merchantID
+            request.description = ""
+            request.currency = combinedItem.currency
+            request.redirectUrl = nil
+            
+            var vat: CGFloat = 0
+            var amount: CGFloat = 0
+            var items = Array<Home.PaymentDetail.CustomerItems>()
+            for combinedItem in combinedItemsWithCommonMerchant! {
+                items.append(Home.PaymentDetail.CustomerItems(combinedItem: combinedItem))
+                vat = vat + CGFloat(combinedItem.vat * combinedItem.count)
+                amount = amount + CGFloat(combinedItem.amount * combinedItem.count)
+            }
+            request.items = items
+            request.vat = vat
+            if isTestEnvironment {
+                request.amount = 2099
+            } else {
+                request.amount = amount
+            }
+            
+            if createdPayments != nil {
+                createdPayments!.append(request)
+            }
+        }
+    }
+    
+    func doNextPaymentInCaseOfMultipleMerchants() {
+        indexOfPaymentInProgress = indexOfPaymentInProgress + 1
+        
+        if let paymentRequest = createdPayments?[indexOfPaymentInProgress] {
+            interactor?.createPayment(request: paymentRequest)
+        }
     }
     
     //MARK:- Overridden methods
@@ -501,15 +650,30 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
 extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if items.count == 0 {
-            return 0
+        
+        if detailsType != .Multiple {
+            if items.count == 0 {
+                return 0
+            } else {
+                return items.count + 2
+            }
         } else {
-            return items.count + 2
+            if let combinedItems = combinedItems {
+                if combinedItems.count == 0 {
+                    return 0
+                } else {
+                    return combinedItems.count + 2
+                }
+            } else {
+                return 0
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row < items.count {
+
+        if detailsType != .Multiple, indexPath.row < items.count {
+            
             let itemCell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
             
             guard let itemNameLabel = itemCell.viewWithTag(101) as? UILabel else {
@@ -520,10 +684,28 @@ extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSour
             }
             let item = items[indexPath.row]
             itemNameLabel.text = "\(item.count ?? 1)x \(item.name ?? "-")"
-            itemAmountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: item.currency, amount: item.amount)
+            itemAmountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: item.currency, amount: ((item.amount ?? 0) * CGFloat(item.count ?? 0)))
             
             return itemCell
+            
+        } else if detailsType == .Multiple, let combinedItems = combinedItems, indexPath.row < combinedItems.count {
+            
+            let itemCell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+            
+            guard let itemNameLabel = itemCell.viewWithTag(101) as? UILabel else {
+                return itemCell
+            }
+            guard let itemAmountLabel = itemCell.viewWithTag(102) as? UILabel else {
+                return itemCell
+            }
+            let combinedItem = combinedItems[indexPath.row]
+            itemNameLabel.text = "\(combinedItem.count)x \(combinedItem.name ?? "-")"
+            itemAmountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: combinedItem.currency, amount: CGFloat(combinedItem.amount) * CGFloat(combinedItem.count))
+            
+            return itemCell
+            
         } else {
+            
             let itemCell = tableView.dequeueReusableCell(withIdentifier: "AmountCell", for: indexPath)
             
             guard let headingLabel = itemCell.viewWithTag(101) as? UILabel else {
@@ -533,12 +715,24 @@ extension ProductDetailsViewController: UITableViewDelegate, UITableViewDataSour
                 return itemCell
             }
             
-            if indexPath.row == items.count {
-                headingLabel.text = "Sub total"
-                amountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: total - vatTotal)
-            } else if indexPath.row == items.count + 1 {
-                headingLabel.text = "VAT paid"
-                amountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: vatTotal)
+            if detailsType != .Multiple {
+                if indexPath.row == items.count {
+                    headingLabel.text = "Sub total"
+                    amountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: total - vatTotal)
+                } else if indexPath.row == items.count + 1 {
+                    headingLabel.text = "VAT paid"
+                    amountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: vatTotal)
+                }
+            } else {
+                if let combinedItems = combinedItems {
+                    if indexPath.row == combinedItems.count {
+                        headingLabel.text = "Sub total"
+                        amountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: total - vatTotal)
+                    } else if indexPath.row == combinedItems.count + 1 {
+                        headingLabel.text = "VAT paid"
+                        amountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: currency, amount: vatTotal)
+                    }
+                }
             }
             
             return itemCell

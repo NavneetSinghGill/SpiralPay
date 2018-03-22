@@ -255,6 +255,16 @@ enum Home
                 return dictionary
             }
             
+            public init(combinedItem: CombinedItem) {
+                self.descriptionValue = combinedItem.descriptionValue
+                self.name = combinedItem.name
+                self.amount = CGFloat(combinedItem.amount)
+                self.currency = combinedItem.currency
+                self.count = Int(combinedItem.count)
+                self.vat = CGFloat(combinedItem.vat)
+                self.imageID = combinedItem.imageID
+            }
+            
         }
     }
     

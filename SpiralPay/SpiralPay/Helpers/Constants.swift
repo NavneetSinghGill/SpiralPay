@@ -18,6 +18,8 @@ let isiPad: Bool = UIDevice.current.userInterfaceIdiom == .pad
 let screenHeight = UIScreen.main.bounds.size.height
 let screenWidth = UIScreen.main.bounds.size.width
 
+let isTestEnvironment = true
+
 struct Constants {
     
     static let kHadAppRunBeforeAtleastOnce = "hadAppRunBeforeAtleastOnce"

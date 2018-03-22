@@ -81,7 +81,7 @@ class SpiralPayViewController: UIViewController {
     
     func addCartIcon(parentView: UIView) {
         let pixelsToBeShiftedBy: CGFloat = 5
-        cartView = UIView(frame: CGRect(x: self.view.frame.size.width - 50, y: (self.view == parentView) ? 25 : 5, width: 35 + pixelsToBeShiftedBy, height: 35))
+        cartView = UIView(frame: CGRect(x: self.view.frame.size.width - 50, y: (self.view == parentView) ? 25 : 5, width: 35 + pixelsToBeShiftedBy, height: 40))
         let cartButton = UIButton(frame: CGRect(x: 0, y: 0, width: cartView!.frame.size.width, height: cartView!.frame.size.height))
         cartButton.setImage(UIImage(named: "cart"), for: .normal)
         cartButton.addTarget(self, action: #selector(cartButtonTapped), for: .touchUpInside)
@@ -117,110 +117,9 @@ class SpiralPayViewController: UIViewController {
     
     func fetchCombinedItems() -> [CombinedItem] {
         
-        deleteDanglingDataIn(context: ApplicationDelegate.mainContext)
+        Utils.shared.deleteDanglingDataIn(context: ApplicationDelegate.mainContext)
         
-        return getCombinedItemsIn(context: ApplicationDelegate.mainContext)
-    }
-    
-    func fetchRecordsIn(context: NSManagedObjectContext) -> [NSManagedObject] {
-        var paymentAndCampaigns = [NSManagedObject]()
-        do {
-            paymentAndCampaigns = try context.fetch(Payment.fetchRequest())
-        } catch {
-            print("Fetching payments Failed")
-        }
-        
-        do {
-            let campaigns: [NSManagedObject] = try context.fetch(Campaign.fetchRequest())
-            paymentAndCampaigns.append(contentsOf: campaigns)
-        } catch {
-            print("Fetching campaigns Failed")
-        }
-        
-        return paymentAndCampaigns
-    }
-    
-    func deleteDanglingDataIn(context: NSManagedObjectContext) {
-        deleteDanglingCombinedItemsIn(context: context)
-        deleteDanglingItemsIn(context: context)
-        
-        let paymentAndCampaigns = fetchRecordsIn(context: context)
-        var paymentAndCampaignsWithItems = [NSManagedObject]()
-        
-        for paymentAndCampaign in paymentAndCampaigns {
-            if let payment = paymentAndCampaign as? Payment {
-                if payment.customerItems == nil || payment.customerItems?.count == 0 {
-                    context.delete(payment)
-                    continue
-                } else {
-                    paymentAndCampaignsWithItems.append(payment)
-                }
-            } else if let campaign = paymentAndCampaign as? Campaign {
-                if campaign.items == nil || campaign.items?.count == 0 {
-                    context.delete(campaign)
-                    continue
-                } else {
-                    paymentAndCampaignsWithItems.append(campaign)
-                }
-            }
-        }
-        
-        save(context: context)
-    }
-    
-    func deleteDanglingItemsIn(context: NSManagedObjectContext) {
-        
-        var items = [Item]()
-        do {
-            items = try context.fetch(Item.fetchRequest())
-        } catch {
-            print("Fetching items Failed")
-        }
-        
-        for item in items {
-            if ((item.payment == nil) && (item.campaign == nil)) ||
-                item.combinedItem == nil {
-                context.delete(item)
-            }
-        }
-    }
-    
-    func deleteDanglingCombinedItemsIn(context: NSManagedObjectContext) {
-        
-        let combinedItems = getCombinedItemsIn(context: context)
-        
-        var filteredCombinedItems = [CombinedItem]()
-        for combinedItem in combinedItems {
-            if combinedItem.items == nil || combinedItem.items!.count == 0 {
-                context.delete(combinedItem)
-            } else {
-                filteredCombinedItems.append(combinedItem)
-            }
-        }
-    }
-    
-    func getCombinedItemsIn(context: NSManagedObjectContext) -> [CombinedItem] {
-        var combinedItems = [CombinedItem]()
-        do {
-            combinedItems = try context.fetch(CombinedItem.fetchRequest())
-        } catch {
-            print("Fetching combined items Failed")
-        }
-        return combinedItems
-    }
-    
-    func save(context: NSManagedObjectContext) {
-        if context == ApplicationDelegate.mainContext {
-            ApplicationDelegate.saveContext()
-        } else {
-            do {
-                if context.hasChanges {
-                    try context.save()
-                }
-            } catch {
-                print("Failed to save general context")
-            }
-        }
+        return Utils.shared.getCombinedItemsIn(context: ApplicationDelegate.mainContext)
     }
 
 }

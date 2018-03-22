@@ -110,7 +110,7 @@ extension PaymentHistoryTableViewCell: UITableViewDataSource, UITableViewDelegat
             let customItem = payment!.details!.customerItems![indexPath.row]
             cell.productNameLabel.text = "\(customItem.name ?? "--") x\(customItem.count ?? 1)"
 
-            cell.productAmountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: customItem.currency, amount: customItem.amount)
+            cell.productAmountLabel.text = Utils.shared.getFormattedAmountStringWith(currency: customItem.currency, amount: (customItem.amount ?? 0) * CGFloat(customItem.count ?? 1))
             
             return cell
         }
