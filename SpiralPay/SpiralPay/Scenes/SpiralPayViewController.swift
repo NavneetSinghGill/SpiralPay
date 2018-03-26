@@ -210,12 +210,16 @@ class SpiralPayViewController: UIViewController {
     }
     
     func save(context: NSManagedObjectContext) {
-        do {
-            if context.hasChanges {
-                try context.save()
+        if context == ApplicationDelegate.mainContext {
+            ApplicationDelegate.saveContext()
+        } else {
+            do {
+                if context.hasChanges {
+                    try context.save()
+                }
+            } catch {
+                print("Failed to save general context")
             }
-        } catch {
-            print("Failed to save general context")
         }
     }
 

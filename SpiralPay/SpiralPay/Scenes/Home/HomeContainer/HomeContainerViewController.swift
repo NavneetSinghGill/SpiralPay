@@ -296,16 +296,9 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
         viewController.removeFromParentViewController()
     }
     
-}
-
-extension HomeContainerViewController: ScannerDelegate {
-    
-    func scanSuccessWith(code: String) {
-        print("QR code: \(code)")
-        //Do api and open Checkout screen.
-        
+    func getDetailsWith(code: String) {
         var slicedUDID = ""
-        
+
         if let range = code.range(of: "pid_") {
             slicedUDID = String(code[range.upperBound..<code.endIndex])
             
@@ -315,6 +308,17 @@ extension HomeContainerViewController: ScannerDelegate {
             
             getCampaignsWith(udid: slicedUDID)
         }
+    }
+    
+}
+
+extension HomeContainerViewController: ScannerDelegate {
+    
+    func scanSuccessWith(code: String) {
+        print("QR code: \(code)")
+        //Do api and open Checkout screen.
+        
+        getDetailsWith(code: code)
     }
     
 }

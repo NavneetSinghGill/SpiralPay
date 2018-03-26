@@ -18,8 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var isNetworkAvailable: Bool = true
     let reachability = Reachability()!
+    
     var didOpenFromDidFinishLaunchingWithOptions: Bool = false
-
+    var didOpenFromDidEnterForeground: Bool = false
+    var universalLinkURLString: String?
+    var universalLinkBlock : ((_ url: String?) -> Void)?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -60,6 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+        didOpenFromDidEnterForeground = true
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -67,13 +73,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if didOpenFromDidFinishLaunchingWithOptions {
             didOpenFromDidFinishLaunchingWithOptions = false
-        } else {
+        } else if didOpenFromDidEnterForeground {
+            didOpenFromDidEnterForeground = false
             showLoginScreenIfShould()
         }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        // 1
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+            let url = userActivity.webpageURL,
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+                return false
+        }
+        print("..... \(url)")
+        
+        universalLinkURLString = url.path
+        universalLinkBlock = { (url) in
+            //This is typically called when login is successful
+            if url != nil, url!.count != 0, User.shared.savedState == .CardAdded, let base = ApplicationDelegate.getWindow().rootViewController as? UINavigationController {
+                
+                DispatchQueue.main.async {
+                    if let homeContainer = base.viewControllers.first as? HomeContainerViewController {
+                        if base.viewControllers.count != 1 {
+                            base.popToRootViewController(animated: true)
+                        }
+                        homeContainer.getDetailsWith(code: components.path)
+                    } else {
+                        ApplicationDelegate.showHomeTabBarScreen()
+                    }
+                    self.universalLinkURLString = nil
+                }
+            } else {
+                self.universalLinkURLString = nil
+            }
+        }
+        
+        return true
     }
 
     //MARK: - Public Methods
@@ -159,7 +199,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewC = UIApplication.shared.keyWindow?.rootViewController
         let presentedVC = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController
         
-        if let loginVC = presentedVC as? PinViewController {
+        if let loginVC = viewC as? PinViewController {
+            if loginVC.pinEntry == .Login {
+                return
+            }
+        } else if let loginVC = presentedVC as? PinViewController {
             if loginVC.pinEntry == .Login {
                 return
             }
@@ -204,6 +248,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navC = UINavigationController(rootViewController: homeTabBar)
         navC.navigationBar.isHidden = true
         ApplicationDelegate.getWindow().rootViewController = navC
+        
+        self.executeUniversalLinkingBlock()
     }
     
     func getWindow() -> UIWindow {
@@ -214,8 +260,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func executeUniversalLinkingBlock() {
+        if let block = ApplicationDelegate.universalLinkBlock {
+            block(ApplicationDelegate.universalLinkURLString)
+        }
+    }
+    
     // MARK: - Core Data stack
-    lazy var persistentContainer: NSPersistentContainer = {
+    var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
@@ -257,7 +309,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    var mainContext: NSManagedObjectContext {
+    var mainContext: NSManagedObjectContext
+    {
         get {
             return ApplicationDelegate.persistentContainer.viewContext
         }

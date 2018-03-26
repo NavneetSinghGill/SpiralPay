@@ -192,6 +192,7 @@
 		18256FDB20527AB2007FA954 /* HomeContainerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerModels.swift; sourceTree = "<group>"; };
 		18256FDC20527AB2007FA954 /* HomeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerViewController.swift; sourceTree = "<group>"; };
 		18256FDD20527AB2007FA954 /* HomeContainerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerInteractor.swift; sourceTree = "<group>"; };
+		183990192063C9EC00FD1D7D /* SpiralPay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpiralPay.entitlements; sourceTree = "<group>"; };
 		184A4F98202D8EB90019AD40 /* ConfirmDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsPresenter.swift; sourceTree = "<group>"; };
 		184A4F99202D8EB90019AD40 /* ConfirmDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsWorker.swift; sourceTree = "<group>"; };
 		184A4F9A202D8EB90019AD40 /* ConfirmDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsRouter.swift; sourceTree = "<group>"; };
@@ -512,6 +513,7 @@
 		F1D9BA4F201852E8004B42B7 /* SpiralPay */ = {
 			isa = PBXGroup;
 			children = (
+				183990192063C9EC00FD1D7D /* SpiralPay.entitlements */,
 				F1D9BA50201852E8004B42B7 /* AppDelegate.swift */,
 				F1D9BA7E20185605004B42B7 /* Helpers */,
 				F1D9BAC7201856D1004B42B7 /* Manager */,
@@ -812,6 +814,11 @@
 					F1D9BA4C201852E8004B42B7 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 					F1D9BA60201852E8004B42B7 = {
 						CreatedOnToolsVersion = 9.2;
@@ -1249,6 +1256,7 @@
 			baseConfigurationReference = 87F8290059BCB99401861392 /* Pods-SpiralPay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SpiralPay/SpiralPay.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -1270,6 +1278,7 @@
 			baseConfigurationReference = C38F4CF947AB8083F8E50A67 /* Pods-SpiralPay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SpiralPay/SpiralPay.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
