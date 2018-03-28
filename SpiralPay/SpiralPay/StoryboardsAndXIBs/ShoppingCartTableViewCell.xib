@@ -11,6 +11,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
         <array key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
         </array>
@@ -86,6 +89,10 @@
                             <constraint firstAttribute="height" constant="35" id="7lJ-LS-dFg"/>
                             <constraint firstAttribute="width" constant="35" id="jc4-cb-Voq"/>
                         </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
+                        <state key="normal" title="X">
+                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                         <connections>
                             <action selector="deleteButtonTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="94j-8E-sc4"/>
                         </connections>

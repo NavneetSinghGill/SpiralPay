@@ -2555,7 +2555,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E Shopping mall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCz-IE-cCI">
-                                <rect key="frame" x="143" y="373.5" width="91" height="16"/>
+                                <rect key="frame" x="142" y="373.5" width="91" height="16"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2677,7 +2677,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accept" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngR-bp-CXh">
-                                                <rect key="frame" x="83.5" y="85" width="43" height="17"/>
+                                                <rect key="frame" x="82.5" y="85" width="43" height="17"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -3214,7 +3214,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E Shopping mall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piP-nn-yYw">
-                                <rect key="frame" x="139.5" y="417.5" width="98" height="17"/>
+                                <rect key="frame" x="138.5" y="417.5" width="98" height="17"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -3491,15 +3491,14 @@
                                     <constraint firstAttribute="width" id="Wv3-6E-96q"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQ8-Md-ufn">
-                                <rect key="frame" x="101" y="575.5" width="173" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQ8-Md-ufn">
+                                <rect key="frame" x="101" y="575.5" width="173" height="39"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="YQ8-Md-ufn" secondAttribute="height" multiplier="173:39" id="TZL-nH-3dT"/>
                                     <constraint firstAttribute="width" constant="173" id="lY1-za-zBe"/>
-                                    <constraint firstAttribute="height" constant="44" id="mGm-nG-7vL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
-                                <state key="normal" title="Checkout">
+                                <state key="normal" image="checkout">
                                     <color key="titleColor" red="0.0" green="0.63921568630000003" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -3573,6 +3572,7 @@
         <image name="cameraCard" width="21" height="20"/>
         <image name="cancelPayment" width="75" height="75"/>
         <image name="cardBackground" width="138" height="80"/>
+        <image name="checkout" width="174" height="39"/>
         <image name="dashedLine" width="750" height="1"/>
         <image name="fingerPrint" width="17" height="17"/>
         <image name="loyalty" width="16" height="19"/>
