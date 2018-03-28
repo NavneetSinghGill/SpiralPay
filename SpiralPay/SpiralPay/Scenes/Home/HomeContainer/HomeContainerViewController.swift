@@ -207,7 +207,9 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
     //MARK:- IBAction methods
     
     @IBAction func tabButtonTapped(button: UIButton) {
-        return ()
+        if button.tag != 102 && button.tag != 104 {
+            return ()
+        }
         resetUIAllTabs()
         selectItemWith(tag: button.tag)
         switch button.tag {
