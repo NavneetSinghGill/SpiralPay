@@ -19,6 +19,7 @@ import UIKit
     func routeToFailedVerificationScreen()
     func routeToFirstPhoneVerificationScreen()
     func routeToConfirmDetailsScreen()
+    func routeToChangeEmailScreen()
 }
 
 protocol PhoneVerificationDataPassing
@@ -37,6 +38,9 @@ class PhoneVerificationRouter: NSObject, PhoneVerificationRoutingLogic, PhoneVer
         let pvViewController: PhoneVerificationViewController = PhoneVerificationViewController.create()
         pvViewController.screenStatus = .EnterPin
         pvViewController.generatedCode = viewController?.generatedCode
+        if let viewController = viewController {
+            pvViewController.screenType = viewController.screenType
+        }
         
         navigate(source: viewController!, destination: pvViewController)
     }
@@ -44,6 +48,9 @@ class PhoneVerificationRouter: NSObject, PhoneVerificationRoutingLogic, PhoneVer
     func routeToSuccessFulVerificationScreen() {
         let pvViewController: PhoneVerificationViewController = PhoneVerificationViewController.create()
         pvViewController.screenStatus = .Success
+        if let viewController = viewController {
+            pvViewController.screenType = viewController.screenType
+        }
         
         navigate(source: viewController!, destination: pvViewController)
     }
@@ -51,6 +58,9 @@ class PhoneVerificationRouter: NSObject, PhoneVerificationRoutingLogic, PhoneVer
     func routeToFailedVerificationScreen() {
         let pvViewController: PhoneVerificationViewController = PhoneVerificationViewController.create()
         pvViewController.screenStatus = .Failed
+        if let viewController = viewController {
+            pvViewController.screenType = viewController.screenType
+        }
         
         navigate(source: viewController!, destination: pvViewController)
     }
@@ -61,6 +71,23 @@ class PhoneVerificationRouter: NSObject, PhoneVerificationRoutingLogic, PhoneVer
         for vController in viewController!.navigationController!.viewControllers {
             
             guard let vc = vController as? PhoneVerificationViewController else {
+                viewControllers.append(vController)
+                continue
+            }
+            
+            viewControllers.append(vc)
+            break
+        }
+        
+        viewController?.navigationController?.setViewControllers(viewControllers, animated: true)
+    }
+    
+    func routeToChangeEmailScreen() {
+        var viewControllers: Array<UIViewController> = []
+        
+        for vController in viewController!.navigationController!.viewControllers {
+            
+            guard let vc = vController as? ChangeEmailViewController else {
                 viewControllers.append(vController)
                 continue
             }

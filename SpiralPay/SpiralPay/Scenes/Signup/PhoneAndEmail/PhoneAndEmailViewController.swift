@@ -12,6 +12,11 @@
 
 import UIKit
 
+enum AppFlowType {
+    case Onboard
+    case Setting
+}
+
 protocol PhoneAndEmailDisplayLogic: class
 {
   func displaySomething(viewModel: PhoneAndEmail.Something.ViewModel)
@@ -71,8 +76,8 @@ class PhoneAndEmailViewController: ProgressBarViewController, PhoneAndEmailDispl
     percentageOfProgressBar = CGFloat(1/numberOfProgressBarPages)
     super.viewDidLoad()
     initialSetup()
-    doSomething()
-  }
+
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -90,6 +95,8 @@ class PhoneAndEmailViewController: ProgressBarViewController, PhoneAndEmailDispl
     
     var countryName: String?
     var countryCode: String?
+    
+    var screenType = AppFlowType.Onboard
   
   func doSomething()
   {
@@ -105,15 +112,29 @@ class PhoneAndEmailViewController: ProgressBarViewController, PhoneAndEmailDispl
     //MARK:- IBAction methods
     
     @IBAction func nextButtonTapped(button: UIButton) {
-        User.shared.countryName = countryName
-        User.shared.countryCode = countryCode
-        User.shared.phone = mobileNumberTextField.text
-        User.shared.email = emailAddressTextField.text
-        router?.routeToCreatePin()
+        if screenType == .Onboard {
+            User.shared.countryName = countryName
+            User.shared.countryCode = countryCode
+            User.shared.phone = mobileNumberTextField.text
+            User.shared.email = emailAddressTextField.text
+            router?.routeToCreatePin()
+        } else {
+            User.shared.countryName = countryName
+            User.shared.countryCode = countryCode
+            User.shared.phone = mobileNumberTextField.text
+            
+            let phoneVerificationViewController: PhoneVerificationViewController = PhoneVerificationViewController.create()
+            phoneVerificationViewController.screenType = .Setting
+            self.navigationController?.pushViewController(phoneVerificationViewController, animated: true)
+        }
     }
     
     @IBAction func countryButtonTapped(button: UIButton) {
         router?.routeToCountrySelection()
+    }
+    
+    @IBAction func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     //MARK:- Private methods
@@ -128,13 +149,24 @@ class PhoneAndEmailViewController: ProgressBarViewController, PhoneAndEmailDispl
         
         countryName = "United Kingdom"
         countryCode = "44"
+        if screenType == .Setting {
+            countryName = User.shared.countryName
+            countryCode = User.shared.countryCode
+            
+            if let countryCode = countryCode {
+                countryCodeLabel.text = "+\(countryCode)"
+            }
+            mobileNumberTextField.text = User.shared.phone
+        }
     }
     
     func checkIfEntriesValid() -> Bool {
         var message = ""
         
-        if !emailAddressTextField.isValidEmail() {
-            message = "Please enter a valid email address."
+        if screenType == .Onboard {
+            if !emailAddressTextField.isValidEmail() {
+                message = "Please enter a valid email address."
+            }
         }
         if !mobileNumberTextField.isValidPhoneNumber() {
             message = "Please enter a valid mobile number."

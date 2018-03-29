@@ -81,6 +81,15 @@ class CountryViewController: SpiralPayViewController, CountryDisplayLogic
         
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if selectedCellIndex != -1 {
+            countryTableView.reloadData()
+            countryTableView.scrollToRow(at: IndexPath(row: selectedCellIndex, section: 0), at: .none, animated: false)
+        }
+    }
   
   // MARK: Do something
   
@@ -390,8 +399,6 @@ class CountryViewController: SpiralPayViewController, CountryDisplayLogic
             selectedCountryName = defaultCountryName ?? "United Kingdom"
             selectedCellIndex = filteredCountries.index(of: selectedCountryName) ?? 0
         }
-        countryTableView.reloadData()
-        countryTableView.scrollToRow(at: IndexPath(row: selectedCellIndex, section: 0), at: .none, animated: false)
     }
     
     private func addSaveButton() {

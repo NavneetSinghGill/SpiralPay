@@ -18,7 +18,7 @@ class Utils: NSObject {
     }()
     
     var accessTokenExpiryTimer: Timer?
-    var accessTokenExpiryTime: TimeInterval = 15*60
+    var accessTokenExpiryTime: TimeInterval = 13*60
     
     let imageCache = NSCache<NSString, AnyObject>()
     

@@ -39,7 +39,7 @@ class RealAPI: NSObject {
     // MARK: Request methods
     func interactAPIWithGetObject<T:Mappable>(request: BaseRequest, genericResponse:T.Type, completion: @escaping CompletionHandler) -> Void {
         initialSetup(request: request, requestType: Constants.RequestType.GET.rawValue)
-        NetworkHttpClient.sharedInstance.getAPICall(request.urlPath, parameters: request.getParams(), headers: request.headers, genericResponse: genericResponse, success: { (responseObject) in
+        NetworkHttpClient.sharedInstance.getAPICall(request.urlPath, parameters: request.getParams(), headers: request.headers, apiType: request.apiType, genericResponse: genericResponse, success: { (responseObject) in
             self.handleSuccessResponse(request: request, response: responseObject as? DataResponse<T>, responseArray: responseObject as? DataResponse<[T]>, block: completion)
         }, failure: { (responseObject) in
             self.handleError(response: responseObject as? DataResponse<T>, responseArray: responseObject as? DataResponse<[T]>, block: completion)
@@ -48,7 +48,7 @@ class RealAPI: NSObject {
     
     func interactAPIWithPutObject<T:Mappable>(request: BaseRequest, genericResponse:T.Type, completion: @escaping CompletionHandler) -> Void {
         initialSetup(request: request, requestType: Constants.RequestType.PUT.rawValue)
-        NetworkHttpClient.sharedInstance.putAPICall(request.urlPath, parameters: request.getParams(), headers: request.headers, genericResponse: genericResponse, success: { (responseObject) in
+        NetworkHttpClient.sharedInstance.putAPICall(request.urlPath, parameters: request.getParams(), headers: request.headers, apiType: request.apiType, genericResponse: genericResponse, success: { (responseObject) in
             self.handleSuccessResponse(request: request, response: responseObject as? DataResponse<T>, responseArray: responseObject as? DataResponse<[T]>, block: completion)
         }, failure: { (responseObject) in
             self.handleError(response: responseObject as? DataResponse<T>, responseArray: responseObject as? DataResponse<[T]>, block: completion)
@@ -57,7 +57,7 @@ class RealAPI: NSObject {
     
     func interactAPIWithPostObject<T:Mappable>(request: BaseRequest, genericResponse:T.Type, completion: @escaping CompletionHandler) -> Void {
         initialSetup(request: request, requestType: Constants.RequestType.POST.rawValue)
-        NetworkHttpClient.sharedInstance.postAPICall(request.urlPath, parameters: request.getParams(), headers: request.headers, genericResponse: genericResponse, success: { (responseObject) in
+        NetworkHttpClient.sharedInstance.postAPICall(request.urlPath, parameters: request.getParams(), headers: request.headers, apiType: request.apiType, genericResponse: genericResponse, success: { (responseObject) in
             self.handleSuccessResponse(request: request, response: responseObject as? DataResponse<T>, responseArray: responseObject as? DataResponse<[T]>, block: completion)
         }, failure: { (responseObject) in
             self.handleError(response: responseObject as? DataResponse<T>, responseArray: responseObject as? DataResponse<[T]>, block: completion)
@@ -66,7 +66,7 @@ class RealAPI: NSObject {
     
     func interactAPIWithDeleteObject<T:Mappable>(request: BaseRequest, genericResponse:T.Type, completion: @escaping CompletionHandler) -> Void {
         initialSetup(request: request, requestType: Constants.RequestType.DELETE.rawValue)
-        NetworkHttpClient.sharedInstance.deleteAPICall(request.urlPath, parameters: request.getParams(), headers: request.headers, genericResponse: genericResponse, success: { (responseObject) in
+        NetworkHttpClient.sharedInstance.deleteAPICall(request.urlPath, parameters: request.getParams(), headers: request.headers, apiType: request.apiType, genericResponse: genericResponse, success: { (responseObject) in
             self.handleSuccessResponse(request: request, response: responseObject as? DataResponse<T>, responseArray: responseObject as? DataResponse<[T]>, block: completion)
         }, failure: { (responseObject) in
             self.handleError(response: responseObject as? DataResponse<T>, responseArray: responseObject as? DataResponse<[T]>, block: completion)
@@ -88,8 +88,16 @@ class RealAPI: NSObject {
         
 //        let message: String = String.init(format: "Success:- URL:%@\n", (responseStatus?.url?.absoluteString)!)
 //        print(message)
+        
+        if request.apiType == .Put_UpdateMobileAndEmail && responseStatus?.statusCode == Constants.ResponseStatusSuccess {
+            block(true, response)
+            return
+        }
+        
         if ((request.urlPath == sendSmsURL || (request.urlPath.range(of: processPaymentUrlSuffix) != nil && request.urlPath.range(of: processPaymentUrlPrefix) != nil)) && responseStatus?.statusCode == Constants.ResponseStatusAccepted) ||
-            (request.urlPath.hasSuffix(itemAddedToBasketURLSuffix) && responseStatus?.statusCode == Constants.ResponseStatusSuccess){
+            
+            ((request.urlPath.hasSuffix(itemAddedToBasketURLSuffix) ||
+                request.urlPath.hasSuffix(changePinSuffix)) && responseStatus?.statusCode == Constants.ResponseStatusSuccess) {
             //Exception success
             block(true, response)
             return

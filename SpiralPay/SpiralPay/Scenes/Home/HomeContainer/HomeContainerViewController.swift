@@ -102,12 +102,12 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
         return viewController
     }()
     
-    private lazy var mySpiralPayViewController: MySpiralPayViewController = {
+    private lazy var settingsViewController: SettingsViewController = {
         // Load Storyboard
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
         // Instantiate View Controller
-        var viewController = storyboard.instantiateViewController(withIdentifier: "MySpiralPayViewController") as! MySpiralPayViewController
+        var viewController = storyboard.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
         
         // Add View Controller as Child View Controller
         self.add(asChildViewController: viewController)
@@ -115,12 +115,12 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
         return viewController
     }()
     
-    private lazy var settingsViewController: SettingsViewController = {
+    private lazy var moreViewController: MoreViewController = {
         // Load Storyboard
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
         // Instantiate View Controller
-        var viewController = storyboard.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
+        var viewController = storyboard.instantiateViewController(withIdentifier: "MoreViewController") as! MoreViewController
         
         // Add View Controller as Child View Controller
         self.add(asChildViewController: viewController)
@@ -207,7 +207,7 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
     //MARK:- IBAction methods
     
     @IBAction func tabButtonTapped(button: UIButton) {
-        if button.tag != 102 && button.tag != 104 {
+        if button.tag != 102 && button.tag != 103 {
             return ()
         }
         resetUIAllTabs()
@@ -218,9 +218,9 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
         case 102:
             showScreen(newScreen: homeViewController)
         case 103:
-            showScreen(newScreen: mySpiralPayViewController)
-        case 104:
             showScreen(newScreen: settingsViewController)
+        case 104:
+            showScreen(newScreen: moreViewController)
         default:
             break
         }

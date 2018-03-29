@@ -48,7 +48,17 @@ class RequestManager: NSObject {
         }
         else{
             completion(false, Constants.kNoNetworkMessage)
-//            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
+            //            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
+        }
+    }
+    
+    func updateMobileAndEmail(request:BaseRequest, completion:@escaping CompletionHandler){
+        if ApplicationDelegate.isNetworkAvailable{
+            RealAPI().putObject(request:request, genericResponse: PhoneVerification.UpdateMobileAndEmail.Response.self, completion:completion)
+        }
+        else{
+            completion(false, Constants.kNoNetworkMessage)
+            //            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
         }
     }
     
@@ -125,6 +135,16 @@ class RequestManager: NSObject {
     func postAddItemToBasket(request:BaseRequest, completion:@escaping CompletionHandler){
         if ApplicationDelegate.isNetworkAvailable{
             RealAPI().postObject(request:request, genericResponse: ProductDetails.ItemAddedToBasket.Response.self, completion:completion)
+        }
+        else{
+            completion(false, Constants.kNoNetworkMessage)
+            //            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
+        }
+    }
+    
+    func changePin(request:BaseRequest, completion:@escaping CompletionHandler){
+        if ApplicationDelegate.isNetworkAvailable{
+            RealAPI().postObject(request:request, genericResponse: ChangePin.ChangePin.Response.self, completion:completion)
         }
         else{
             completion(false, Constants.kNoNetworkMessage)

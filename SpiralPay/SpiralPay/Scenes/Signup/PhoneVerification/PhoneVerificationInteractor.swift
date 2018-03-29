@@ -14,26 +14,36 @@ import UIKit
 
 protocol PhoneVerificationBusinessLogic
 {
-  func sendSmsForPhoneVerification(request: PhoneVerification.SmsPhoneVerification.Request)
+    func sendSmsForPhoneVerification(request: PhoneVerification.SmsPhoneVerification.Request)
+    func updateMobileAndEmail(request: PhoneVerification.UpdateMobileAndEmail.Request)
 }
 
 protocol PhoneVerificationDataStore
 {
-  //var name: String { get set }
+    //var name: String { get set }
 }
 
 class PhoneVerificationInteractor: PhoneVerificationBusinessLogic, PhoneVerificationDataStore
 {
-  var presenter: PhoneVerificationPresentationLogic?
-  var worker: PhoneVerificationWorker?
+    var presenter: PhoneVerificationPresentationLogic?
+    var worker: PhoneVerificationWorker?
     
-  func sendSmsForPhoneVerification(request: PhoneVerification.SmsPhoneVerification.Request)
-  {
-    worker = PhoneVerificationWorker()
-    worker?.sendSmsForPhoneVerification(request: request, successCompletionHandler: { (response) in
-        self.presenter?.sendSmsForPhoneVerificationAPIsuccess(response: response)
-    }, failureCompletionHandler: { (response) in
-        self.presenter?.sendSmsForPhoneVerificationAPIfailure(response: response)
-    })
-  }
+    func sendSmsForPhoneVerification(request: PhoneVerification.SmsPhoneVerification.Request)
+    {
+        worker = PhoneVerificationWorker()
+        worker?.sendSmsForPhoneVerification(request: request, successCompletionHandler: { (response) in
+            self.presenter?.sendSmsForPhoneVerificationAPIsuccess(response: response)
+        }, failureCompletionHandler: { (response) in
+            self.presenter?.sendSmsForPhoneVerificationAPIfailure(response: response)
+        })
+    }
+    
+    func updateMobileAndEmail(request: PhoneVerification.UpdateMobileAndEmail.Request) {
+        worker = PhoneVerificationWorker()
+        worker?.updateMobileAndEmail(request: request, successCompletionHandler: { (response) in
+            self.presenter?.updateMobileAndEmailAPIsuccess(response: response)
+        }, failureCompletionHandler: { (response) in
+            self.presenter?.updateMobileAndEmailAPIfailure(response: response)
+        })
+    }
 }

@@ -28,7 +28,36 @@ class SettingsViewController: SpiralPayViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //This will restore User data in case its changed in any of the settings flow
+        User.shared.restore()
+    }
+    
+    //MARK:- Private methods
+    
+    private func openPersonalDetailsScreen() {
+        DispatchQueue.main.async {
+            let personalDetailsScreen = PersonalDetailsViewController.create()
+            self.parent?.navigationController?.pushViewController(personalDetailsScreen, animated: true)
+        }
+    }
+    
+    private func openChangePinScreen() {
+        DispatchQueue.main.async {
+            let changePinScreen = ChangePinViewController.create()
+            self.parent?.navigationController?.pushViewController(changePinScreen, animated: true)
+        }
+    }
+    
+    private func openLockAccountScreen() {
+        DispatchQueue.main.async {
+            let lockAccountScreen = LockAccountViewController.create()
+            self.parent?.navigationController?.pushViewController(lockAccountScreen, animated: true)
+        }
     }
 
 }
@@ -71,6 +100,34 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             }
             
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case 1:
+                return ()
+            case 2:
+                openPersonalDetailsScreen()
+            case 3:
+                openChangePinScreen()
+            case 4:
+                openLockAccountScreen()
+            default:
+                return ()
+            }
+        } else if indexPath.section == 1 {
+            switch indexPath.row {
+            case 1:
+                return ()
+            case 2:
+                return ()
+            case 3:
+                return ()
+            default:
+                return ()
+            }
         }
     }
     

@@ -13,6 +13,7 @@
 import UIKit
 
 typealias smsPhoneVerificationResponseHandler = (_ response:PhoneVerification.SmsPhoneVerification.Response) ->()
+typealias updateMobileAndEmailResponseHandler = (_ response:PhoneVerification.UpdateMobileAndEmail.Response) ->()
 
 class PhoneVerificationWorker
 {
@@ -24,15 +25,32 @@ class PhoneVerificationWorker
         
     }
     
+    func updateMobileAndEmail(request: PhoneVerification.UpdateMobileAndEmail.Request, successCompletionHandler: @escaping updateMobileAndEmailResponseHandler, failureCompletionHandler: @escaping updateMobileAndEmailResponseHandler)
+    {
+        RequestManager().updateMobileAndEmail(request: request.baseRequest()) { (status, response) in
+            self.handleUpdateMobileAndEmailResponse(success: successCompletionHandler, fail: failureCompletionHandler, status: status, response: response)
+        }
+        
+    }
+    
     //MARK: Parse methods
     
     public func handleSendSmsForPhoneVerificationResponse(success:@escaping(smsPhoneVerificationResponseHandler), fail:@escaping(smsPhoneVerificationResponseHandler), status: Bool, response: Any?) {
         let message:String = Constants.kErrorMessage
         if status {
             success(PhoneVerification.SmsPhoneVerification.Response(message: "Sms sent successfully")!)
-                return
+            return
         }
         fail(PhoneVerification.SmsPhoneVerification.Response(message:message)!)
+    }
+    
+    public func handleUpdateMobileAndEmailResponse(success:@escaping(updateMobileAndEmailResponseHandler), fail:@escaping(updateMobileAndEmailResponseHandler), status: Bool, response: Any?) {
+        let message:String = Constants.kErrorMessage
+        if status {
+            success(PhoneVerification.UpdateMobileAndEmail.Response(message: "Email/phone updated successfully")!)
+            return
+        }
+        fail(PhoneVerification.UpdateMobileAndEmail.Response(message:message)!)
     }
     
 }

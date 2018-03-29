@@ -41,6 +41,9 @@ class PhoneAndEmailRouter: NSObject, PhoneAndEmailRoutingLogic, PhoneAndEmailDat
     
     func routeToCreatePin() {
         let pinViewController: PinViewController = viewController?.storyboard?.instantiateViewController(withIdentifier: "PinViewController") as! PinViewController
+        if let screenType = viewController?.screenType {
+            pinViewController.screenType = screenType
+        }
         
         navigateToSomewhere(source: viewController!, destination: pinViewController)
     }

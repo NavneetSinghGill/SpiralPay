@@ -30,7 +30,9 @@ class ProgressBarViewController: SpiralPayViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        progressBar.percentage = Utils.currentProgressBarValue
+        if let progressBar = progressBar {
+            progressBar.percentage = Utils.currentProgressBarValue
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,7 +42,7 @@ class ProgressBarViewController: SpiralPayViewController {
     }
     
     func animateProgressBarIfShould() {
-        if percentageOfProgressBar != nil {
+        if percentageOfProgressBar != nil, let progressBar = progressBar {
             progressBar.animate(fromPercentage: Utils.currentProgressBarValue, toPercentage: percentageOfProgressBar)
             Utils.currentProgressBarValue = percentageOfProgressBar
         }

@@ -1,5 +1,5 @@
 //
-//  MySpiralPayViewController.swift
+//  MoreViewController.swift
 //  SpiralPay
 //
 //  Created by Zoeb on 20/02/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MySpiralPayViewController: SpiralPayViewController {
+class MoreViewController: SpiralPayViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1808502B207389BD00DCF027 /* ChangeEmailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18085025207389BC00DCF027 /* ChangeEmailPresenter.swift */; };
+		1808502C207389BD00DCF027 /* ChangeEmailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18085026207389BD00DCF027 /* ChangeEmailWorker.swift */; };
+		1808502D207389BD00DCF027 /* ChangeEmailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18085027207389BD00DCF027 /* ChangeEmailRouter.swift */; };
+		1808502E207389BD00DCF027 /* ChangeEmailModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18085028207389BD00DCF027 /* ChangeEmailModels.swift */; };
+		1808502F207389BD00DCF027 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18085029207389BD00DCF027 /* ChangeEmailViewController.swift */; };
+		18085030207389BD00DCF027 /* ChangeEmailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1808502A207389BD00DCF027 /* ChangeEmailInteractor.swift */; };
 		180B470D203C3C0700775D06 /* TabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B470C203C3C0700775D06 /* TabBarItemView.swift */; };
 		180B4715203C461300775D06 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B4714203C461300775D06 /* SettingsViewController.swift */; };
 		180C1607202197C100818460 /* CountryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1601202197C100818460 /* CountryPresenter.swift */; };
@@ -17,7 +23,7 @@
 		180C160C202197C100818460 /* CountryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180C1606202197C100818460 /* CountryInteractor.swift */; };
 		180DAEDC20298B9E00193C39 /* NLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DAEDB20298B9D00193C39 /* NLoader.swift */; };
 		1810DF0C203C62DC00722760 /* LoyaltyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1810DF0B203C62DC00722760 /* LoyaltyViewController.swift */; };
-		1810DF0E203C62F000722760 /* MySpiralPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1810DF0D203C62F000722760 /* MySpiralPayViewController.swift */; };
+		1810DF0E203C62F000722760 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1810DF0D203C62F000722760 /* MoreViewController.swift */; };
 		181287AE204441A600779850 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181287A8204441A500779850 /* HomeRouter.swift */; };
 		181287AF204441A600779850 /* HomeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181287A9204441A600779850 /* HomeWorker.swift */; };
 		181287B0204441A600779850 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181287AA204441A600779850 /* HomeViewController.swift */; };
@@ -53,9 +59,18 @@
 		1865601B205BDB5000536D4F /* ShoppingCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18656019205BDB5000536D4F /* ShoppingCartTableViewCell.swift */; };
 		1865601C205BDB5000536D4F /* ShoppingCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */; };
 		186A1DC1206153B30021BC0F /* SpiralPay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 186A1DBF206153B30021BC0F /* SpiralPay.xcdatamodeld */; };
+		1870C49E206CD58200B7E4C3 /* PersonalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870C49D206CD58200B7E4C3 /* PersonalDetailsViewController.swift */; };
+		1870C4A0206CF9C800B7E4C3 /* LockAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870C49F206CF9C800B7E4C3 /* LockAccountViewController.swift */; };
 		1871E896203D5730008BDEF8 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1871E895203D572D008BDEF8 /* Lato-Bold.ttf */; };
 		1871E898203DA401008BDEF8 /* BezierPathExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1871E897203DA401008BDEF8 /* BezierPathExtenstion.swift */; };
 		1873FB3B204533B1003CA863 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873FB3A204533B1003CA863 /* ScannerViewController.swift */; };
+		187DC5C020721C25000500AA /* ChangePinPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5BA20721C25000500AA /* ChangePinPresenter.swift */; };
+		187DC5C120721C25000500AA /* ChangePinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5BB20721C25000500AA /* ChangePinWorker.swift */; };
+		187DC5C220721C25000500AA /* ChangePinRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5BC20721C25000500AA /* ChangePinRouter.swift */; };
+		187DC5C320721C25000500AA /* ChangePinModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5BD20721C25000500AA /* ChangePinModels.swift */; };
+		187DC5C420721C25000500AA /* ChangePinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5BE20721C25000500AA /* ChangePinViewController.swift */; };
+		187DC5C520721C25000500AA /* ChangePinInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5BF20721C25000500AA /* ChangePinInteractor.swift */; };
+		187DC5C920724B83000500AA /* HomeAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5C820724B83000500AA /* HomeAddressViewController.swift */; };
 		1890286C204D2424008D903C /* PaymentStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890286B204D2424008D903C /* PaymentStatusViewController.swift */; };
 		1890286D204D6DE1008D903C /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1890286E204D6DE1008D903C /* ObjectMapper.framework */; };
 		1890286F204D6E00008D903C /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18902870204D6E00008D903C /* SwiftKeychainWrapper.framework */; };
@@ -167,6 +182,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18085025207389BC00DCF027 /* ChangeEmailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailPresenter.swift; sourceTree = "<group>"; };
+		18085026207389BD00DCF027 /* ChangeEmailWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailWorker.swift; sourceTree = "<group>"; };
+		18085027207389BD00DCF027 /* ChangeEmailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailRouter.swift; sourceTree = "<group>"; };
+		18085028207389BD00DCF027 /* ChangeEmailModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailModels.swift; sourceTree = "<group>"; };
+		18085029207389BD00DCF027 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
+		1808502A207389BD00DCF027 /* ChangeEmailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailInteractor.swift; sourceTree = "<group>"; };
 		180B470C203C3C0700775D06 /* TabBarItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemView.swift; sourceTree = "<group>"; };
 		180B4714203C461300775D06 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		180C1601202197C100818460 /* CountryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPresenter.swift; sourceTree = "<group>"; };
@@ -177,7 +198,7 @@
 		180C1606202197C100818460 /* CountryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInteractor.swift; sourceTree = "<group>"; };
 		180DAEDB20298B9D00193C39 /* NLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLoader.swift; sourceTree = "<group>"; };
 		1810DF0B203C62DC00722760 /* LoyaltyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyViewController.swift; sourceTree = "<group>"; };
-		1810DF0D203C62F000722760 /* MySpiralPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpiralPayViewController.swift; sourceTree = "<group>"; };
+		1810DF0D203C62F000722760 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		181287A8204441A500779850 /* HomeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		181287A9204441A600779850 /* HomeWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWorker.swift; sourceTree = "<group>"; };
 		181287AA204441A600779850 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -214,9 +235,18 @@
 		18656019205BDB5000536D4F /* ShoppingCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartTableViewCell.swift; sourceTree = "<group>"; };
 		1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartTableViewCell.xib; sourceTree = "<group>"; };
 		186A1DC0206153B30021BC0F /* SpiralPay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpiralPay.xcdatamodel; sourceTree = "<group>"; };
+		1870C49D206CD58200B7E4C3 /* PersonalDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDetailsViewController.swift; sourceTree = "<group>"; };
+		1870C49F206CF9C800B7E4C3 /* LockAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAccountViewController.swift; sourceTree = "<group>"; };
 		1871E895203D572D008BDEF8 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		1871E897203DA401008BDEF8 /* BezierPathExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathExtenstion.swift; sourceTree = "<group>"; };
 		1873FB3A204533B1003CA863 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		187DC5BA20721C25000500AA /* ChangePinPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinPresenter.swift; sourceTree = "<group>"; };
+		187DC5BB20721C25000500AA /* ChangePinWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinWorker.swift; sourceTree = "<group>"; };
+		187DC5BC20721C25000500AA /* ChangePinRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinRouter.swift; sourceTree = "<group>"; };
+		187DC5BD20721C25000500AA /* ChangePinModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinModels.swift; sourceTree = "<group>"; };
+		187DC5BE20721C25000500AA /* ChangePinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinViewController.swift; sourceTree = "<group>"; };
+		187DC5BF20721C25000500AA /* ChangePinInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinInteractor.swift; sourceTree = "<group>"; };
+		187DC5C820724B83000500AA /* HomeAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAddressViewController.swift; sourceTree = "<group>"; };
 		1890286B204D2424008D903C /* PaymentStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentStatusViewController.swift; sourceTree = "<group>"; };
 		1890286E204D6DE1008D903C /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18902870204D6E00008D903C /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -351,14 +381,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180850242073899900DCF027 /* ChangeEmail */ = {
+			isa = PBXGroup;
+			children = (
+				18085025207389BC00DCF027 /* ChangeEmailPresenter.swift */,
+				18085026207389BD00DCF027 /* ChangeEmailWorker.swift */,
+				18085027207389BD00DCF027 /* ChangeEmailRouter.swift */,
+				18085028207389BD00DCF027 /* ChangeEmailModels.swift */,
+				18085029207389BD00DCF027 /* ChangeEmailViewController.swift */,
+				1808502A207389BD00DCF027 /* ChangeEmailInteractor.swift */,
+			);
+			path = ChangeEmail;
+			sourceTree = "<group>";
+		};
 		180B4709203C043D00775D06 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				18256FCB205279D5007FA954 /* HomeContainer */,
 				1810DF0B203C62DC00722760 /* LoyaltyViewController.swift */,
 				181287B4204441B700779850 /* HomeScreen */,
-				1810DF0D203C62F000722760 /* MySpiralPayViewController.swift */,
+				1810DF0D203C62F000722760 /* MoreViewController.swift */,
 				180B4714203C461300775D06 /* SettingsViewController.swift */,
+				1870C49C206CD54900B7E4C3 /* SettingChilds */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -436,6 +480,31 @@
 				1859768220514B1F0063A647 /* ShoppingCartViewController.swift */,
 			);
 			path = PaymentFlow;
+			sourceTree = "<group>";
+		};
+		1870C49C206CD54900B7E4C3 /* SettingChilds */ = {
+			isa = PBXGroup;
+			children = (
+				1870C49D206CD58200B7E4C3 /* PersonalDetailsViewController.swift */,
+				1870C49F206CF9C800B7E4C3 /* LockAccountViewController.swift */,
+				187DC5B920721BEC000500AA /* ChangePin */,
+				180850242073899900DCF027 /* ChangeEmail */,
+				187DC5C820724B83000500AA /* HomeAddressViewController.swift */,
+			);
+			path = SettingChilds;
+			sourceTree = "<group>";
+		};
+		187DC5B920721BEC000500AA /* ChangePin */ = {
+			isa = PBXGroup;
+			children = (
+				187DC5BA20721C25000500AA /* ChangePinPresenter.swift */,
+				187DC5BB20721C25000500AA /* ChangePinWorker.swift */,
+				187DC5BC20721C25000500AA /* ChangePinRouter.swift */,
+				187DC5BD20721C25000500AA /* ChangePinModels.swift */,
+				187DC5BE20721C25000500AA /* ChangePinViewController.swift */,
+				187DC5BF20721C25000500AA /* ChangePinInteractor.swift */,
+			);
+			path = ChangePin;
 			sourceTree = "<group>";
 		};
 		189434F9202488B8000C2166 /* CreatePin */ = {
@@ -969,12 +1038,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1D9BA51201852E8004B42B7 /* AppDelegate.swift in Sources */,
+				1870C49E206CD58200B7E4C3 /* PersonalDetailsViewController.swift in Sources */,
 				F1D9BAC220185605004B42B7 /* UIViewController+StoryboardIdentifier.swift in Sources */,
 				F1D9BAB420185605004B42B7 /* CGPointExtensions.swift in Sources */,
 				F1D9BAB220185605004B42B7 /* CGFloatExtensions.swift in Sources */,
 				18943502202488F9000C2166 /* PinRouter.swift in Sources */,
 				18529F68202B31CD00BD8D0E /* PhoneVerificationModels.swift in Sources */,
 				185C60AC20244835009D23BE /* User.swift in Sources */,
+				1808502D207389BD00DCF027 /* ChangeEmailRouter.swift in Sources */,
 				F1D9BAD4201856D1004B42B7 /* BannerManager.swift in Sources */,
 				184A4FA2202D8EBA0019AD40 /* ConfirmDetailsViewController.swift in Sources */,
 				186A1DC1206153B30021BC0F /* SpiralPay.xcdatamodeld in Sources */,
@@ -987,6 +1058,8 @@
 				18E5BA25205668C500E6F804 /* ProductDetailsWorker.swift in Sources */,
 				F1D9BABC20185605004B42B7 /* LocaleExtensions.swift in Sources */,
 				18D914EB2036B491008FFB60 /* Card.swift in Sources */,
+				187DC5C520721C25000500AA /* ChangePinInteractor.swift in Sources */,
+				187DC5C020721C25000500AA /* ChangePinPresenter.swift in Sources */,
 				180C1609202197C100818460 /* CountryRouter.swift in Sources */,
 				18E5BA28205668C500E6F804 /* ProductDetailsInteractor.swift in Sources */,
 				1871E898203DA401008BDEF8 /* BezierPathExtenstion.swift in Sources */,
@@ -1002,6 +1075,7 @@
 				18D914EF2036C7B0008FFB60 /* MonthYearPickerView.swift in Sources */,
 				18D914ED2036B824008FFB60 /* CardAddedViewController.swift in Sources */,
 				180C160A202197C100818460 /* CountryModels.swift in Sources */,
+				1808502F207389BD00DCF027 /* ChangeEmailViewController.swift in Sources */,
 				18529F6A202B31CD00BD8D0E /* PhoneVerificationInteractor.swift in Sources */,
 				F1D9BAC320185605004B42B7 /* Utils.swift in Sources */,
 				18645D5420359B7F0017E214 /* AddCardOptionsViewController.swift in Sources */,
@@ -1014,6 +1088,7 @@
 				F1D9BAAE20185605004B42B7 /* BoolExtensions.swift in Sources */,
 				180C1608202197C100818460 /* CountryWorker.swift in Sources */,
 				F1D9BAF42018614A004B42B7 /* TokenPresenter.swift in Sources */,
+				1870C4A0206CF9C800B7E4C3 /* LockAccountViewController.swift in Sources */,
 				18256FDF20527AB2007FA954 /* HomeContainerWorker.swift in Sources */,
 				181287AF204441A600779850 /* HomeWorker.swift in Sources */,
 				18943504202488F9000C2166 /* PinViewController.swift in Sources */,
@@ -1021,6 +1096,7 @@
 				F1D9BABE20185605004B42B7 /* DateExtensions.swift in Sources */,
 				F1D9BAB720185605004B42B7 /* NSViewExtensions.swift in Sources */,
 				18529F67202B31CD00BD8D0E /* PhoneVerificationRouter.swift in Sources */,
+				1808502B207389BD00DCF027 /* ChangeEmailPresenter.swift in Sources */,
 				F1D9BAA620185605004B42B7 /* StoryboardInstantiable.swift in Sources */,
 				189F22F52035A5D600971AFD /* AddCardManuallyViewController.swift in Sources */,
 				F1D9BAA820185605004B42B7 /* FloatExtensions.swift in Sources */,
@@ -1030,20 +1106,25 @@
 				F1D9BAB520185605004B42B7 /* CGColorExtensions.swift in Sources */,
 				F16DF1F42018ADDB00FE3F94 /* ProgressBarView.swift in Sources */,
 				F1D9BAB320185605004B42B7 /* CGSizeExtensions.swift in Sources */,
+				187DC5C320721C25000500AA /* ChangePinModels.swift in Sources */,
 				180C160C202197C100818460 /* CountryInteractor.swift in Sources */,
 				F1D9BAC120185605004B42B7 /* CollectionExtensions.swift in Sources */,
 				F1D9BAA920185605004B42B7 /* ViewControllerExtensions.swift in Sources */,
+				187DC5C220721C25000500AA /* ChangePinRouter.swift in Sources */,
 				F1D9BAD1201856D1004B42B7 /* AppSettings.swift in Sources */,
 				F1D9BAD7201856D1004B42B7 /* RequestManager.swift in Sources */,
 				F1D9BAE720185A8B004B42B7 /* BaseWorker.swift in Sources */,
 				18E5BA24205668C500E6F804 /* ProductDetailsPresenter.swift in Sources */,
+				187DC5C920724B83000500AA /* HomeAddressViewController.swift in Sources */,
 				18529F65202B31CD00BD8D0E /* PhoneVerificationPresenter.swift in Sources */,
 				181287B3204441A600779850 /* HomePresenter.swift in Sources */,
 				F1D9BAF32018614A004B42B7 /* TokenInteractor.swift in Sources */,
+				187DC5C420721C25000500AA /* ChangePinViewController.swift in Sources */,
 				1859768320514B1F0063A647 /* ShoppingCartViewController.swift in Sources */,
 				F1D9BAD9201856D1004B42B7 /* RealAPI.swift in Sources */,
 				180C160B202197C100818460 /* CountryViewController.swift in Sources */,
 				F1D9BAB620185605004B42B7 /* NSColorExtensions.swift in Sources */,
+				187DC5C120721C25000500AA /* ChangePinWorker.swift in Sources */,
 				F1D9BADA201856D1004B42B7 /* NetworkHttpClient.swift in Sources */,
 				F1D9BAA520185605004B42B7 /* StoryboardIdentifiable.swift in Sources */,
 				F1D9BAB820185605004B42B7 /* NSAttributedStringExtensions.swift in Sources */,
@@ -1070,6 +1151,7 @@
 				F1E89B77201F0E540052C723 /* PhoneAndEmailRouter.swift in Sources */,
 				1894350920248DA7000C2166 /* ProgressBarViewController.swift in Sources */,
 				F1E89B78201F0E540052C723 /* PhoneAndEmailModels.swift in Sources */,
+				18085030207389BD00DCF027 /* ChangeEmailInteractor.swift in Sources */,
 				F1D9BAB020185605004B42B7 /* DoubleExtensions.swift in Sources */,
 				F1D9BABB20185605004B42B7 /* SearchBarExtension.swift in Sources */,
 				F1E89B75201F0E540052C723 /* PhoneAndEmailPresenter.swift in Sources */,
@@ -1079,7 +1161,7 @@
 				18529F66202B31CD00BD8D0E /* PhoneVerificationWorker.swift in Sources */,
 				F1E89B7A201F0E540052C723 /* PhoneAndEmailInteractor.swift in Sources */,
 				184A4FA3202D8EBA0019AD40 /* ConfirmDetailsInteractor.swift in Sources */,
-				1810DF0E203C62F000722760 /* MySpiralPayViewController.swift in Sources */,
+				1810DF0E203C62F000722760 /* MoreViewController.swift in Sources */,
 				184A4F9F202D8EBA0019AD40 /* ConfirmDetailsWorker.swift in Sources */,
 				F1D9BAAD20185605004B42B7 /* DataExtensions.swift in Sources */,
 				F1E89B76201F0E540052C723 /* PhoneAndEmailWorker.swift in Sources */,
@@ -1087,6 +1169,8 @@
 				18529F69202B31CD00BD8D0E /* PhoneVerificationViewController.swift in Sources */,
 				180C1607202197C100818460 /* CountryPresenter.swift in Sources */,
 				F1D9BAAA20185605004B42B7 /* UIStoryboard+Storyboards.swift in Sources */,
+				1808502C207389BD00DCF027 /* ChangeEmailWorker.swift in Sources */,
+				1808502E207389BD00DCF027 /* ChangeEmailModels.swift in Sources */,
 				18256FE120527AB2007FA954 /* HomeContainerModels.swift in Sources */,
 				F1D9BAAC20185605004B42B7 /* DictionaryExtensions.swift in Sources */,
 				18E5BA26205668C500E6F804 /* ProductDetailsRouter.swift in Sources */,

@@ -50,23 +50,23 @@ class NetworkHttpClient: NSObject {
     }
     
     // MARK: API calls
-    func getAPICall<T:Mappable>(_ strURL : String, parameters : Dictionary<String, Any>?, headers : [String : String]?, genericResponse:T.Type, success:@escaping successBlock, failure:@escaping failureBlock) {
-        performAPICall(strURL, methodType: .get, parameters: parameters, requestHeaders: headers, genericResponse: genericResponse, success: success, failure: failure)
+    func getAPICall<T:Mappable>(_ strURL : String, parameters : Dictionary<String, Any>?, headers : [String : String]?, apiType: ApiType, genericResponse:T.Type, success:@escaping successBlock, failure:@escaping failureBlock) {
+        performAPICall(strURL, methodType: .get, parameters: parameters, requestHeaders: headers, apiType: apiType, genericResponse: genericResponse, success: success, failure: failure)
     }
     
-    func putAPICall<T:Mappable>(_ strURL : String, parameters : Dictionary<String, Any>?, headers : [String : String]?, genericResponse:T.Type, success:@escaping successBlock, failure:@escaping failureBlock) {
-        performAPICall(strURL, methodType: .put, parameters: parameters, requestHeaders: headers, genericResponse: genericResponse, success: success, failure: failure)
+    func putAPICall<T:Mappable>(_ strURL : String, parameters : Dictionary<String, Any>?, headers : [String : String]?, apiType: ApiType, genericResponse:T.Type, success:@escaping successBlock, failure:@escaping failureBlock) {
+        performAPICall(strURL, methodType: .put, parameters: parameters, requestHeaders: headers, apiType: apiType, genericResponse: genericResponse, success: success, failure: failure)
     }
     
-    func postAPICall<T:Mappable>(_ strURL : String, parameters : Dictionary<String, Any>?, headers : [String : String]?, genericResponse:T.Type, success:@escaping successBlock, failure:@escaping failureBlock) {
-        performAPICall(strURL, methodType: .post, parameters: parameters, requestHeaders: headers, genericResponse:genericResponse, success: success, failure: failure)
+    func postAPICall<T:Mappable>(_ strURL : String, parameters : Dictionary<String, Any>?, headers : [String : String]?, apiType: ApiType, genericResponse:T.Type, success:@escaping successBlock, failure:@escaping failureBlock) {
+        performAPICall(strURL, methodType: .post, parameters: parameters, requestHeaders: headers, apiType: apiType, genericResponse:genericResponse, success: success, failure: failure)
     }
     
-    func deleteAPICall<T:Mappable>(_ strURL : String, parameters : Dictionary<String, Any>?, headers : [String : String]?, genericResponse:T.Type, success:@escaping successBlock, failure:@escaping failureBlock) {
-        performAPICall(strURL, methodType: .delete, parameters: parameters, requestHeaders: headers, genericResponse: genericResponse, success: success, failure: failure)
+    func deleteAPICall<T:Mappable>(_ strURL : String, parameters : Dictionary<String, Any>?, headers : [String : String]?, apiType: ApiType, genericResponse:T.Type, success:@escaping successBlock, failure:@escaping failureBlock) {
+        performAPICall(strURL, methodType: .delete, parameters: parameters, requestHeaders: headers, apiType: apiType, genericResponse: genericResponse, success: success, failure: failure)
     }
     
-    func performAPICall<T:Mappable>(_ strURL : String, methodType: HTTPMethod, parameters : Dictionary<String, Any>?, requestHeaders : [String : String]?, genericResponse:T.Type, success:@escaping successBlock, failure:@escaping failureBlock){
+    func performAPICall<T:Mappable>(_ strURL : String, methodType: HTTPMethod, parameters : Dictionary<String, Any>?, requestHeaders : [String : String]?, apiType: ApiType, genericResponse:T.Type, success:@escaping successBlock, failure:@escaping failureBlock){
         
         
         var completeURL:String = NetworkHttpClient.baseUrl() + BaseRequest.getUrl(path: strURL)
@@ -133,7 +133,7 @@ class NetworkHttpClient: NSObject {
                 print("Response regular: \(response)")
                 
                 //Exception is for the ones when response is empty
-                let exceptionSuccess: AnyObject? = self.handleExceptionsFor(url: BaseRequest.getUrl(path: strURL), withResponseCode: response.response?.statusCode ?? 0, response: response, genericResponse: genericResponse)
+                let exceptionSuccess: AnyObject? = self.handleExceptionsFor(url: BaseRequest.getUrl(path: strURL), withResponseCode: response.response?.statusCode ?? 0, response: response, apiType: apiType, genericResponse: genericResponse)
                 
                 if exceptionSuccess != nil {
                     print("Exception success")
@@ -189,7 +189,12 @@ class NetworkHttpClient: NSObject {
         UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
-    func handleExceptionsFor<T:Mappable>(url: String, withResponseCode: Int, response: DataResponse<T>, genericResponse:T.Type) -> AnyObject? {
+    func handleExceptionsFor<T:Mappable>(url: String, withResponseCode: Int, response: DataResponse<T>, apiType: ApiType, genericResponse:T.Type) -> AnyObject? {
+        
+        if apiType == .Put_UpdateMobileAndEmail && withResponseCode == 200 {
+            return response as AnyObject
+        }
+        
         if url == sendSmsURL && withResponseCode == 202 {
 //            let response = PhoneVerification.SmsPhoneVerification.Response(message: "Sms sent successfully")
 //            response.response?.statusCode
@@ -198,7 +203,8 @@ class NetworkHttpClient: NSObject {
             && withResponseCode == 202 {
             
             return response as AnyObject
-        } else if url.hasSuffix(itemAddedToBasketURLSuffix) && withResponseCode == 200 {
+        } else if (url.hasSuffix(itemAddedToBasketURLSuffix) ||
+                    url.hasSuffix(changePinSuffix)) && withResponseCode == 200 {
             return response as AnyObject
         }
         

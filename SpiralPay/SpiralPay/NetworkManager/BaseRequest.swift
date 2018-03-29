@@ -9,6 +9,11 @@
 import UIKit
 import Alamofire
 
+enum ApiType {
+    case Put_UpdateMobileAndEmail
+    case None
+}
+
 class BaseRequest: NSObject {
   static let hasArrayResponse = "HasArrayResponse"
   static let hasNullResponse = "HasNullResponse"
@@ -20,6 +25,8 @@ class BaseRequest: NSObject {
     var mimeType: String
     var headers: [String: String]?
     var parameters: Dictionary<String, Any>
+    
+    var apiType: ApiType = .None
         
     override init() {
         urlPath = ""

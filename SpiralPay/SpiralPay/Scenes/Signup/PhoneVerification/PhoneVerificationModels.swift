@@ -15,6 +15,7 @@ import ObjectMapper
 
 let sendSmsURLPrefix = "/v1/wallet/customers/"
 let sendSmsURLSuffix = "/verify_number"
+let updateMobileAndEmailUrlPrefix = "/v1/wallet/customers/"
 
 var sendSmsURL: String {
     get {
@@ -24,64 +25,105 @@ var sendSmsURL: String {
 
 enum PhoneVerification
 {
-  // MARK: Use cases
-  
-  enum SmsPhoneVerification
-  {
-    struct Request
+    // MARK: Use cases
+    
+    enum SmsPhoneVerification
     {
-        var phone: String?
-        var code: String?
-        
-        func baseRequest() -> BaseRequest {
-            let baseRequest = BaseRequest()
-            baseRequest.urlPath = sendSmsURL
-            baseRequest.parameters["phone"] = phone ?? ""
-            baseRequest.parameters["code"] = code ?? ""
-            return baseRequest
+        struct Request
+        {
+            var phone: String?
+            var code: String?
+            
+            func baseRequest() -> BaseRequest {
+                let baseRequest = BaseRequest()
+                baseRequest.urlPath = sendSmsURL
+                baseRequest.parameters["phone"] = phone ?? ""
+                baseRequest.parameters["code"] = code ?? ""
+                return baseRequest
+            }
         }
-    }
-    struct Response: Mappable
-    {
-        
-        // MARK: Declaration for string constants to be used to decode and also serialize.
-        private struct SerializationKeys {
-            static let message = "message"
-        }
-        
-        // MARK: Properties
-        public var message: String?
-        
-        // MARK: ObjectMapper Initializers
-        /// Map a JSON object to this class using ObjectMapper.
-        ///
-        /// - parameter map: A mapping from ObjectMapper.
-        public init?(map: Map){
+        struct Response: Mappable
+        {
+            
+            // MARK: Declaration for string constants to be used to decode and also serialize.
+            private struct SerializationKeys {
+                static let message = "message"
+            }
+            
+            // MARK: Properties
+            public var message: String?
+            
+            // MARK: ObjectMapper Initializers
+            /// Map a JSON object to this class using ObjectMapper.
+            ///
+            /// - parameter map: A mapping from ObjectMapper.
+            public init?(map: Map){
+                
+            }
+            public init?(message: String){
+                self.message = message
+            }
+            
+            /// Map a JSON object to this class using ObjectMapper.
+            ///
+            /// - parameter map: A mapping from ObjectMapper.
+            public mutating func mapping(map: Map) {
+                message <- map[SerializationKeys.message]
+            }
+            
+            /// Generates description of the object in the form of a NSDictionary.
+            ///
+            /// - returns: A Key value pair containing all valid values in the object.
+            public func dictionaryRepresentation() -> [String: Any] {
+                var dictionary: [String: Any] = [:]
+                if let value = message { dictionary[SerializationKeys.message] = value }
+                return dictionary
+            }
             
         }
-        public init?(message: String){
-            self.message = message
-        }
-        
-        /// Map a JSON object to this class using ObjectMapper.
-        ///
-        /// - parameter map: A mapping from ObjectMapper.
-        public mutating func mapping(map: Map) {
-            message <- map[SerializationKeys.message]
-        }
-        
-        /// Generates description of the object in the form of a NSDictionary.
-        ///
-        /// - returns: A Key value pair containing all valid values in the object.
-        public func dictionaryRepresentation() -> [String: Any] {
-            var dictionary: [String: Any] = [:]
-            if let value = message { dictionary[SerializationKeys.message] = value }
-            return dictionary
-        }
-        
     }
-    struct ViewModel
+    enum UpdateMobileAndEmail
     {
+        struct Request
+        {
+            var phone: String?
+            var code: String?
+            
+            func baseRequest() -> BaseRequest {
+                let baseRequest = BaseRequest()
+                baseRequest.urlPath = "\(updateMobileAndEmailUrlPrefix)\(User.shared.customerID ?? "-")"
+                baseRequest.parameters["phone"] = phone ?? User.shared.phoneWithCode
+                baseRequest.parameters["email"] = code ?? User.shared.email
+                baseRequest.apiType = .Put_UpdateMobileAndEmail
+                return baseRequest
+            }
+        }
+        struct Response: Mappable
+        {
+            
+            private struct SerializationKeys {
+                static let message = "message"
+            }
+            
+            public var message: String?
+            
+            public init?(map: Map){
+                
+            }
+            public init?(message: String){
+                self.message = message
+            }
+            
+            public mutating func mapping(map: Map) {
+                message <- map[SerializationKeys.message]
+            }
+            
+            public func dictionaryRepresentation() -> [String: Any] {
+                var dictionary: [String: Any] = [:]
+                if let value = message { dictionary[SerializationKeys.message] = value }
+                return dictionary
+            }
+            
+        }
     }
-  }
 }

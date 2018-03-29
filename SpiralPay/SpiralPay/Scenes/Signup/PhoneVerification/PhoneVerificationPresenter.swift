@@ -16,20 +16,29 @@ protocol PhoneVerificationPresentationLogic
 {
     func sendSmsForPhoneVerificationAPIsuccess(response: PhoneVerification.SmsPhoneVerification.Response)
     func sendSmsForPhoneVerificationAPIfailure(response: PhoneVerification.SmsPhoneVerification.Response)
+    
+    func updateMobileAndEmailAPIsuccess(response: PhoneVerification.UpdateMobileAndEmail.Response)
+    func updateMobileAndEmailAPIfailure(response: PhoneVerification.UpdateMobileAndEmail.Response)
 }
 
 class PhoneVerificationPresenter: PhoneVerificationPresentationLogic
 {
-  weak var viewController: PhoneVerificationDisplayLogic?
-  
-  // MARK: Do something
-  
+    weak var viewController: PhoneVerificationDisplayLogic?
+    
     func sendSmsForPhoneVerificationAPIsuccess(response: PhoneVerification.SmsPhoneVerification.Response) {
         viewController?.sendSmsForPhoneVerificationAPIsuccess(response: response)
     }
     
     func sendSmsForPhoneVerificationAPIfailure(response: PhoneVerification.SmsPhoneVerification.Response) {
         viewController?.sendSmsForPhoneVerificationAPIfailure(response: response)
+    }
+    
+    func updateMobileAndEmailAPIsuccess(response: PhoneVerification.UpdateMobileAndEmail.Response) {
+        viewController?.updateMobileAndEmailSuccess(response: response)
+    }
+    
+    func updateMobileAndEmailAPIfailure(response: PhoneVerification.UpdateMobileAndEmail.Response) {
+        viewController?.updateMobileAndEmailFailure(response: response)
     }
     
 }

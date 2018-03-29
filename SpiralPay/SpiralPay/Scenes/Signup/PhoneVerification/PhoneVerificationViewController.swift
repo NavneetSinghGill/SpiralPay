@@ -35,6 +35,9 @@ protocol PhoneVerificationDisplayLogic: class
 {
     func sendSmsForPhoneVerificationAPIsuccess(response: PhoneVerification.SmsPhoneVerification.Response)
     func sendSmsForPhoneVerificationAPIfailure(response: PhoneVerification.SmsPhoneVerification.Response)
+    
+    func updateMobileAndEmailSuccess(response: PhoneVerification.UpdateMobileAndEmail.Response)
+    func updateMobileAndEmailFailure(response: PhoneVerification.UpdateMobileAndEmail.Response)
 }
 
 class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificationDisplayLogic
@@ -94,6 +97,7 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
     
     var screenStatus: PhoneVerificationScreenStatus = .SendSms
     var generatedCode: String?
+    var screenType = AppFlowType.Onboard
     
     //Enter Pin
     @IBOutlet weak var enterPinView: UIView!
@@ -105,14 +109,18 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
     
     override func viewDidLoad()
     {
-        if screenStatus == .SendSms {
-            percentageOfProgressBar = CGFloat(4/numberOfProgressBarPages)
-        } else if screenStatus == .EnterPin {
-            percentageOfProgressBar = CGFloat(5/numberOfProgressBarPages)
-        } else if screenStatus == .Success {
-            percentageOfProgressBar = CGFloat(6/numberOfProgressBarPages)
-        } else if screenStatus == .Failed {
-            percentageOfProgressBar = CGFloat(6/numberOfProgressBarPages)
+        if screenType == .Onboard {
+            if screenStatus == .SendSms {
+                percentageOfProgressBar = CGFloat(4/numberOfProgressBarPages)
+            } else if screenStatus == .EnterPin {
+                percentageOfProgressBar = CGFloat(5/numberOfProgressBarPages)
+            } else if screenStatus == .Success {
+                percentageOfProgressBar = CGFloat(6/numberOfProgressBarPages)
+            } else if screenStatus == .Failed {
+                percentageOfProgressBar = CGFloat(6/numberOfProgressBarPages)
+            }
+        } else {
+            progressBar.isHidden = true
         }
         
         super.viewDidLoad()
@@ -134,23 +142,46 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
         NLoader.stopAnimating()
     }
     
+    //MARK: update mobile and email
+    
+    func updateMobileAndEmailSuccess(response: PhoneVerification.UpdateMobileAndEmail.Response) {
+        NLoader.stopAnimating()
+        User.shared.save()
+        router?.routeToSuccessFulVerificationScreen()
+    }
+    
+    func updateMobileAndEmailFailure(response: PhoneVerification.UpdateMobileAndEmail.Response) {
+        NLoader.stopAnimating()
+        router?.routeToFailedVerificationScreen()
+    }
+    
     //MARK:- IBAction methods
     
     @IBAction func actionButtonTapped() {
         if screenStatus == .SendSms {
             sendaRandomCodeToUser()
         } else if screenStatus == .Success {
-            User.shared.savedState = .PhoneVerified
-            User.shared.save()
-            router?.routeToConfirmDetailsScreen()
+            if screenType == .Onboard {
+                User.shared.savedState = .PhoneVerified
+                User.shared.save()
+                router?.routeToConfirmDetailsScreen()
+            } else {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
         } else if screenStatus == .Failed {
-            router?.routeToFirstPhoneVerificationScreen()
+            if screenType == .Onboard {
+                router?.routeToFirstPhoneVerificationScreen()
+            } else {
+                router?.routeToChangeEmailScreen()
+            }
         }
     }
     
     @IBAction func backButtonTapped() {
         if screenStatus == .SendSms || screenStatus == .Failed{
-            User.shared.reset()
+            if screenType == .Onboard {
+                User.shared.reset()
+            }
             self.navigationController?.popToRootViewController(animated: true)
         }
     }
@@ -224,7 +255,13 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
     }
     
     private func codeMatchingSuccessful() {
-        router?.routeToSuccessFulVerificationScreen()
+        if screenType == .Onboard {
+            router?.routeToSuccessFulVerificationScreen()
+        } else {
+            let request = PhoneVerification.UpdateMobileAndEmail.Request()
+            NLoader.startAnimating()
+            interactor?.updateMobileAndEmail(request: request)
+        }
     }
     
     private func codeMatchingFailed() {

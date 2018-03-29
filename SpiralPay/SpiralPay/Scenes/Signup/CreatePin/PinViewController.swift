@@ -106,6 +106,7 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
     var pinEntry: PinEntry = .Create
     var createdPin: String?
     
+    var screenType = AppFlowType.Onboard
     
     //MARK: - API
     //MARK: Customer registration
@@ -127,7 +128,9 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
         
         User.shared.accessToken = response.accessToken
         User.shared.customerID = response.customerId
-        User.shared.savedState = SavedState.PinCreated
+        if screenType == .Onboard {
+            User.shared.savedState = SavedState.PinCreated
+        }
         User.shared.save()
         
         router?.routeToPhoneVerificationProcess()
