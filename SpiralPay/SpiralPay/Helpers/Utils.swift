@@ -100,7 +100,7 @@ class Utils: NSObject {
     }
     
     func getURLfor(id: String?) -> URL {
-        let url = "\(productionURL)/v1/file/\(id ?? "")/public"
+        let url = "\(productionURL)/v1/file/\(id ?? "")"
         return URL(string: url)!
     }
     
@@ -109,14 +109,19 @@ class Utils: NSObject {
         if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) as? UIImage {
             imageView.image = cachedImage
         } else {
-            URLSession.shared.dataTask(with: url) { data, response, error in
+            var request = URLRequest(url: url)
+            request.setValue("Bearer \(User.shared.accessToken ?? "")", forHTTPHeaderField: "Authorization")
+            let completionHandler = {(data: Data?, response: URLResponse?, error: Error?) -> Void in
                 guard let data = data, error == nil, data.count != 0 else { return }
                 DispatchQueue.main.async {
                     let imageToCache = UIImage(data: data)
-                    self.imageCache.setObject(imageToCache!, forKey: url.absoluteString as NSString)
-                    imageView.image = imageToCache
+                    if let imageToCache = imageToCache {
+                        self.imageCache.setObject(imageToCache, forKey: url.absoluteString as NSString)
+                        imageView.image = imageToCache
+                    }
                 }
-                }.resume()
+            }
+            URLSession.shared.dataTask(with: request, completionHandler: completionHandler).resume()
         }
     }
    
