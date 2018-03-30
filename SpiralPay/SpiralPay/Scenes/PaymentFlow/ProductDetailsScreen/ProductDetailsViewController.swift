@@ -38,6 +38,9 @@ protocol ProductDetailsDisplayLogic: class
     
     func getPaymentDetailSuccessWith(response: Home.PaymentDetail.Response)
     func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response)
+    
+    func postAddItemToBasketSuccessWith(response: ProductDetails.ItemAddedToBasket.Response, completionBlock: () -> ())
+    func postAddItemToBasketFailureWith(response: ProductDetails.ItemAddedToBasket.Response)
 }
 
 class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDisplayLogic
@@ -325,6 +328,28 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
             paymentDetail.merchantName = ""
         }
         showPaymentFailedScreenWith(paymentDetail: paymentDetail)
+    }
+    
+    //MARK: Add item to basket
+    
+    func addItemToBasketWith(paymentID: String?, completionBlock: @escaping () -> ()) {
+        NLoader.shared.startNLoader()
+        
+        var request = ProductDetails.ItemAddedToBasket.Request()
+        request.paymentId = paymentID
+        
+        interactor?.postAddItemToBasket(request: request) {
+            completionBlock()
+        }
+    }
+    
+    func postAddItemToBasketSuccessWith(response: ProductDetails.ItemAddedToBasket.Response, completionBlock: () -> ()) {
+        NLoader.shared.stopNLoader()
+        completionBlock()
+    }
+    
+    func postAddItemToBasketFailureWith(response: ProductDetails.ItemAddedToBasket.Response) {
+        NLoader.shared.stopNLoader()
     }
     
     //MARK:- IBAction methods
@@ -619,30 +644,49 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     //MARK:- Overridden methods
     
     @objc override func cartButtonTapped() {
-        if detailsType == DetailsType.Payment {
-            let context = ApplicationDelegate.mainContext
-            _ = Utils.shared.getPaymentObjectFor(payment: paymentDetail, context: context)
-            do {
-                try context.save()
-            } catch let nserror as NSError {
-                print("\nFailed to save payment details: \(nserror), \(nserror.userInfo)")
+        let openCartScreenBlock = {
+            DispatchQueue.main.async {
+                let cartScreen = ShoppingCartViewController.create()
+                if self.navigationController != nil {
+                    self.navigationController?.pushViewController(cartScreen, animated: true)
+                } else {
+                    self.present(cartScreen, animated: true, completion: nil)
+                }
             }
+        }
+        
+        
+        if detailsType == DetailsType.Payment {
+            
+            let paymentBlock = {
+                let context = ApplicationDelegate.mainContext
+                _ = Utils.shared.getPaymentObjectFor(payment: self.paymentDetail, context: context)
+                do {
+                    try context.save()
+                    openCartScreenBlock()
+                } catch let nserror as NSError {
+                    print("\nFailed to save payment details: \(nserror), \(nserror.userInfo)")
+                }
+            }
+            
+            addItemToBasketWith(paymentID: self.paymentDetail.paymentId) {
+                //Save data after api is success
+                paymentBlock()
+            }
+            
         } else {
+            
             let context = ApplicationDelegate.mainContext
            _ = Utils.shared.getCampaignObjectFor(campaign: campaignDetail, context: context)
             do {
                 try context.save()
+                openCartScreenBlock()
             } catch let nserror as NSError {
                 print("\nFailed to save campaign details: \(nserror), \(nserror.userInfo)")
             }
+            
         }
         
-        let cartScreen = ShoppingCartViewController.create()
-        if self.navigationController != nil {
-            navigationController?.pushViewController(cartScreen, animated: true)
-        } else {
-            present(cartScreen, animated: true, completion: nil)
-        }
     }
     
 }

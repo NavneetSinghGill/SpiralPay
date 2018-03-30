@@ -122,5 +122,15 @@ class RequestManager: NSObject {
         }
     }
     
+    func postAddItemToBasket(request:BaseRequest, completion:@escaping CompletionHandler){
+        if ApplicationDelegate.isNetworkAvailable{
+            RealAPI().postObject(request:request, genericResponse: ProductDetails.ItemAddedToBasket.Response.self, completion:completion)
+        }
+        else{
+            completion(false, Constants.kNoNetworkMessage)
+            //            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
+        }
+    }
+    
     
 }

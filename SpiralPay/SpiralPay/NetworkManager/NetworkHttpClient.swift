@@ -198,6 +198,8 @@ class NetworkHttpClient: NSObject {
             && withResponseCode == 202 {
             
             return response as AnyObject
+        } else if url.hasSuffix(itemAddedToBasketURLSuffix) && withResponseCode == 200 {
+            return response as AnyObject
         }
         
         

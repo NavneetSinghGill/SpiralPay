@@ -17,6 +17,7 @@ protocol ProductDetailsBusinessLogic
     func processPayment(request: ProductDetails.ProcessPayment.Request)
     func getCardToken(request: ProductDetails.CardToken.Request)
     func createPayment(request: ProductDetails.CreatePayment.Request)
+    func postAddItemToBasket(request: ProductDetails.ItemAddedToBasket.Request, completionBlock: @escaping () -> ())
     
     func getPaymentDetails(request: Home.PaymentDetail.Request)
 }
@@ -59,6 +60,21 @@ class ProductDetailsInteractor: ProductDetailsBusinessLogic, ProductDetailsDataS
             self.presenter?.getCardTokenFailureWith(response: response)
         })
     }
+    
+    func postAddItemToBasket(request: ProductDetails.ItemAddedToBasket.Request, completionBlock: @escaping () -> ()) {
+        worker = ProductDetailsWorker()
+        worker?.postAddItemToBasketWith(request: request, successCompletionHandler: { (response) in
+            self.presenter?.postAddItemToBasketSuccessWith(response: response) {
+                completionBlock()
+            }
+        }, failureCompletionHandler: { (response) in
+            self.presenter?.postAddItemToBasketFailureWith(response: response)
+        })
+    }
+    
+    
+    
+    
     
     func getPaymentDetails(request: Home.PaymentDetail.Request)
     {

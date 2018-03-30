@@ -88,6 +88,12 @@ class RealAPI: NSObject {
         
 //        let message: String = String.init(format: "Success:- URL:%@\n", (responseStatus?.url?.absoluteString)!)
 //        print(message)
+        if ((request.urlPath == sendSmsURL || (request.urlPath.range(of: processPaymentUrlSuffix) != nil && request.urlPath.range(of: processPaymentUrlPrefix) != nil)) && responseStatus?.statusCode == Constants.ResponseStatusAccepted) ||
+            (request.urlPath.hasSuffix(itemAddedToBasketURLSuffix) && responseStatus?.statusCode == Constants.ResponseStatusSuccess){
+            //Exception success
+            block(true, response)
+            return
+        }
         
         if responseStatus?.statusCode == Constants.ResponseStatusSuccess || responseStatus?.statusCode == Constants.ResponseStatusCreated {
             if response != nil || responseArray != nil || (response?.result.isSuccess)! {
@@ -102,10 +108,6 @@ class RealAPI: NSObject {
         else if self.isForbiddenResponse(statusCode: (responseStatus?.statusCode), url: responseStatus?.url?.absoluteString) {
             realAPIBlock = block
             renewLogin()
-            return
-        } else if (request.urlPath == sendSmsURL || (request.urlPath.range(of: processPaymentUrlSuffix) != nil && request.urlPath.range(of: processPaymentUrlPrefix) != nil)) && responseStatus?.statusCode == Constants.ResponseStatusAccepted {
-            //Exception success
-            block(true, response)
             return
         } else {
             if response != nil || responseArray != nil {

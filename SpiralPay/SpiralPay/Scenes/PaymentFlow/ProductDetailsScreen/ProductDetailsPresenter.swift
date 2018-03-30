@@ -25,6 +25,9 @@ protocol ProductDetailsPresentationLogic
     
     func getPaymentDetailSuccessWith(response: Home.PaymentDetail.Response)
     func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response)
+    
+    func postAddItemToBasketSuccessWith(response: ProductDetails.ItemAddedToBasket.Response, completionBlock: () -> ())
+    func postAddItemToBasketFailureWith(response: ProductDetails.ItemAddedToBasket.Response)
 }
 
 class ProductDetailsPresenter: ProductDetailsPresentationLogic
@@ -67,6 +70,18 @@ class ProductDetailsPresenter: ProductDetailsPresentationLogic
     
     func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response) {
         viewController?.getPaymentDetailFailureWith(response: response)
+    }
+    
+    
+    
+    func postAddItemToBasketSuccessWith(response: ProductDetails.ItemAddedToBasket.Response, completionBlock: () -> ()) {
+        viewController?.postAddItemToBasketSuccessWith(response: response) {
+            completionBlock()
+        }
+    }
+    
+    func postAddItemToBasketFailureWith(response: ProductDetails.ItemAddedToBasket.Response) {
+        viewController?.postAddItemToBasketFailureWith(response: response)
     }
     
 }

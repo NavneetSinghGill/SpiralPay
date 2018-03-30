@@ -15,6 +15,7 @@ import UIKit
 typealias processPaymentResponseHandler = (_ response:ProductDetails.ProcessPayment.Response) ->()
 typealias createPaymentResponseHandler = (_ response:ProductDetails.CreatePayment.Response) ->()
 typealias cardTokenResponseHandler = (_ response:ProductDetails.CardToken.Response) ->()
+typealias itemAddedToBasketResponseHandler = (_ response:ProductDetails.ItemAddedToBasket.Response) ->()
 
 class ProductDetailsWorker
 {
@@ -36,6 +37,13 @@ class ProductDetailsWorker
     {
         RequestManager().getCardToken(request: request.baseRequest()) { (status, response) in
             self.handleGetCardTokenResponse(success: successCompletionHandler, fail: failureCompletionHandler, status: status, response: response)
+        }
+    }
+    
+    func postAddItemToBasketWith(request: ProductDetails.ItemAddedToBasket.Request, successCompletionHandler: @escaping itemAddedToBasketResponseHandler, failureCompletionHandler: @escaping itemAddedToBasketResponseHandler)
+    {
+        RequestManager().postAddItemToBasket(request: request.baseRequest()) { (status, response) in
+            self.handleAddedItemToBasketResponse(success: successCompletionHandler, fail: failureCompletionHandler, status: status, response: response)
         }
     }
     
@@ -94,6 +102,15 @@ class ProductDetailsWorker
             }
         }
         fail(ProductDetails.CreatePayment.Response(message:message)!)
+    }
+    
+    public func handleAddedItemToBasketResponse(success:@escaping(itemAddedToBasketResponseHandler), fail:@escaping(itemAddedToBasketResponseHandler), status: Bool, response: Any?) {
+        let message:String = Constants.kErrorMessage
+        if status {
+            success(ProductDetails.ItemAddedToBasket.Response(message: "Item added to basket successful")!)
+            return
+        }
+        fail(ProductDetails.ItemAddedToBasket.Response(message:message)!)
     }
     
 }
