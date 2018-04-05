@@ -10,8 +10,8 @@ import UIKit
 
 class PersonalDetailsViewController: SpiralPayViewController {
     
-    @IBOutlet weak var firstNameLabel: UILabel!
-    @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var mobileLabel: UILabel!
     @IBOutlet weak var homeAddressTableView: UITableView!
@@ -21,9 +21,11 @@ class PersonalDetailsViewController: SpiralPayViewController {
         super.viewDidLoad()
         
         homeAddressTableView.rowHeight = UITableViewAutomaticDimension
-        homeAddressTableView.estimatedRowHeight = 0
-        homeAddressTableView.estimatedSectionHeaderHeight = 0
-        homeAddressTableView.estimatedSectionFooterHeight = 0
+//        homeAddressTableView.estimatedRowHeight = 95
+
+        
+        let nib = UINib(nibName: "HomeAddressTableViewCell", bundle: nil)
+        homeAddressTableView.register(nib, forCellReuseIdentifier: "HomeAddressTableViewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,24 +35,10 @@ class PersonalDetailsViewController: SpiralPayViewController {
         
         emailLabel.text = User.shared.email
         mobileLabel.text = User.shared.phoneWithCode
+        firstNameTextField.text = User.shared.firstName
+        lastNameTextField.text = User.shared.lastName
         
-        let name = User.shared.name ?? ""
-        if let first = name.components(separatedBy: " ").first {
-            firstNameLabel.text = first
-        } else {
-            firstNameLabel.text = "-"
-        }
-        if name.components(separatedBy: " ").count > 1, let last = name.components(separatedBy: " ").last {
-            lastNameLabel.text = last
-        } else {
-            lastNameLabel.text = "-"
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        reloadTableViewData()
+        reloadTableViewDataWith(animation: false)
     }
     
     //MARK:- IBAction methods
@@ -81,13 +69,27 @@ class PersonalDetailsViewController: SpiralPayViewController {
         }
     }
     
+    @IBAction func firstNameEditButtonTapped() {
+        firstNameTextField.becomeFirstResponder()
+    }
+    
+    @IBAction func lastNameEditButtonTapped() {
+        lastNameTextField.becomeFirstResponder()
+    }
+    
     //MARK:- Private methods
     
-    private func reloadTableViewData() {
-        homeAddressTableView.reloadData()
-        tableViewHeightConstraint.constant = homeAddressTableView.contentSize.height
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
+    private func reloadTableViewDataWith(animation: Bool) {
+        self.homeAddressTableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableViewHeightConstraint.constant = self.homeAddressTableView.contentSize.height
+            if animation {
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.view.layoutIfNeeded()
+                })
+            } else {
+                self.view.layoutIfNeeded()
+            }
         }
     }
 
@@ -96,23 +98,88 @@ class PersonalDetailsViewController: SpiralPayViewController {
 extension PersonalDetailsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if let addresses = User.shared.addresses {
+            return addresses.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeAddressCellIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeAddressTableViewCell", for: indexPath) as! HomeAddressTableViewCell
+        cell.delegate = self
+        cell.index = indexPath.row
         
-        guard let addressLabel = cell.viewWithTag(101) as? UILabel else {
-            return cell
+        if let addresses = User.shared.addresses {
+            cell.doUI(address: addresses[indexPath.row])
         }
-        
-        addressLabel.text = "\(User.shared.address ?? "-")\n\(User.shared.city ?? "-"), \(User.shared.countryName ?? "-")\n\(User.shared.postcode ?? "-")"
-        
+
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+}
+
+extension PersonalDetailsViewController: HomeAddressTableViewCellDelegate {
+    
+    func defaultButtonTappedWith(index: Int) {
+        var newAddresses = Array<Dictionary<String,String>>()
+        
+        for address in User.shared.addresses! {
+            var newAddress = address
+            newAddress[User.isDefault] = "false"
+            newAddresses.append(newAddress)
+        }
+        var address = newAddresses[index]
+        address[User.isDefault] = "true"
+        newAddresses[index] = address
+        User.shared.addresses = newAddresses
+        
+        User.shared.save()
+        self.reloadTableViewDataWith(animation: true)
+    }
+    
+    func deleteButtonTappedWith(index: Int) {
+        let alert = UIAlertController(title: "Delete", message: "Do you want to delete this address?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+            
+            if var addresses = User.shared.addresses {
+                addresses.remove(at: index)
+                User.shared.addresses = addresses
+                User.shared.save()
+                self.reloadTableViewDataWith(animation: true)
+            }
+            
+        }
+        let noAction = UIAlertAction(title: "No", style: .default, handler: nil)
+        alert.addAction(noAction)
+        alert.addAction(yesAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func editButtonTappedWith(index: Int) {
+        let homeAddressVC = HomeAddressViewController.create()
+        homeAddressVC.indexOfAddressToShow = index
+        self.navigationController?.pushViewController(homeAddressVC, animated: true)
+    }
+    
+}
+
+extension PersonalDetailsViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == firstNameTextField && textField.text != nil && textField.text!.count != 0 {
+            User.shared.firstName = textField.text
+            User.shared.save()
+        }
+        if textField == lastNameTextField && textField.text != nil && textField.text!.count != 0 {
+            User.shared.lastName = textField.text
+            User.shared.save()
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
 }

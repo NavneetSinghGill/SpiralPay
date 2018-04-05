@@ -64,6 +64,8 @@
 		1871E896203D5730008BDEF8 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1871E895203D572D008BDEF8 /* Lato-Bold.ttf */; };
 		1871E898203DA401008BDEF8 /* BezierPathExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1871E897203DA401008BDEF8 /* BezierPathExtenstion.swift */; };
 		1873FB3B204533B1003CA863 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873FB3A204533B1003CA863 /* ScannerViewController.swift */; };
+		187B544C2075015100961C6B /* HomeAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B544A2075015100961C6B /* HomeAddressTableViewCell.swift */; };
+		187B544D2075015100961C6B /* HomeAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187B544B2075015100961C6B /* HomeAddressTableViewCell.xib */; };
 		187DC5C020721C25000500AA /* ChangePinPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5BA20721C25000500AA /* ChangePinPresenter.swift */; };
 		187DC5C120721C25000500AA /* ChangePinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5BB20721C25000500AA /* ChangePinWorker.swift */; };
 		187DC5C220721C25000500AA /* ChangePinRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5BC20721C25000500AA /* ChangePinRouter.swift */; };
@@ -240,6 +242,8 @@
 		1871E895203D572D008BDEF8 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		1871E897203DA401008BDEF8 /* BezierPathExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathExtenstion.swift; sourceTree = "<group>"; };
 		1873FB3A204533B1003CA863 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		187B544A2075015100961C6B /* HomeAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAddressTableViewCell.swift; sourceTree = "<group>"; };
+		187B544B2075015100961C6B /* HomeAddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeAddressTableViewCell.xib; sourceTree = "<group>"; };
 		187DC5BA20721C25000500AA /* ChangePinPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinPresenter.swift; sourceTree = "<group>"; };
 		187DC5BB20721C25000500AA /* ChangePinWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinWorker.swift; sourceTree = "<group>"; };
 		187DC5BC20721C25000500AA /* ChangePinRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinRouter.swift; sourceTree = "<group>"; };
@@ -750,6 +754,8 @@
 				1815BC822047D8C20001E392 /* PaymentPriceDetailsTableViewCell.xib */,
 				18656019205BDB5000536D4F /* ShoppingCartTableViewCell.swift */,
 				1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */,
+				187B544A2075015100961C6B /* HomeAddressTableViewCell.swift */,
+				187B544B2075015100961C6B /* HomeAddressTableViewCell.xib */,
 			);
 			path = StoryboardsAndXIBs;
 			sourceTree = "<group>";
@@ -930,6 +936,7 @@
 				1871E896203D5730008BDEF8 /* Lato-Bold.ttf in Resources */,
 				F1E89B6B2019D2FD0052C723 /* Lato-Regular.ttf in Resources */,
 				F1E89B4B2019D29D0052C723 /* Lato-Medium.ttf in Resources */,
+				187B544D2075015100961C6B /* HomeAddressTableViewCell.xib in Resources */,
 				F1D9BA5B201852E8004B42B7 /* LaunchScreen.storyboard in Resources */,
 				18D2D1C920480CE700E1B988 /* PaymentHistoryTableViewCell.xib in Resources */,
 				F1D9BA58201852E8004B42B7 /* Assets.xcassets in Resources */,
@@ -1080,6 +1087,7 @@
 				F1D9BAC320185605004B42B7 /* Utils.swift in Sources */,
 				18645D5420359B7F0017E214 /* AddCardOptionsViewController.swift in Sources */,
 				F1D9BAC020185605004B42B7 /* OptionalExtensions.swift in Sources */,
+				187B544C2075015100961C6B /* HomeAddressTableViewCell.swift in Sources */,
 				18A982F7205665A700BDC4AD /* ProductDetailsViewController.swift in Sources */,
 				F1D9BAD2201856D1004B42B7 /* CommonResponse.swift in Sources */,
 				1810DF0C203C62DC00722760 /* LoyaltyViewController.swift in Sources */,

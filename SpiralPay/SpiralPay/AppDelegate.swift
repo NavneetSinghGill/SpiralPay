@@ -29,12 +29,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Remove all previous saved data
         if !UserDefaults.standard.bool(forKey: Constants.kHadAppRunBeforeAtleastOnce) {
-            User.resetSavedValues()
-            Card.resetSavedValues()
+            User.shared.reset()
+            Card.shared.reset()
             UserDefaults.standard.set(true, forKey: Constants.kHadAppRunBeforeAtleastOnce)
             UserDefaults.standard.set(UIDevice.current.identifierForVendor?.uuidString, forKey: Constants.deviceIdentifier)
             UserDefaults.standard.synchronize()
             
+        }
+        
+        User.shared.restore()
+        Card.shared.restore()
+        
+        if User.shared.address == nil || User.shared.address!.count == 0 {
+            //address is empty means that everything is already in array of dictionary
+        } else if User.shared.addresses == nil || User.shared.addresses!.count == 0 {
+            //Convert single address to array
+            let dict = User.shared.getCurrentAddressDict()
+            User.shared.addresses = [dict]
+            User.shared.address = ""
+            User.shared.city = ""
+            User.shared.postcode = ""
+            User.shared.save()
+        }
+        
+        if User.shared.name != nil && User.shared.name!.count != 0 {
+            let name = User.shared.name ?? ""
+            if let first = name.components(separatedBy: " ").first {
+                User.shared.firstName = first
+            } else {
+                User.shared.firstName = ""
+            }
+            if name.components(separatedBy: " ").count > 1, let last = name.components(separatedBy: " ").last {
+                User.shared.lastName = last
+            } else {
+                User.shared.lastName = ""
+            }
+            User.shared.name = ""
+            User.shared.save()
         }
         
         print("Coredata url: \(persistentContainer.persistentStoreCoordinator.persistentStores.first?.url)\n")
@@ -42,9 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupNetworkMonitoring()
         
         Fabric.with([Crashlytics.self])
-        
-        User.shared.restore()
-        Card.shared.restore()
         
         didOpenFromDidFinishLaunchingWithOptions = true
         showLoginScreenIfShould()

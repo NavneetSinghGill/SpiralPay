@@ -35,6 +35,13 @@ class User: NSObject {
     
     static var shared = User()
     
+    static let address1 = "address1"
+    static let address2 = "address2"
+    static let city = "city"
+    static let postcode = "postcode"
+    static let country = "country"
+    static let isDefault = "isDefault"
+    
     var phone: String?
     var email: String?
     var countryName: String?
@@ -42,10 +49,13 @@ class User: NSObject {
     var accessToken: String?
     var customerID: String?
     var name: String?
+    var firstName: String?
+    var lastName: String?
     var birthday: String?
     var address: String?
     var city: String?
     var postcode: String?
+    var addresses: Array<Dictionary<String,String>>?
     var savedState: SavedState = .None
 
     var phoneWithCode: String? {
@@ -67,10 +77,13 @@ class User: NSObject {
         _ = SecurityStorageWorker.shared.setTokenValue(accessToken ?? "", key: "accessToken")
         _ = SecurityStorageWorker.shared.setTokenValue(customerID ?? "", key: "customerID")
         _ = SecurityStorageWorker.shared.setTokenValue(name ?? "", key: "name")
+        _ = SecurityStorageWorker.shared.setTokenValue(firstName ?? "", key: "firstName")
+        _ = SecurityStorageWorker.shared.setTokenValue(lastName ?? "", key: "lastName")
         _ = SecurityStorageWorker.shared.setTokenValue(birthday ?? "", key: "birthday")
         _ = SecurityStorageWorker.shared.setTokenValue(address ?? "", key: "address")
         _ = SecurityStorageWorker.shared.setTokenValue(city ?? "", key: "city")
         _ = SecurityStorageWorker.shared.setTokenValue(postcode ?? "", key: "postcode")
+        _ = SecurityStorageWorker.shared.setArray((addresses as Array<AnyObject>?) ?? Array<AnyObject>(), key: "addresses")
         
         _ = SecurityStorageWorker.shared.setTokenValue(savedState.rawValue(), key: "savedState")
     }
@@ -83,10 +96,13 @@ class User: NSObject {
         accessToken = SecurityStorageWorker.shared.getKeychainValue(key: "accessToken")
         customerID = SecurityStorageWorker.shared.getKeychainValue(key: "customerID")
         name = SecurityStorageWorker.shared.getKeychainValue(key: "name")
+        firstName = SecurityStorageWorker.shared.getKeychainValue(key: "firstName")
+        lastName = SecurityStorageWorker.shared.getKeychainValue(key: "lastName")
         birthday = SecurityStorageWorker.shared.getKeychainValue(key: "birthday")
         address = SecurityStorageWorker.shared.getKeychainValue(key: "address")
         city = SecurityStorageWorker.shared.getKeychainValue(key: "city")
         postcode = SecurityStorageWorker.shared.getKeychainValue(key: "postcode")
+        addresses = SecurityStorageWorker.shared.getKeychainArrayValue(key: "addresses") as? Array<Dictionary<String, String>>
         
         switch SecurityStorageWorker.shared.getKeychainValue(key: "savedState")! {
         case SavedState.None.rawValue():
@@ -112,11 +128,26 @@ class User: NSObject {
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "accessToken")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "customerID")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "name")
+        _ = SecurityStorageWorker.shared.setTokenValue("", key: "firstName")
+        _ = SecurityStorageWorker.shared.setTokenValue("", key: "lastName")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "birthday")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "address")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "city")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "postcode")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "savedState")
+        _ = SecurityStorageWorker.shared.setArray(Array<AnyObject>(), key: "addresses")
+    }
+    
+    func getCurrentAddressDict() -> Dictionary<String,String> {
+        var dict = Dictionary<String,String>()
+        dict[User.address1] = User.shared.address ?? ""
+        dict[User.address2] = ""
+        dict[User.city] = User.shared.city ?? ""
+        dict[User.postcode] = User.shared.postcode ?? ""
+        dict[User.country] = User.shared.countryName ?? ""
+        dict[User.isDefault] = "true"
+        
+        return dict
     }
     
 }
