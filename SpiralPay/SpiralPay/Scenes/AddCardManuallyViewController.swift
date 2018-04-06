@@ -111,18 +111,27 @@ extension AddCardManuallyViewController: UITextFieldDelegate {
         
         let updatedText = textField.text!.replacingCharacters(in: Range(range, in: textField.text ?? "")!, with: string)
         
-        let charSet = CharacterSet(charactersIn: "1234567890").inverted
-        
-        if updatedText.rangeOfCharacter(from: charSet) != nil {
-            return false
+        if textField == cardNumberTextField {
+            let charSet = CharacterSet(charactersIn: "1234567890 ").inverted
+            
+            if updatedText.rangeOfCharacter(from: charSet) != nil {
+                return false
+            }
+        } else if textField == cvvTextField {
+            let charSet = CharacterSet(charactersIn: "1234567890").inverted
+            
+            if updatedText.rangeOfCharacter(from: charSet) != nil {
+                return false
+            }
         }
         
-        if (textField == cardNumberTextField && updatedText.count >= 17) ||
-            (textField == cvvTextField && updatedText.count >= 5) {
+        if (textField == cardNumberTextField && updatedText.replacingOccurrences(of: " ", with: "").count >= 17) ||
+            (textField == cvvTextField && updatedText.replacingOccurrences(of: " ", with: "").count >= 5) {
             return false
         }
         
         if textField == cardNumberTextField {
+            
             if updatedText.count != 0 {
                 if Utils.shared.isVisa(text: updatedText) {
                     cardTypeImageView.image = visaImage
@@ -134,9 +143,31 @@ extension AddCardManuallyViewController: UITextFieldDelegate {
             } else {
                 cardTypeImageView.image = nil
             }
+            
+            textField.text = addSpacesTo(text: updatedText)
+            return false
         }
         
         return true
+    }
+    
+    func addSpacesTo(text: String) -> String {
+        var noSpacesText = text.replacingOccurrences(of: " ", with: "")
+        var newText = ""
+        var count = 1
+        
+        var allCharacters = noSpacesText.flatMap({ (character) -> String? in
+            return "\(character) "
+        })
+        for char in allCharacters {
+            if count % 4 == 1 && count != 1 {
+                newText = "\(newText) \(char.components(separatedBy: " ").first!)"
+            } else {
+                newText = "\(newText)\(char.components(separatedBy: " ").first!)"
+            }
+            count = count + 1
+        }
+        return newText
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
