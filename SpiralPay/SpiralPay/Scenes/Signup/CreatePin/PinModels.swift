@@ -126,6 +126,9 @@ enum Pin
             public init?(message: String){
                 self.message = message
             }
+            public init(errorMessage: String) {
+                self.errorDescription = errorMessage
+            }
             
             /// Map a JSON object to this class using ObjectMapper.
             ///

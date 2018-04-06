@@ -21,4 +21,19 @@ class BannerManager: NSObject {
 //        banner.show()
 //    }
 
+
+    static func showFailureBanner(title:String = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String, subtitle:String){
+        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+        alert.addAction(action)
+        
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            
+            topController.present(alert, animated: true, completion: nil)
+        }
+    }
+    
 }
