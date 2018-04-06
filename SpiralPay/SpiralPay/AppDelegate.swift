@@ -120,7 +120,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         print("..... \(url)")
         
-        universalLinkURLString = url.path
+        if let value = components.queryItems?.first?.value {
+            universalLinkURLString = value
+        } else {
+            universalLinkURLString = ""
+        }
         universalLinkBlock = { (url) in
             //This is typically called when login is successful
             if url != nil, url!.count != 0, User.shared.savedState == .CardAdded, let base = ApplicationDelegate.getWindow().rootViewController as? UINavigationController {
@@ -130,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         if base.viewControllers.count != 1 {
                             base.popToRootViewController(animated: true)
                         }
-                        homeContainer.getDetailsWith(code: components.path)
+                        homeContainer.getDetailsWith(code: url ?? "")
                     } else {
                         ApplicationDelegate.showHomeTabBarScreen()
                     }
