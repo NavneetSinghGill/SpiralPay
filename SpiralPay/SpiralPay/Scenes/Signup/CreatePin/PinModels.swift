@@ -108,11 +108,13 @@ enum Pin
             private struct SerializationKeys {
                 static let accessToken = "access_token"
                 static let message = "message"
+                static let errorDescription = "error_description"
             }
             
             // MARK: Properties
             public var accessToken: String?
             public var message: String?
+            public var errorDescription: String?
             
             // MARK: ObjectMapper Initializers
             /// Map a JSON object to this class using ObjectMapper.
@@ -131,6 +133,7 @@ enum Pin
             public mutating func mapping(map: Map) {
                 accessToken <- map[SerializationKeys.accessToken]
                 message <- map[SerializationKeys.message]
+                errorDescription <- map[SerializationKeys.errorDescription]
             }
             
             /// Generates description of the object in the form of a NSDictionary.
@@ -140,6 +143,7 @@ enum Pin
                 var dictionary: [String: Any] = [:]
                 if let value = accessToken { dictionary[SerializationKeys.accessToken] = value }
                 if let value = message { dictionary[SerializationKeys.message] = value }
+                if let value = errorDescription { dictionary[SerializationKeys.errorDescription] = value }
                 return dictionary
             }
             

@@ -108,6 +108,8 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
     
     var screenType = AppFlowType.Onboard
     
+    let pinDoesntMatchText = "PIN code doesn't match"
+    
     //MARK: - API
     //MARK: Customer registration
     func doCustomerRegistrationWith(pin: String?)
@@ -164,6 +166,10 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
     func loginFailed(response: Pin.Login.Response) {
         NLoader.shared.stopNLoader()
         
+        if response.errorDescription != nil {
+            passwordDoesntMatch.text = response.errorDescription
+        }
+        
         self.passwordDoesntMatch.isHidden = false
 
         selectDotWith(count: 0)
@@ -186,7 +192,7 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
             headingLabel.text = "Re-enter PIN Code"
         } else if pinEntry == .Login {
             headingLabel.text = "Enter PIN Code"
-            passwordDoesntMatch.text = "PIN code doesn't match"
+            passwordDoesntMatch.text = pinDoesntMatchText
             Utils.shared.stopAccessTokenExpiryTimer()
         }
     }
@@ -232,6 +238,7 @@ extension PinViewController: UITextFieldDelegate {
         selectDotWith(count: updatedText.count)
         
         passwordDoesntMatch.isHidden = true
+        passwordDoesntMatch.text = pinDoesntMatchText
         
         if updatedText.count <= 5 {
             

@@ -53,6 +53,12 @@
 		18529F6A202B31CD00BD8D0E /* PhoneVerificationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F64202B31CD00BD8D0E /* PhoneVerificationInteractor.swift */; };
 		1859768320514B1F0063A647 /* ShoppingCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859768220514B1F0063A647 /* ShoppingCartViewController.swift */; };
 		185C60AC20244835009D23BE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C60AB20244835009D23BE /* User.swift */; };
+		185F27C820773EFB00142DDB /* LockAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F27C220773EFB00142DDB /* LockAccountPresenter.swift */; };
+		185F27C920773EFB00142DDB /* LockAccountWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F27C320773EFB00142DDB /* LockAccountWorker.swift */; };
+		185F27CA20773EFB00142DDB /* LockAccountRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F27C420773EFB00142DDB /* LockAccountRouter.swift */; };
+		185F27CB20773EFB00142DDB /* LockAccountModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F27C520773EFB00142DDB /* LockAccountModels.swift */; };
+		185F27CC20773EFB00142DDB /* LockAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F27C620773EFB00142DDB /* LockAccountViewController.swift */; };
+		185F27CD20773EFB00142DDB /* LockAccountInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F27C720773EFB00142DDB /* LockAccountInteractor.swift */; };
 		18645D50203552140017E214 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D4F203552140017E214 /* WelcomeViewController.swift */; };
 		18645D52203577040017E214 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D51203577040017E214 /* UIViewExtension.swift */; };
 		18645D5420359B7F0017E214 /* AddCardOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */; };
@@ -60,7 +66,6 @@
 		1865601C205BDB5000536D4F /* ShoppingCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */; };
 		186A1DC1206153B30021BC0F /* SpiralPay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 186A1DBF206153B30021BC0F /* SpiralPay.xcdatamodeld */; };
 		1870C49E206CD58200B7E4C3 /* PersonalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870C49D206CD58200B7E4C3 /* PersonalDetailsViewController.swift */; };
-		1870C4A0206CF9C800B7E4C3 /* LockAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870C49F206CF9C800B7E4C3 /* LockAccountViewController.swift */; };
 		1871E896203D5730008BDEF8 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1871E895203D572D008BDEF8 /* Lato-Bold.ttf */; };
 		1871E898203DA401008BDEF8 /* BezierPathExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1871E897203DA401008BDEF8 /* BezierPathExtenstion.swift */; };
 		1873FB3B204533B1003CA863 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873FB3A204533B1003CA863 /* ScannerViewController.swift */; };
@@ -231,6 +236,12 @@
 		18529F64202B31CD00BD8D0E /* PhoneVerificationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationInteractor.swift; sourceTree = "<group>"; };
 		1859768220514B1F0063A647 /* ShoppingCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewController.swift; sourceTree = "<group>"; };
 		185C60AB20244835009D23BE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		185F27C220773EFB00142DDB /* LockAccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAccountPresenter.swift; sourceTree = "<group>"; };
+		185F27C320773EFB00142DDB /* LockAccountWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAccountWorker.swift; sourceTree = "<group>"; };
+		185F27C420773EFB00142DDB /* LockAccountRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAccountRouter.swift; sourceTree = "<group>"; };
+		185F27C520773EFB00142DDB /* LockAccountModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAccountModels.swift; sourceTree = "<group>"; };
+		185F27C620773EFB00142DDB /* LockAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAccountViewController.swift; sourceTree = "<group>"; };
+		185F27C720773EFB00142DDB /* LockAccountInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAccountInteractor.swift; sourceTree = "<group>"; };
 		18645D4F203552140017E214 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		18645D51203577040017E214 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardOptionsViewController.swift; sourceTree = "<group>"; };
@@ -238,7 +249,6 @@
 		1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartTableViewCell.xib; sourceTree = "<group>"; };
 		186A1DC0206153B30021BC0F /* SpiralPay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpiralPay.xcdatamodel; sourceTree = "<group>"; };
 		1870C49D206CD58200B7E4C3 /* PersonalDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDetailsViewController.swift; sourceTree = "<group>"; };
-		1870C49F206CF9C800B7E4C3 /* LockAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAccountViewController.swift; sourceTree = "<group>"; };
 		1871E895203D572D008BDEF8 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		1871E897203DA401008BDEF8 /* BezierPathExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathExtenstion.swift; sourceTree = "<group>"; };
 		1873FB3A204533B1003CA863 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -486,11 +496,24 @@
 			path = PaymentFlow;
 			sourceTree = "<group>";
 		};
+		185F27C120773D4100142DDB /* Lock */ = {
+			isa = PBXGroup;
+			children = (
+				185F27C220773EFB00142DDB /* LockAccountPresenter.swift */,
+				185F27C320773EFB00142DDB /* LockAccountWorker.swift */,
+				185F27C420773EFB00142DDB /* LockAccountRouter.swift */,
+				185F27C520773EFB00142DDB /* LockAccountModels.swift */,
+				185F27C620773EFB00142DDB /* LockAccountViewController.swift */,
+				185F27C720773EFB00142DDB /* LockAccountInteractor.swift */,
+			);
+			path = Lock;
+			sourceTree = "<group>";
+		};
 		1870C49C206CD54900B7E4C3 /* SettingChilds */ = {
 			isa = PBXGroup;
 			children = (
 				1870C49D206CD58200B7E4C3 /* PersonalDetailsViewController.swift */,
-				1870C49F206CF9C800B7E4C3 /* LockAccountViewController.swift */,
+				185F27C120773D4100142DDB /* Lock */,
 				187DC5B920721BEC000500AA /* ChangePin */,
 				180850242073899900DCF027 /* ChangeEmail */,
 				187DC5C820724B83000500AA /* HomeAddressViewController.swift */,
@@ -1046,6 +1069,7 @@
 			files = (
 				F1D9BA51201852E8004B42B7 /* AppDelegate.swift in Sources */,
 				1870C49E206CD58200B7E4C3 /* PersonalDetailsViewController.swift in Sources */,
+				185F27C920773EFB00142DDB /* LockAccountWorker.swift in Sources */,
 				F1D9BAC220185605004B42B7 /* UIViewController+StoryboardIdentifier.swift in Sources */,
 				F1D9BAB420185605004B42B7 /* CGPointExtensions.swift in Sources */,
 				F1D9BAB220185605004B42B7 /* CGFloatExtensions.swift in Sources */,
@@ -1082,6 +1106,7 @@
 				18D914EF2036C7B0008FFB60 /* MonthYearPickerView.swift in Sources */,
 				18D914ED2036B824008FFB60 /* CardAddedViewController.swift in Sources */,
 				180C160A202197C100818460 /* CountryModels.swift in Sources */,
+				185F27CD20773EFB00142DDB /* LockAccountInteractor.swift in Sources */,
 				1808502F207389BD00DCF027 /* ChangeEmailViewController.swift in Sources */,
 				18529F6A202B31CD00BD8D0E /* PhoneVerificationInteractor.swift in Sources */,
 				F1D9BAC320185605004B42B7 /* Utils.swift in Sources */,
@@ -1096,7 +1121,6 @@
 				F1D9BAAE20185605004B42B7 /* BoolExtensions.swift in Sources */,
 				180C1608202197C100818460 /* CountryWorker.swift in Sources */,
 				F1D9BAF42018614A004B42B7 /* TokenPresenter.swift in Sources */,
-				1870C4A0206CF9C800B7E4C3 /* LockAccountViewController.swift in Sources */,
 				18256FDF20527AB2007FA954 /* HomeContainerWorker.swift in Sources */,
 				181287AF204441A600779850 /* HomeWorker.swift in Sources */,
 				18943504202488F9000C2166 /* PinViewController.swift in Sources */,
@@ -1105,6 +1129,7 @@
 				F1D9BAB720185605004B42B7 /* NSViewExtensions.swift in Sources */,
 				18529F67202B31CD00BD8D0E /* PhoneVerificationRouter.swift in Sources */,
 				1808502B207389BD00DCF027 /* ChangeEmailPresenter.swift in Sources */,
+				185F27CA20773EFB00142DDB /* LockAccountRouter.swift in Sources */,
 				F1D9BAA620185605004B42B7 /* StoryboardInstantiable.swift in Sources */,
 				189F22F52035A5D600971AFD /* AddCardManuallyViewController.swift in Sources */,
 				F1D9BAA820185605004B42B7 /* FloatExtensions.swift in Sources */,
@@ -1144,6 +1169,7 @@
 				F1D9BAD5201856D1004B42B7 /* AppSettingsManager.swift in Sources */,
 				18645D50203552140017E214 /* WelcomeViewController.swift in Sources */,
 				F1D9BAAF20185605004B42B7 /* GenericExtensions.swift in Sources */,
+				185F27CB20773EFB00142DDB /* LockAccountModels.swift in Sources */,
 				18256FDE20527AB2007FA954 /* HomeContainerPresenter.swift in Sources */,
 				18256FE320527AB2007FA954 /* HomeContainerInteractor.swift in Sources */,
 				F1D9BAF52018614A004B42B7 /* TokenManager.swift in Sources */,
@@ -1153,7 +1179,9 @@
 				18D2D1CC2048440700E1B988 /* ProductTableViewCell.swift in Sources */,
 				184A4FA1202D8EBA0019AD40 /* ConfirmDetailsModels.swift in Sources */,
 				F1D9BAF72018614A004B42B7 /* TokenModels.swift in Sources */,
+				185F27CC20773EFB00142DDB /* LockAccountViewController.swift in Sources */,
 				F1E89B79201F0E540052C723 /* PhoneAndEmailViewController.swift in Sources */,
+				185F27C820773EFB00142DDB /* LockAccountPresenter.swift in Sources */,
 				18943500202488F9000C2166 /* PinPresenter.swift in Sources */,
 				18256FE220527AB2007FA954 /* HomeContainerViewController.swift in Sources */,
 				F1E89B77201F0E540052C723 /* PhoneAndEmailRouter.swift in Sources */,

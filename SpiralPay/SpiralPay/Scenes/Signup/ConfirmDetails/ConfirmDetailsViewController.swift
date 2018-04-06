@@ -118,6 +118,12 @@ class ConfirmDetailsViewController: ProgressBarViewController, ConfirmDetailsDis
         User.shared.city = cityTextField.text
         User.shared.postcode = postCodeTextField.text
         
+        let dict = User.shared.getCurrentAddressDict()
+        User.shared.addresses = [dict]
+        User.shared.address = ""
+        User.shared.city = ""
+        User.shared.postcode = ""
+        
         User.shared.save()
         
         router?.routeToWelcomeScreen()

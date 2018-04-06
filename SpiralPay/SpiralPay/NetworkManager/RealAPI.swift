@@ -89,7 +89,9 @@ class RealAPI: NSObject {
 //        let message: String = String.init(format: "Success:- URL:%@\n", (responseStatus?.url?.absoluteString)!)
 //        print(message)
         
-        if request.apiType == .Put_UpdateMobileAndEmail && responseStatus?.statusCode == Constants.ResponseStatusSuccess {
+        if (request.apiType == .Put_UpdateMobileAndEmail ||
+            request.apiType == .Post_LockAccount) &&
+            responseStatus?.statusCode == Constants.ResponseStatusSuccess {
             block(true, response)
             return
         }

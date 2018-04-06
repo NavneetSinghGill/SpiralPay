@@ -191,7 +191,9 @@ class NetworkHttpClient: NSObject {
     
     func handleExceptionsFor<T:Mappable>(url: String, withResponseCode: Int, response: DataResponse<T>, apiType: ApiType, genericResponse:T.Type) -> AnyObject? {
         
-        if apiType == .Put_UpdateMobileAndEmail && withResponseCode == 200 {
+        if (apiType == .Put_UpdateMobileAndEmail ||
+            apiType == .Post_LockAccount) &&
+            withResponseCode == 200 {
             return response as AnyObject
         }
         
