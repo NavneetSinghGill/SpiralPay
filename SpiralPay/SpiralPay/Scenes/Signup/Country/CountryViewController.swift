@@ -90,6 +90,12 @@ class CountryViewController: SpiralPayViewController, CountryDisplayLogic
             countryTableView.scrollToRow(at: IndexPath(row: selectedCellIndex, section: 0), at: .none, animated: false)
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(!wasNavigationBarThereAtFirst, animated: false)
+    }
   
   // MARK: Do something
   
@@ -360,6 +366,7 @@ class CountryViewController: SpiralPayViewController, CountryDisplayLogic
     var filteredCountries: Array<String> = []
     var saveBarButton: UIBarButtonItem!
     var countrySelectionDelegate: CountrySelectionDelegate?
+    var wasNavigationBarThereAtFirst: Bool = true
     
   @IBOutlet weak var countryTableView: UITableView!
   @IBOutlet weak var searchTextField: UITextField!
@@ -379,6 +386,7 @@ class CountryViewController: SpiralPayViewController, CountryDisplayLogic
     //MARK: Private methods
     
     private func initialSetup() {
+        wasNavigationBarThereAtFirst = !self.navigationController!.navigationBar.isHidden
         self.navigationItem.hidesBackButton = true
         setNavigationTitle(title: "Country")
         addSaveButton()

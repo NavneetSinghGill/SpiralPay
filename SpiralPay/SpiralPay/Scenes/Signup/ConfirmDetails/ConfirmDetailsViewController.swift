@@ -109,6 +109,15 @@ class ConfirmDetailsViewController: ProgressBarViewController, ConfirmDetailsDis
         router?.routeToShowDateAndTimeScreen()
     }
     
+    @IBAction func countryButtonTapped() {
+        let countryViewController: CountryViewController = self.storyboard?.instantiateViewController(withIdentifier: "CountryViewController") as! CountryViewController
+        countryViewController.countrySelectionDelegate = self
+        countryViewController.defaultCountryName = User.shared.countryName
+        countryViewController.defaultCountryCode = User.shared.countryCode
+        
+        self.navigationController?.pushViewController(countryViewController, animated: true)
+    }
+    
     @IBAction func confirmButtonTapped() {
         
         User.shared.savedState = SavedState.CustomerDetailsEntered
@@ -120,9 +129,26 @@ class ConfirmDetailsViewController: ProgressBarViewController, ConfirmDetailsDis
         
         let dict = User.shared.getCurrentAddressDict()
         User.shared.addresses = [dict]
+        
         User.shared.address = ""
         User.shared.city = ""
         User.shared.postcode = ""
+
+        //Split name
+        if User.shared.name != nil && User.shared.name!.count != 0 {
+            let name = User.shared.name ?? ""
+            if let first = name.components(separatedBy: " ").first {
+                User.shared.firstName = first
+            } else {
+                User.shared.firstName = ""
+            }
+            if name.components(separatedBy: " ").count > 1, let last = name.components(separatedBy: " ").last {
+                User.shared.lastName = last
+            } else {
+                User.shared.lastName = ""
+            }
+            User.shared.name = ""
+        }
         
         User.shared.save()
         
@@ -136,6 +162,7 @@ class ConfirmDetailsViewController: ProgressBarViewController, ConfirmDetailsDis
     //MARK:- Private methods
     
     func initialSetup() {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         addKeyboardObservers()
         
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ConfirmDetailsViewController.dismissKeyboard))
@@ -190,8 +217,6 @@ extension ConfirmDetailsViewController: UITextFieldDelegate {
         } else if textField == addressTextField {
             cityTextField.becomeFirstResponder()
         } else if textField == cityTextField {
-            countryTextField.becomeFirstResponder()
-        } else if textField == countryTextField {
             postCodeTextField.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
@@ -204,6 +229,7 @@ extension ConfirmDetailsViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.text = textField.text?.trimmingCharacters(in: CharacterSet(charactersIn: " \n"))
         _ = self.checkIfEntriesValid()
     }
     
@@ -221,6 +247,17 @@ extension ConfirmDetailsViewController: DateAndTimeDelegate {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormatString
         birthdayTextField.text = dateFormatter.string(from: date)
+    }
+    
+}
+
+extension ConfirmDetailsViewController: CountrySelectionDelegate {
+    
+    func performActionWith(countryName: String, countryCode: String) {
+        User.shared.countryName = countryName
+        User.shared.countryCode = countryCode
+        
+        countryTextField.text = countryName
     }
     
 }

@@ -140,6 +140,7 @@ class PhoneAndEmailViewController: ProgressBarViewController, PhoneAndEmailDispl
     //MARK:- Private methods
     
     func initialSetup() {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         let dropDownArrowImage = UIImage(named: "dropDownArrow")
         let dropDownArrowImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 30))
         dropDownArrowImageView.image = dropDownArrowImage

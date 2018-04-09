@@ -39,6 +39,7 @@ class User: NSObject {
     static let city = "city"
     static let postcode = "postcode"
     static let country = "country"
+    static let countryCode = "countryCode"
     static let isDefault = "isDefault"
     
     var phone: String?
@@ -143,9 +144,37 @@ class User: NSObject {
         dict[User.city] = User.shared.city ?? ""
         dict[User.postcode] = User.shared.postcode ?? ""
         dict[User.country] = User.shared.countryName ?? ""
+        dict[User.countryCode] = User.shared.countryCode ?? ""
         dict[User.isDefault] = "true"
         
         return dict
+    }
+    
+    func defaultAddress() -> Dictionary<String,String> {
+        if let addresses = User.shared.addresses, addresses.count != 0 {
+            for address in addresses {
+                if address[User.isDefault] == "true" {
+                    var dict = Dictionary<String,String>()
+                    dict[User.address] = address[User.address] ?? ""
+                    dict[User.city] = address[User.city] ?? ""
+                    dict[User.postcode] = address[User.postcode] ?? ""
+                    dict[User.country] = address[User.country] ?? ""
+                    dict[User.countryCode] = address[User.countryCode] ?? ""
+                    
+                    return dict
+                }
+            }
+            //If none default then return first address
+            var dict = Dictionary<String,String>()
+            dict[User.address] = addresses.first![User.address] ?? ""
+            dict[User.city] = addresses.first![User.city] ?? ""
+            dict[User.postcode] = addresses.first![User.postcode] ?? ""
+            dict[User.country] = addresses.first![User.country] ?? ""
+            dict[User.countryCode] = addresses.first![User.countryCode] ?? ""
+            
+            return dict
+        }
+        return Dictionary<String,String>()
     }
     
 }

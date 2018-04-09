@@ -15,6 +15,7 @@ class PersonalDetailsViewController: SpiralPayViewController {
     @IBOutlet weak var mobileLabel: UILabel!
     @IBOutlet weak var homeAddressTableView: UITableView!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,13 @@ class PersonalDetailsViewController: SpiralPayViewController {
         
         let nib = UINib(nibName: "HomeAddressTableViewCell", bundle: nil)
         homeAddressTableView.register(nib, forCellReuseIdentifier: "HomeAddressTableViewCell")
+        
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.scrollViewTouched))
+        self.scrollView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func scrollViewTouched(gesture: UIPanGestureRecognizer) {
+        self.homeAddressTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +105,10 @@ class PersonalDetailsViewController: SpiralPayViewController {
         
         User.shared.save()
         self.reloadTableViewDataWith(animation: true)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.homeAddressTableView.reloadData()
     }
 
 }

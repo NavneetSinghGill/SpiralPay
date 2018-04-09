@@ -157,6 +157,73 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAd-6I-Dvh">
+                        <rect key="frame" x="227" y="5" width="93" height="40"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiU-kW-krh">
+                                <rect key="frame" x="64" y="25" width="19" height="13.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
+                                <color key="textColor" red="0.62745098040000002" green="0.62745098040000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x7k-uA-Gg7" userLabel="EditButton">
+                                <rect key="frame" x="53" y="0.0" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Pc6-1t-HFq"/>
+                                    <constraint firstAttribute="width" constant="40" id="tn6-f2-9IN"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="-10" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="settingEditPencil"/>
+                                <state key="highlighted" image="settingEditPencil"/>
+                                <connections>
+                                    <action selector="editButtonTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="A0c-n2-6nY"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBx-Y5-5dt">
+                                <rect key="frame" x="10.5" y="25.5" width="36.5" height="13.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
+                                <color key="textColor" red="0.62745098040000002" green="0.62745098040000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cqo-sY-kZ0" userLabel="DefaultButton">
+                                <rect key="frame" x="8" y="0.0" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="EXe-BC-Pue"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="-10" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="defaultAddressOptionsTick"/>
+                                <state key="highlighted" image="settingEditPencil"/>
+                                <connections>
+                                    <action selector="defaultButtonTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cY1-iy-VBG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GiU-kW-krh" firstAttribute="centerX" secondItem="x7k-uA-Gg7" secondAttribute="centerX" id="8gS-1g-vAt"/>
+                            <constraint firstAttribute="bottom" secondItem="x7k-uA-Gg7" secondAttribute="bottom" id="EzH-On-EBN"/>
+                            <constraint firstItem="Cqo-sY-kZ0" firstAttribute="height" secondItem="x7k-uA-Gg7" secondAttribute="height" id="HJj-Y1-UD7"/>
+                            <constraint firstItem="CBx-Y5-5dt" firstAttribute="centerY" secondItem="GiU-kW-krh" secondAttribute="centerY" id="QrA-Vm-seq"/>
+                            <constraint firstItem="x7k-uA-Gg7" firstAttribute="top" secondItem="PAd-6I-Dvh" secondAttribute="top" id="RvB-3V-pS5"/>
+                            <constraint firstItem="GiU-kW-krh" firstAttribute="top" secondItem="x7k-uA-Gg7" secondAttribute="bottom" constant="-15" id="XGs-IR-yRK"/>
+                            <constraint firstItem="Cqo-sY-kZ0" firstAttribute="top" secondItem="PAd-6I-Dvh" secondAttribute="top" id="XVL-ub-ifa"/>
+                            <constraint firstAttribute="trailing" secondItem="x7k-uA-Gg7" secondAttribute="trailing" id="ba5-e1-GVL"/>
+                            <constraint firstItem="CBx-Y5-5dt" firstAttribute="centerX" secondItem="Cqo-sY-kZ0" secondAttribute="centerX" id="m0X-Bq-QQP"/>
+                            <constraint firstItem="Cqo-sY-kZ0" firstAttribute="leading" secondItem="PAd-6I-Dvh" secondAttribute="leading" constant="8" id="mEJ-4u-DMr"/>
+                            <constraint firstItem="x7k-uA-Gg7" firstAttribute="leading" secondItem="Cqo-sY-kZ0" secondAttribute="trailing" constant="5" id="mez-fJ-13M"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.62745098040000002" green="0.62745098040000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="wha-l1-vrR" secondAttribute="trailing" id="1L9-FW-EJG"/>
@@ -166,10 +233,12 @@
                     <constraint firstItem="tzk-UH-QEL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="M15-VP-0YB"/>
                     <constraint firstItem="0rF-pQ-Axj" firstAttribute="top" secondItem="zn7-gz-Owj" secondAttribute="top" constant="5" id="M45-0O-3ET"/>
                     <constraint firstItem="zn7-gz-Owj" firstAttribute="centerY" secondItem="Vcu-J8-oSH" secondAttribute="centerY" id="NDT-cf-9fW"/>
+                    <constraint firstAttribute="trailing" secondItem="PAd-6I-Dvh" secondAttribute="trailing" id="NzQ-JD-hX0"/>
                     <constraint firstItem="Vcu-J8-oSH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="QZY-Zn-heD"/>
                     <constraint firstAttribute="bottom" secondItem="tzk-UH-QEL" secondAttribute="bottom" constant="5" id="VSK-54-pUU"/>
                     <constraint firstItem="nzn-uP-rNj" firstAttribute="leading" secondItem="Vcu-J8-oSH" secondAttribute="trailing" constant="10" id="WlM-O3-3GH"/>
                     <constraint firstItem="Vcu-J8-oSH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Zy7-Sb-Cg7"/>
+                    <constraint firstItem="PAd-6I-Dvh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="hH7-6x-lVl"/>
                     <constraint firstItem="zn7-gz-Owj" firstAttribute="leading" secondItem="tzk-UH-QEL" secondAttribute="trailing" id="hdP-pF-nTF"/>
                     <constraint firstItem="tzk-UH-QEL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="mwW-dw-kiM"/>
                     <constraint firstItem="nzn-uP-rNj" firstAttribute="centerY" secondItem="Vcu-J8-oSH" secondAttribute="centerY" id="tth-HG-BhO"/>
@@ -181,7 +250,8 @@
                 <outlet property="addressLabel" destination="tzk-UH-QEL" id="Ypc-1O-pGW"/>
                 <outlet property="addressNameLabel" destination="Vcu-J8-oSH" id="xdY-NW-dDn"/>
                 <outlet property="defaultButton" destination="nzn-uP-rNj" id="UwX-AT-WI7"/>
-                <outlet property="optionsView" destination="0rF-pQ-Axj" id="gcd-vo-cHQ"/>
+                <outlet property="homeOptionsView" destination="PAd-6I-Dvh" id="y9l-zt-E3d"/>
+                <outlet property="shippingOptionsView" destination="0rF-pQ-Axj" id="xtB-x9-oeA"/>
             </connections>
             <point key="canvasLocation" x="25" y="85.5"/>
         </tableViewCell>

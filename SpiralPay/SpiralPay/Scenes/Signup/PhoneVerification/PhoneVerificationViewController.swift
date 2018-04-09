@@ -193,6 +193,8 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
     //MARK:- Private methods
     
     private func initialSetup() {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
         phoneNumberLabel.text = User.shared.phoneWithCode
         actionButton.isSelected = true
         

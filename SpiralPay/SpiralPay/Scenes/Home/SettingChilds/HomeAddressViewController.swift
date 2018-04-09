@@ -27,6 +27,9 @@ class HomeAddressViewController: SpiralPayViewController {
     var indexOfAddressToShow: Int! = -1
     
     var responderTextField: UITextField?
+    
+    var countryName: String?
+    var countryCode: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +46,15 @@ class HomeAddressViewController: SpiralPayViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func countryButtonTapped() {
+        let countryViewController: CountryViewController = self.storyboard?.instantiateViewController(withIdentifier: "CountryViewController") as! CountryViewController
+        countryViewController.countrySelectionDelegate = self
+        countryViewController.defaultCountryName = countryName
+        countryViewController.defaultCountryCode = countryCode
+        
+        self.navigationController?.pushViewController(countryViewController, animated: true)
+    }
+    
     @IBAction func saveButtonTapped() {
         
         if indexOfAddressToShow == -1 {
@@ -52,6 +64,7 @@ class HomeAddressViewController: SpiralPayViewController {
             addressDict[User.city] = self.cityTextField.text ?? ""
             addressDict[User.postcode] = self.postcodeTextField.text ?? ""
             addressDict[User.country] = self.countryTextField.text ?? ""
+            addressDict[User.countryCode] = countryCode ?? ""
             addressDict[User.isDefault] = "false"
             
             User.shared.addresses?.append(addressDict)
@@ -63,6 +76,7 @@ class HomeAddressViewController: SpiralPayViewController {
             addressDict[User.city] = self.cityTextField.text ?? ""
             addressDict[User.postcode] = self.postcodeTextField.text ?? ""
             addressDict[User.country] = self.countryTextField.text ?? ""
+            addressDict[User.countryCode] = countryCode ?? ""
             
             User.shared.addresses![indexOfAddressToShow] = addressDict
             User.shared.save()
@@ -115,8 +129,10 @@ class HomeAddressViewController: SpiralPayViewController {
             let address = User.shared.addresses![indexOfAddressToShow]
             addressTextField.text = address[User.address]
             cityTextField.text = address[User.city]
-            countryTextField.text = address[User.country]
             postcodeTextField.text = address[User.postcode]
+            countryTextField.text = address[User.country]
+            countryName = address[User.country]
+            countryCode = address[User.countryCode]
             
             if indexOfAddressToShow == 0 {
                 addressHeadingLabel.text = "Home Address"
@@ -140,8 +156,6 @@ extension HomeAddressViewController: UITextFieldDelegate {
         if textField == addressTextField {
             cityTextField.becomeFirstResponder()
         } else if textField == cityTextField {
-            countryTextField.becomeFirstResponder()
-        } else if textField == countryTextField {
             postcodeTextField.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
@@ -151,6 +165,17 @@ extension HomeAddressViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         _ = self.checkIfEntriesValid()
+    }
+    
+}
+
+extension HomeAddressViewController: CountrySelectionDelegate {
+    
+    func performActionWith(countryName: String, countryCode: String) {
+        self.countryName = countryName
+        self.countryCode = countryCode
+        
+        countryTextField.text = countryName
     }
     
 }

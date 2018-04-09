@@ -134,6 +134,7 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
         super.viewDidLoad()
         
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         selectItemWith(tag: 102)
         showScreen(newScreen: homeViewController)
     }

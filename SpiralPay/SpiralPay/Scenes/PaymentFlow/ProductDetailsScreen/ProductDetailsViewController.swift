@@ -114,7 +114,7 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     @IBOutlet weak var last4CardDigitsLabel: UILabel!
     @IBOutlet weak var boldTotalAmountLabel: UILabel!
     @IBOutlet weak var currencyLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var addressOrEmailLabel: UILabel!
     @IBOutlet weak var merchantNameLabel: UILabel!
     
     @IBOutlet weak var blueViewLeadingContraint: NSLayoutConstraint!
@@ -179,17 +179,21 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
             request.amount = createdPayments![indexOfPaymentInProgress].amount
         }
         request.userAgent = ""
-        request.city = User.shared.city
-        request.country = Utils.shared.getCountryCodeFor(country: User.shared.countryName ?? "")
-        request.line1 = User.shared.address
-        request.line2 = ""
-        request.state = ""
-        request.postcode = User.shared.postcode
         request.type = "card"
         request.email = User.shared.email
         request.cvv = Card.shared.cvv
         request.number = Card.shared.number
         request.name = ".."
+        
+        let defaultAddress = User.shared.defaultAddress()
+        request.line1 = defaultAddress[User.address]
+        request.line2 = ""
+        request.city = defaultAddress[User.city]
+        request.postcode = defaultAddress[User.postcode]
+        request.country = Utils.shared.getCountryCodeFor(country: defaultAddress[User.country] ?? "")
+        
+        request.state = ""
+        
         if let range = Card.shared.expiry?.range(of: "/") {
             request.expiryMonth = Int(Card.shared.expiry![Card.shared.expiry!.startIndex..<range.lowerBound])
             request.expiryYear = Int(Card.shared.expiry![range.upperBound..<Card.shared.expiry!.endIndex])
@@ -393,6 +397,18 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         }
     }
     
+    @IBAction func locationOrEmailButtonTapped(button: UIButton) {
+        if button.tag == 11 {
+            button.tag = 12
+            button.setImage(UIImage(named: "email"), for: .normal)
+            addressOrEmailLabel.text = User.shared.email
+        } else {
+            button.tag = 11
+            button.setImage(UIImage(named: "address"), for: .normal)
+            setAddressToLabel()
+        }
+    }
+    
     //MARK:- Private methods
     
     private func initialSetup() {
@@ -416,7 +432,7 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         
         reloadTableViewData()
         
-        addressLabel.text = "\(User.shared.address ?? "") \(User.shared.city ?? "") \(User.shared.countryName ?? "") \(User.shared.postcode ?? "")"
+        setAddressToLabel()
         if let cardNumber = Card.shared.number {
             last4CardDigitsLabel.text = String(cardNumber[cardNumber.index(cardNumber.endIndex, offsetBy: -4)..<cardNumber.endIndex])
         } else {
@@ -434,6 +450,27 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
             masterCardImageView.isHidden = true
         }
         
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.cardAndDetailsViewSlided))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.contentView.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.cardAndDetailsViewSlided))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.contentView.addGestureRecognizer(swipeLeft)
+    }
+    
+    @objc func cardAndDetailsViewSlided(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.left:
+                viewDetailButtonTapped()
+            case UISwipeGestureRecognizerDirection.right:
+                chooseCardButtonTapped()
+            default:
+                break
+            }
+        }
     }
     
     private func setUIwithProduct() {
@@ -639,6 +676,11 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         if let paymentRequest = createdPayments?[indexOfPaymentInProgress] {
             interactor?.createPayment(request: paymentRequest)
         }
+    }
+    
+    func setAddressToLabel() {
+        let address = User.shared.defaultAddress()
+        addressOrEmailLabel.text = "\(address[User.address] ?? "") \(address[User.city] ?? "") \(address[User.country] ?? "") \(address[User.postcode] ?? "")"
     }
     
     //MARK:- Overridden methods

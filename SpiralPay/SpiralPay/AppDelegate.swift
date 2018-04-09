@@ -256,7 +256,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navVC = UINavigationController(rootViewController: phoneAndEmailScreen)
         navVC.setViewControllers([phoneAndEmailScreen, phoneVerificationScreen], animated: false)
-        navVC.navigationBar.isHidden = true
         self.getWindow().rootViewController = navVC
     }
     
@@ -264,21 +263,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let confirmDetailsScreen = ConfirmDetailsViewController.create()
         
         let navVC = UINavigationController(rootViewController: confirmDetailsScreen)
-        navVC.navigationBar.isHidden = true
         self.getWindow().rootViewController = navVC
     }
     
     func showWelcomeScreen() {
         let welcomeScreen = WelcomeViewController.create()
         let navVC = UINavigationController(rootViewController: welcomeScreen)
-        navVC.navigationBar.isHidden = true
         self.getWindow().rootViewController = navVC
     }
     
     func showHomeTabBarScreen() {
         let homeTabBar = HomeContainerViewController.create()
         let navC = UINavigationController(rootViewController: homeTabBar)
-        navC.navigationBar.isHidden = true
         ApplicationDelegate.getWindow().rootViewController = navC
         
         self.executeUniversalLinkingBlock()

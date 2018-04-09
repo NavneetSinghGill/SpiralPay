@@ -14,17 +14,24 @@ protocol HomeAddressTableViewCellDelegate {
     func defaultButtonTappedWith(index: Int)
 }
 
+enum AddressType {
+    case Home
+    case Shipping
+}
+
 class HomeAddressTableViewCell: UITableViewCell {
     
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var addressNameLabel: UILabel!
     @IBOutlet weak var defaultButton: UIButton!
     
-    @IBOutlet weak var optionsView: UIView!
+    @IBOutlet weak var shippingOptionsView: UIView!
+    @IBOutlet weak var homeOptionsView: UIView!
     
     var address: Dictionary<String,String>?
     var delegate: HomeAddressTableViewCellDelegate?
     var index: Int! = 0
+    var addressType = AddressType.Shipping
     
     var isDefault: Bool! {
         didSet {
@@ -48,11 +55,14 @@ class HomeAddressTableViewCell: UITableViewCell {
     }
     
     func doUI(address: Dictionary<String,String>) {
+        hideOptionView()
         self.address = address
         if index == 0 {
             addressNameLabel.text = "Home Address"
+            addressType = .Home
         } else {
             addressNameLabel.text = "Shipping Address \(index ?? 0)"
+            addressType = .Shipping
         }
         addressLabel.text = "\(address[User.address] ?? "-"), \(address[User.city] ?? "-"), \(address[User.country] ?? "-") \(address[User.postcode] ?? "-")"
         
@@ -91,13 +101,18 @@ class HomeAddressTableViewCell: UITableViewCell {
     
     func hideOptionView() {
         UIView.animate(withDuration: 0.2) {
-            self.optionsView.alpha = 0
+            self.homeOptionsView.alpha = 0
+            self.shippingOptionsView.alpha = 0
         }
     }
     
     func showOptionView() {
         UIView.animate(withDuration: 0.2) {
-            self.optionsView.alpha = 1
+            if self.addressType == .Home {
+                self.homeOptionsView.alpha = 1
+            } else {
+                self.shippingOptionsView.alpha = 1
+            }
         }
     }
     
