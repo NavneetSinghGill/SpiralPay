@@ -14,11 +14,12 @@ class HomeAddressViewController: SpiralPayViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var saveButton: SpiralPayButton!
     
-    @IBOutlet weak var address1TextField: UITextField!
-    @IBOutlet weak var address2TextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var countryTextField: UITextField!
     @IBOutlet weak var postcodeTextField: UITextField!
+    
+    @IBOutlet weak var addressHeadingLabel: UILabel!
     
     @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
     var defaultScrollViewHeight: CGFloat!
@@ -47,8 +48,7 @@ class HomeAddressViewController: SpiralPayViewController {
         if indexOfAddressToShow == -1 {
             //Create and add new address
             var addressDict = Dictionary<String,String>()
-            addressDict[User.address1] = self.address1TextField.text ?? ""
-            addressDict[User.address2] = self.address2TextField.text ?? ""
+            addressDict[User.address] = self.addressTextField.text ?? ""
             addressDict[User.city] = self.cityTextField.text ?? ""
             addressDict[User.postcode] = self.postcodeTextField.text ?? ""
             addressDict[User.country] = self.countryTextField.text ?? ""
@@ -59,8 +59,7 @@ class HomeAddressViewController: SpiralPayViewController {
         } else {
             //Save to existing address
             var addressDict = User.shared.addresses![indexOfAddressToShow]
-            addressDict[User.address1] = self.address1TextField.text ?? ""
-            addressDict[User.address2] = self.address2TextField.text ?? ""
+            addressDict[User.address] = self.addressTextField.text ?? ""
             addressDict[User.city] = self.cityTextField.text ?? ""
             addressDict[User.postcode] = self.postcodeTextField.text ?? ""
             addressDict[User.country] = self.countryTextField.text ?? ""
@@ -100,8 +99,7 @@ class HomeAddressViewController: SpiralPayViewController {
     func checkIfEntriesValid() -> Bool {
         var message = ""
         
-        if (address1TextField.text == nil || address1TextField.text!.count == 0) ||
-            (address2TextField.text == nil || address2TextField.text!.count == 0) ||
+        if (addressTextField.text == nil || addressTextField.text!.count == 0) ||
             (cityTextField.text == nil || cityTextField.text!.count == 0) ||
             (countryTextField.text == nil || countryTextField.text!.count == 0) ||
             (postcodeTextField.text == nil || postcodeTextField.text!.count == 0) {
@@ -115,11 +113,16 @@ class HomeAddressViewController: SpiralPayViewController {
     func fillAddressInUIIfShould() {
         if indexOfAddressToShow != -1 {
             let address = User.shared.addresses![indexOfAddressToShow]
-            address1TextField.text = address[User.address1]
-            address2TextField.text = address[User.address2]
+            addressTextField.text = address[User.address]
             cityTextField.text = address[User.city]
             countryTextField.text = address[User.country]
             postcodeTextField.text = address[User.postcode]
+            
+            if indexOfAddressToShow == 0 {
+                addressHeadingLabel.text = "Home Address"
+            } else {
+                addressHeadingLabel.text = "Shipping Address \(indexOfAddressToShow ?? 1)"
+            }
         }
     }
 
@@ -134,9 +137,7 @@ extension HomeAddressViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         _ = self.checkIfEntriesValid()
-        if textField == address1TextField {
-            address2TextField.becomeFirstResponder()
-        } else if textField == address2TextField {
+        if textField == addressTextField {
             cityTextField.becomeFirstResponder()
         } else if textField == cityTextField {
             countryTextField.becomeFirstResponder()

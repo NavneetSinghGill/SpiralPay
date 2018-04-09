@@ -9,19 +9,18 @@
 import UIKit
 
 protocol HomeAddressTableViewCellDelegate {
-    func defaultButtonTappedWith(index: Int)
     func deleteButtonTappedWith(index: Int)
     func editButtonTappedWith(index: Int)
+    func defaultButtonTappedWith(index: Int)
 }
 
 class HomeAddressTableViewCell: UITableViewCell {
     
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var cityCountryLabel: UILabel!
-    @IBOutlet weak var postcodeLabel: UILabel!
     @IBOutlet weak var addressNameLabel: UILabel!
     @IBOutlet weak var defaultButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
+    
+    @IBOutlet weak var optionsView: UIView!
     
     var address: Dictionary<String,String>?
     var delegate: HomeAddressTableViewCellDelegate?
@@ -30,13 +29,9 @@ class HomeAddressTableViewCell: UITableViewCell {
     var isDefault: Bool! {
         didSet {
             if isDefault {
-                defaultButton.setTitleColor(Colors.mediumBlue, for: .normal)
-                defaultButton.layer.borderColor = Colors.mediumBlue.cgColor
-                deleteButton.isHidden = true
+                defaultButton.isHidden = false
             } else {
-                defaultButton.setTitleColor(Colors.lightGrey, for: .normal)
-                defaultButton.layer.borderColor = Colors.lightGrey.cgColor
-                deleteButton.isHidden = false
+                defaultButton.isHidden = true
             }
         }
     }
@@ -54,10 +49,12 @@ class HomeAddressTableViewCell: UITableViewCell {
     
     func doUI(address: Dictionary<String,String>) {
         self.address = address
-        addressNameLabel.text = "Address \(index+1)"
-        addressLabel.text = "\(address[User.address1] ?? "-") \(address[User.address2] ?? "-")"
-        cityCountryLabel.text = "\(address[User.city] ?? "-"), \(address[User.country] ?? "-")"
-        postcodeLabel.text = "\(address[User.postcode] ?? "-")"
+        if index == 0 {
+            addressNameLabel.text = "Home Address"
+        } else {
+            addressNameLabel.text = "Shipping Address \(index ?? 0)"
+        }
+        addressLabel.text = "\(address[User.address] ?? "-"), \(address[User.city] ?? "-"), \(address[User.country] ?? "-") \(address[User.postcode] ?? "-")"
         
         if address[User.isDefault] == "true" {
             isDefault = true
@@ -66,18 +63,42 @@ class HomeAddressTableViewCell: UITableViewCell {
         }
     }
     
-    @IBAction func defaultButtonTapped() {
-        delegate?.defaultButtonTappedWith(index: index)
-    }
-    
-    @IBAction func deleteButtonTapped() {
-        if !isDefault {
-            delegate?.deleteButtonTappedWith(index: index)
+    @IBAction func optionsButtonTapped() {
+        if isDefault {
+            //Since default address cant be deleted or made default again
+            delegate?.editButtonTappedWith(index: index)
+        } else {
+            showOptionView()
         }
     }
     
+    @IBAction func deleteButtonTapped() {
+        hideOptionView()
+        delegate?.deleteButtonTappedWith(index: index)
+    }
+    
+    @IBAction func defaultButtonTapped() {
+        hideOptionView()
+        delegate?.defaultButtonTappedWith(index: index)
+    }
+    
     @IBAction func editButtonTapped() {
+        hideOptionView()
         delegate?.editButtonTappedWith(index: index)
+    }
+    
+    //MARK:- Private methods
+    
+    func hideOptionView() {
+        UIView.animate(withDuration: 0.2) {
+            self.optionsView.alpha = 0
+        }
+    }
+    
+    func showOptionView() {
+        UIView.animate(withDuration: 0.2) {
+            self.optionsView.alpha = 1
+        }
     }
     
 }

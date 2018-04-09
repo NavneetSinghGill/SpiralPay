@@ -10,8 +10,7 @@ import UIKit
 
 class PersonalDetailsViewController: SpiralPayViewController {
     
-    @IBOutlet weak var firstNameTextField: UITextField!
-    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var mobileLabel: UILabel!
     @IBOutlet weak var homeAddressTableView: UITableView!
@@ -35,9 +34,7 @@ class PersonalDetailsViewController: SpiralPayViewController {
         
         emailLabel.text = User.shared.email
         mobileLabel.text = User.shared.phoneWithCode
-        firstNameTextField.text = User.shared.firstName
-        lastNameTextField.text = User.shared.lastName
-        
+        nameTextField.text = "\(User.shared.firstName ?? "") \(User.shared.lastName ?? "")"
         reloadTableViewDataWith(animation: false)
     }
     
@@ -69,14 +66,6 @@ class PersonalDetailsViewController: SpiralPayViewController {
         }
     }
     
-    @IBAction func firstNameEditButtonTapped() {
-        firstNameTextField.becomeFirstResponder()
-    }
-    
-    @IBAction func lastNameEditButtonTapped() {
-        lastNameTextField.becomeFirstResponder()
-    }
-    
     //MARK:- Private methods
     
     private func reloadTableViewDataWith(animation: Bool) {
@@ -91,6 +80,23 @@ class PersonalDetailsViewController: SpiralPayViewController {
                 self.view.layoutIfNeeded()
             }
         }
+    }
+    
+    func addressTappedWith(index: Int) {
+        var newAddresses = Array<Dictionary<String,String>>()
+        
+        for address in User.shared.addresses! {
+            var newAddress = address
+            newAddress[User.isDefault] = "false"
+            newAddresses.append(newAddress)
+        }
+        var address = newAddresses[index]
+        address[User.isDefault] = "true"
+        newAddresses[index] = address
+        User.shared.addresses = newAddresses
+        
+        User.shared.save()
+        self.reloadTableViewDataWith(animation: true)
     }
 
 }
@@ -120,23 +126,6 @@ extension PersonalDetailsViewController: UITableViewDataSource, UITableViewDeleg
 
 extension PersonalDetailsViewController: HomeAddressTableViewCellDelegate {
     
-    func defaultButtonTappedWith(index: Int) {
-        var newAddresses = Array<Dictionary<String,String>>()
-        
-        for address in User.shared.addresses! {
-            var newAddress = address
-            newAddress[User.isDefault] = "false"
-            newAddresses.append(newAddress)
-        }
-        var address = newAddresses[index]
-        address[User.isDefault] = "true"
-        newAddresses[index] = address
-        User.shared.addresses = newAddresses
-        
-        User.shared.save()
-        self.reloadTableViewDataWith(animation: true)
-    }
-    
     func deleteButtonTappedWith(index: Int) {
         let alert = UIAlertController(title: "Delete", message: "Do you want to delete this address?", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
@@ -162,20 +151,24 @@ extension PersonalDetailsViewController: HomeAddressTableViewCellDelegate {
         self.navigationController?.pushViewController(homeAddressVC, animated: true)
     }
     
+    func defaultButtonTappedWith(index: Int) {
+        addressTappedWith(index: index)
+    }
+    
 }
 
 extension PersonalDetailsViewController: UITextFieldDelegate {
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == firstNameTextField && textField.text != nil && textField.text!.count != 0 {
-            User.shared.firstName = textField.text
-            User.shared.save()
-        }
-        if textField == lastNameTextField && textField.text != nil && textField.text!.count != 0 {
-            User.shared.lastName = textField.text
-            User.shared.save()
-        }
-    }
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        if textField == firstNameTextField && textField.text != nil && textField.text!.count != 0 {
+//            User.shared.firstName = textField.text
+//            User.shared.save()
+//        }
+//        if textField == lastNameTextField && textField.text != nil && textField.text!.count != 0 {
+//            User.shared.lastName = textField.text
+//            User.shared.save()
+//        }
+//    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

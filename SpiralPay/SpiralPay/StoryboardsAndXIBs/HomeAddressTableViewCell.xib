@@ -6,13 +6,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Lato-Bold.ttf">
-            <string>Lato-Bold</string>
-        </array>
         <array key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
         </array>
@@ -27,33 +25,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="110.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAb-eH-hEM">
-                        <rect key="frame" x="245" y="10" width="75" height="35"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="35" id="cg8-lo-jxN"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                        <state key="normal" title="Default">
-                            <color key="titleColor" red="0.0" green="0.63921568630000003" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                        <state key="highlighted" title="Default">
-                            <color key="titleColor" red="0.0" green="0.63921568630000003" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                <real key="value" value="1"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="17"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" red="0.0" green="0.63921568630000003" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                        <connections>
-                            <action selector="defaultButtonTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lLX-dA-vSY"/>
-                        </connections>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vcu-J8-oSH">
                         <rect key="frame" x="10" y="10" width="100.5" height="19.5"/>
                         <constraints>
@@ -71,27 +42,13 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home address" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzk-UH-QEL">
-                        <rect key="frame" x="10" y="40" width="235" height="30.5"/>
+                        <rect key="frame" x="10" y="40" width="270" height="65.5"/>
                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                         <color key="textColor" red="0.62745098040000002" green="0.62745098040000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tde-vG-SYz">
-                        <rect key="frame" x="245" y="69.5" width="35" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="49w-aV-mFl"/>
-                            <constraint firstAttribute="width" constant="35" id="6Um-qJ-9ie"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
-                        <state key="normal" title="X">
-                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                        <connections>
-                            <action selector="deleteButtonTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fSX-0Y-cZE"/>
-                        </connections>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zn7-gz-Owj">
-                        <rect key="frame" x="280" y="69.5" width="40" height="40"/>
+                        <rect key="frame" x="280" y="-0.5" width="40" height="40.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="H0l-N5-Tuj"/>
                             <constraint firstAttribute="height" constant="40" id="wcc-et-vIp"/>
@@ -99,67 +56,140 @@
                         <state key="normal" image="settingEditPencil"/>
                         <state key="highlighted" image="settingEditPencil"/>
                         <connections>
-                            <action selector="editButtonTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1Ek-wN-9Pe"/>
+                            <action selector="optionsButtonTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sDB-gL-nMe"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home address" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wV8-1C-Gz3">
-                        <rect key="frame" x="10" y="71.5" width="235" height="17"/>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzn-uP-rNj">
+                        <rect key="frame" x="120.5" y="8" width="21" height="22"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="17" id="djp-GG-UB1"/>
+                            <constraint firstAttribute="width" constant="21" id="aij-7a-ZnL"/>
+                            <constraint firstAttribute="width" secondItem="nzn-uP-rNj" secondAttribute="height" multiplier="21:22" id="iDd-r6-6PU"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                        <color key="textColor" red="0.62745098040000002" green="0.62745098040000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" text="Home address" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elq-UD-Ef9">
-                        <rect key="frame" x="10" y="88.5" width="235" height="17"/>
+                        <state key="normal" image="defaultAddressTick"/>
+                    </button>
+                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0rF-pQ-Axj">
+                        <rect key="frame" x="187" y="4.5" width="133" height="40"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8b-dI-c7F">
+                                <rect key="frame" x="104" y="25" width="19" height="13.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
+                                <color key="textColor" red="0.62745098040000002" green="0.62745098040000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6HG-JE-wyA">
+                                <rect key="frame" x="93" y="0.0" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="N42-xe-N1A"/>
+                                    <constraint firstAttribute="height" constant="40" id="fyt-R0-CIT"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="-10" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="settingEditPencil"/>
+                                <state key="highlighted" image="settingEditPencil"/>
+                                <connections>
+                                    <action selector="editButtonTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bHp-wF-dcw"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A7e-e5-1WP">
+                                <rect key="frame" x="57.5" y="25.5" width="32.5" height="13.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
+                                <color key="textColor" red="0.62745098040000002" green="0.62745098040000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ps-za-AE4">
+                                <rect key="frame" x="53" y="0.0" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="f2I-Y8-mIQ"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="-10" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="deleteOptionsCross"/>
+                                <state key="highlighted" image="settingEditPencil"/>
+                                <connections>
+                                    <action selector="deleteButtonTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="oEI-0a-z54"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xp-mV-9fR">
+                                <rect key="frame" x="10.5" y="25.5" width="36.5" height="13.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
+                                <color key="textColor" red="0.62745098040000002" green="0.62745098040000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8y-NY-7F7">
+                                <rect key="frame" x="8" y="0.0" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="gMI-ln-QkB"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="-10" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="defaultAddressOptionsTick"/>
+                                <state key="highlighted" image="settingEditPencil"/>
+                                <connections>
+                                    <action selector="defaultButtonTapped" destination="KGk-i7-Jjw" eventType="touchUpInside" id="34h-VG-rcL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="17" id="Iyv-df-HDe"/>
+                            <constraint firstItem="B8y-NY-7F7" firstAttribute="top" secondItem="0rF-pQ-Axj" secondAttribute="top" id="1MP-dd-9I3"/>
+                            <constraint firstItem="6HG-JE-wyA" firstAttribute="top" secondItem="0rF-pQ-Axj" secondAttribute="top" id="1kX-Gb-lwC"/>
+                            <constraint firstItem="K8b-dI-c7F" firstAttribute="centerX" secondItem="6HG-JE-wyA" secondAttribute="centerX" id="4iJ-5J-SPI"/>
+                            <constraint firstItem="6xp-mV-9fR" firstAttribute="centerX" secondItem="B8y-NY-7F7" secondAttribute="centerX" id="JrS-He-iKd"/>
+                            <constraint firstItem="B8y-NY-7F7" firstAttribute="height" secondItem="6HG-JE-wyA" secondAttribute="height" id="VKx-gW-xwR"/>
+                            <constraint firstItem="B8y-NY-7F7" firstAttribute="leading" secondItem="0rF-pQ-Axj" secondAttribute="leading" constant="8" id="XGi-8P-5gF"/>
+                            <constraint firstItem="A7e-e5-1WP" firstAttribute="centerX" secondItem="7Ps-za-AE4" secondAttribute="centerX" id="aa3-FK-054"/>
+                            <constraint firstItem="6HG-JE-wyA" firstAttribute="leading" secondItem="7Ps-za-AE4" secondAttribute="trailing" id="bY8-aO-H8j"/>
+                            <constraint firstAttribute="trailing" secondItem="6HG-JE-wyA" secondAttribute="trailing" id="cL2-X4-RzW"/>
+                            <constraint firstAttribute="bottom" secondItem="6HG-JE-wyA" secondAttribute="bottom" id="cdl-vv-E69"/>
+                            <constraint firstItem="6xp-mV-9fR" firstAttribute="centerY" secondItem="K8b-dI-c7F" secondAttribute="centerY" id="l1E-Dh-f21"/>
+                            <constraint firstItem="K8b-dI-c7F" firstAttribute="top" secondItem="6HG-JE-wyA" secondAttribute="bottom" constant="-15" id="nb1-Xf-l3h"/>
+                            <constraint firstItem="7Ps-za-AE4" firstAttribute="height" secondItem="6HG-JE-wyA" secondAttribute="height" id="r3y-k6-Bi2"/>
+                            <constraint firstItem="7Ps-za-AE4" firstAttribute="top" secondItem="0rF-pQ-Axj" secondAttribute="top" id="rU3-g6-BPh"/>
+                            <constraint firstItem="A7e-e5-1WP" firstAttribute="centerY" secondItem="K8b-dI-c7F" secondAttribute="centerY" id="wkr-Iy-aBc"/>
+                            <constraint firstItem="7Ps-za-AE4" firstAttribute="leading" secondItem="B8y-NY-7F7" secondAttribute="trailing" constant="5" id="yHP-fS-XCs"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                        <color key="textColor" red="0.62745098040000002" green="0.62745098040000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.62745098039215685" green="0.62745098039215685" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="wha-l1-vrR" secondAttribute="trailing" id="1L9-FW-EJG"/>
                     <constraint firstAttribute="trailing" secondItem="zn7-gz-Owj" secondAttribute="trailing" id="44s-HA-cAp"/>
-                    <constraint firstAttribute="trailing" secondItem="OAb-eH-hEM" secondAttribute="trailing" id="7hI-me-vi2"/>
-                    <constraint firstItem="elq-UD-Ef9" firstAttribute="top" secondItem="wV8-1C-Gz3" secondAttribute="bottom" id="9Tr-Qk-wc6"/>
-                    <constraint firstItem="OAb-eH-hEM" firstAttribute="leading" secondItem="tzk-UH-QEL" secondAttribute="trailing" id="BvK-AX-1mT"/>
-                    <constraint firstItem="zn7-gz-Owj" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OAb-eH-hEM" secondAttribute="bottom" id="Ct3-cO-cIN"/>
-                    <constraint firstItem="elq-UD-Ef9" firstAttribute="leading" secondItem="wV8-1C-Gz3" secondAttribute="leading" id="Evb-aN-ggI"/>
-                    <constraint firstItem="OAb-eH-hEM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="FM7-Su-gaR"/>
-                    <constraint firstItem="wV8-1C-Gz3" firstAttribute="trailing" secondItem="tzk-UH-QEL" secondAttribute="trailing" id="HkH-et-49l"/>
+                    <constraint firstItem="0rF-pQ-Axj" firstAttribute="trailing" secondItem="zn7-gz-Owj" secondAttribute="trailing" id="9FQ-QE-DqD"/>
                     <constraint firstAttribute="bottom" secondItem="wha-l1-vrR" secondAttribute="bottom" id="Jx9-Mt-vXl"/>
                     <constraint firstItem="tzk-UH-QEL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="M15-VP-0YB"/>
+                    <constraint firstItem="0rF-pQ-Axj" firstAttribute="top" secondItem="zn7-gz-Owj" secondAttribute="top" constant="5" id="M45-0O-3ET"/>
+                    <constraint firstItem="zn7-gz-Owj" firstAttribute="centerY" secondItem="Vcu-J8-oSH" secondAttribute="centerY" id="NDT-cf-9fW"/>
                     <constraint firstItem="Vcu-J8-oSH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="QZY-Zn-heD"/>
-                    <constraint firstAttribute="bottom" secondItem="elq-UD-Ef9" secondAttribute="bottom" constant="5" id="Rqs-fu-6U7"/>
-                    <constraint firstItem="zn7-gz-Owj" firstAttribute="leading" secondItem="Tde-vG-SYz" secondAttribute="trailing" id="SIj-vh-sRd"/>
-                    <constraint firstAttribute="bottom" secondItem="tzk-UH-QEL" secondAttribute="bottom" constant="40" id="VSK-54-pUU"/>
-                    <constraint firstItem="elq-UD-Ef9" firstAttribute="trailing" secondItem="wV8-1C-Gz3" secondAttribute="trailing" id="W67-pE-GuW"/>
+                    <constraint firstAttribute="bottom" secondItem="tzk-UH-QEL" secondAttribute="bottom" constant="5" id="VSK-54-pUU"/>
+                    <constraint firstItem="nzn-uP-rNj" firstAttribute="leading" secondItem="Vcu-J8-oSH" secondAttribute="trailing" constant="10" id="WlM-O3-3GH"/>
                     <constraint firstItem="Vcu-J8-oSH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Zy7-Sb-Cg7"/>
-                    <constraint firstItem="OAb-eH-hEM" firstAttribute="leading" secondItem="Tde-vG-SYz" secondAttribute="leading" id="a0t-Y5-UCJ"/>
-                    <constraint firstItem="Tde-vG-SYz" firstAttribute="centerY" secondItem="zn7-gz-Owj" secondAttribute="centerY" id="cev-wj-iFj"/>
-                    <constraint firstItem="wV8-1C-Gz3" firstAttribute="leading" secondItem="tzk-UH-QEL" secondAttribute="leading" id="fl6-w1-mah"/>
+                    <constraint firstItem="zn7-gz-Owj" firstAttribute="leading" secondItem="tzk-UH-QEL" secondAttribute="trailing" id="hdP-pF-nTF"/>
                     <constraint firstItem="tzk-UH-QEL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="mwW-dw-kiM"/>
+                    <constraint firstItem="nzn-uP-rNj" firstAttribute="centerY" secondItem="Vcu-J8-oSH" secondAttribute="centerY" id="tth-HG-BhO"/>
                     <constraint firstItem="wha-l1-vrR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xqx-0p-DPe"/>
-                    <constraint firstItem="wha-l1-vrR" firstAttribute="top" secondItem="zn7-gz-Owj" secondAttribute="bottom" id="yNl-yB-89B"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addressLabel" destination="tzk-UH-QEL" id="Ypc-1O-pGW"/>
                 <outlet property="addressNameLabel" destination="Vcu-J8-oSH" id="xdY-NW-dDn"/>
-                <outlet property="cityCountryLabel" destination="wV8-1C-Gz3" id="cAb-2c-nMb"/>
-                <outlet property="defaultButton" destination="OAb-eH-hEM" id="tYP-5Y-C71"/>
-                <outlet property="deleteButton" destination="Tde-vG-SYz" id="l0V-73-T0l"/>
-                <outlet property="postcodeLabel" destination="elq-UD-Ef9" id="p8z-qa-J9r"/>
+                <outlet property="defaultButton" destination="nzn-uP-rNj" id="UwX-AT-WI7"/>
+                <outlet property="optionsView" destination="0rF-pQ-Axj" id="gcd-vo-cHQ"/>
             </connections>
             <point key="canvasLocation" x="25" y="85.5"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="settingEditPencil" width="14" height="14"/>
+        <image name="defaultAddressOptionsTick" width="16" height="15"/>
+        <image name="defaultAddressTick" width="21" height="15"/>
+        <image name="deleteOptionsCross" width="14" height="14"/>
+        <image name="settingEditPencil" width="16" height="16"/>
     </resources>
 </document>

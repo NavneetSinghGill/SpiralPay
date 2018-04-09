@@ -35,8 +35,7 @@ class User: NSObject {
     
     static var shared = User()
     
-    static let address1 = "address1"
-    static let address2 = "address2"
+    static let address = "address"
     static let city = "city"
     static let postcode = "postcode"
     static let country = "country"
@@ -140,8 +139,7 @@ class User: NSObject {
     
     func getCurrentAddressDict() -> Dictionary<String,String> {
         var dict = Dictionary<String,String>()
-        dict[User.address1] = User.shared.address ?? ""
-        dict[User.address2] = ""
+        dict[User.address] = User.shared.address ?? ""
         dict[User.city] = User.shared.city ?? ""
         dict[User.postcode] = User.shared.postcode ?? ""
         dict[User.country] = User.shared.countryName ?? ""
