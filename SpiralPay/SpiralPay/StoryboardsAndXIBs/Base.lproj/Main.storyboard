@@ -1371,7 +1371,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cLw-rd-Rum">
-                                <rect key="frame" x="270" y="30" width="85" height="35"/>
+                                <rect key="frame" x="267" y="30" width="88" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Z6X-wI-Pi4"/>
                                 </constraints>
@@ -1381,6 +1381,21 @@
                                 </state>
                                 <connections>
                                     <action selector="cardCaptureButtonTapped" destination="Ne0-uy-ZUy" eventType="touchUpInside" id="fPd-tq-LIx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVg-5r-ifE">
+                                <rect key="frame" x="15" y="27.5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="JRm-Xz-teI"/>
+                                    <constraint firstAttribute="height" constant="40" id="cD3-U3-tF8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.0" green="0.58431372550000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped" destination="Ne0-uy-ZUy" eventType="touchUpInside" id="0jA-rd-j8f"/>
+                                    <action selector="backButtonTapped" destination="3au-8e-ODX" eventType="touchUpInside" id="vf3-wq-o12"/>
                                 </connections>
                             </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJh-l6-cgT" userLabel="CardTypeView">
@@ -1506,23 +1521,23 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p8k-lN-BAO" userLabel="TouchView">
-                                <rect key="frame" x="85" y="310.5" width="206" height="31"/>
+                                <rect key="frame" x="84.5" y="310.5" width="207" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capture finger print" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srs-fm-wfk">
-                                        <rect key="frame" x="0.0" y="7" width="125" height="17"/>
+                                        <rect key="frame" x="0.0" y="7" width="126" height="17"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14.5"/>
                                         <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fingerPrint" translatesAutoresizingMaskIntoConstraints="NO" id="oeo-WT-4ze">
-                                        <rect key="frame" x="130" y="7" width="17" height="17"/>
+                                        <rect key="frame" x="131" y="7" width="17" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="oeo-WT-4ze" secondAttribute="height" id="dpu-kI-qUf"/>
                                             <constraint firstAttribute="width" constant="17" id="uTI-rf-ZXU"/>
                                         </constraints>
                                     </imageView>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWH-dK-4gu">
-                                        <rect key="frame" x="157" y="0.0" width="51" height="31"/>
+                                        <rect key="frame" x="158" y="0.0" width="51" height="31"/>
                                         <color key="onTintColor" red="0.0" green="0.58431372550000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </switch>
                                 </subviews>
@@ -1557,18 +1572,21 @@
                             <constraint firstItem="lxm-xu-S7a" firstAttribute="top" secondItem="p8k-lN-BAO" secondAttribute="bottom" constant="40" id="2y0-Fn-Fce"/>
                             <constraint firstItem="lxm-xu-S7a" firstAttribute="width" secondItem="4Jk-Aw-O07" secondAttribute="width" multiplier="0.826" id="FH0-yZ-z8D"/>
                             <constraint firstItem="BJh-l6-cgT" firstAttribute="top" secondItem="zRg-ou-jt0" secondAttribute="top" constant="74" id="Gos-h9-a5g"/>
+                            <constraint firstItem="sVg-5r-ifE" firstAttribute="leading" secondItem="zRg-ou-jt0" secondAttribute="leading" constant="15" id="Jk8-GL-iVM"/>
                             <constraint firstItem="p8k-lN-BAO" firstAttribute="centerX" secondItem="4Jk-Aw-O07" secondAttribute="centerX" id="Nam-St-hVP"/>
                             <constraint firstItem="lxm-xu-S7a" firstAttribute="centerX" secondItem="zRg-ou-jt0" secondAttribute="centerX" id="UNY-fe-wO1"/>
                             <constraint firstItem="XMy-gR-1t7" firstAttribute="centerX" secondItem="4Jk-Aw-O07" secondAttribute="centerX" id="VKf-02-qO5"/>
                             <constraint firstItem="zRg-ou-jt0" firstAttribute="trailing" secondItem="cLw-rd-Rum" secondAttribute="trailing" constant="20" id="gMY-9W-G5p"/>
                             <constraint firstItem="p8k-lN-BAO" firstAttribute="top" secondItem="XMy-gR-1t7" secondAttribute="bottom" constant="25" id="kM6-lX-zg4"/>
                             <constraint firstItem="XMy-gR-1t7" firstAttribute="top" secondItem="BJh-l6-cgT" secondAttribute="bottom" constant="14" id="o90-3m-TGt"/>
+                            <constraint firstItem="sVg-5r-ifE" firstAttribute="centerY" secondItem="cLw-rd-Rum" secondAttribute="centerY" id="teU-2K-3FJ"/>
                             <constraint firstItem="cLw-rd-Rum" firstAttribute="top" secondItem="zRg-ou-jt0" secondAttribute="top" constant="10" id="xQM-N9-lM1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zRg-ou-jt0"/>
                     </view>
                     <navigationItem key="navigationItem" id="6BU-0b-Ieq"/>
                     <connections>
+                        <outlet property="backButton" destination="sVg-5r-ifE" id="7GV-7A-Lql"/>
                         <outlet property="cardNumberTextField" destination="J6I-fB-WVj" id="ccY-dL-Ihq"/>
                         <outlet property="cardTypeImageView" destination="rS2-2j-48I" id="vQO-h3-M72"/>
                         <outlet property="confirmButton" destination="lxm-xu-S7a" id="JkQ-Xr-elb"/>
@@ -1578,7 +1596,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Eu-Mh-5D2" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5014" y="64"/>
+            <point key="canvasLocation" x="5013.6000000000004" y="63.418290854572717"/>
         </scene>
         <!--Card Added View Controller-->
         <scene sceneID="e5S-Vg-VcS">
@@ -3294,19 +3312,19 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="265.12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iew-Nd-KDn">
-                                <rect key="frame" x="131" y="364" width="113" height="43.5"/>
+                                <rect key="frame" x="131.5" y="364" width="113" height="43.5"/>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lp8-Fq-tFd">
-                                <rect key="frame" x="120" y="367" width="8" height="17"/>
+                                <rect key="frame" x="120.5" y="367" width="8" height="17"/>
                                 <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E Shopping mall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piP-nn-yYw">
-                                <rect key="frame" x="139" y="417.5" width="98" height="17"/>
+                                <rect key="frame" x="138.5" y="417.5" width="98" height="17"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -4593,10 +4611,109 @@
             </objects>
             <point key="canvasLocation" x="12256.799999999999" y="321.58920539730138"/>
         </scene>
+        <!--Card List View Controller-->
+        <scene sceneID="h83-qG-oIr">
+            <objects>
+                <viewController storyboardIdentifier="CardListViewController" id="3au-8e-ODX" customClass="CardListViewController" customModule="SpiralPay" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d1P-fV-RaE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="longGradient" translatesAutoresizingMaskIntoConstraints="NO" id="LON-fy-Qcd">
+                                <rect key="frame" x="0.0" y="52" width="375" height="244"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RW5-7a-t3B">
+                                <rect key="frame" x="169.5" y="40" width="37.5" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Iar-6B-7Ta"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
+                                <color key="textColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iD7-5a-hup">
+                                <rect key="frame" x="0.0" y="82" width="375" height="150"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="NOH-eS-wEt"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="3au-8e-ODX" id="3uA-6f-NdJ"/>
+                                    <outlet property="delegate" destination="3au-8e-ODX" id="in8-Ie-Ja6"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4lF-UL-aRc">
+                                <rect key="frame" x="15" y="31" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="I0e-yE-9Uw"/>
+                                    <constraint firstAttribute="height" constant="40" id="MN5-LC-XEi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.0" green="0.58431372550000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped" destination="3au-8e-ODX" eventType="touchUpInside" id="GCi-nT-bVc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fW-i3-SkP" customClass="SpiralPayButton" customModule="SpiralPay" customModuleProvider="target">
+                                <rect key="frame" x="104" y="252" width="168" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.63921568630000003" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="VZ0-TC-oCF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="19"/>
+                                <state key="normal" title="Add Card      "/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="openCardAddEditScreen" destination="3au-8e-ODX" eventType="touchUpInside" id="1Ef-lq-R3Z"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addCard" translatesAutoresizingMaskIntoConstraints="NO" id="6eW-ue-VmQ">
+                                <rect key="frame" x="221.5" y="262.5" width="23" height="23"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6eW-ue-VmQ" firstAttribute="centerX" secondItem="3fW-i3-SkP" secondAttribute="centerX" constant="45" id="5ll-Sh-s1S"/>
+                            <constraint firstItem="3fW-i3-SkP" firstAttribute="top" secondItem="iD7-5a-hup" secondAttribute="bottom" constant="20" id="70v-xh-Xmh"/>
+                            <constraint firstItem="iD7-5a-hup" firstAttribute="leading" secondItem="KBU-2C-buc" secondAttribute="leading" id="76Z-e4-FhI"/>
+                            <constraint firstItem="6eW-ue-VmQ" firstAttribute="centerY" secondItem="3fW-i3-SkP" secondAttribute="centerY" id="A9r-rk-p96"/>
+                            <constraint firstItem="KBU-2C-buc" firstAttribute="trailing" secondItem="LON-fy-Qcd" secondAttribute="trailing" id="CJr-gy-DUO"/>
+                            <constraint firstItem="4lF-UL-aRc" firstAttribute="centerY" secondItem="RW5-7a-t3B" secondAttribute="centerY" id="D7x-Ze-ga9"/>
+                            <constraint firstItem="LON-fy-Qcd" firstAttribute="leading" secondItem="KBU-2C-buc" secondAttribute="leading" id="EqG-Kj-atq"/>
+                            <constraint firstItem="3fW-i3-SkP" firstAttribute="width" secondItem="d1P-fV-RaE" secondAttribute="width" multiplier="0.448" id="IwO-nF-5NB"/>
+                            <constraint firstItem="LON-fy-Qcd" firstAttribute="top" secondItem="KBU-2C-buc" secondAttribute="top" constant="32" id="N5O-j6-t40"/>
+                            <constraint firstItem="RW5-7a-t3B" firstAttribute="top" secondItem="KBU-2C-buc" secondAttribute="top" constant="20" id="Qcy-dY-bOB"/>
+                            <constraint firstItem="LON-fy-Qcd" firstAttribute="bottom" secondItem="3fW-i3-SkP" secondAttribute="bottom" id="Rqv-YQ-dyH"/>
+                            <constraint firstItem="4lF-UL-aRc" firstAttribute="leading" secondItem="KBU-2C-buc" secondAttribute="leading" constant="15" id="XHG-57-Bgj"/>
+                            <constraint firstItem="KBU-2C-buc" firstAttribute="trailing" secondItem="iD7-5a-hup" secondAttribute="trailing" id="c5h-jw-V6D"/>
+                            <constraint firstItem="RW5-7a-t3B" firstAttribute="centerX" secondItem="d1P-fV-RaE" secondAttribute="centerX" id="pal-NX-oya"/>
+                            <constraint firstItem="iD7-5a-hup" firstAttribute="top" secondItem="RW5-7a-t3B" secondAttribute="bottom" constant="20" id="rhY-fr-xNG"/>
+                            <constraint firstItem="3fW-i3-SkP" firstAttribute="centerX" secondItem="d1P-fV-RaE" secondAttribute="centerX" id="sGE-Qh-kmI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KBU-2C-buc"/>
+                    </view>
+                    <connections>
+                        <outlet property="addCardButton" destination="3fW-i3-SkP" id="WVb-lp-7Nj"/>
+                        <outlet property="cardTableView" destination="iD7-5a-hup" id="80H-MN-F0o"/>
+                        <outlet property="cardTableViewHeightConstraint" destination="NOH-eS-wEt" id="Y4O-7d-hOr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xSh-Dw-IKa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="13692" y="322"/>
+        </scene>
     </scenes>
     <resources>
         <image name="acceptPayment" width="75" height="75"/>
         <image name="addAddressPlus" width="22" height="22"/>
+        <image name="addCard" width="23" height="23"/>
         <image name="address" width="18" height="25"/>
         <image name="backgroundGradient" width="375" height="185"/>
         <image name="bankCard" width="262" height="154"/>

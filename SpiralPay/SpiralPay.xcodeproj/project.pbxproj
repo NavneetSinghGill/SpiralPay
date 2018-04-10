@@ -84,6 +84,7 @@
 		18902871204D6E15008D903C /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18902872204D6E15008D903C /* Reachability.framework */; };
 		18902873204D6E20008D903C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18902874204D6E20008D903C /* Alamofire.framework */; };
 		18902875204D6E41008D903C /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18902876204D6E41008D903C /* AlamofireObjectMapper.framework */; };
+		18930E99207CFE350081AC89 /* CardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18930E98207CFE350081AC89 /* CardListViewController.swift */; };
 		18943500202488F9000C2166 /* PinPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FA202488F9000C2166 /* PinPresenter.swift */; };
 		18943501202488F9000C2166 /* PinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FB202488F9000C2166 /* PinWorker.swift */; };
 		18943502202488F9000C2166 /* PinRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FC202488F9000C2166 /* PinRouter.swift */; };
@@ -160,6 +161,8 @@
 		F1D9BAF52018614A004B42B7 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAF02018614A004B42B7 /* TokenManager.swift */; };
 		F1D9BAF62018614A004B42B7 /* TokenWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAF12018614A004B42B7 /* TokenWorker.swift */; };
 		F1D9BAF72018614A004B42B7 /* TokenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9BAF22018614A004B42B7 /* TokenModels.swift */; };
+		F1E109B9207E234000714C9F /* AddCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E109B7207E234000714C9F /* AddCardTableViewCell.swift */; };
+		F1E109BA207E234000714C9F /* AddCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1E109B8207E234000714C9F /* AddCardTableViewCell.xib */; };
 		F1E89B4B2019D29D0052C723 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1E89B492019D29D0052C723 /* Lato-Medium.ttf */; };
 		F1E89B6B2019D2FD0052C723 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1E89B5B2019D2FD0052C723 /* Lato-Regular.ttf */; };
 		F1E89B75201F0E540052C723 /* PhoneAndEmailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E89B6F201F0E540052C723 /* PhoneAndEmailPresenter.swift */; };
@@ -267,6 +270,7 @@
 		18902872204D6E15008D903C /* Reachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Reachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18902874204D6E20008D903C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18902876204D6E41008D903C /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18930E98207CFE350081AC89 /* CardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewController.swift; sourceTree = "<group>"; };
 		189434FA202488F9000C2166 /* PinPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPresenter.swift; sourceTree = "<group>"; };
 		189434FB202488F9000C2166 /* PinWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinWorker.swift; sourceTree = "<group>"; };
 		189434FC202488F9000C2166 /* PinRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinRouter.swift; sourceTree = "<group>"; };
@@ -354,6 +358,8 @@
 		F1D9BAF02018614A004B42B7 /* TokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		F1D9BAF12018614A004B42B7 /* TokenWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenWorker.swift; sourceTree = "<group>"; };
 		F1D9BAF22018614A004B42B7 /* TokenModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenModels.swift; sourceTree = "<group>"; };
+		F1E109B7207E234000714C9F /* AddCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardTableViewCell.swift; sourceTree = "<group>"; };
+		F1E109B8207E234000714C9F /* AddCardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCardTableViewCell.xib; sourceTree = "<group>"; };
 		F1E89B492019D29D0052C723 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
 		F1E89B5B2019D2FD0052C723 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		F1E89B6F201F0E540052C723 /* PhoneAndEmailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAndEmailPresenter.swift; sourceTree = "<group>"; };
@@ -513,6 +519,7 @@
 			isa = PBXGroup;
 			children = (
 				1870C49D206CD58200B7E4C3 /* PersonalDetailsViewController.swift */,
+				18930E98207CFE350081AC89 /* CardListViewController.swift */,
 				185F27C120773D4100142DDB /* Lock */,
 				187DC5B920721BEC000500AA /* ChangePin */,
 				180850242073899900DCF027 /* ChangeEmail */,
@@ -779,6 +786,8 @@
 				1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */,
 				187B544A2075015100961C6B /* HomeAddressTableViewCell.swift */,
 				187B544B2075015100961C6B /* HomeAddressTableViewCell.xib */,
+				F1E109B7207E234000714C9F /* AddCardTableViewCell.swift */,
+				F1E109B8207E234000714C9F /* AddCardTableViewCell.xib */,
 			);
 			path = StoryboardsAndXIBs;
 			sourceTree = "<group>";
@@ -967,6 +976,7 @@
 				F1D9BAE920185A8B004B42B7 /* AppSettings.plist in Resources */,
 				18D2D1CD2048440700E1B988 /* ProductTableViewCell.xib in Resources */,
 				F1D9BA56201852E8004B42B7 /* Main.storyboard in Resources */,
+				F1E109BA207E234000714C9F /* AddCardTableViewCell.xib in Resources */,
 				1815BC842047D8C20001E392 /* PaymentPriceDetailsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1127,6 +1137,8 @@
 				1865601B205BDB5000536D4F /* ShoppingCartTableViewCell.swift in Sources */,
 				F1D9BABE20185605004B42B7 /* DateExtensions.swift in Sources */,
 				F1D9BAB720185605004B42B7 /* NSViewExtensions.swift in Sources */,
+				18930E99207CFE350081AC89 /* CardListViewController.swift in Sources */,
+				F1E109B9207E234000714C9F /* AddCardTableViewCell.swift in Sources */,
 				18529F67202B31CD00BD8D0E /* PhoneVerificationRouter.swift in Sources */,
 				1808502B207389BD00DCF027 /* ChangeEmailPresenter.swift in Sources */,
 				185F27CA20773EFB00142DDB /* LockAccountRouter.swift in Sources */,

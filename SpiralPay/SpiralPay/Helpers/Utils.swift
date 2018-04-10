@@ -163,6 +163,25 @@ class Utils: NSObject {
         return false
     }
     
+    func addSpacesToCard(text: String) -> String {
+        var noSpacesText = text.replacingOccurrences(of: " ", with: "")
+        var newText = ""
+        var count = 1
+        
+        var allCharacters = noSpacesText.flatMap({ (character) -> String? in
+            return "\(character) "
+        })
+        for char in allCharacters {
+            if count % 4 == 1 && count != 1 {
+                newText = "\(newText) \(char.components(separatedBy: " ").first!)"
+            } else {
+                newText = "\(newText)\(char.components(separatedBy: " ").first!)"
+            }
+            count = count + 1
+        }
+        return newText
+    }
+    
     //MARK:- Coredata
     
     func getPaymentObjectFor(payment: Home.PaymentDetail.Response, context: NSManagedObjectContext = ApplicationDelegate.mainContext) -> Payment {

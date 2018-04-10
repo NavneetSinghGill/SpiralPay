@@ -68,6 +68,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             User.shared.save()
         }
         
+        if Card.shared.number == nil || Card.shared.number!.count == 0 {
+            //number is empty means that everything is already in array of dictionary
+        } else if Card.shared.cards == nil || Card.shared.cards!.count == 0 {
+            //Convert single address to array
+            let dict = Card.shared.getCurrentCardDict()
+            Card.shared.cards = [dict]
+            Card.shared.number = ""
+            Card.shared.expiry = ""
+            Card.shared.cvv = ""
+            Card.shared.save()
+        }
+        
         print("Coredata url: \(persistentContainer.persistentStoreCoordinator.persistentStores.first?.url)\n")
         
         setupNetworkMonitoring()

@@ -12,13 +12,12 @@ class SettingsViewController: SpiralPayViewController {
     
     var headers: Array<String> = ["ACCOUNT", "OTHER"]
     var options: Array<Array<String>> = [
-        ["Card", "Personal details", "Change PIN", "Lock account", "Enable Touch Point"],
+        ["Card", "Personal details", "Change PIN", "Enable Touch ID"],
         ["Help", "Contact us", "Logout"]]
     var optionImages: Array<Array<UIImage?>> = [
         [UIImage(named: "settingCard"),
          UIImage(named: "settingPersonalInfo"),
          UIImage(named: "settingChangePin"),
-         UIImage(named: "settingLockAccount"),
          UIImage(named: "settingEnableTouch")],
         [UIImage(named: "settingHelp"),
          UIImage(named: "settingContact"),
@@ -38,6 +37,13 @@ class SettingsViewController: SpiralPayViewController {
     }
     
     //MARK:- Private methods
+    
+    private func openCardsListScreen() {
+        DispatchQueue.main.async {
+            let cardsListScreen = CardListViewController.create()
+            self.parent?.navigationController?.pushViewController(cardsListScreen, animated: true)
+        }
+    }
     
     private func openPersonalDetailsScreen() {
         DispatchQueue.main.async {
@@ -91,7 +97,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             guard  let optionSwitch = cell.contentView.viewWithTag(104) as? UISwitch else {
                 return cell
             }
-            if indexPath.section == 0 && indexPath.row == 5 {
+            if indexPath.section == 0 && indexPath.row == 4 { 
                 optionSwitch.isHidden = false
                 cell.accessoryType = .none
             } else {
@@ -107,13 +113,11 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             switch indexPath.row {
             case 1:
-                return ()
+                openCardsListScreen()
             case 2:
                 openPersonalDetailsScreen()
             case 3:
                 openChangePinScreen()
-            case 4:
-                openLockAccountScreen()
             default:
                 return ()
             }
