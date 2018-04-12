@@ -1,0 +1,6 @@
+framework module iFaceRec {
+  umbrella header "iFaceRec-umbrella.h"
+
+  export *
+  module * { export * }
+}

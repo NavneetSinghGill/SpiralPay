@@ -45,6 +45,17 @@
 		184A4FA2202D8EBA0019AD40 /* ConfirmDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F9C202D8EB90019AD40 /* ConfirmDetailsViewController.swift */; };
 		184A4FA3202D8EBA0019AD40 /* ConfirmDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F9D202D8EB90019AD40 /* ConfirmDetailsInteractor.swift */; };
 		184A4FA5202DB72B0019AD40 /* DateAndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4FA4202DB72B0019AD40 /* DateAndTimeViewController.swift */; };
+		185091F3207F99A4006651B1 /* IDMetricsSelfieCapture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185091EE207F99A2006651B1 /* IDMetricsSelfieCapture.framework */; };
+		185091F4207F99A4006651B1 /* IDMetricsDocumentCapture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185091EF207F99A3006651B1 /* IDMetricsDocumentCapture.framework */; };
+		185091F5207F99A4006651B1 /* GIDSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185091F0207F99A3006651B1 /* GIDSDK.framework */; };
+		185091F6207F99A4006651B1 /* iFaceRec.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185091F1207F99A3006651B1 /* iFaceRec.framework */; };
+		185091F7207F99A4006651B1 /* GIDResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 185091F2207F99A4006651B1 /* GIDResources.bundle */; };
+		185091F8207F99D7006651B1 /* GIDSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185091F0207F99A3006651B1 /* GIDSDK.framework */; };
+		185091F9207F99D7006651B1 /* GIDSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 185091F0207F99A3006651B1 /* GIDSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		185091FB207F99D7006651B1 /* IDMetricsDocumentCapture.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 185091EF207F99A3006651B1 /* IDMetricsDocumentCapture.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		185091FD207F99D7006651B1 /* IDMetricsSelfieCapture.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 185091EE207F99A2006651B1 /* IDMetricsSelfieCapture.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		185091FE207F99D7006651B1 /* iFaceRec.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185091F1207F99A3006651B1 /* iFaceRec.framework */; };
+		185091FF207F99D7006651B1 /* iFaceRec.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 185091F1207F99A3006651B1 /* iFaceRec.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		18529F65202B31CD00BD8D0E /* PhoneVerificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F5F202B31CD00BD8D0E /* PhoneVerificationPresenter.swift */; };
 		18529F66202B31CD00BD8D0E /* PhoneVerificationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F60202B31CD00BD8D0E /* PhoneVerificationWorker.swift */; };
 		18529F67202B31CD00BD8D0E /* PhoneVerificationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18529F61202B31CD00BD8D0E /* PhoneVerificationRouter.swift */; };
@@ -65,6 +76,20 @@
 		1865601B205BDB5000536D4F /* ShoppingCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18656019205BDB5000536D4F /* ShoppingCartTableViewCell.swift */; };
 		1865601C205BDB5000536D4F /* ShoppingCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */; };
 		186A1DC1206153B30021BC0F /* SpiralPay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 186A1DBF206153B30021BC0F /* SpiralPay.xcdatamodeld */; };
+		186EAC7A207F93DD00516AFE /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC78207F93DC00516AFE /* CoreAudio.framework */; };
+		186EAC7B207F93DD00516AFE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC79207F93DD00516AFE /* AudioToolbox.framework */; };
+		186EAC7D207F93E800516AFE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC7C207F93E700516AFE /* AVFoundation.framework */; };
+		186EAC7F207F93F300516AFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC7E207F93F300516AFE /* CoreGraphics.framework */; };
+		186EAC81207F93FB00516AFE /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC80207F93FA00516AFE /* CoreMedia.framework */; };
+		186EAC83207F940500516AFE /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC82207F940500516AFE /* CoreVideo.framework */; };
+		186EAC85207F940E00516AFE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC84207F940E00516AFE /* MobileCoreServices.framework */; };
+		186EAC87207F941900516AFE /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC86207F941800516AFE /* OpenGLES.framework */; };
+		186EAC89207F942100516AFE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC88207F942000516AFE /* QuartzCore.framework */; };
+		186EAC8B207F942A00516AFE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC8A207F942900516AFE /* Security.framework */; };
+		186EAC8D207F943100516AFE /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC8C207F943000516AFE /* ImageIO.framework */; };
+		186EAC8F207F943B00516AFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC8E207F943A00516AFE /* Foundation.framework */; };
+		186EAC91207F944600516AFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC90207F944500516AFE /* UIKit.framework */; };
+		186EAC93207F945B00516AFE /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC92207F945B00516AFE /* libstdc++.6.tbd */; };
 		1870C49E206CD58200B7E4C3 /* PersonalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870C49D206CD58200B7E4C3 /* PersonalDetailsViewController.swift */; };
 		1871E896203D5730008BDEF8 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1871E895203D572D008BDEF8 /* Lato-Bold.ttf */; };
 		1871E898203DA401008BDEF8 /* BezierPathExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1871E897203DA401008BDEF8 /* BezierPathExtenstion.swift */; };
@@ -191,6 +216,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		186EAC6F207F8BC400516AFE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				185091FF207F99D7006651B1 /* iFaceRec.framework in Embed Frameworks */,
+				185091F9207F99D7006651B1 /* GIDSDK.framework in Embed Frameworks */,
+				185091FD207F99D7006651B1 /* IDMetricsSelfieCapture.framework in Embed Frameworks */,
+				185091FB207F99D7006651B1 /* IDMetricsDocumentCapture.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		18085025207389BC00DCF027 /* ChangeEmailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailPresenter.swift; sourceTree = "<group>"; };
 		18085026207389BD00DCF027 /* ChangeEmailWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailWorker.swift; sourceTree = "<group>"; };
@@ -231,6 +273,11 @@
 		184A4F9C202D8EB90019AD40 /* ConfirmDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsViewController.swift; sourceTree = "<group>"; };
 		184A4F9D202D8EB90019AD40 /* ConfirmDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsInteractor.swift; sourceTree = "<group>"; };
 		184A4FA4202DB72B0019AD40 /* DateAndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeViewController.swift; sourceTree = "<group>"; };
+		185091EE207F99A2006651B1 /* IDMetricsSelfieCapture.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IDMetricsSelfieCapture.framework; sourceTree = "<group>"; };
+		185091EF207F99A3006651B1 /* IDMetricsDocumentCapture.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IDMetricsDocumentCapture.framework; sourceTree = "<group>"; };
+		185091F0207F99A3006651B1 /* GIDSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GIDSDK.framework; sourceTree = "<group>"; };
+		185091F1207F99A3006651B1 /* iFaceRec.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iFaceRec.framework; sourceTree = "<group>"; };
+		185091F2207F99A4006651B1 /* GIDResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GIDResources.bundle; sourceTree = "<group>"; };
 		18529F5F202B31CD00BD8D0E /* PhoneVerificationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationPresenter.swift; sourceTree = "<group>"; };
 		18529F60202B31CD00BD8D0E /* PhoneVerificationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationWorker.swift; sourceTree = "<group>"; };
 		18529F61202B31CD00BD8D0E /* PhoneVerificationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerificationRouter.swift; sourceTree = "<group>"; };
@@ -251,6 +298,20 @@
 		18656019205BDB5000536D4F /* ShoppingCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartTableViewCell.swift; sourceTree = "<group>"; };
 		1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartTableViewCell.xib; sourceTree = "<group>"; };
 		186A1DC0206153B30021BC0F /* SpiralPay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpiralPay.xcdatamodel; sourceTree = "<group>"; };
+		186EAC78207F93DC00516AFE /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		186EAC79207F93DD00516AFE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		186EAC7C207F93E700516AFE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		186EAC7E207F93F300516AFE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		186EAC80207F93FA00516AFE /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		186EAC82207F940500516AFE /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		186EAC84207F940E00516AFE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		186EAC86207F941800516AFE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		186EAC88207F942000516AFE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		186EAC8A207F942900516AFE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		186EAC8C207F943000516AFE /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		186EAC8E207F943A00516AFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		186EAC90207F944500516AFE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		186EAC92207F945B00516AFE /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		1870C49D206CD58200B7E4C3 /* PersonalDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDetailsViewController.swift; sourceTree = "<group>"; };
 		1871E895203D572D008BDEF8 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		1871E897203DA401008BDEF8 /* BezierPathExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathExtenstion.swift; sourceTree = "<group>"; };
@@ -376,10 +437,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				186EAC93207F945B00516AFE /* libstdc++.6.tbd in Frameworks */,
+				186EAC91207F944600516AFE /* UIKit.framework in Frameworks */,
+				186EAC8F207F943B00516AFE /* Foundation.framework in Frameworks */,
+				186EAC8D207F943100516AFE /* ImageIO.framework in Frameworks */,
+				185091F3207F99A4006651B1 /* IDMetricsSelfieCapture.framework in Frameworks */,
+				186EAC8B207F942A00516AFE /* Security.framework in Frameworks */,
+				186EAC89207F942100516AFE /* QuartzCore.framework in Frameworks */,
+				186EAC87207F941900516AFE /* OpenGLES.framework in Frameworks */,
+				186EAC85207F940E00516AFE /* MobileCoreServices.framework in Frameworks */,
+				186EAC83207F940500516AFE /* CoreVideo.framework in Frameworks */,
+				186EAC81207F93FB00516AFE /* CoreMedia.framework in Frameworks */,
+				185091FE207F99D7006651B1 /* iFaceRec.framework in Frameworks */,
+				185091F4207F99A4006651B1 /* IDMetricsDocumentCapture.framework in Frameworks */,
+				185091F5207F99A4006651B1 /* GIDSDK.framework in Frameworks */,
+				186EAC7F207F93F300516AFE /* CoreGraphics.framework in Frameworks */,
+				186EAC7D207F93E800516AFE /* AVFoundation.framework in Frameworks */,
+				186EAC7A207F93DD00516AFE /* CoreAudio.framework in Frameworks */,
+				186EAC7B207F93DD00516AFE /* AudioToolbox.framework in Frameworks */,
 				18902875204D6E41008D903C /* AlamofireObjectMapper.framework in Frameworks */,
+				185091F8207F99D7006651B1 /* GIDSDK.framework in Frameworks */,
 				18902873204D6E20008D903C /* Alamofire.framework in Frameworks */,
 				18902871204D6E15008D903C /* Reachability.framework in Frameworks */,
 				1890286F204D6E00008D903C /* SwiftKeychainWrapper.framework in Frameworks */,
+				185091F6207F99A4006651B1 /* iFaceRec.framework in Frameworks */,
 				1890286D204D6DE1008D903C /* ObjectMapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,6 +651,25 @@
 		575C9A2F8E71777712E58AA8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				186EAC92207F945B00516AFE /* libstdc++.6.tbd */,
+				185091F2207F99A4006651B1 /* GIDResources.bundle */,
+				185091F0207F99A3006651B1 /* GIDSDK.framework */,
+				185091EF207F99A3006651B1 /* IDMetricsDocumentCapture.framework */,
+				185091EE207F99A2006651B1 /* IDMetricsSelfieCapture.framework */,
+				185091F1207F99A3006651B1 /* iFaceRec.framework */,
+				186EAC90207F944500516AFE /* UIKit.framework */,
+				186EAC8E207F943A00516AFE /* Foundation.framework */,
+				186EAC8C207F943000516AFE /* ImageIO.framework */,
+				186EAC8A207F942900516AFE /* Security.framework */,
+				186EAC88207F942000516AFE /* QuartzCore.framework */,
+				186EAC86207F941800516AFE /* OpenGLES.framework */,
+				186EAC84207F940E00516AFE /* MobileCoreServices.framework */,
+				186EAC82207F940500516AFE /* CoreVideo.framework */,
+				186EAC80207F93FA00516AFE /* CoreMedia.framework */,
+				186EAC7E207F93F300516AFE /* CoreGraphics.framework */,
+				186EAC7C207F93E700516AFE /* AVFoundation.framework */,
+				186EAC79207F93DD00516AFE /* AudioToolbox.framework */,
+				186EAC78207F93DC00516AFE /* CoreAudio.framework */,
 				18902876204D6E41008D903C /* AlamofireObjectMapper.framework */,
 				18902874204D6E20008D903C /* Alamofire.framework */,
 				18902872204D6E15008D903C /* Reachability.framework */,
@@ -862,6 +962,7 @@
 				3A556FDEAE2F6DB1291C0170 /* [CP] Embed Pods Frameworks */,
 				FAD96631B8200A7B952D21FC /* [CP] Copy Pods Resources */,
 				1845315420330F320003E936 /* ShellScript */,
+				186EAC6F207F8BC400516AFE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -967,6 +1068,7 @@
 			files = (
 				1871E896203D5730008BDEF8 /* Lato-Bold.ttf in Resources */,
 				F1E89B6B2019D2FD0052C723 /* Lato-Regular.ttf in Resources */,
+				185091F7207F99A4006651B1 /* GIDResources.bundle in Resources */,
 				F1E89B4B2019D29D0052C723 /* Lato-Medium.ttf in Resources */,
 				187B544D2075015100961C6B /* HomeAddressTableViewCell.xib in Resources */,
 				F1D9BA5B201852E8004B42B7 /* LaunchScreen.storyboard in Resources */,
@@ -1393,9 +1495,42 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2A498HB725;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SpiralPay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"AlamofireObjectMapper\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"ObjectMapper\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SwiftKeychainWrapper\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-lstdc++",
+					"-lc++",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SpiralPay.SpiralPay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "f14ee3f7-c40c-4ece-8bfb-0d5fcea85b85";
@@ -1415,9 +1550,42 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2A498HB725;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SpiralPay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"AlamofireObjectMapper\"",
+					"-framework",
+					"\"Crashlytics\"",
+					"-framework",
+					"\"Fabric\"",
+					"-framework",
+					"\"ObjectMapper\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SwiftKeychainWrapper\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-lstdc++",
+					"-lc++",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SpiralPay.SpiralPay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d2915cda-69f0-4aec-9d39-1029373ba95a";

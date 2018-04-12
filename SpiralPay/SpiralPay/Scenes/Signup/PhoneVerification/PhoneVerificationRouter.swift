@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import GIDSDK
 
 @objc protocol PhoneVerificationRoutingLogic
 {

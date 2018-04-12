@@ -11,6 +11,7 @@ import Reachability
 import Fabric
 import Crashlytics
 import CoreData
+import GIDSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -272,12 +273,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func showConfirmDetailsScreen() {
-        let confirmDetailsScreen = ConfirmDetailsViewController.create()
+        let phoneVerificationSuccessScreen = PhoneVerificationViewController.create()
+        phoneVerificationSuccessScreen.screenStatus = .Success
         
-        let navVC = UINavigationController(rootViewController: confirmDetailsScreen)
+        let navVC = UINavigationController(rootViewController: phoneVerificationSuccessScreen)
         self.getWindow().rootViewController = navVC
     }
-    
+     
     func showWelcomeScreen() {
         let welcomeScreen = WelcomeViewController.create()
         let navVC = UINavigationController(rootViewController: welcomeScreen)

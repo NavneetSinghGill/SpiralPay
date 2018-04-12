@@ -1,0 +1,6 @@
+framework module IDMetricsSelfieCapture {
+  umbrella header "IDMetricsSelfieCapture.h"
+
+  export *
+  module * { export * }
+}

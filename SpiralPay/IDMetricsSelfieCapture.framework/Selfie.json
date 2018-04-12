@@ -1,0 +1,103 @@
+{
+    "action_icons": {
+        "retake": {
+            "border_width": 2,
+            "border_color": {"R":255,"G":255,"B":255,"A":0.15},
+            "background_color": {"R":0,"G":0,"B":0,"A":0},
+            "textSizeLarge": 15,
+            "textSizeNormal": 15,
+            "textFont": "Helvetica Neue",
+            "textColor": {"R":255,"G":255,"B":255,"A":1.0}
+        },
+        "this_is_me": {
+            "background_color": {"R":65,"G":117,"B":5,"A":1.0},
+            "textSizeLarge": 15,
+            "textSizeNormal": 15,
+            "textFont": "Helvetica Neue",
+            "textColor": {"R":255,"G":255,"B":255,"A":1.0}
+        },
+        "icon_help": {
+            "icon_name": "assetname",
+            "border_width": 2,
+            "border_color": {"R":255,"G":255,"B":255,"A":0.15},
+            "background_color": {"R":0,"G":0,"B":0,"A":0}
+        },
+        "icon_camera": {
+            "icon_name": "assetname",
+            "border_width": 2,
+            "border_color": {"R":0,"G":0,"B":0,"A":0},
+            "background_color": {"R":0,"G":0,"B":0,"A":1}
+        },
+        "icon_close": {
+            "icon_name": "assetname",
+            "border_width": 2,
+            "border_color": {"R":255,"G":255,"B":255,"A":0.15},
+            "background_color": {"R":0,"G":0,"B":0,"A":0}
+        },
+        "icon_switch": {
+            "icon_name": "assetname",
+            "border_width": 2,
+            "border_color": {"R":255,"G":255,"B":255,"A":0.15},
+            "background_color": {"R":0,"G":0,"B":0,"A":1}
+        },
+        "icon_got_it": {
+            "textSizeLarge": 18,
+            "textSizeNormal":18,
+            "textFont": "Helvetica Neue",
+            "textColor": {"R":255,"G":255,"B":255,"A":1.0},
+            "background_color": {"R":65,"G":117,"B":5,"A":1.0}
+        }
+    },
+    "instruction_overlay": {
+        "textSizeLarge": 18,
+        "textSizeNormal": 18,
+        "textFont": "Helvetica Neue",
+        "textColor": {"R":255,"G":255,"B":255,"A":1.0},
+        "background_color": {"R":0,"G":0,"B":0,"A":0.8}
+    },
+    "live_overlay": {
+        "textSizeLarge": 20,
+        "textSizeNormal": 20,
+        "textFont": "Helvetica Neue",
+        "textColor": {"R":255,"G":255,"B":255,"A":1.0},
+        "background_color": {"R":0,"G":0,"B":0,"A":0.8}
+    },
+    "tooltip": {
+        "textSizeLarge": 14,
+        "textSizeNormal": 14,
+        "textFont": "Helvetica Neue",
+        "textColor": {"R":0,"G":0,"B":0,"A":1.0},
+        "background_color": {"R":255,"G":255,"B":255,"A":1.0},
+        "transparent_background_color" : {"R":0,"G":0,"B":0,"A":0.75}
+    },
+    "actionbar": {
+        "mode_text": {
+            "textSizeLarge": 10,
+            "textSizeNormal": 10,
+            "textFont": "Helvetica Neue",
+            "textColor": {"R":255,"G":255,"B":255,"A":1.0},
+            "background_color": {"R":255,"G":255,"B":255,"A":0.10}
+        },
+        "background_color": {"R":0,"G":0,"B":0,"A":1.0}
+    },
+    "oval": {
+        "border_failure_color": {"R":255,"G":255,"B":255,"A":1},
+        "border_success_color": {"R":208,"G":255,"B":0,"A":1.0},
+        "border_width": 5
+    },
+    "display_text": {
+        "live": {
+            "textSizeLarge": 17,
+            "textSizeNormal": 17,
+            "textFont": "Helvetica Neue",
+            "textColor": {"R":0,"G":0,"B":0,"A":1.0}
+        },
+        "confirm": {
+            "textSizeLarge": 17,
+            "textSizeNormal": 17,
+            "textFont": "Helvetica Neue",
+            "textColor": {"R":255,"G":255,"B":255,"A":1.0}
+        }
+    },
+    "confirmation_background_color" : {"R":33,"G":33,"B":33,"A":1}
+}

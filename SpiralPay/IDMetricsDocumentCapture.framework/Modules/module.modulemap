@@ -1,0 +1,6 @@
+framework module IDMetricsDocumentCapture {
+  umbrella header "IDMetricsDocumentCapture.h"
+
+  export *
+  module * { export * }
+}

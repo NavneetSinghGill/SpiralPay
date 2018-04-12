@@ -12,16 +12,16 @@ class SettingsViewController: SpiralPayViewController {
     
     var headers: Array<String> = ["ACCOUNT", "OTHER"]
     var options: Array<Array<String>> = [
-        ["Card", "Personal details", "Change PIN", "Enable Touch ID"],
-        ["Help", "Contact us", "Logout"]]
+        ["Card", "Personal details", "Verify yourself", "Change PIN", "Enable Fingerprint"],
+        ["Help", "Contact us"]]
     var optionImages: Array<Array<UIImage?>> = [
         [UIImage(named: "settingCard"),
          UIImage(named: "settingPersonalInfo"),
+         UIImage(named: "settingVerify"),
          UIImage(named: "settingChangePin"),
          UIImage(named: "settingEnableTouch")],
         [UIImage(named: "settingHelp"),
-         UIImage(named: "settingContact"),
-         UIImage(named: "settingLogout")]
+         UIImage(named: "settingContact")]
     ]
 
     override func viewDidLoad() {
@@ -97,7 +97,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             guard  let optionSwitch = cell.contentView.viewWithTag(104) as? UISwitch else {
                 return cell
             }
-            if indexPath.section == 0 && indexPath.row == 4 { 
+            if indexPath.section == 0 && indexPath.row == 5 { 
                 optionSwitch.isHidden = false
                 cell.accessoryType = .none
             } else {
@@ -116,7 +116,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
                 openCardsListScreen()
             case 2:
                 openPersonalDetailsScreen()
-            case 3:
+            case 4:
                 openChangePinScreen()
             default:
                 return ()
@@ -126,8 +126,6 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             case 1:
                 return ()
             case 2:
-                return ()
-            case 3:
                 return ()
             default:
                 return ()

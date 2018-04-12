@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import GIDSDK
 
 class Utils: NSObject {
     
@@ -123,6 +124,37 @@ class Utils: NSObject {
             }
             URLSession.shared.dataTask(with: request, completionHandler: completionHandler).resume()
         }
+    }
+    
+    //MARK:- Vix verify
+    
+    func getVixVerifyControllerWith(delegate: UIViewController) -> UIViewController {
+        let config = [
+            "apiCode" : "Kh4-ccV-H27-V8A",
+            "accountId" : "envision",
+            "baseUrl" : "https://simpleui-uat1.vixverify.com",
+            "mode" : "onboarding",
+            "customCssPath" : "https://rawgit.com/szarowski/greenid/master/envision.css",
+            ];
+        
+        // The following are optional parameters, and greenID will assume default values if you do not set them.
+        // "ruleId" : "default",
+        // "enableProcessOverviewScreen" : "true",
+        // "countryCode" : "AU",
+        // "documentCaptureResetTimeout" : "10",
+        // "customCssPath" : "https://your.server.here/your.css",
+        
+        // This should only be used with "mode" : "returningUser",
+        // "verificationToken" : "verificationToken",
+        
+        let main: GIDMainViewController = GIDMainViewController(config:config)!
+        main.delegate = delegate as? GIDDelegate
+        main.setLoggingLevel(GIDLogLevel.UI)
+        
+        let logManager: GIDLogManager = GIDLogManager.sharedData()
+        logManager.logger = delegate as? GIDLoggerDelegate
+        
+        return main
     }
    
     //MARK: - Validation Methods

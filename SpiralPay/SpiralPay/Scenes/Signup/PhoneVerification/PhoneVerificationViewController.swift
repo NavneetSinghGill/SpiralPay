@@ -23,6 +23,7 @@ Flow of verification
 */
 
 import UIKit
+import GIDSDK
 
 enum PhoneVerificationScreenStatus {
     case SendSms
@@ -164,7 +165,8 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
             if screenType == .Onboard {
                 User.shared.savedState = .PhoneVerified
                 User.shared.save()
-                router?.routeToConfirmDetailsScreen()
+//                router?.routeToConfirmDetailsScreen()
+                routeToVixVerify()
             } else {
                 self.navigationController?.popToRootViewController(animated: true)
             }
@@ -276,6 +278,14 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
         }
     }
     
+    func routeToVixVerify() {
+        let main = Utils.shared.getVixVerifyControllerWith(delegate: self)
+        
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(main, animated: true)
+        }
+    }
+    
 }
 
 extension PhoneVerificationViewController: UITextFieldDelegate {
@@ -302,6 +312,42 @@ extension PhoneVerificationViewController: UITextFieldDelegate {
         }
         
         return true
+    }
+    
+}
+
+extension PhoneVerificationViewController: GIDDelegate, GIDLoggerDelegate {
+    
+    func mainViewController(_ mainViewController: GIDMainViewController, didCompleteProcessWithPayload payload: [AnyHashable : Any]?, resultCode: GIDResultCode, error: GIDErrorProtocol?) {
+        
+        if resultCode == .error {
+            // An error occured
+        } else if resultCode == .noNetwork {
+            // There is no network connection
+        } else if resultCode == .success {
+            // Succesfully completed the process
+            //TODO: save data since confirm screen would be removed
+//            router?.routeToConfirmDetailsScreen()
+            self.navigationController?.popViewController(animated: true)
+        } else if resultCode == .cancelled {
+            // User opted out of the process
+        } else if resultCode == .back {
+            // User tapped the back button
+        } else if (resultCode == .userInactivity) {
+            // User Inactivity
+        } else if (resultCode == .resourceBundle) {
+            // No Resource Bundle
+        }
+        
+        self.navigationController!.popViewController(animated: true)
+    }
+    
+    func sdkDidLogLevel(_ levelString: String!, levelCode level: GIDLogLevel, analyticsCode: GIDAnalyticsCode, source: String!, message: String!) {
+        if (level == .UI) {
+            print("Got analytics info from SDK: %ld %s", analyticsCode, message);
+        } else {
+            print("LOG:" + message);
+        }
     }
     
 }

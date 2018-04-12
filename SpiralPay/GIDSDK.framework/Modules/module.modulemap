@@ -1,0 +1,6 @@
+framework module GIDSDK {
+  umbrella header "GIDSDK.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,103 @@
+{
+    "action_icons": {
+        "icon_upload": {
+            "icon_name": "assetname",
+            "border_width": 2,
+            "border_color": {"R":255,"G":255,"B":255,"A":0.15},
+            "background_color": {"R":0,"G":0,"B":0,"A":0}
+        },
+        "icon_help": {
+            "icon_name": "assetname",
+            "border_width": 2,
+            "border_color": {"R":255,"G":255,"B":255,"A":0.15},
+            "background_color": {"R":0,"G":0,"B":0,"A":0}
+        },
+        "icon_retake": {
+            "icon_name": "assetname",
+            "border_width": 2,
+            "border_color": {"R":255,"G":255,"B":255,"A":0.15},
+            "background_color": {"R":0,"G":0,"B":0,"A":0}
+        },
+        "icon_camera": {
+            "icon_name": "assetname",
+            "border_width": 2,
+            "border_color": {"R":0,"G":0,"B":0,"A":0},
+            "background_color": {"R":0,"G":0,"B":0,"A":0}
+        },
+        "icon_checkmark": {
+            "icon_name": "assetname",
+            "border_width": 2,
+            "border_color": {"R":0,"G":0,"B":0,"A":0},
+            "background_color": {"R":0,"G":154,"B":217,"A":1.0}
+        },
+        "icon_close": {
+            "icon_name": "assetname",
+            "border_width": 2,
+            "border_color":  {"R":255,"G":255,"B":255,"A":0.15},
+            "background_color": {"R":0,"G":0,"B":0,"A":0}
+        },
+        "icon_got_it": {
+            "textSizeLarge": 18,
+            "textSizeNormal": 18,
+            "textFont": "Helvetica Neue",
+            "textColor": {"R":255,"G":255,"B":255,"A":1.0},
+            "background_color": {"R":65,"G":117,"B":5,"A":1.0}
+        }
+    },
+    "indicators": {
+        "textSizeLarge": 18,
+        "textSizeNormal": 11,
+        "textFont": "Helvetica Neue",
+        "textColor": {"R":255,"G":255,"B":255,"A":1.0},
+        "background_color": {"R":255,"G":45,"B":85,"A":1.0}
+    },
+    "instruction_overlay": {
+        "textSizeLarge": 22,
+        "textSizeNormal": 22,
+        "textFont": "Helvetica Neue",
+        "textColor": {"R":255,"G":255,"B":255,"A":1.0},
+        "background_color": {"R":0,"G":0,"B":0,"A":0.8}
+    },
+    "live_overlay": {
+        "textSizeLarge": 18,
+        "textSizeNormal": 18,
+        "textFont": "Helvetica Neue",
+        "textColor": {"R":255,"G":255,"B":255,"A":1.0},
+        "background_color": {"R":0,"G":0,"B":0,"A":0.8}
+    },
+    "tooltip": {
+        "textSizeLarge": 14,
+        "textSizeNormal": 14,
+        "textFont": "Helvetica Neue",
+        "textColor": {"R":0,"G":0,"B":0,"A":1.0},
+        "background_color": {"R":255,"G":255,"B":255,"A":1.0},
+        "transparent_background_color" : {"R":0,"G":0,"B":0,"A":0.75}
+    },
+    "actionbar": {
+        "mode_text": {
+            "textSizeLarge": 10,
+            "textSizeNormal": 10,
+            "textFont": "Helvetica Neue",
+            "textColor": {"R":255,"G":255,"B":255,"A":1.0},
+            "background_color": {"R":255,"G":255,"B":255,"A":0.1}
+        },
+        "background_color": {"R":0,"G":0,"B":0,"A":1.0}
+
+        
+    },
+    "cropper": {
+        "cropper_color": {"R":208,"G":255,"B":0,"A":1.0},
+        "background_color": {"R":65,"G":65,"B":65,"A":1.0}
+    },
+    "bubbleView": {
+        "border_color": {"R":255,"G":255,"B":255,"A":0.3},
+        "failure_color": {"R":245,"G":58,"B":78,"A":1.0},
+        "success_color": {"R":208,"G":255,"B":0,"A":1.0},
+        "background_color": {"R":0,"G":0,"B":0,"A":0.2}
+    },
+    "brackets": {
+        "failure_color": {"R":255,"G":255,"B":255,"A":1.0},
+        "success_color":  {"R":208,"G":255,"B":0,"A":1.0}
+    }
+}
+
