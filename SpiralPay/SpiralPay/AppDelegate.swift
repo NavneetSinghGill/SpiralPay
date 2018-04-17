@@ -133,11 +133,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         print("..... \(url)")
         
-        if let value = components.queryItems?.first?.value {
-            universalLinkURLString = value
-        } else {
-            universalLinkURLString = ""
-        }
+//        if let value = components.queryItems?.first?.value {
+//            universalLinkURLString = value
+//        } else {
+//            universalLinkURLString = ""
+//        }
+        universalLinkURLString = components.path
         universalLinkBlock = { (url) in
             //This is typically called when login is successful
             if url != nil, url!.count != 0, User.shared.savedState == .CardAdded, let base = ApplicationDelegate.getWindow().rootViewController as? UINavigationController {

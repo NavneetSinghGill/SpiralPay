@@ -328,7 +328,11 @@ extension PhoneVerificationViewController: GIDDelegate, GIDLoggerDelegate {
             // Succesfully completed the process
             //TODO: save data since confirm screen would be removed
 //            router?.routeToConfirmDetailsScreen()
-            self.navigationController?.popViewController(animated: true)
+            
+//            self.navigationController?.popViewController(animated: true)
+            
+            //Temp  
+            ApplicationDelegate.showHomeTabBarScreen()
         } else if resultCode == .cancelled {
             // User opted out of the process
         } else if resultCode == .back {

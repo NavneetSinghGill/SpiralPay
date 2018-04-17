@@ -38,6 +38,7 @@
 		18256FE120527AB2007FA954 /* HomeContainerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18256FDB20527AB2007FA954 /* HomeContainerModels.swift */; };
 		18256FE220527AB2007FA954 /* HomeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18256FDC20527AB2007FA954 /* HomeContainerViewController.swift */; };
 		18256FE320527AB2007FA954 /* HomeContainerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18256FDD20527AB2007FA954 /* HomeContainerInteractor.swift */; };
+		1843764B2085EB3E00B031B4 /* SpiralPay.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 183990192063C9EC00FD1D7D /* SpiralPay.entitlements */; };
 		184A4F9E202D8EB90019AD40 /* ConfirmDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F98202D8EB90019AD40 /* ConfirmDetailsPresenter.swift */; };
 		184A4F9F202D8EBA0019AD40 /* ConfirmDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F99202D8EB90019AD40 /* ConfirmDetailsWorker.swift */; };
 		184A4FA0202D8EBA0019AD40 /* ConfirmDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A4F9A202D8EB90019AD40 /* ConfirmDetailsRouter.swift */; };
@@ -1066,6 +1067,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1843764B2085EB3E00B031B4 /* SpiralPay.entitlements in Resources */,
 				1871E896203D5730008BDEF8 /* Lato-Bold.ttf in Resources */,
 				F1E89B6B2019D2FD0052C723 /* Lato-Regular.ttf in Resources */,
 				185091F7207F99A4006651B1 /* GIDResources.bundle in Resources */,
