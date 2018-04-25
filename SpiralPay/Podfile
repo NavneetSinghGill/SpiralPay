@@ -2,17 +2,19 @@
 # platform :ios, '9.0'
 
 target 'SpiralPay' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for SpiralPay
-  pod 'AlamofireObjectMapper', '~> 5.0'
-  pod 'ReachabilitySwift'
-#  pod 'NotificationBannerSwift'
-  pod 'SwiftKeychainWrapper', '~> 3.0'
-#  pod 'SDWebImage', '~> 4.0'
-#  pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
-#  pod 'IQKeyboardManagerSwift', '5.0.0'
-  pod 'Crashlytics'
-  
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+    
+    # Pods for SpiralPay
+    pod 'AlamofireObjectMapper', '~> 5.0'
+    pod 'ReachabilitySwift'
+    #  pod 'NotificationBannerSwift'
+    pod 'SwiftKeychainWrapper', '~> 3.0'
+    #  pod 'SDWebImage', '~> 4.0'
+    #  pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
+    #  pod 'IQKeyboardManagerSwift', '5.0.0'
+    pod 'Crashlytics'
+    #  pod 'SWXMLHash', '~> 4.0.0'
+    pod 'XMLMapper/Requests'
+    
 end

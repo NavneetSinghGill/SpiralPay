@@ -156,6 +156,7 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
 
         if self == ApplicationDelegate.getWindow().rootViewController { //If its the very first screen of app
             ApplicationDelegate.openIntendedScreen()
+//            ApplicationDelegate.showHomeTabBarScreen()
         } else {
             self.dismiss(animated: true, completion: {
                 ApplicationDelegate.executeUniversalLinkingBlock()

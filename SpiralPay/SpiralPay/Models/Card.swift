@@ -35,9 +35,9 @@ class Card: NSObject {
     }
     
     func restore() {
-        number = SecurityStorageWorker.shared.getKeychainValue(key: "cardNumber")
-        expiry = SecurityStorageWorker.shared.getKeychainValue(key: "cardExpiry")
-        cvv = SecurityStorageWorker.shared.getKeychainValue(key: "cardCvv")
+        number = SecurityStorageWorker.shared.getKeychainValue(key: "cardNumber") ?? ""
+        expiry = SecurityStorageWorker.shared.getKeychainValue(key: "cardExpiry") ?? ""
+        cvv = SecurityStorageWorker.shared.getKeychainValue(key: "cardCvv") ?? ""
         cards = SecurityStorageWorker.shared.getKeychainArrayValue(key: "cards") as? Array<Dictionary<String, String>>
     }
     

@@ -9,12 +9,17 @@ PODS:
   - ObjectMapper (3.1.0)
   - ReachabilitySwift (4.1.0)
   - SwiftKeychainWrapper (3.0.1)
+  - XMLMapper/Core (1.4.2)
+  - XMLMapper/Requests (1.4.2):
+    - Alamofire (~> 4.1)
+    - XMLMapper/Core
 
 DEPENDENCIES:
   - AlamofireObjectMapper (~> 5.0)
   - Crashlytics
   - ReachabilitySwift
   - SwiftKeychainWrapper (~> 3.0)
+  - XMLMapper/Requests
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
@@ -24,7 +29,8 @@ SPEC CHECKSUMS:
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
+  XMLMapper: cf15d387224b0ef66861f841fe808d6d6d3c7ad3
 
-PODFILE CHECKSUM: 0e04c82dc08ab5ec26319134f777e836dc1e81b2
+PODFILE CHECKSUM: 5953186f017245dcc8619ad1f96da7ac07f23153
 
 COCOAPODS: 1.4.0

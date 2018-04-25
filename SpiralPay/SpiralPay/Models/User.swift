@@ -50,8 +50,11 @@ class User: NSObject {
     var customerID: String?
     var name: String?
     var firstName: String?
+    var middleName: String?
     var lastName: String?
-    var birthday: String?
+    var birthDay: String?
+    var birthMonth: String?
+    var birthYear: String?
     var address: String?
     var city: String?
     var postcode: String?
@@ -78,8 +81,11 @@ class User: NSObject {
         _ = SecurityStorageWorker.shared.setTokenValue(customerID ?? "", key: "customerID")
         _ = SecurityStorageWorker.shared.setTokenValue(name ?? "", key: "name")
         _ = SecurityStorageWorker.shared.setTokenValue(firstName ?? "", key: "firstName")
+        _ = SecurityStorageWorker.shared.setTokenValue(middleName ?? "", key: "middleName")
         _ = SecurityStorageWorker.shared.setTokenValue(lastName ?? "", key: "lastName")
-        _ = SecurityStorageWorker.shared.setTokenValue(birthday ?? "", key: "birthday")
+        _ = SecurityStorageWorker.shared.setTokenValue(birthDay ?? "", key: "birthDay")
+        _ = SecurityStorageWorker.shared.setTokenValue(birthMonth ?? "", key: "birthMonth")
+        _ = SecurityStorageWorker.shared.setTokenValue(birthYear ?? "", key: "birthYear")
         _ = SecurityStorageWorker.shared.setTokenValue(address ?? "", key: "address")
         _ = SecurityStorageWorker.shared.setTokenValue(city ?? "", key: "city")
         _ = SecurityStorageWorker.shared.setTokenValue(postcode ?? "", key: "postcode")
@@ -89,33 +95,40 @@ class User: NSObject {
     }
     
     func restore() {
-        phone = SecurityStorageWorker.shared.getKeychainValue(key: "phone")
-        email = SecurityStorageWorker.shared.getKeychainValue(key: "email")
-        countryName = SecurityStorageWorker.shared.getKeychainValue(key: "countryName")
-        countryCode = SecurityStorageWorker.shared.getKeychainValue(key: "countryCode")
-        accessToken = SecurityStorageWorker.shared.getKeychainValue(key: "accessToken")
-        customerID = SecurityStorageWorker.shared.getKeychainValue(key: "customerID")
-        name = SecurityStorageWorker.shared.getKeychainValue(key: "name")
-        firstName = SecurityStorageWorker.shared.getKeychainValue(key: "firstName")
-        lastName = SecurityStorageWorker.shared.getKeychainValue(key: "lastName")
-        birthday = SecurityStorageWorker.shared.getKeychainValue(key: "birthday")
-        address = SecurityStorageWorker.shared.getKeychainValue(key: "address")
-        city = SecurityStorageWorker.shared.getKeychainValue(key: "city")
-        postcode = SecurityStorageWorker.shared.getKeychainValue(key: "postcode")
+        phone = SecurityStorageWorker.shared.getKeychainValue(key: "phone") ?? ""
+        email = SecurityStorageWorker.shared.getKeychainValue(key: "email") ?? ""
+        countryName = SecurityStorageWorker.shared.getKeychainValue(key: "countryName") ?? ""
+        countryCode = SecurityStorageWorker.shared.getKeychainValue(key: "countryCode") ?? ""
+        accessToken = SecurityStorageWorker.shared.getKeychainValue(key: "accessToken") ?? ""
+        customerID = SecurityStorageWorker.shared.getKeychainValue(key: "customerID") ?? ""
+        name = SecurityStorageWorker.shared.getKeychainValue(key: "name") ?? ""
+        firstName = SecurityStorageWorker.shared.getKeychainValue(key: "firstName") ?? ""
+        middleName = SecurityStorageWorker.shared.getKeychainValue(key: "middleName") ?? ""
+        lastName = SecurityStorageWorker.shared.getKeychainValue(key: "lastName") ?? ""
+        birthDay = SecurityStorageWorker.shared.getKeychainValue(key: "birthDay") ?? ""
+        birthMonth = SecurityStorageWorker.shared.getKeychainValue(key: "birthMonth") ?? ""
+        birthYear = SecurityStorageWorker.shared.getKeychainValue(key: "birthYear") ?? ""
+        address = SecurityStorageWorker.shared.getKeychainValue(key: "address") ?? ""
+        city = SecurityStorageWorker.shared.getKeychainValue(key: "city") ?? ""
+        postcode = SecurityStorageWorker.shared.getKeychainValue(key: "postcode") ?? ""
         addresses = SecurityStorageWorker.shared.getKeychainArrayValue(key: "addresses") as? Array<Dictionary<String, String>>
         
-        switch SecurityStorageWorker.shared.getKeychainValue(key: "savedState")! {
-        case SavedState.None.rawValue():
-            savedState = SavedState.None
-        case SavedState.PinCreated.rawValue():
-            savedState = SavedState.PinCreated
-        case SavedState.PhoneVerified.rawValue():
-            savedState = SavedState.PhoneVerified
-        case SavedState.CustomerDetailsEntered.rawValue():
-            savedState = SavedState.CustomerDetailsEntered
-        case SavedState.CardAdded.rawValue():
-            savedState = SavedState.CardAdded
-        default:
+        if let sS = SecurityStorageWorker.shared.getKeychainValue(key: "savedState") {
+            switch sS {
+            case SavedState.None.rawValue():
+                savedState = SavedState.None
+            case SavedState.PinCreated.rawValue():
+                savedState = SavedState.PinCreated
+            case SavedState.PhoneVerified.rawValue():
+                savedState = SavedState.PhoneVerified
+            case SavedState.CustomerDetailsEntered.rawValue():
+                savedState = SavedState.CustomerDetailsEntered
+            case SavedState.CardAdded.rawValue():
+                savedState = SavedState.CardAdded
+            default:
+                savedState = SavedState.None
+            }
+        } else {
             savedState = SavedState.None
         }
     }
@@ -129,8 +142,11 @@ class User: NSObject {
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "customerID")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "name")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "firstName")
+        _ = SecurityStorageWorker.shared.setTokenValue("", key: "middleName")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "lastName")
-        _ = SecurityStorageWorker.shared.setTokenValue("", key: "birthday")
+        _ = SecurityStorageWorker.shared.setTokenValue("", key: "birthDay")
+        _ = SecurityStorageWorker.shared.setTokenValue("", key: "birthMonth")
+        _ = SecurityStorageWorker.shared.setTokenValue("", key: "birthYear")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "address")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "city")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "postcode")

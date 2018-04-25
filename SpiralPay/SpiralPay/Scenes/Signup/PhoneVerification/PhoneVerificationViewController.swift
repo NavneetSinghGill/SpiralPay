@@ -165,6 +165,7 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
             if screenType == .Onboard {
                 User.shared.savedState = .PhoneVerified
                 User.shared.save()
+                //TODO: Correct flow after success?
 //                router?.routeToConfirmDetailsScreen()
                 routeToVixVerify()
             } else {
@@ -286,6 +287,49 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
         }
     }
     
+    func getVerificationResult() {
+        let is_SoapMessage: String = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:cgs=\"http://uat1.vixverify.com/\"><soapenv:Header/><soapenv:Body><cgs:getVerificationResult/></soapenv:Body></soapenv:Envelope>"
+        
+        let is_URL: String = "https://uat1.vixverify.com/Registrations-Registrations/DynamicFormsServiceV3?wsdl"
+        
+        var lobj_Request = URLRequest(url: URL(string: is_URL)!)
+        let session = URLSession.shared
+        
+        lobj_Request.httpMethod = "POST"
+        lobj_Request.httpBody = is_SoapMessage.data(using: .utf8)
+        lobj_Request.addValue("uat1.vixverify.com", forHTTPHeaderField: "Host")
+        lobj_Request.addValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        lobj_Request.addValue(String(is_SoapMessage.count), forHTTPHeaderField: "Content-Length")
+        //lobj_Request.addValue("223", forHTTPHeaderField: "Content-Length")
+        lobj_Request.addValue("", forHTTPHeaderField: "SOAPAction")
+        
+        let task = session.dataTask(with: lobj_Request) { (data, response, error) in
+//            print("Response: \(response)")
+            if let data = data {
+                let strData = String(data: data, encoding: .utf8)
+                print("Body: \(strData ?? "")")
+                
+                if error != nil
+                {
+                    print("Error: " + error!.localizedDescription)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    func saveCustomerDetailsWith(getVerificationResultResponse: GetVerificationResultResponse?) {
+        if let gVRResponse = getVerificationResultResponse {
+            Utils.shared.saveCustomerDetailsWith(getVerificationResultResponse: gVRResponse)
+            
+            //Move to Welcome screen
+            DispatchQueue.main.async {
+                let welcomeScreen: WelcomeViewController = WelcomeViewController.create()
+                self.navigationController?.setViewControllers([welcomeScreen], animated: true)
+            }
+        }
+    }
+    
 }
 
 extension PhoneVerificationViewController: UITextFieldDelegate {
@@ -330,9 +374,27 @@ extension PhoneVerificationViewController: GIDDelegate, GIDLoggerDelegate {
 //            router?.routeToConfirmDetailsScreen()
             
 //            self.navigationController?.popViewController(animated: true)
-            
+            //verificationToken
+            //verificationState - PENDING, IN_PROGRESS
             //Temp  
-            ApplicationDelegate.showHomeTabBarScreen()
+//            ApplicationDelegate.showHomeTabBarScreen()
+
+            let getVerificationResult = GetVerificationResult()
+            getVerificationResult.accountId = Secret.accountID
+            getVerificationResult.password = Secret.password
+            if let payload = payload {
+                if let token = payload["verificationToken"] as? String {
+                    getVerificationResult.verificationToken = token
+                }
+                if let verificationId = payload["verificationId"] as? String {
+                    getVerificationResult.verificationId = verificationId
+                }
+            }
+            DynamicFormsServiceV3().getVerificationResult(getVerificationResult: getVerificationResult, completionHandler: { (getVerificationResultResponse) in
+                self.saveCustomerDetailsWith(getVerificationResultResponse: getVerificationResultResponse)
+            })
+            
+            
         } else if resultCode == .cancelled {
             // User opted out of the process
         } else if resultCode == .back {
@@ -343,7 +405,11 @@ extension PhoneVerificationViewController: GIDDelegate, GIDLoggerDelegate {
             // No Resource Bundle
         }
         
-        self.navigationController!.popViewController(animated: true)
+        if resultCode != .success {
+            self.navigationController!.popViewController(animated: true)
+        } else {
+            
+        }
     }
     
     func sdkDidLogLevel(_ levelString: String!, levelCode level: GIDLogLevel, analyticsCode: GIDAnalyticsCode, source: String!, message: String!) {

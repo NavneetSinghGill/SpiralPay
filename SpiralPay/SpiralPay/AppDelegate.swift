@@ -12,6 +12,7 @@ import Fabric
 import Crashlytics
 import CoreData
 import GIDSDK
+import SwiftKeychainWrapper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if !UserDefaults.standard.bool(forKey: Constants.kHadAppRunBeforeAtleastOnce) {
             User.shared.reset()
             Card.shared.reset()
+            _ = KeychainWrapper.standard.removeAllKeys()
             UserDefaults.standard.set(true, forKey: Constants.kHadAppRunBeforeAtleastOnce)
             UserDefaults.standard.set(UIDevice.current.identifierForVendor?.uuidString, forKey: Constants.deviceIdentifier)
             UserDefaults.standard.synchronize()
@@ -50,22 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             User.shared.address = ""
             User.shared.city = ""
             User.shared.postcode = ""
-            User.shared.save()
-        }
-        
-        if User.shared.name != nil && User.shared.name!.count != 0 {
-            let name = User.shared.name ?? ""
-            if let first = name.components(separatedBy: " ").first {
-                User.shared.firstName = first
-            } else {
-                User.shared.firstName = ""
-            }
-            if name.components(separatedBy: " ").count > 1, let last = name.components(separatedBy: " ").last {
-                User.shared.lastName = last
-            } else {
-                User.shared.lastName = ""
-            }
-            User.shared.name = ""
             User.shared.save()
         }
         

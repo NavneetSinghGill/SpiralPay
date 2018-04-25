@@ -78,6 +78,13 @@ struct Constants {
     
 }
 
+struct Secret {
+    static let accountID = "envision"
+    static let password = "PBf-YHd-sQf-DNg"
+    static let apiCode = "Kh4-ccV-H27-V8A"
+    static let customCssPath = "https://rawgit.com/szarowski/greenid/master/envision.css"
+}
+
 struct Identifiers {
    
     
