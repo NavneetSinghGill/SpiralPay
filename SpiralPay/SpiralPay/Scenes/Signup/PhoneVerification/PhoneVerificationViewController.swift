@@ -39,6 +39,9 @@ protocol PhoneVerificationDisplayLogic: class
     
     func updateMobileAndEmailSuccess(response: PhoneVerification.UpdateMobileAndEmail.Response)
     func updateMobileAndEmailFailure(response: PhoneVerification.UpdateMobileAndEmail.Response)
+    
+    func updateCustomerVerificationDataSuccess(response: PhoneVerification.UpdateCustomerVerificationData.Response)
+    func updateCustomerVerificationDataFailure(response: PhoneVerification.UpdateCustomerVerificationData.Response)
 }
 
 class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificationDisplayLogic
@@ -154,6 +157,27 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
     func updateMobileAndEmailFailure(response: PhoneVerification.UpdateMobileAndEmail.Response) {
         NLoader.stopAnimating()
         router?.routeToFailedVerificationScreen()
+    }
+    
+    //MARK: Update customer verification data
+    
+    func sendCustomerVerificationData(status: String, verificationID: String) {
+        //This can be a silent api
+        
+        var request = PhoneVerification.UpdateCustomerVerificationData.Request()
+        request.status = status
+        request.verificationID = verificationID
+        
+//        NLoader.startAnimating()
+        interactor?.updateCustomerVerificationData(request: request)
+    }
+    
+    func updateCustomerVerificationDataSuccess(response: PhoneVerification.UpdateCustomerVerificationData.Response) {
+//        NLoader.stopAnimating()
+    }
+    
+    func updateCustomerVerificationDataFailure(response: PhoneVerification.UpdateCustomerVerificationData.Response) {
+//        NLoader.stopAnimating()
     }
     
     //MARK:- IBAction methods
@@ -370,14 +394,9 @@ extension PhoneVerificationViewController: GIDDelegate, GIDLoggerDelegate {
             // There is no network connection
         } else if resultCode == .success {
             // Succesfully completed the process
-            //TODO: save data since confirm screen would be removed
-//            router?.routeToConfirmDetailsScreen()
             
-//            self.navigationController?.popViewController(animated: true)
             //verificationToken
             //verificationState - PENDING, IN_PROGRESS
-            //Temp  
-//            ApplicationDelegate.showHomeTabBarScreen()
 
             let getVerificationResult = GetVerificationResult()
             getVerificationResult.accountId = Secret.accountID
@@ -391,6 +410,15 @@ extension PhoneVerificationViewController: GIDDelegate, GIDLoggerDelegate {
                 }
             }
             DynamicFormsServiceV3().getVerificationResult(getVerificationResult: getVerificationResult, completionHandler: { (getVerificationResultResponse) in
+                
+                
+                if let status = getVerificationResultResponse?.return_?.verificationResult?.overallVerificationStatus, let verificationID = getVerificationResultResponse?.return_?.verificationResult?.verificationId, status == VerificationStatus.verified {
+                    
+                    self.sendCustomerVerificationData(status: status, verificationID: verificationID)
+                    
+                } else {
+                    //TODO: Start timer to call getVerificationResult api till its success
+                }
                 self.saveCustomerDetailsWith(getVerificationResultResponse: getVerificationResultResponse)
             })
             

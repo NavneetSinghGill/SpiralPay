@@ -11,6 +11,7 @@ import Alamofire
 
 enum ApiType {
     case Put_UpdateMobileAndEmail
+    case Put_UpdateCustomerVerificationData
     case Post_LockAccount
     case None
 }

@@ -90,6 +90,7 @@ class RealAPI: NSObject {
 //        print(message)
         
         if (request.apiType == .Put_UpdateMobileAndEmail ||
+            request.apiType == .Put_UpdateCustomerVerificationData ||
             request.apiType == .Post_LockAccount) &&
             responseStatus?.statusCode == Constants.ResponseStatusSuccess {
             block(true, response)

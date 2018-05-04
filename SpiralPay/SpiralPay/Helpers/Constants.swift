@@ -20,6 +20,12 @@ let screenWidth = UIScreen.main.bounds.size.width
 
 let isTestEnvironment = true
 
+struct VerificationStatus {
+    static let verified = "VERIFIED"
+    static let inProgress = "IN_PROGRESS"
+    static let pending = "PENDING"
+}
+
 struct Constants {
     
     static let kHadAppRunBeforeAtleastOnce = "hadAppRunBeforeAtleastOnce"

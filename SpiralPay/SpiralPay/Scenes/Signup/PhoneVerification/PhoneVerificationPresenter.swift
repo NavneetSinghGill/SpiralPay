@@ -19,6 +19,10 @@ protocol PhoneVerificationPresentationLogic
     
     func updateMobileAndEmailAPIsuccess(response: PhoneVerification.UpdateMobileAndEmail.Response)
     func updateMobileAndEmailAPIfailure(response: PhoneVerification.UpdateMobileAndEmail.Response)
+    
+    func updateCustomerVerificationDataAPIsuccess(response: PhoneVerification.UpdateCustomerVerificationData.Response)
+    func updateCustomerVerificationDataAPIfailure(response: PhoneVerification.UpdateCustomerVerificationData.Response)
+    
 }
 
 class PhoneVerificationPresenter: PhoneVerificationPresentationLogic
@@ -33,12 +37,24 @@ class PhoneVerificationPresenter: PhoneVerificationPresentationLogic
         viewController?.sendSmsForPhoneVerificationAPIfailure(response: response)
     }
     
+    
+    
     func updateMobileAndEmailAPIsuccess(response: PhoneVerification.UpdateMobileAndEmail.Response) {
         viewController?.updateMobileAndEmailSuccess(response: response)
     }
     
     func updateMobileAndEmailAPIfailure(response: PhoneVerification.UpdateMobileAndEmail.Response) {
         viewController?.updateMobileAndEmailFailure(response: response)
+    }
+    
+    
+    
+    func updateCustomerVerificationDataAPIsuccess(response: PhoneVerification.UpdateCustomerVerificationData.Response) {
+        
+    }
+    
+    func updateCustomerVerificationDataAPIfailure(response: PhoneVerification.UpdateCustomerVerificationData.Response) {
+        
     }
     
 }

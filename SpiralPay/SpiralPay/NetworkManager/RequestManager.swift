@@ -62,6 +62,16 @@ class RequestManager: NSObject {
         }
     }
     
+    func updateCustomerVerificationData(request:BaseRequest, completion:@escaping CompletionHandler){
+        if ApplicationDelegate.isNetworkAvailable{
+            RealAPI().putObject(request:request, genericResponse: PhoneVerification.UpdateCustomerVerificationData.Response.self, completion:completion)
+        }
+        else{
+            completion(false, Constants.kNoNetworkMessage)
+            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
+        }
+    }
+    
     func postLogin(request:BaseRequest, completion:@escaping CompletionHandler){
         if ApplicationDelegate.isNetworkAvailable{
             RealAPI().postObject(request:request, genericResponse: Pin.Login.Response.self, completion:completion)

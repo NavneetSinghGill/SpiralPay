@@ -16,6 +16,7 @@ protocol PhoneVerificationBusinessLogic
 {
     func sendSmsForPhoneVerification(request: PhoneVerification.SmsPhoneVerification.Request)
     func updateMobileAndEmail(request: PhoneVerification.UpdateMobileAndEmail.Request)
+    func updateCustomerVerificationData(request: PhoneVerification.UpdateCustomerVerificationData.Request)
 }
 
 protocol PhoneVerificationDataStore
@@ -46,4 +47,14 @@ class PhoneVerificationInteractor: PhoneVerificationBusinessLogic, PhoneVerifica
             self.presenter?.updateMobileAndEmailAPIfailure(response: response)
         })
     }
+    
+    func updateCustomerVerificationData(request: PhoneVerification.UpdateCustomerVerificationData.Request) {
+        worker = PhoneVerificationWorker()
+        worker?.updateCustomerVerificationData(request: request, successCompletionHandler: { (response) in
+            self.presenter?.updateCustomerVerificationDataAPIsuccess(response: response)
+        }, failureCompletionHandler: { (response) in
+            self.presenter?.updateCustomerVerificationDataAPIfailure(response: response)
+        })
+    }
+    
 }

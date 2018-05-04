@@ -14,6 +14,7 @@ import UIKit
 
 typealias smsPhoneVerificationResponseHandler = (_ response:PhoneVerification.SmsPhoneVerification.Response) ->()
 typealias updateMobileAndEmailResponseHandler = (_ response:PhoneVerification.UpdateMobileAndEmail.Response) ->()
+typealias updateCustomerVerificationDataResponseHandler = (_ response:PhoneVerification.UpdateCustomerVerificationData.Response) ->()
 
 class PhoneVerificationWorker
 {
@@ -29,6 +30,13 @@ class PhoneVerificationWorker
     {
         RequestManager().updateMobileAndEmail(request: request.baseRequest()) { (status, response) in
             self.handleUpdateMobileAndEmailResponse(success: successCompletionHandler, fail: failureCompletionHandler, status: status, response: response)
+        }
+        
+    }
+    func updateCustomerVerificationData(request: PhoneVerification.UpdateCustomerVerificationData.Request, successCompletionHandler: @escaping updateCustomerVerificationDataResponseHandler, failureCompletionHandler: @escaping updateCustomerVerificationDataResponseHandler)
+    {
+        RequestManager().updateCustomerVerificationData(request: request.baseRequest()) { (status, response) in
+            self.updateCustomerVerificationDataResponse(success: successCompletionHandler, fail: failureCompletionHandler, status: status, response: response)
         }
         
     }
@@ -51,6 +59,15 @@ class PhoneVerificationWorker
             return
         }
         fail(PhoneVerification.UpdateMobileAndEmail.Response(message:message)!)
+    }
+    
+    public func updateCustomerVerificationDataResponse(success:@escaping(updateCustomerVerificationDataResponseHandler), fail:@escaping(updateCustomerVerificationDataResponseHandler), status: Bool, response: Any?) {
+        let message:String = Constants.kErrorMessage
+        if status {
+            success(PhoneVerification.UpdateCustomerVerificationData.Response(message: "Verification status updated")!)
+            return
+        }
+        fail(PhoneVerification.UpdateCustomerVerificationData.Response(message:message)!)
     }
     
 }

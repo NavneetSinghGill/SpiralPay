@@ -16,10 +16,18 @@ import ObjectMapper
 let sendSmsURLPrefix = "/v1/wallet/customers/"
 let sendSmsURLSuffix = "/verify_number"
 let updateMobileAndEmailUrlPrefix = "/v1/wallet/customers/"
+let updateCustomerVerificationDataURLPrefix = "/v1/wallet/customers/"
+let updateCustomerVerificationDataURLSuffix = "/verification_data"
 
 var sendSmsURL: String {
     get {
         return "\(sendSmsURLPrefix)\(User.shared.customerID ?? "")\(sendSmsURLSuffix)"
+    }
+}
+
+var updateCustomerVerificationDataURL: String {
+    get {
+        return "\(updateCustomerVerificationDataURLPrefix)\(User.shared.customerID ?? "")\(updateCustomerVerificationDataURLSuffix)"
     }
 }
 
@@ -118,6 +126,53 @@ enum PhoneVerification
                 message <- map[SerializationKeys.message]
             }
             
+            public func dictionaryRepresentation() -> [String: Any] {
+                var dictionary: [String: Any] = [:]
+                if let value = message { dictionary[SerializationKeys.message] = value }
+                return dictionary
+            }
+            
+        }
+    }
+    
+    enum UpdateCustomerVerificationData
+    {
+        struct Request
+        {
+            var status: String?
+            var verificationID: String?
+            
+            func baseRequest() -> BaseRequest {
+                let baseRequest = BaseRequest()
+                baseRequest.urlPath = updateCustomerVerificationDataURL
+                baseRequest.parameters["status"] = status ?? ""
+                baseRequest.parameters["verification_id"] = verificationID ?? ""
+                
+                baseRequest.apiType = .Put_UpdateCustomerVerificationData
+                return baseRequest
+            }
+        }
+        struct Response: Mappable
+        {
+            
+            private struct SerializationKeys {
+                static let message = "message"
+            }
+            
+            // MARK: Properties
+            public var message: String?
+
+            public init?(map: Map){
+                
+            }
+            public init?(message: String){
+                self.message = message
+            }
+
+            public mutating func mapping(map: Map) {
+                message <- map[SerializationKeys.message]
+            }
+
             public func dictionaryRepresentation() -> [String: Any] {
                 var dictionary: [String: Any] = [:]
                 if let value = message { dictionary[SerializationKeys.message] = value }
