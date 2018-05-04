@@ -59,7 +59,7 @@ class AddCardManuallyViewController: SpiralPayViewController {
     
     @IBAction func confirmButtonTapped() {
         if appFlowType == .Onboard {
-            Card.shared.number = cardNumberTextField.text
+            Card.shared.number = cardNumberTextField.text?.replacingOccurrences(of: " ", with: "")
             Card.shared.expiry = expiryTextField.text
             Card.shared.cvv = cvvTextField.text
             
@@ -181,7 +181,7 @@ extension AddCardManuallyViewController: UITextFieldDelegate {
             }
         }
         
-        if (textField == cardNumberTextField && updatedText.replacingOccurrences(of: " ", with: "").count >= 17) ||
+        if (textField == cardNumberTextField && updatedText.replacingOccurrences(of: " ", with: "").count >= 20) ||
             (textField == cvvTextField && updatedText.replacingOccurrences(of: " ", with: "").count >= 5) {
             return false
         }

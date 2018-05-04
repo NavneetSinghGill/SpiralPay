@@ -181,8 +181,10 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         request.userAgent = ""
         request.type = "card"
         request.email = User.shared.email
-        request.cvv = Card.shared.cvv
-        request.number = Card.shared.number
+        
+        let defaultCard = Card.shared.defaultCard()
+        request.cvv = defaultCard[Card.cvv]
+        request.number = (defaultCard[Card.number] ?? "").replacingOccurrences(of: " ", with: "")
         request.name = ".."
         
         let defaultAddress = User.shared.defaultAddress()
@@ -190,13 +192,22 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         request.line2 = ""
         request.city = defaultAddress[User.city]
         request.postcode = defaultAddress[User.postcode]
-        request.country = Utils.shared.getCountryCodeFor(country: defaultAddress[User.country] ?? "")
+        
+        //Check if able to find Country alpha code.
+        //If it returns nil then pass the same string as it is
+        let code = Utils.shared.getCountryCodeFor(country: defaultAddress[User.country] ?? "")
+        if code != nil && code?.count == 0 {
+            request.country = code
+        } else {
+            request.country = defaultAddress[User.country]
+        }
         
         request.state = ""
         
-        if let range = Card.shared.expiry?.range(of: "/") {
-            request.expiryMonth = Int(Card.shared.expiry![Card.shared.expiry!.startIndex..<range.lowerBound])
-            request.expiryYear = Int(Card.shared.expiry![range.upperBound..<Card.shared.expiry!.endIndex])
+        let expiry = defaultCard[Card.expiry] ?? ""
+        if let range = expiry.range(of: "/") {
+            request.expiryMonth = Int(expiry[expiry.startIndex..<range.lowerBound])
+            request.expiryYear = Int(expiry[range.upperBound..<expiry.endIndex])
         } else {
             return
         }
@@ -325,6 +336,11 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
             paymentDetail.currency = campaignDetail.currency
             paymentDetail.merchantName = campaignDetail.name
         } else if detailsType == DetailsType.Multiple {
+            if paymentDetail == nil {
+                //This condition satisfies for:
+                //1. Failed to get Card token
+                paymentDetail = Home.PaymentDetail.Response()
+            }
             paymentDetail.amount = createdPayments![indexOfPaymentInProgress].amount
             paymentDetail.currency = createdPayments![indexOfPaymentInProgress].currency
             //TODO:
@@ -433,16 +449,18 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         reloadTableViewData()
         
         setAddressToLabel()
-        if let cardNumber = Card.shared.number {
+        let defaultCardDict = Card.shared.defaultCard()
+        if let cardNumber = defaultCardDict[Card.number] {
             last4CardDigitsLabel.text = String(cardNumber[cardNumber.index(cardNumber.endIndex, offsetBy: -4)..<cardNumber.endIndex])
         } else {
             last4CardDigitsLabel.text = "----"
         }
         
-        if Utils.shared.isVisa(text: Card.shared.number ?? "") {
+        let number = Card.shared.defaultCard()[Card.number] ?? ""
+        if Utils.shared.isVisa(text: number) {
             visaImageView.isHidden = false
             masterCardImageView.isHidden = true
-        } else if Utils.shared.isMasterCard(text: Card.shared.number ?? "") {
+        } else if Utils.shared.isMasterCard(text: number) {
             visaImageView.isHidden = true
             masterCardImageView.isHidden = false
         } else {
