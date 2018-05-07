@@ -21,6 +21,9 @@ class Utils: NSObject {
     var accessTokenExpiryTimer: Timer?
     var accessTokenExpiryTime: TimeInterval = 13*60
     
+    var getVerificationResultTimer: Timer?
+    var getVerificationResultTime: TimeInterval = 10*60
+    
     let imageCache = NSCache<NSString, AnyObject>()
     
     var productionURL: String {
@@ -40,6 +43,34 @@ class Utils: NSObject {
     
     func stopAccessTokenExpiryTimer() {
         accessTokenExpiryTimer?.invalidate()
+    }
+    
+    func startGetVerificationResultTimer() {
+        getVerificationResultTimer?.invalidate()
+        
+        if VixVerify.shared.verificationStatus != VerificationStatus.verified &&
+            (User.shared.savedState == .CustomerDetailsEntered || User.shared.savedState == .CardAdded) {
+            
+            getVerificationResultTimer = Timer.scheduledTimer(withTimeInterval: getVerificationResultTime, repeats: true, block: { (timer) in
+                
+                let getVerificationResult = GetVerificationResult()
+                getVerificationResult.accountId = Secret.accountID
+                getVerificationResult.password = Secret.password
+                
+                if let token = VixVerify.shared.verificationToken, let vID = VixVerify.shared.verificationID, token.count != 0, vID.count != 0 {
+                    getVerificationResult.verificationToken = token
+                    getVerificationResult.verificationId = vID
+                    
+                    Utils.shared.getVerificationResult(getVerificationResult: getVerificationResult)
+                }
+                
+            })
+        }
+    }
+    
+    func stopGetVerificationResultTimer() {
+        getVerificationResultTimer?.invalidate()
+        getVerificationResultTimer = nil
     }
     
     func getFormattedAmountStringWith(currency: String?, amount: CGFloat?) -> String! {
@@ -159,6 +190,48 @@ class Utils: NSObject {
         logManager.logger = delegate as? GIDLoggerDelegate
         
         return main
+    }
+    
+    func getVerificationResult(getVerificationResult: GetVerificationResult, completionBlock: @escaping (GetVerificationResultResponse?) -> (Void) = {_ in}) {
+        
+        DynamicFormsServiceV3().getVerificationResult(getVerificationResult: getVerificationResult, completionHandler: { (getVerificationResultResponse) in
+            
+            let status = getVerificationResultResponse?.return_?.verificationResult?.overallVerificationStatus
+            let verificationID = getVerificationResultResponse?.return_?.verificationResult?.verificationId
+            let verificationToken = getVerificationResultResponse?.return_?.verificationToken
+            
+            //Save some data
+            VixVerify.shared.verificationStatus = status
+            VixVerify.shared.verificationID = verificationID
+            VixVerify.shared.verificationToken = verificationToken
+            VixVerify.shared.save()
+            
+            self.stopGetVerificationResultTimer()
+            if status == VerificationStatus.verified {
+                //Verification succeded
+                
+            } else {
+                self.startGetVerificationResultTimer()
+            }
+            
+            completionBlock(getVerificationResultResponse)
+            
+            
+            if let status = status, let verificationID = verificationID {
+                //Send status to own sv
+                var request = PhoneVerification.UpdateCustomerVerificationData.Request()
+                request.status = status
+                request.verificationID = verificationID
+                
+                PhoneVerificationWorker().updateCustomerVerificationData(request: request, successCompletionHandler: { (response) in
+                    
+                }, failureCompletionHandler: { (response) in
+                    
+                })
+            }
+            
+        })
+        
     }
     
     func saveCustomerDetailsWith(getVerificationResultResponse: GetVerificationResultResponse) {

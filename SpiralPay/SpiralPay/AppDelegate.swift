@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if !UserDefaults.standard.bool(forKey: Constants.kHadAppRunBeforeAtleastOnce) {
             User.shared.reset()
             Card.shared.reset()
+            VixVerify.shared.reset()
             _ = KeychainWrapper.standard.removeAllKeys()
             UserDefaults.standard.set(true, forKey: Constants.kHadAppRunBeforeAtleastOnce)
             UserDefaults.standard.set(UIDevice.current.identifierForVendor?.uuidString, forKey: Constants.deviceIdentifier)
@@ -42,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         User.shared.restore()
         Card.shared.restore()
+        VixVerify.shared.restore()
         
         if User.shared.address == nil || User.shared.address!.count == 0 {
             //address is empty means that everything is already in array of dictionary
@@ -82,6 +84,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        
+        Utils.shared.stopGetVerificationResultTimer()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -104,6 +108,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             didOpenFromDidEnterForeground = false
             showLoginScreenIfShould()
         }
+        
+        Utils.shared.startGetVerificationResultTimer()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

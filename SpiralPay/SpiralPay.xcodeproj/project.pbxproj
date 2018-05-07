@@ -163,6 +163,7 @@
 		1894350720248D76000C2166 /* SpiralPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1894350620248D76000C2166 /* SpiralPayViewController.swift */; };
 		1894350920248DA7000C2166 /* ProgressBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1894350820248DA7000C2166 /* ProgressBarViewController.swift */; };
 		189F22F52035A5D600971AFD /* AddCardManuallyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F22F42035A5D600971AFD /* AddCardManuallyViewController.swift */; };
+		18A8BCF420A03A950099433B /* VixVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8BCF320A03A950099433B /* VixVerify.swift */; };
 		18A982F7205665A700BDC4AD /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A982F1205665A700BDC4AD /* ProductDetailsViewController.swift */; };
 		18B4B61F209AFCF40017D777 /* XMLMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B4B620209AFCF40017D777 /* XMLMapper.framework */; };
 		18D2D1C820480CE700E1B988 /* PaymentHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D2D1C620480CE700E1B988 /* PaymentHistoryTableViewCell.swift */; };
@@ -431,6 +432,7 @@
 		1894350620248D76000C2166 /* SpiralPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralPayViewController.swift; sourceTree = "<group>"; };
 		1894350820248DA7000C2166 /* ProgressBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarViewController.swift; sourceTree = "<group>"; };
 		189F22F42035A5D600971AFD /* AddCardManuallyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardManuallyViewController.swift; sourceTree = "<group>"; };
+		18A8BCF320A03A950099433B /* VixVerify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VixVerify.swift; sourceTree = "<group>"; };
 		18A982F1205665A700BDC4AD /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		18B4B620209AFCF40017D777 /* XMLMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = XMLMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D2D1C620480CE700E1B988 /* PaymentHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -970,6 +972,7 @@
 				F1D9BAC6201856D1004B42B7 /* CommonResponse.swift */,
 				185C60AB20244835009D23BE /* User.swift */,
 				18D914EA2036B491008FFB60 /* Card.swift */,
+				18A8BCF320A03A950099433B /* VixVerify.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1331,6 +1334,7 @@
 			files = (
 				1828563420998BF400B1388B /* address.swift in Sources */,
 				1828562F20998BF400B1388B /* registerVerification.swift in Sources */,
+				18A8BCF420A03A950099433B /* VixVerify.swift in Sources */,
 				1828564720998BF400B1388B /* setFieldsResponse.swift in Sources */,
 				F1D9BA51201852E8004B42B7 /* AppDelegate.swift in Sources */,
 				1870C49E206CD58200B7E4C3 /* PersonalDetailsViewController.swift in Sources */,

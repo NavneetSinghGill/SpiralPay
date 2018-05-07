@@ -409,16 +409,9 @@ extension PhoneVerificationViewController: GIDDelegate, GIDLoggerDelegate {
                     getVerificationResult.verificationId = verificationId
                 }
             }
-            DynamicFormsServiceV3().getVerificationResult(getVerificationResult: getVerificationResult, completionHandler: { (getVerificationResultResponse) in
+            
+            Utils.shared.getVerificationResult(getVerificationResult: getVerificationResult, completionBlock: { (getVerificationResultResponse) -> (Void) in
                 
-                
-                if let status = getVerificationResultResponse?.return_?.verificationResult?.overallVerificationStatus, let verificationID = getVerificationResultResponse?.return_?.verificationResult?.verificationId, status == VerificationStatus.verified {
-                    
-                    self.sendCustomerVerificationData(status: status, verificationID: verificationID)
-                    
-                } else {
-                    //TODO: Start timer to call getVerificationResult api till its success
-                }
                 self.saveCustomerDetailsWith(getVerificationResultResponse: getVerificationResultResponse)
             })
             
