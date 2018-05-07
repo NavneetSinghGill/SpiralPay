@@ -109,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             showLoginScreenIfShould()
         }
         
-        Utils.shared.startGetVerificationResultTimer()
+        Utils.shared.startGetVerificationResultTimer(shouldCallApiAtStartOnce: true)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

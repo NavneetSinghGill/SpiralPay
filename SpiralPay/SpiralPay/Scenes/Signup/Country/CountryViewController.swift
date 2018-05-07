@@ -13,7 +13,7 @@
 import UIKit
 
 protocol CountrySelectionDelegate {
-    func performActionWith(countryName: String, countryCode: String)
+    func performActionWith(countryName: String, countryPhoneCode: String)
 }
 
 protocol CountryDisplayLogic: class
@@ -106,7 +106,7 @@ class CountryViewController: SpiralPayViewController, CountryDisplayLogic
     let countryCellTickButtonTag = 13
     let countryCellBorderViewTag = 14
     let noResultsLabelTag = 15
-    let countriesAndCodes : Dictionary<String,String> = [
+    let countriesAndPhoneCodes : Dictionary<String,String> = [
 //        "Abkhazia (7 840)":"7 840",
 //        "Abkhazia (7 940)":"7 940",
         "Afghanistan":"93",
@@ -361,7 +361,7 @@ class CountryViewController: SpiralPayViewController, CountryDisplayLogic
     var selectedCellIndex = -1
     var selectedCountryName = ""
     var defaultCountryName: String?
-    var defaultCountryCode: String?
+    var defaultCountryPhoneCode: String?
     var sortedCountries: Array<String> = []
     var filteredCountries: Array<String> = []
     var saveBarButton: UIBarButtonItem!
@@ -393,13 +393,13 @@ class CountryViewController: SpiralPayViewController, CountryDisplayLogic
         addKeyboardObservers()
         configureSearchTextField()
         
-        sortedCountries = Array(countriesAndCodes.keys).sorted()
+        sortedCountries = Array(countriesAndPhoneCodes.keys).sorted()
         filteredCountries = sortedCountries
         
         //Check if country is present by checking if image is there of same name
         if defaultCountryName != nil {
             if UIImage(named: defaultCountryName!) == nil {
-                defaultCountryName = "\(defaultCountryName!) (\(defaultCountryCode!))"
+                defaultCountryName = "\(defaultCountryName!) (\(defaultCountryPhoneCode!))"
             }
         }
         
@@ -462,7 +462,7 @@ class CountryViewController: SpiralPayViewController, CountryDisplayLogic
         selectedCellIndex = -1
         
         filteredCountries = sortedCountries.filter({ (key) -> Bool in
-            return key.lowercased().range(of: text.lowercased()) != nil || countriesAndCodes[key]?.lowercased().range(of: text.lowercased()) != nil
+            return key.lowercased().range(of: text.lowercased()) != nil || countriesAndPhoneCodes[key]?.lowercased().range(of: text.lowercased()) != nil
         })
         if text == "" {
             filteredCountries = sortedCountries

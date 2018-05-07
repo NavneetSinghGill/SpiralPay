@@ -94,7 +94,7 @@ class PhoneAndEmailViewController: ProgressBarViewController, PhoneAndEmailDispl
     @IBOutlet weak var nextButton: SpiralPayButton!
     
     var countryName: String?
-    var countryCode: String?
+    var countryPhoneCode: String?
     
     var screenType = AppFlowType.Onboard
   
@@ -114,13 +114,13 @@ class PhoneAndEmailViewController: ProgressBarViewController, PhoneAndEmailDispl
     @IBAction func nextButtonTapped(button: UIButton) {
         if screenType == .Onboard {
             User.shared.countryName = countryName
-            User.shared.countryCode = countryCode
+            User.shared.countryPhoneCode = countryPhoneCode
             User.shared.phone = mobileNumberTextField.text
             User.shared.email = emailAddressTextField.text
             router?.routeToCreatePin()
         } else {
             User.shared.countryName = countryName
-            User.shared.countryCode = countryCode
+            User.shared.countryPhoneCode = countryPhoneCode
             User.shared.phone = mobileNumberTextField.text
             
             let phoneVerificationViewController: PhoneVerificationViewController = PhoneVerificationViewController.create()
@@ -149,13 +149,13 @@ class PhoneAndEmailViewController: ProgressBarViewController, PhoneAndEmailDispl
         countryCodeTextField.rightViewMode = .always
         
         countryName = "United Kingdom"
-        countryCode = "44"
+        countryPhoneCode = "44"
         if screenType == .Setting {
             countryName = User.shared.countryName
-            countryCode = User.shared.countryCode
+            countryPhoneCode = User.shared.countryPhoneCode
             
-            if let countryCode = countryCode {
-                countryCodeLabel.text = "+\(countryCode)"
+            if let countryPhoneCode = countryPhoneCode {
+                countryCodeLabel.text = "+\(countryPhoneCode)"
             }
             mobileNumberTextField.text = User.shared.phone
         }
@@ -216,11 +216,11 @@ extension PhoneAndEmailViewController: UITextFieldDelegate {
 
 extension PhoneAndEmailViewController: CountrySelectionDelegate {
     
-    func performActionWith(countryName: String, countryCode: String) {
+    func performActionWith(countryName: String, countryPhoneCode: String) {
         self.countryName = countryName
-        self.countryCode = countryCode
+        self.countryPhoneCode = countryPhoneCode
         
-        countryCodeLabel.text = "+\(countryCode)"
+        countryCodeLabel.text = "+\(countryPhoneCode)"
     }
     
 }

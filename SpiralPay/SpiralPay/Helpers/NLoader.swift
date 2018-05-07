@@ -67,11 +67,15 @@ class NLoader {
     }
     
     public final class func startAnimating() {
-        NLoader.shared.startNLoader()
+        DispatchQueue.main.async {
+            NLoader.shared.startNLoader()
+        }
     }
     
     public final class func stopAnimating() {
-        NLoader.shared.stopNLoader()
+        DispatchQueue.main.async {
+            NLoader.shared.stopNLoader()
+        }
     }
     
 }

@@ -45,24 +45,32 @@ class Utils: NSObject {
         accessTokenExpiryTimer?.invalidate()
     }
     
-    func startGetVerificationResultTimer() {
+    func startGetVerificationResultTimer(shouldCallApiAtStartOnce: Bool) {
         getVerificationResultTimer?.invalidate()
+        
+        let apiCode = {
+            let getVerificationResult = GetVerificationResult()
+            getVerificationResult.accountId = Secret.accountID
+            getVerificationResult.password = Secret.password
+            
+            if let token = VixVerify.shared.verificationToken, let vID = VixVerify.shared.verificationID, token.count != 0, vID.count != 0 {
+//                getVerificationResult.verificationToken = token
+                getVerificationResult.verificationId = vID
+                
+                Utils.shared.getVerificationResult(getVerificationResult: getVerificationResult)
+            }
+        }
+        
+        if shouldCallApiAtStartOnce {
+            apiCode()
+        }
         
         if VixVerify.shared.verificationStatus != VerificationStatus.verified &&
             (User.shared.savedState == .CustomerDetailsEntered || User.shared.savedState == .CardAdded) {
             
             getVerificationResultTimer = Timer.scheduledTimer(withTimeInterval: getVerificationResultTime, repeats: true, block: { (timer) in
                 
-                let getVerificationResult = GetVerificationResult()
-                getVerificationResult.accountId = Secret.accountID
-                getVerificationResult.password = Secret.password
-                
-                if let token = VixVerify.shared.verificationToken, let vID = VixVerify.shared.verificationID, token.count != 0, vID.count != 0 {
-                    getVerificationResult.verificationToken = token
-                    getVerificationResult.verificationId = vID
-                    
-                    Utils.shared.getVerificationResult(getVerificationResult: getVerificationResult)
-                }
+                apiCode()
                 
             })
         }
@@ -211,7 +219,7 @@ class Utils: NSObject {
                 //Verification succeded
                 
             } else {
-                self.startGetVerificationResultTimer()
+                self.startGetVerificationResultTimer(shouldCallApiAtStartOnce: false)
             }
             
             completionBlock(getVerificationResultResponse)
@@ -223,11 +231,13 @@ class Utils: NSObject {
                 request.status = status
                 request.verificationID = verificationID
                 
-                PhoneVerificationWorker().updateCustomerVerificationData(request: request, successCompletionHandler: { (response) in
-                    
-                }, failureCompletionHandler: { (response) in
-                    
-                })
+                DispatchQueue.main.async {
+                    PhoneVerificationWorker().updateCustomerVerificationData(request: request, successCompletionHandler: { (response) in
+                        
+                    }, failureCompletionHandler: { (response) in
+                        
+                    })
+                }
             }
             
         })
@@ -252,7 +262,16 @@ class Utils: NSObject {
         User.shared.postcode = getVerificationResultResponse.return_?.registrationDetails?.currentResidentialAddress?.postcode ?? ""
         
         //TODO: Check if this line is needed
-        User.shared.countryName = "\(getVerificationResultResponse.return_?.registrationDetails?.currentResidentialAddress?.country ?? "")"
+        //Get country name from country alpha3 code of vix
+        let phoneCountry = User.shared.countryName
+        let vixGeneratedCountryAlpha3Code = getVerificationResultResponse.return_?.registrationDetails?.currentResidentialAddress?.country ?? ""
+        let countriesAndAlpha3Codes = getCountryToCodeDict()
+        let indexOfCountryInOurList = Array(countriesAndAlpha3Codes.values).index(of: vixGeneratedCountryAlpha3Code)
+        if indexOfCountryInOurList != nil {
+            User.shared.countryName = Array(countriesAndAlpha3Codes.keys)[indexOfCountryInOurList ?? 0]
+        } else {
+            User.shared.countryName = vixGeneratedCountryAlpha3Code
+        }
         
         let dict = User.shared.getCurrentAddressDict()
         User.shared.addresses = [dict]
@@ -261,13 +280,15 @@ class Utils: NSObject {
         User.shared.city = ""
         User.shared.postcode = ""
         
+        User.shared.countryName = phoneCountry
+        
         User.shared.save()
     }
     
     //MARK: - Validation Methods
     public class func isValid(email:String) -> Bool {
         
-        let emailRegEx = "[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}"
+        let emailRegEx = "[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}"                        
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: email)
     }
@@ -566,7 +587,11 @@ class Utils: NSObject {
     }
     
     func getCountryCodeFor(country: String) -> String? {
-        
+        let dict = getCountryToCodeDict()
+        return dict[country]
+    }
+    
+    func getCountryToCodeDict() -> Dictionary<String,String> {
         let dict = ["Afghanistan": "AFG",
                     "Aland Islands": "ALA",
                     "Albania": "ALB",
@@ -805,7 +830,7 @@ class Utils: NSObject {
                     "Uganda": "UGA",
                     "Ukraine": "UKR",
                     "United Arab Emirates": "ARE",
-                    "United Kingdom": "GBR",
+                    "United Kingdom": "GB",
                     "United States": "USA",
                     "US Minor Outlying Islands": "UMI",
                     "Uruguay": "URY",
@@ -821,6 +846,6 @@ class Utils: NSObject {
                     "Zambia": "ZMB",
                     "Zimbabwe": "ZWE"]
         
-        return dict[country]
+        return dict
     }
 }

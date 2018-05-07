@@ -410,8 +410,9 @@ extension PhoneVerificationViewController: GIDDelegate, GIDLoggerDelegate {
                 }
             }
             
+            NLoader.startAnimating()
             Utils.shared.getVerificationResult(getVerificationResult: getVerificationResult, completionBlock: { (getVerificationResultResponse) -> (Void) in
-                
+                NLoader.stopAnimating()
                 self.saveCustomerDetailsWith(getVerificationResultResponse: getVerificationResultResponse)
             })
             

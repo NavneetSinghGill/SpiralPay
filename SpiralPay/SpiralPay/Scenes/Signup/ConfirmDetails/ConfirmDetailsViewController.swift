@@ -113,7 +113,7 @@ class ConfirmDetailsViewController: ProgressBarViewController, ConfirmDetailsDis
         let countryViewController: CountryViewController = self.storyboard?.instantiateViewController(withIdentifier: "CountryViewController") as! CountryViewController
         countryViewController.countrySelectionDelegate = self
         countryViewController.defaultCountryName = User.shared.countryName
-        countryViewController.defaultCountryCode = User.shared.countryCode
+        countryViewController.defaultCountryPhoneCode = User.shared.countryPhoneCode
         
         self.navigationController?.pushViewController(countryViewController, animated: true)
     }
@@ -170,7 +170,7 @@ class ConfirmDetailsViewController: ProgressBarViewController, ConfirmDetailsDis
         
         countryTextField.text = User.shared.countryName
         emailAddressTextField.text = User.shared.email
-        countryCodeTextField.text = "+\(User.shared.countryCode ?? "")"
+        countryCodeTextField.text = "+\(User.shared.countryPhoneCode ?? "")"
         phoneTextField.text = User.shared.phone
     }
     
@@ -253,9 +253,9 @@ extension ConfirmDetailsViewController: DateAndTimeDelegate {
 
 extension ConfirmDetailsViewController: CountrySelectionDelegate {
     
-    func performActionWith(countryName: String, countryCode: String) {
+    func performActionWith(countryName: String, countryPhoneCode: String) {
         User.shared.countryName = countryName
-        User.shared.countryCode = countryCode
+        User.shared.countryPhoneCode = countryPhoneCode
         
         countryTextField.text = countryName
     }

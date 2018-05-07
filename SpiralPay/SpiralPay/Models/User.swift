@@ -39,13 +39,13 @@ class User: NSObject {
     static let city = "city"
     static let postcode = "postcode"
     static let country = "country"
-    static let countryCode = "countryCode"
+    static let countryPhoneCode = "countryPhoneCode"
     static let isDefault = "isDefault"
     
     var phone: String?
     var email: String?
     var countryName: String?
-    var countryCode: String?
+    var countryPhoneCode: String?
     var accessToken: String?
     var customerID: String?
     var name: String?
@@ -63,7 +63,7 @@ class User: NSObject {
 
     var phoneWithCode: String? {
         get {
-            return "+\(self.countryCode ?? "")\(self.phone ?? "")".replacingOccurrences(of: " ", with: "")
+            return "+\(self.countryPhoneCode ?? "")\(self.phone ?? "")".replacingOccurrences(of: " ", with: "")
         }
     }
     
@@ -76,7 +76,7 @@ class User: NSObject {
         _ = SecurityStorageWorker.shared.setTokenValue(phone ?? "", key: "phone")
         _ = SecurityStorageWorker.shared.setTokenValue(email ?? "", key: "email")
         _ = SecurityStorageWorker.shared.setTokenValue(countryName ?? "", key: "countryName")
-        _ = SecurityStorageWorker.shared.setTokenValue(countryCode ?? "", key: "countryCode")
+        _ = SecurityStorageWorker.shared.setTokenValue(countryPhoneCode ?? "", key: "countryPhoneCode")
         _ = SecurityStorageWorker.shared.setTokenValue(accessToken ?? "", key: "accessToken")
         _ = SecurityStorageWorker.shared.setTokenValue(customerID ?? "", key: "customerID")
         _ = SecurityStorageWorker.shared.setTokenValue(name ?? "", key: "name")
@@ -98,7 +98,7 @@ class User: NSObject {
         phone = SecurityStorageWorker.shared.getKeychainValue(key: "phone") ?? ""
         email = SecurityStorageWorker.shared.getKeychainValue(key: "email") ?? ""
         countryName = SecurityStorageWorker.shared.getKeychainValue(key: "countryName") ?? ""
-        countryCode = SecurityStorageWorker.shared.getKeychainValue(key: "countryCode") ?? ""
+        countryPhoneCode = SecurityStorageWorker.shared.getKeychainValue(key: "countryPhoneCode") ?? ""
         accessToken = SecurityStorageWorker.shared.getKeychainValue(key: "accessToken") ?? ""
         customerID = SecurityStorageWorker.shared.getKeychainValue(key: "customerID") ?? ""
         name = SecurityStorageWorker.shared.getKeychainValue(key: "name") ?? ""
@@ -137,7 +137,7 @@ class User: NSObject {
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "phone")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "email")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "countryName")
-        _ = SecurityStorageWorker.shared.setTokenValue("", key: "countryCode")
+        _ = SecurityStorageWorker.shared.setTokenValue("", key: "countryPhoneCode")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "accessToken")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "customerID")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "name")
@@ -160,7 +160,7 @@ class User: NSObject {
         dict[User.city] = User.shared.city ?? ""
         dict[User.postcode] = User.shared.postcode ?? ""
         dict[User.country] = User.shared.countryName ?? ""
-        dict[User.countryCode] = User.shared.countryCode ?? ""
+        dict[User.countryPhoneCode] = User.shared.countryPhoneCode ?? ""
         dict[User.isDefault] = "true"
         
         return dict
@@ -175,7 +175,7 @@ class User: NSObject {
                     dict[User.city] = address[User.city] ?? ""
                     dict[User.postcode] = address[User.postcode] ?? ""
                     dict[User.country] = address[User.country] ?? ""
-                    dict[User.countryCode] = address[User.countryCode] ?? ""
+                    dict[User.countryPhoneCode] = address[User.countryPhoneCode] ?? ""
                     
                     return dict
                 }
@@ -186,7 +186,7 @@ class User: NSObject {
             dict[User.city] = addresses.first![User.city] ?? ""
             dict[User.postcode] = addresses.first![User.postcode] ?? ""
             dict[User.country] = addresses.first![User.country] ?? ""
-            dict[User.countryCode] = addresses.first![User.countryCode] ?? ""
+            dict[User.countryPhoneCode] = addresses.first![User.countryPhoneCode] ?? ""
             
             return dict
         }
