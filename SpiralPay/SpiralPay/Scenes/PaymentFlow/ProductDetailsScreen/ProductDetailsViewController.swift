@@ -195,8 +195,8 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         
         //Check if able to find Country alpha code.
         //If it returns nil then pass the same string as it is
-        let code = Utils.shared.getCountryCodeFor(country: defaultAddress[User.country] ?? "")
-        if code != nil && code?.count == 0 {
+        let code = Utils.shared.getCountryCodeFor(country: defaultAddress[User.country] ?? "") ?? ""
+        if code.count != 0 {
             request.country = code
         } else {
             request.country = defaultAddress[User.country]
@@ -266,12 +266,17 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
             if response.status == "PAY_COMPLETED" {
                 if detailsType != DetailsType.Multiple {
                     showPaymentSuccessScreenWith(paymentDetail: response)
+                    
+                    User.shared.addLoyaltyPoints(value: Float(response.amount ?? 0)/100)
                 } else if detailsType == DetailsType.Multiple && createdPayments!.count == indexOfPaymentInProgress + 1 {
+                    User.shared.addLoyaltyPoints(value: Float(createdPayments![indexOfPaymentInProgress].amount ?? 0)/100)
+                    
                     //TODO: Here success is shown of last payment only.. wait for designs
                     showPaymentSuccessScreenWith(paymentDetail: response)
-                    
                     Utils.shared.deleteCombinedItemsWith(merchantID: createdPayments![indexOfPaymentInProgress].merchantID)
                 } else {
+                    User.shared.addLoyaltyPoints(value: Float(createdPayments![indexOfPaymentInProgress].amount ?? 0)/100)
+                    
                     Utils.shared.deleteCombinedItemsWith(merchantID: createdPayments![indexOfPaymentInProgress].merchantID)
                     doNextPaymentInCaseOfMultipleMerchants()
                 }

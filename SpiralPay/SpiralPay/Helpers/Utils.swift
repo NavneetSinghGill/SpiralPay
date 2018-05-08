@@ -264,13 +264,23 @@ class Utils: NSObject {
         //TODO: Check if this line is needed
         //Get country name from country alpha3 code of vix
         let phoneCountry = User.shared.countryName
-        let vixGeneratedCountryAlpha3Code = getVerificationResultResponse.return_?.registrationDetails?.currentResidentialAddress?.country ?? ""
-        let countriesAndAlpha3Codes = getCountryToCodeDict()
-        let indexOfCountryInOurList = Array(countriesAndAlpha3Codes.values).index(of: vixGeneratedCountryAlpha3Code)
-        if indexOfCountryInOurList != nil {
-            User.shared.countryName = Array(countriesAndAlpha3Codes.keys)[indexOfCountryInOurList ?? 0]
-        } else {
-            User.shared.countryName = vixGeneratedCountryAlpha3Code
+        let vixGeneratedCountryAlpha2Code = getVerificationResultResponse.return_?.registrationDetails?.currentResidentialAddress?.country ?? ""
+        
+        var alpha2ToAlpha3Dict: NSDictionary?
+        if let path = Bundle.main.path(forResource: "Alpha2ToAlpha3", ofType: "plist") {
+            alpha2ToAlpha3Dict = NSDictionary(contentsOfFile: path)
+        }
+        if let alpha2ToAlpha3Dict = alpha2ToAlpha3Dict {
+            let alpha3Code = alpha2ToAlpha3Dict[vixGeneratedCountryAlpha2Code] as! String
+            
+            let countriesAndAlpha3Codes = getCountryToCodeDict()
+            let indexOfCountryInOurList = Array(countriesAndAlpha3Codes.values).index(of: alpha3Code)
+            if indexOfCountryInOurList != nil {
+                User.shared.countryName = Array(countriesAndAlpha3Codes.keys)[indexOfCountryInOurList ?? 0]
+            } else {
+                let gbrIndex = Array(countriesAndAlpha3Codes.values).index(of: "GBR")
+                User.shared.countryName = Array(countriesAndAlpha3Codes.keys)[gbrIndex ?? 0]
+            }
         }
         
         let dict = User.shared.getCurrentAddressDict()
@@ -560,6 +570,74 @@ class Utils: NSObject {
         _ = fetchRecordsIn(context: ApplicationDelegate.mainContext)
     }
     
+    func addSomeFakeVouchers() {
+        let voucher1 = Voucher(context: ApplicationDelegate.mainContext)
+        voucher1.pointsToAcquire = 15
+        voucher1.name = "Apple £40 voucher"
+        voucher1.isRedeemed = false
+        voucher1.imageURL = "apple"
+        
+        let voucher2 = Voucher(context: ApplicationDelegate.mainContext)
+        voucher2.pointsToAcquire = 30
+        voucher2.name = "Starbucks free drink"
+        voucher2.isRedeemed = false
+        voucher2.imageURL = "starbucks"
+        
+        let voucher3 = Voucher(context: ApplicationDelegate.mainContext)
+        voucher3.pointsToAcquire = 50
+        voucher3.name = "HM 20% discount voucher"
+        voucher3.isRedeemed = false
+        voucher3.imageURL = "hm"
+        
+        let voucher4 = Voucher(context: ApplicationDelegate.mainContext)
+        voucher4.pointsToAcquire = 100
+        voucher4.name = "Wallmart £30 voucher"
+        voucher4.isRedeemed = false
+        voucher4.imageURL = "walmart"
+        
+        let voucher5 = Voucher(context: ApplicationDelegate.mainContext)
+        voucher5.pointsToAcquire = 0
+        voucher5.name = "Apple £20 voucher"
+        voucher5.isRedeemed = true
+        voucher5.imageURL = "apple"
+        
+        let voucher6 = Voucher(context: ApplicationDelegate.mainContext)
+        voucher6.pointsToAcquire = 2000
+        voucher6.name = "Wallmart £100 voucher"
+        voucher6.isRedeemed = false
+        voucher6.imageURL = "walmart"
+        
+        let voucher7 = Voucher(context: ApplicationDelegate.mainContext)
+        voucher7.pointsToAcquire = 1000
+        voucher7.name = "HM 50% discount voucher"
+        voucher7.isRedeemed = false
+        voucher7.imageURL = "hm"
+        
+        let voucher8 = Voucher(context: ApplicationDelegate.mainContext)
+        voucher8.pointsToAcquire = 10000
+        voucher8.name = "Starbucks 5 free dinner meals"
+        voucher8.isRedeemed = false
+        voucher8.imageURL = "starbucks"
+        
+        ApplicationDelegate.saveContext()
+    }
+    
+    func deleteVouchers(context: NSManagedObjectContext = ApplicationDelegate.mainContext) {
+        
+        var vouchers = [Voucher]()
+        do {
+            vouchers = try context.fetch(Voucher.fetchRequest())
+        } catch {
+            print("Fetching vouchers Failed")
+        }
+        
+        for voucher in vouchers {
+            context.delete(voucher)
+        }
+        
+        ApplicationDelegate.saveContext()
+    }
+    
     //MARK: - Show Alert
     public class func showAlertWith(message:String, inController:UIViewController) -> Void
     {
@@ -830,7 +908,7 @@ class Utils: NSObject {
                     "Uganda": "UGA",
                     "Ukraine": "UKR",
                     "United Arab Emirates": "ARE",
-                    "United Kingdom": "GB",
+                    "United Kingdom": "GBR",
                     "United States": "USA",
                     "US Minor Outlying Islands": "UMI",
                     "Uruguay": "URY",

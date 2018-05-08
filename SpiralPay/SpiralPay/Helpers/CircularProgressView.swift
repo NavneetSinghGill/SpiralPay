@@ -68,4 +68,8 @@ class CircularProgressView: UIView {
         shapeLayer.add(basicAnimation, forKey: "urSoBasic")
     }
     
+    func setBorder(color: UIColor) {
+        shapeLayer.strokeColor = color.cgColor
+    }
+    
 }

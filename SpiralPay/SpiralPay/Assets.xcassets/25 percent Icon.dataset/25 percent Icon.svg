@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>25 percent Icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="27.2256098 -1.42108547e-14 48.4512195 27.7121346 17.9920535 43.5035504 0.386277411 20.9691846"></polygon>
+    </defs>
+    <g id="Loyalty-points-main-screen-Lee" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-267.000000, -539.000000)">
+        <g id="25-percent-Icon" transform="translate(270.000000, 518.000000)">
+            <g id="MaskedByTriangle">
+                <ellipse id="Oval-1" stroke="#EEEEEE" stroke-width="4.5" cx="25.0030488" cy="48.9870993" rx="25.0030488" ry="25.0129007"></ellipse>
+                <g id="Oval-1-Copy" transform="translate(40.689401, 33.149274) rotate(-142.000000) translate(-40.689401, -33.149274) translate(16.189401, 11.149274)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Mask"></g>
+                    <g id="LargeOval1" mask="url(#mask-2)" stroke="#0CA1C6" stroke-width="5">
+                        <g transform="translate(2.042683, -25.192850)" id="Oval-1-Copy">
+                            <circle cx="25" cy="25" r="25"></circle>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

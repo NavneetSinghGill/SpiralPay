@@ -60,6 +60,7 @@ class User: NSObject {
     var postcode: String?
     var addresses: Array<Dictionary<String,String>>?
     var savedState: SavedState = .None
+    var currentLoyaltyPoints: Float = 0
 
     var phoneWithCode: String? {
         get {
@@ -92,6 +93,17 @@ class User: NSObject {
         _ = SecurityStorageWorker.shared.setArray((addresses as Array<AnyObject>?) ?? Array<AnyObject>(), key: "addresses")
         
         _ = SecurityStorageWorker.shared.setTokenValue(savedState.rawValue(), key: "savedState")
+        
+        //Dont save loyalty points here
+    }
+    
+    func setCurrentLoyaltyPoints(value: Float) {
+        User.shared.currentLoyaltyPoints = value
+        _ = SecurityStorageWorker.shared.setTokenValue("\(value)", key: "currentLoyaltyPoints")
+    }
+    
+    func addLoyaltyPoints(value: Float) {
+        setCurrentLoyaltyPoints(value: User.shared.currentLoyaltyPoints + value)
     }
     
     func restore() {
@@ -131,6 +143,8 @@ class User: NSObject {
         } else {
             savedState = SavedState.None
         }
+        
+        currentLoyaltyPoints = (SecurityStorageWorker.shared.getKeychainValue(key: "currentLoyaltyPoints") ?? "0").toFloat() ?? 0
     }
     
     static func resetSavedValues() {
@@ -152,6 +166,7 @@ class User: NSObject {
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "postcode")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "savedState")
         _ = SecurityStorageWorker.shared.setArray(Array<AnyObject>(), key: "addresses")
+        _ = SecurityStorageWorker.shared.setTokenValue("", key: "currentLoyaltyPoints")
     }
     
     func getCurrentAddressDict() -> Dictionary<String,String> {

@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(true, forKey: Constants.kHadAppRunBeforeAtleastOnce)
             UserDefaults.standard.set(UIDevice.current.identifierForVendor?.uuidString, forKey: Constants.deviceIdentifier)
             UserDefaults.standard.synchronize()
-            
         }
         
         User.shared.restore()

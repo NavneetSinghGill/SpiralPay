@@ -133,6 +133,14 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Add fake vouchers once
+        if !UserDefaults.standard.bool(forKey: "didAddVouchersOnce") {
+            Utils.shared.deleteVouchers()
+            Utils.shared.addSomeFakeVouchers()
+            UserDefaults.standard.set(true, forKey: "didAddVouchersOnce")
+            UserDefaults.standard.synchronize()
+        }
+        
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         selectItemWith(tag: 102)

@@ -32,6 +32,8 @@
 		181287B3204441A600779850 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181287AD204441A600779850 /* HomePresenter.swift */; };
 		1815BC832047D8C20001E392 /* PaymentPriceDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815BC812047D8C20001E392 /* PaymentPriceDetailsTableViewCell.swift */; };
 		1815BC842047D8C20001E392 /* PaymentPriceDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1815BC822047D8C20001E392 /* PaymentPriceDetailsTableViewCell.xib */; };
+		181A245120A1CC8E00A7CFCF /* LoyaltyContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181A245020A1CC8E00A7CFCF /* LoyaltyContentViewController.swift */; };
+		181A245320A1D4CD00A7CFCF /* LoyaltyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181A245220A1D4CD00A7CFCF /* LoyaltyPageViewController.swift */; };
 		18256FDE20527AB2007FA954 /* HomeContainerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18256FD820527AB2007FA954 /* HomeContainerPresenter.swift */; };
 		18256FDF20527AB2007FA954 /* HomeContainerWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18256FD920527AB2007FA954 /* HomeContainerWorker.swift */; };
 		18256FE020527AB2007FA954 /* HomeContainerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18256FDA20527AB2007FA954 /* HomeContainerRouter.swift */; };
@@ -120,6 +122,7 @@
 		186D5FFE209073BB000558F3 /* LoyaltyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186D5FFC209073BB000558F3 /* LoyaltyTableViewCell.swift */; };
 		186D5FFF209073BB000558F3 /* LoyaltyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186D5FFD209073BB000558F3 /* LoyaltyTableViewCell.xib */; };
 		186D60032090BE6F000558F3 /* UILabelResizingOverAllScreensExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186D60022090BE6F000558F3 /* UILabelResizingOverAllScreensExtension.swift */; };
+		186D887020A314CA00304E39 /* Alpha2ToAlpha3.plist in Resources */ = {isa = PBXBuildFile; fileRef = 186D886F20A314CA00304E39 /* Alpha2ToAlpha3.plist */; };
 		186EAC7A207F93DD00516AFE /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC78207F93DC00516AFE /* CoreAudio.framework */; };
 		186EAC7B207F93DD00516AFE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC79207F93DD00516AFE /* AudioToolbox.framework */; };
 		186EAC7D207F93E800516AFE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 186EAC7C207F93E700516AFE /* AVFoundation.framework */; };
@@ -306,6 +309,8 @@
 		181287AD204441A600779850 /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		1815BC812047D8C20001E392 /* PaymentPriceDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPriceDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		1815BC822047D8C20001E392 /* PaymentPriceDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentPriceDetailsTableViewCell.xib; sourceTree = "<group>"; };
+		181A245020A1CC8E00A7CFCF /* LoyaltyContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyContentViewController.swift; sourceTree = "<group>"; };
+		181A245220A1D4CD00A7CFCF /* LoyaltyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyPageViewController.swift; sourceTree = "<group>"; };
 		18256FD820527AB2007FA954 /* HomeContainerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerPresenter.swift; sourceTree = "<group>"; };
 		18256FD920527AB2007FA954 /* HomeContainerWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerWorker.swift; sourceTree = "<group>"; };
 		18256FDA20527AB2007FA954 /* HomeContainerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerRouter.swift; sourceTree = "<group>"; };
@@ -389,6 +394,7 @@
 		186D5FFC209073BB000558F3 /* LoyaltyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyTableViewCell.swift; sourceTree = "<group>"; };
 		186D5FFD209073BB000558F3 /* LoyaltyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoyaltyTableViewCell.xib; sourceTree = "<group>"; };
 		186D60022090BE6F000558F3 /* UILabelResizingOverAllScreensExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelResizingOverAllScreensExtension.swift; sourceTree = "<group>"; };
+		186D886F20A314CA00304E39 /* Alpha2ToAlpha3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Alpha2ToAlpha3.plist; sourceTree = "<group>"; };
 		186EAC78207F93DC00516AFE /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		186EAC79207F93DD00516AFE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		186EAC7C207F93E700516AFE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -595,6 +601,8 @@
 			children = (
 				18256FCB205279D5007FA954 /* HomeContainer */,
 				1810DF0B203C62DC00722760 /* LoyaltyViewController.swift */,
+				181A245220A1D4CD00A7CFCF /* LoyaltyPageViewController.swift */,
+				181A245020A1CC8E00A7CFCF /* LoyaltyContentViewController.swift */,
 				181287B4204441B700779850 /* HomeScreen */,
 				1810DF0D203C62F000722760 /* MoreViewController.swift */,
 				180B4714203C461300775D06 /* SettingsViewController.swift */,
@@ -861,6 +869,7 @@
 			children = (
 				183990192063C9EC00FD1D7D /* SpiralPay.entitlements */,
 				F1D9BA50201852E8004B42B7 /* AppDelegate.swift */,
+				186D886F20A314CA00304E39 /* Alpha2ToAlpha3.plist */,
 				1828560620998BCF00B1388B /* Soap */,
 				F1D9BA7E20185605004B42B7 /* Helpers */,
 				F1D9BAC7201856D1004B42B7 /* Manager */,
@@ -1216,6 +1225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1843764B2085EB3E00B031B4 /* SpiralPay.entitlements in Resources */,
+				186D887020A314CA00304E39 /* Alpha2ToAlpha3.plist in Resources */,
 				1871E896203D5730008BDEF8 /* Lato-Bold.ttf in Resources */,
 				F1E89B6B2019D2FD0052C723 /* Lato-Regular.ttf in Resources */,
 				185091F7207F99A4006651B1 /* GIDResources.bundle in Resources */,
@@ -1366,12 +1376,14 @@
 				187DC5C520721C25000500AA /* ChangePinInteractor.swift in Sources */,
 				187DC5C020721C25000500AA /* ChangePinPresenter.swift in Sources */,
 				1828564420998BF400B1388B /* SoapHttpClient.swift in Sources */,
+				181A245320A1D4CD00A7CFCF /* LoyaltyPageViewController.swift in Sources */,
 				180C1609202197C100818460 /* CountryRouter.swift in Sources */,
 				18E5BA28205668C500E6F804 /* ProductDetailsInteractor.swift in Sources */,
 				1871E898203DA401008BDEF8 /* BezierPathExtenstion.swift in Sources */,
 				F1D9BAD6201856D1004B42B7 /* RemoteNotificationManager.swift in Sources */,
 				186D60032090BE6F000558F3 /* UILabelResizingOverAllScreensExtension.swift in Sources */,
 				18943503202488F9000C2166 /* PinModels.swift in Sources */,
+				181A245120A1CC8E00A7CFCF /* LoyaltyContentViewController.swift in Sources */,
 				1858D3C52091B3B10080E094 /* CircularProgressView.swift in Sources */,
 				18645D52203577040017E214 /* UIViewExtension.swift in Sources */,
 				1828564C20998BF400B1388B /* expireToken.swift in Sources */,
