@@ -15,7 +15,7 @@
 #define kGIDSDKDocumentCaptureLicenceResetTimeout @"documentCaptureLicenceResetTimeout" // Default is 15
 #define kGIDSDKDocumentCapturePassportResetTimeout @"documentCapturePassportResetTimeout" // Default is 15
 #define kGIDSDKDocumentCaptureGreenIDResetTimeout @"documentCaptureGreenIDResetTimeout" // Default is 15
-#define kGIDSDKMobileConfigurationUrl @"https://mobileconfig.vixverify.com/certs/"
+#define kGIDSDKMobileConfigurationUrl @"https://config.vixverify.com/certs/"
 #define kGIDSDKMobileConfigCertificatesArray @"mobileConfigCertificatesArray"
 #define kGIDSDKMobileConfigCertificatesPrimaryDomain @"mobileconfig.vixverify.com"
 
