@@ -318,7 +318,7 @@ enum Home
                     if items != nil {
                         var totalAmount: CGFloat = 0
                         for item in items! {
-                            totalAmount = totalAmount + (item.amount ?? 0)
+                            totalAmount = totalAmount + ((item.amount ?? 0) * CGFloat(item.count ?? 0))
                         }
                         return totalAmount
                     } else {
@@ -332,7 +332,7 @@ enum Home
                     if items != nil {
                         var totalVat: CGFloat = 0
                         for item in items! {
-                            totalVat = totalVat + (item.vat ?? 0)
+                            totalVat = totalVat + ((item.vat ?? 0) * CGFloat(item.count ?? 0))
                         }
                         return totalVat
                     } else {

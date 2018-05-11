@@ -16,7 +16,7 @@ import CoreData
 enum DetailsType {
     case Payment
     case Campaign
-    case Multiple
+    case Multiple //Means Basket
 }
 
 enum ShutterAction {
@@ -168,16 +168,35 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         var request = ProductDetails.CardToken.Request()
         request.clientIP = Utils.shared.getWiFiAddress()
         request.locale = "\(Locale.current.languageCode ?? "")-\(Locale.current.regionCode ?? "")"
+        var amount : CGFloat = 0
         if detailsType == DetailsType.Payment {
             request.currency = paymentDetail.currency
             request.amount = paymentDetail.amount
+            amount = paymentDetail.amount ?? 0
         } else if detailsType == DetailsType.Campaign {
             request.currency = campaignDetail.currency
             request.amount = campaignDetail.amount
+            amount = campaignDetail.amount ?? 0
         } else if detailsType == DetailsType.Multiple {
             request.currency = createdPayments![indexOfPaymentInProgress].currency
             request.amount = createdPayments![indexOfPaymentInProgress].amount
+            
+            if let createdPayments = createdPayments {
+                for createdPayment in createdPayments {
+                    if let items = createdPayment.items {
+                        for item in items {
+                            amount = amount + (item.amount ?? 0)
+                        }
+                    }
+                }
+            }
         }
+        if VixVerify.shared.isBuyRestricted() && Int(amount/100) >= 30 {
+            NLoader.stopAnimating()
+            Utils.showAlertWith(message: "Please verify yourself to do payment of more than £30.", inController: self)
+            return
+        }
+        
         request.userAgent = ""
         request.type = "card"
         request.email = User.shared.email
