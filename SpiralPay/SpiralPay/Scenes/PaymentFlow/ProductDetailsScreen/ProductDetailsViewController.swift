@@ -185,7 +185,7 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
                 for createdPayment in createdPayments {
                     if let items = createdPayment.items {
                         for item in items {
-                            amount = amount + (item.amount ?? 0)
+                            amount = amount + ((item.amount ?? 0) * CGFloat(item.count ?? 0))
                         }
                     }
                 }
