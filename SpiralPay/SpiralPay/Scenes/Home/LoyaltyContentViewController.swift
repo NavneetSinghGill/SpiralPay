@@ -85,7 +85,7 @@ class LoyaltyContentViewController: UIViewController {
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "pointsToAcquire", ascending: true)]
             vouchers = try context.fetch(fetchRequest)
         } catch {
-            print("Fetching vouchers Failed")
+            Utils.print(object: ("Fetching vouchers Failed"))
         }
         
         return vouchers
@@ -100,7 +100,7 @@ class LoyaltyContentViewController: UIViewController {
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "pointsToAcquire", ascending: true)]
             vouchers = try context.fetch(fetchRequest)
         } catch {
-            print("Fetching vouchers Failed")
+            Utils.print(object: ("Fetching vouchers Failed"))
         }
         
         return vouchers
@@ -115,7 +115,7 @@ class LoyaltyContentViewController: UIViewController {
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "pointsToAcquire", ascending: false)]
             vouchers = try context.fetch(fetchRequest)
         } catch {
-            print("Fetching vouchers Failed")
+            Utils.print(object: ("Fetching vouchers Failed"))
         }
         
         return vouchers

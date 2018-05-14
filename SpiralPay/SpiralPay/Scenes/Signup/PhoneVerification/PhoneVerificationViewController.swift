@@ -266,7 +266,7 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
         
         //6-digit code
         generatedCode = "\(arc4random_uniform(899999) + 100000)"
-        print("Genegrated code: \(generatedCode!)")
+        Utils.print(object: ("Genegrated code: \(generatedCode!)"))
         
         var request = PhoneVerification.SmsPhoneVerification.Request()
         request.phone = User.shared.phoneWithCode
@@ -328,14 +328,14 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
         lobj_Request.addValue("", forHTTPHeaderField: "SOAPAction")
         
         let task = session.dataTask(with: lobj_Request) { (data, response, error) in
-//            print("Response: \(response)")
+//            Utils.print(object: ("Response: \(response)"))
             if let data = data {
                 let strData = String(data: data, encoding: .utf8)
-                print("Body: \(strData ?? "")")
+                Utils.print(object: ("Body: \(strData ?? "")"))
                 
                 if error != nil
                 {
-                    print("Error: " + error!.localizedDescription)
+                    Utils.print(object: ("Error: " + error!.localizedDescription))
                 }
             }
         }
@@ -436,9 +436,9 @@ extension PhoneVerificationViewController: GIDDelegate, GIDLoggerDelegate {
     
     func sdkDidLogLevel(_ levelString: String!, levelCode level: GIDLogLevel, analyticsCode: GIDAnalyticsCode, source: String!, message: String!) {
         if (level == .UI) {
-            print("Got analytics info from SDK: %ld %s", analyticsCode, message);
+            Utils.print(object: ("Got analytics info from SDK: %ld %s", analyticsCode, message))
         } else {
-            print("LOG:" + message);
+            Utils.print(object: ("LOG:" + message))
         }
     }
     

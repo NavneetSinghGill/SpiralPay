@@ -89,13 +89,13 @@ class NetworkHttpClient: NSObject {
             
             Alamofire.request(completeURL, method: methodType, parameters: params, encoding: (methodType == .get ? URLEncoding.default : JSONEncoding.default), headers: headers).responseArray { (response: DataResponse<[T]>) in
                 self.showAlertWith(message: "1\(response)")
-                print("Response array: \(response)")
+                Utils.print(object: ("Response array: \(response)"))
                 switch response.result {
                 case .success(let value):
-                    print(value)
+                    Utils.print(object: (value))
                     success(response)
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    Utils.print(object: (error.localizedDescription))
                     failure(response)
                 }
             }
@@ -106,17 +106,17 @@ class NetworkHttpClient: NSObject {
             params[BaseRequest.hasNullResponse] = nil
             Alamofire.request(completeURL, method: methodType, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { (response) -> Void in
                 self.showAlertWith(message: "2\(response)")
-                print("Response null: \(response)")
+                Utils.print(object: ("Response null: \(response)"))
                 switch response.result {
                 case .success(let value):
-                    print(value)
+                    Utils.print(object: (value))
                     success(response)
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    Utils.print(object: (error.localizedDescription))
                     failure(response)
                 }
 //                if response.result.isSuccess {
-//                    print(responseObject.result)
+//                    Utils.print(object: (responseObject.result))
 //                    //                let resJson = JSON(response.result.value!)
 //                    success(responseObject)
 //                }
@@ -130,23 +130,23 @@ class NetworkHttpClient: NSObject {
         {
             Alamofire.request(completeURL, method: methodType, parameters: parameters, encoding: (methodType == .get ? URLEncoding.default : JSONEncoding.default), headers: headers).responseObject { (response: DataResponse<T>) in
                 self.showAlertWith(message: "3\(response)")
-                print("Response regular: \(response)")
+                Utils.print(object: ("Response regular: \(response)"))
                 
                 //Exception is for the ones when response is empty
                 let exceptionSuccess: AnyObject? = self.handleExceptionsFor(url: BaseRequest.getUrl(path: strURL), withResponseCode: response.response?.statusCode ?? 0, response: response, apiType: apiType, genericResponse: genericResponse)
                 
                 if exceptionSuccess != nil {
-                    print("Exception success")
+                    Utils.print(object: ("Exception success"))
                     success(exceptionSuccess)
                     return
                 }
                 
                 switch response.result {
                 case .success(let value):
-                    print(value)
+                    Utils.print(object: (value))
                     success(response)
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    Utils.print(object: (error.localizedDescription))
                     failure(response)
                 }
             }
@@ -177,7 +177,7 @@ class NetworkHttpClient: NSObject {
             let accessToken = User.shared.accessToken!
             header[Constants.kAuthorizationkey] = "\(Constants.kBearerkey)\(accessToken)"
             header[Constants.kContentTypeKey] = Constants.kContentTypeValue
-            print("Header: \(header)")
+            Utils.print(object: ("Header: \(header)"))
         }
         return header
     }
@@ -223,10 +223,10 @@ class NetworkHttpClient: NSObject {
  
  switch response.result {
  case .success(let value):
- print(value)
+ Utils.print(object: (value))
  success(response)
  case .failure(let error):
- print(error.localizedDescription)
+ Utils.print(object: (error.localizedDescription))
  failure(response)
  }
  

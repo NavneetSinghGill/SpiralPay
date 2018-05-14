@@ -651,7 +651,7 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
             fetchRequest.resultType = .dictionaryResultType
             merchantIdDictionaries = try ApplicationDelegate.mainContext.fetch(fetchRequest)
         } catch {
-            print("Fetching combined items Failed")
+            Utils.print(object: ("Fetching combined items Failed"))
             return
         }
         
@@ -677,7 +677,7 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
             fetchRequest.predicate = NSPredicate(format: "merchantID == %@", merchantID)
             combinedItemsWithCommonMerchant = try ApplicationDelegate.mainContext.fetch(fetchRequest)
         } catch {
-            print("Fetching combined items Failed")
+            Utils.print(object: ("Fetching combined items Failed"))
             return
         }
         
@@ -749,7 +749,7 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
                     try context.save()
                     openCartScreenBlock()
                 } catch let nserror as NSError {
-                    print("\nFailed to save payment details: \(nserror), \(nserror.userInfo)")
+                    Utils.print(object: ("\nFailed to save payment details: \(nserror), \(nserror.userInfo)"))
                 }
             }
             
@@ -766,7 +766,7 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
                 try context.save()
                 openCartScreenBlock()
             } catch let nserror as NSError {
-                print("\nFailed to save campaign details: \(nserror), \(nserror.userInfo)")
+                Utils.print(object: ("\nFailed to save campaign details: \(nserror), \(nserror.userInfo)"))
             }
             
         }

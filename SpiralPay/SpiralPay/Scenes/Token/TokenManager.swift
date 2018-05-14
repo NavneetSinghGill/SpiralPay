@@ -69,13 +69,13 @@ class TokenManager: NSObject, TokenDisplayLogic
     
     func displayError(response: Token.JWTToken.Response)
     {
-        print("Error occured: \(response)")
+        Utils.print(object: ("Error occured: \(response)"))
         self.tokenBlock(false, response)
     }
     
     func displayNextScreen()
     {
-        print("Show Next Screen!!!")
+        Utils.print(object: ("Show Next Screen!!!"))
         self.tokenBlock(true, nil)
     }
 }

@@ -32,6 +32,12 @@ class Utils: NSObject {
         }
     }
     
+    static func print(object: Any) {
+        #if DEBUG
+            Swift.print(object)
+        #endif
+    }
+    
     func startAccessTokenExpiryTimer() {
         accessTokenExpiryTimer?.invalidate()
         accessTokenExpiryTimer = Timer.scheduledTimer(withTimeInterval: accessTokenExpiryTime, repeats: false, block: { (timer) in
@@ -415,7 +421,7 @@ class Utils: NSObject {
             fetchRequest.predicate = NSPredicate(format: "merchantID == %@ AND name == %@", withMerchantID ?? "-", item.name ?? "-")
             existingCombinedItems = try context.fetch(fetchRequest)
         } catch {
-            print("Fetching combined items Failed")
+            Utils.print(object: ("Fetching combined items Failed"))
         }
         if let existingCombinedItem = existingCombinedItems?.first {
             if existingCombinedItem.items == nil {
@@ -452,14 +458,14 @@ class Utils: NSObject {
         do {
             paymentAndCampaigns = try context.fetch(Payment.fetchRequest())
         } catch {
-            print("Fetching payments Failed")
+            Utils.print(object: ("Fetching payments Failed"))
         }
         
         do {
             let campaigns: [NSManagedObject] = try context.fetch(Campaign.fetchRequest())
             paymentAndCampaigns.append(contentsOf: campaigns)
         } catch {
-            print("Fetching campaigns Failed")
+            Utils.print(object: ("Fetching campaigns Failed"))
         }
         
         return paymentAndCampaigns
@@ -499,7 +505,7 @@ class Utils: NSObject {
         do {
             items = try context.fetch(Item.fetchRequest())
         } catch {
-            print("Fetching items Failed")
+            Utils.print(object: ("Fetching items Failed"))
         }
         
         for item in items {
@@ -529,7 +535,7 @@ class Utils: NSObject {
         do {
             combinedItems = try context.fetch(CombinedItem.fetchRequest())
         } catch {
-            print("Fetching combined items Failed")
+            Utils.print(object: ("Fetching combined items Failed"))
         }
         return combinedItems
     }
@@ -543,7 +549,7 @@ class Utils: NSObject {
                     try context.save()
                 }
             } catch {
-                print("Failed to save general context")
+                Utils.print(object: ("Failed to save general context"))
             }
         }
     }
@@ -555,7 +561,7 @@ class Utils: NSObject {
             fetchRequest.predicate = NSPredicate(format: "merchantID == %@", merchantID ?? "-")
             combinedItems = try ApplicationDelegate.mainContext.fetch(fetchRequest)
         } catch {
-            print("Fetching combined items Failed")
+            Utils.print(object: ("Fetching combined items Failed"))
         }
         
         if let combinedItems = combinedItems {
@@ -628,7 +634,7 @@ class Utils: NSObject {
         do {
             vouchers = try context.fetch(Voucher.fetchRequest())
         } catch {
-            print("Fetching vouchers Failed")
+            Utils.print(object: ("Fetching vouchers Failed"))
         }
         
         for voucher in vouchers {

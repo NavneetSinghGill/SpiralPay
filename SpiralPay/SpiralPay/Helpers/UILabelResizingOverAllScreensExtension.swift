@@ -44,19 +44,19 @@ extension UILabel {
                 if UIDevice().userInterfaceIdiom == .phone {
                     switch UIScreen.main.nativeBounds.height {
                     case 1136:
-                        print("iPhone 5 or 5S or 5C")
+                        Utils.print(object: ("iPhone 5 or 5S or 5C"))
                         self.font = defaultFont.withSize(defaultFont.pointSize)
                     case 1334:
-                        print("iPhone 6/6S/7/8")
+                        Utils.print(object: ("iPhone 6/6S/7/8"))
                         self.font = defaultFont.withSize(defaultFont.pointSize + 2)
                     case 2208:
-                        print("iPhone 6+/6S+/7+/8+")
+                        Utils.print(object: ("iPhone 6+/6S+/7+/8+"))
                         self.font = defaultFont.withSize(defaultFont.pointSize + 3)
                     case 2436:
-                        print("iPhone X")
+                        Utils.print(object: ("iPhone X"))
                         self.font = defaultFont.withSize(defaultFont.pointSize + 4)
                     default:
-                        print("unknown")
+                        Utils.print(object: ("unknown"))
                     }
                 }
             }

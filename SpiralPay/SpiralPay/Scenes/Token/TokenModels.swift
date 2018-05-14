@@ -41,7 +41,7 @@ enum Token {
                 var header: HTTPHeaders = [String : String]()
                 header[Constants.kApiKey] = Constants.kApiKeyValue
                 header[Constants.kContentTypeKey] = Constants.kContentTypeValue
-                print("Header: \(header)")
+                Utils.print(object: ("Header: \(header)"))
                 return header
             }
         }
@@ -60,7 +60,7 @@ enum Token {
                 var header: HTTPHeaders = [String : String]()
                 header[Constants.kRefreshTokenKey] = refreshToken
                 header[Constants.kContentTypeKey] = Constants.kContentTypeValue
-                print("Header: \(header)")
+                Utils.print(object: ("Header: \(header)"))
                 return header
             }
         }

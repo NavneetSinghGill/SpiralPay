@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Card.shared.save()
         }
         
-        print("Coredata url: \(persistentContainer.persistentStoreCoordinator.persistentStores.first?.url)\n")
+        Utils.print(object: ("Coredata url: \(persistentContainer.persistentStoreCoordinator.persistentStores.first?.url)\n"))
         
         setupNetworkMonitoring()
         
@@ -122,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
                 return false
         }
-        print("..... \(url)")
+        Utils.print(object: ("..... \(url)"))
         
 //        if let value = components.queryItems?.first?.value {
 //            universalLinkURLString = value
@@ -166,9 +166,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // be on the main thread, like this:
             DispatchQueue.main.async {
                 if reachability.connection == .wifi  {
-                    print("Reachable via WiFi")
+                    Utils.print(object: ("Reachable via WiFi"))
                 } else {
-                    print("Reachable via Cellular")
+                    Utils.print(object: ("Reachable via Cellular"))
                 }
                 self.isNetworkAvailable = true
             }
@@ -177,7 +177,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // this is called on a background thread, but UI updates must
             // be on the main thread, like this:
             DispatchQueue.main.async {
-                print("Not reachable")
+                Utils.print(object: ("Not reachable"))
                 
                 self.isNetworkAvailable = false
             }
@@ -188,7 +188,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             try reachability.startNotifier()
         } catch {
-            print("Unable to start notifier")
+            Utils.print(object: ("Unable to start notifier"))
         }
         
     }
@@ -199,14 +199,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if reachability.connection != .none {
             if reachability.connection == .wifi {
-                print("Reachable via WiFi")
+                Utils.print(object: ("Reachable via WiFi"))
             } else {
-                print("Reachable via Cellular")
+                Utils.print(object: ("Reachable via Cellular"))
             }
             self.isNetworkAvailable = true
             
         } else {
-            print("Network not reachable")
+            Utils.print(object: ("Network not reachable"))
             self.isNetworkAvailable = false
             
         }

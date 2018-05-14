@@ -90,7 +90,7 @@ class ScannerViewController: SpiralPayViewController, AVCaptureMetadataOutputObj
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects.count == 0 {
-            print("No Input Detected")
+            Utils.print(object: ("No Input Detected"))
             return
         }
         

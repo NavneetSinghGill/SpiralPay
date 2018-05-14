@@ -87,7 +87,7 @@ class RealAPI: NSObject {
         let responseStatus = response != nil ? response?.response : responseArray?.response
         
 //        let message: String = String.init(format: "Success:- URL:%@\n", (responseStatus?.url?.absoluteString)!)
-//        print(message)
+//        Utils.print(object: (message)
         
         if (request.apiType == .Put_UpdateMobileAndEmail ||
             request.apiType == .Put_UpdateCustomerVerificationData ||
@@ -179,7 +179,7 @@ class RealAPI: NSObject {
         VMRequest = request
         VMRequest.requestType = requestType
         let message: String = String.init(format: "Info: Performing API call with [URL:%@] [params: %@]", request.urlPath, request.getParams())
-        print(message)
+        Utils.print(object: (message))
     }
     
     func isForbiddenResponse(statusCode: NSInteger?, url:String?) -> Bool {

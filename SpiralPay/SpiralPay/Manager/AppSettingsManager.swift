@@ -25,7 +25,7 @@ class AppSettingsManager: NSObject {
         // Load the file content and initialise the AppSettings obj
         let dict: NSDictionary = NSDictionary.init(contentsOfFile: path)!
         appSettings = AppSettings.appSettingsFromDict(dict: dict)
-        print(dict)
+        Utils.print(object: (dict))
         
         return appSettings
     }

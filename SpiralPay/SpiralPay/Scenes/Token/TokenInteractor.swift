@@ -52,7 +52,7 @@ class TokenInteractor: TokenBusinessLogic, TokenDataStore
 //                            // Fetch refresh token APi api/token/refresh
 //                            worker = TokenWorker()
 //                            worker?.fetchRefreshToken(refreshToken: refreshToken, success: { (response) in
-//                                print(response)
+//                                Utils.print(object: (response))
 //                                if self.securityStorageWorker.storeAccessTokenResponse(response: response) {
 //                                    self.presenter?.presentNextScreen()
 //                                    fetchTokenAPI = false
@@ -86,7 +86,7 @@ class TokenInteractor: TokenBusinessLogic, TokenDataStore
     func fetchJWTTokenAPI(request: Token.JWTToken.Request) {
         worker = TokenWorker()
         worker?.fetchJWTToken(request: request, success: { (response) in
-            print(response)
+            Utils.print(object: (response))
 //            if self.securityStorageWorker.storeAccessTokenResponse(response: response) {
 //                self.presenter?.presentNextScreen()
 //            }

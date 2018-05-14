@@ -61,7 +61,7 @@ public class SoapHttpClient {
             self.Error=error
             
             if let httpResponse = response as? HTTPURLResponse {
-                //print("statusCode: \(httpResponse.statusCode)")
+                //Utils.print(object: ("statusCode: \(httpResponse.statusCode)"))
                 self.StatusCode = httpResponse.statusCode
                 
                 if httpResponse.statusCode != 200 {
@@ -153,7 +153,7 @@ public class SoapHttpClient {
             self.Error=error
             var str = ""
             if let httpResponse = response as? HTTPURLResponse {
-                //print("statusCode: \(httpResponse.statusCode)")
+                //print("statusCode: \(httpResponse.statusCode)"))
                 self.StatusCode = httpResponse.statusCode
                 
                 if httpResponse.statusCode != 200 {

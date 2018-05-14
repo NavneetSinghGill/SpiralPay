@@ -308,7 +308,7 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
     }
     
     func getDetailsWith(code: String) {
-        print("QR code: \(code)")
+        Utils.print(object: ("QR code: \(code)"))
         //Do api and open Checkout screen.
         var slicedUDID = ""
 
