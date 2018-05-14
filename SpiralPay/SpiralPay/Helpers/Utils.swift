@@ -53,16 +53,25 @@ class Utils: NSObject {
     
     func startGetVerificationResultTimer(shouldCallApiAtStartOnce: Bool) {
         getVerificationResultTimer?.invalidate()
+        getVerificationResultTimer = nil
         
         let apiCode = {
             let getVerificationResult = GetVerificationResult()
             getVerificationResult.accountId = Secret.accountID
             getVerificationResult.password = Secret.password
             
-            if let token = VixVerify.shared.verificationToken, let vID = VixVerify.shared.verificationID, token.count != 0, vID.count != 0 {
+            var haveAtleastTokenOrID = false
+//            if let token = VixVerify.shared.verificationToken, token.count != 0 {
 //                getVerificationResult.verificationToken = token
+//                haveAtleastTokenOrID = true
+//            }
+            
+            if let vID = VixVerify.shared.verificationID, vID.count != 0 {
                 getVerificationResult.verificationId = vID
-                
+                haveAtleastTokenOrID = true
+            }
+            
+            if haveAtleastTokenOrID {
                 Utils.shared.getVerificationResult(getVerificationResult: getVerificationResult)
             }
         }
@@ -253,24 +262,35 @@ class Utils: NSObject {
     func saveCustomerDetailsWith(getVerificationResultResponse: GetVerificationResultResponse) {
         User.shared.savedState = SavedState.CustomerDetailsEntered
         
-        User.shared.firstName = getVerificationResultResponse.return_?.registrationDetails?.name?.givenName ?? ""
-        User.shared.middleName = getVerificationResultResponse.return_?.registrationDetails?.name?.middleNames ?? ""
-        User.shared.lastName = getVerificationResultResponse.return_?.registrationDetails?.name?.surname ?? ""
+        let rtrn = getVerificationResultResponse.return_
         
-        User.shared.birthDay = "\(getVerificationResultResponse.return_?.registrationDetails?.dob?.day ?? 0)"
-        User.shared.birthMonth = "\(getVerificationResultResponse.return_?.registrationDetails?.dob?.month ?? 0)"
-        User.shared.birthYear = "\(getVerificationResultResponse.return_?.registrationDetails?.dob?.year ?? 0)"
+        let registrationDetails = rtrn?.registrationDetails
         
-        User.shared.address = "\(getVerificationResultResponse.return_?.registrationDetails?.currentResidentialAddress?.flatNumber ?? "") \(getVerificationResultResponse.return_?.registrationDetails?.currentResidentialAddress?.streetNumber ?? "") \(getVerificationResultResponse.return_?.registrationDetails?.currentResidentialAddress?.streetName ?? "")".trimmingCharacters(in: .whitespacesAndNewlines)
+        User.shared.firstName = registrationDetails?.name?.givenName ?? ""
+        User.shared.middleName = registrationDetails?.name?.middleNames ?? ""
+        User.shared.lastName = registrationDetails?.name?.surname ?? ""
         
-        User.shared.city = getVerificationResultResponse.return_?.registrationDetails?.currentResidentialAddress?.townCity ?? ""
+        User.shared.birthDay = "\(registrationDetails?.dob?.day ?? 0)"
+        User.shared.birthMonth = "\(registrationDetails?.dob?.month ?? 0)"
+        User.shared.birthYear = "\(registrationDetails?.dob?.year ?? 0)"
         
-        User.shared.postcode = getVerificationResultResponse.return_?.registrationDetails?.currentResidentialAddress?.postcode ?? ""
+        User.shared.address = "\(registrationDetails?.currentResidentialAddress?.flatNumber ?? "") \(registrationDetails?.currentResidentialAddress?.streetNumber ?? "") \(registrationDetails?.currentResidentialAddress?.streetName ?? "")".trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        
+        if let townCity = registrationDetails?.currentResidentialAddress?.townCity, townCity.count != 0 {
+            User.shared.city = townCity
+        } else if let city = registrationDetails?.currentResidentialAddress?.city, city.count != 0 {
+            User.shared.city = city
+        } else if let town = registrationDetails?.currentResidentialAddress?.town, town.count != 0 {
+            User.shared.city = town
+        }
+        
+        User.shared.postcode = registrationDetails?.currentResidentialAddress?.postcode ?? ""
         
         //TODO: Check if this line is needed
         //Get country name from country alpha3 code of vix
         let phoneCountry = User.shared.countryName
-        let vixGeneratedCountryAlpha2Code = getVerificationResultResponse.return_?.registrationDetails?.currentResidentialAddress?.country ?? ""
+        let vixGeneratedCountryAlpha2Code = registrationDetails?.currentResidentialAddress?.country ?? ""
         
         var alpha2ToAlpha3Dict: NSDictionary?
         if let path = Bundle.main.path(forResource: "Alpha2ToAlpha3", ofType: "plist") {

@@ -189,8 +189,7 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
             if screenType == .Onboard {
                 User.shared.savedState = .PhoneVerified
                 User.shared.save()
-                //TODO: Correct flow after success?
-//                router?.routeToConfirmDetailsScreen()
+
                 routeToVixVerify()
             } else {
                 self.navigationController?.popToRootViewController(animated: true)

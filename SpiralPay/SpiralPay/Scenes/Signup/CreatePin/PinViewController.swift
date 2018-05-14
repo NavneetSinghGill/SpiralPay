@@ -135,6 +135,8 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
         }
         User.shared.save()
         
+        Utils.shared.startAccessTokenExpiryTimer()
+        
         router?.routeToPhoneVerificationProcess()
     }
     
@@ -161,6 +163,10 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
             self.dismiss(animated: true, completion: {
                 ApplicationDelegate.executeUniversalLinkingBlock()
             })
+        }
+        
+        DispatchQueue.global().async {
+            Utils.shared.startGetVerificationResultTimer(shouldCallApiAtStartOnce: true)
         }
     }
     

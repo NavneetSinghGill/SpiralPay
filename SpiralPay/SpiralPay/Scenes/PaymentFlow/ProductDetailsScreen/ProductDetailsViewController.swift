@@ -231,6 +231,20 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
             return
         }
         
+        //Checks
+        var message = ""
+        if request.line1 == nil || request.line1!.count == 0 {
+            message = "Please enter default address."
+        }
+        if request.city == nil || request.city!.count == 0 {
+            message = "Please enter city."
+        }
+        if message.count != 0 {
+            NLoader.stopAnimating()
+            Utils.showAlertWith(message: message, inController: self)
+            return
+        }
+        
         interactor?.getCardToken(request: request)
         
         NLoader.shared.startNLoader()

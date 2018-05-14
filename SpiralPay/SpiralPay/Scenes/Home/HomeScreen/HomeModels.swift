@@ -48,7 +48,7 @@ enum Home
 
             public var paymentId: String?
             public var merchantName: String?
-            public var created: Int?
+            public var created: Int64?
             public var merchantLogoId: String?
             public var currency: String?
             public var amount: CGFloat?

@@ -40,7 +40,12 @@ class VixVerify: NSObject {
     }
     
     func isBuyRestricted() -> Bool {
-        return verificationStatus != VerificationStatus.verified
+        if verificationStatus == VerificationStatus.verified ||
+            verificationStatus == VerificationStatus.verifiedAdmin {
+            return false
+        }
+        return true
+
     }
     
 }

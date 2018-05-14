@@ -23,6 +23,7 @@ let isTestEnvironment = true
 
 struct VerificationStatus {
     static let verified = "VERIFIED"
+    static let verifiedAdmin = "VERIFIED_ADMIN"
     static let inProgress = "IN_PROGRESS"
     static let pending = "PENDING"
 }

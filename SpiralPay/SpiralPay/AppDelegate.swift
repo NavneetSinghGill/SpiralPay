@@ -107,8 +107,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             didOpenFromDidEnterForeground = false
             showLoginScreenIfShould()
         }
-        
-        Utils.shared.startGetVerificationResultTimer(shouldCallApiAtStartOnce: true)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

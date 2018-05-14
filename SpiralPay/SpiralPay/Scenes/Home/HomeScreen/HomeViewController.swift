@@ -153,7 +153,7 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         }
         let date = Calendar.current.date(byAdding: dayComp, to: Date())!
         
-        request.from = "\( Int(date.timeIntervalSince1970 * 1000) )"
+        request.from = "\( Int64(date.timeIntervalSince1970 * 1000) )"
         interactor?.getPaymentHistory(request: request)
     }
     
@@ -230,14 +230,14 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
             
             if singleDayPayments.count != 0 {
                 let newDate = removeAllSmallerTimeOf(dateInterval: ((singleDayPayments.last!.created ?? 0)/1000))
-                amountAndCreatedDayPayment.created = Int(newDate.timeIntervalSince1970) * 1000
+                amountAndCreatedDayPayment.created = Int64(newDate.timeIntervalSince1970) * 1000
             }
             
             singlePaymentPerDayPayments.append(amountAndCreatedDayPayment)
         }
         
         var allPayments = [Home.PaymentHistory.Response]()
-        let latestDate = removeAllSmallerTimeOf(dateInterval: Int(Date().timeIntervalSince1970))
+        let latestDate = removeAllSmallerTimeOf(dateInterval: Int64(Date().timeIntervalSince1970))
         var limit = 0
         if durationType == .Week {
             limit = 7
@@ -245,11 +245,11 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
             limit = 30
         }
         for count in 0...(limit-1) {
-            let newDate = getNewDateWith(dateInterval: Int(latestDate.timeIntervalSince1970 * 1000), decreatedBy: count)
+            let newDate = getNewDateWith(dateInterval: Int64(latestDate.timeIntervalSince1970 * 1000), decreatedBy: count)
             
             var didMatchAnyPayment = false
             for payment in singlePaymentPerDayPayments {
-                if getFormatterStringWith(timeInterval: payment.created) == getFormatterStringWith(timeInterval: Int(newDate.timeIntervalSince1970 * 1000)) {
+                if getFormatterStringWith(timeInterval: payment.created) == getFormatterStringWith(timeInterval: Int64(newDate.timeIntervalSince1970 * 1000)) {
                     allPayments.append(payment)
                     didMatchAnyPayment = true
                     break
@@ -259,7 +259,7 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
             if !didMatchAnyPayment {
                 var newAmountAndCreatedDayPayment = Home.PaymentHistory.Response()
                 newAmountAndCreatedDayPayment.amount = 0
-                newAmountAndCreatedDayPayment.created = Int(newDate.timeIntervalSince1970) * 1000
+                newAmountAndCreatedDayPayment.created = Int64(newDate.timeIntervalSince1970) * 1000
                 
                 allPayments.append(newAmountAndCreatedDayPayment)
             }
@@ -351,7 +351,7 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         var dayComp = DateComponents()
         
         for payment in payments1Darray {
-            let xValue = getPointFor(dateInterval: Int(timeIntervalAfterRemovingAllSmallerTimeOf(dateInterval: payment.created ?? 0)),
+            let xValue = getPointFor(dateInterval: Int64(timeIntervalAfterRemovingAllSmallerTimeOf(dateInterval: payment.created ?? 0)),
                                      currentDate: currentDate,
                                      dateComponent: &dayComp)
             let yValue = getPointFor(amount: payment.amount ?? 0)
@@ -398,7 +398,7 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         }
     }
     
-    private func getNewDateWith(dateInterval: Int, decreatedBy daysCount: Int) -> Date {
+    private func getNewDateWith(dateInterval: Int64, decreatedBy daysCount: Int) -> Date {
         var dateComponent = DateComponents()
         dateComponent.day = -daysCount
         let decreasedDate = Calendar.current.date(byAdding: dateComponent, to: Date(timeIntervalSince1970: TimeInterval(dateInterval)/1000))!
@@ -406,7 +406,7 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         return decreasedDate
     }
     
-    private func getPointFor(dateInterval: Int, currentDate: Date, dateComponent: inout DateComponents) -> CGFloat {
+    private func getPointFor(dateInterval: Int64, currentDate: Date, dateComponent: inout DateComponents) -> CGFloat {
         
         var startingDate: Date?
         if durationType == .Week {
@@ -497,7 +497,7 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         graphView.layer.addSublayer(dotsL!)
     }
     
-    private func removeAllSmallerTimeOf(dateInterval: Int) -> Date {
+    private func removeAllSmallerTimeOf(dateInterval: Int64) -> Date {
         let date = Date(timeIntervalSince1970: TimeInterval(dateInterval))
         
         let newDate = Calendar.current.date(byAdding: getDateComponentWithNoSmallTimeValuesFrom(date: date), to: date)
@@ -509,7 +509,7 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         return newDate!
     }
     
-    private func timeIntervalAfterRemovingAllSmallerTimeOf(dateInterval: Int) -> TimeInterval {
+    private func timeIntervalAfterRemovingAllSmallerTimeOf(dateInterval: Int64) -> TimeInterval {
         let date = Date(timeIntervalSince1970: TimeInterval(dateInterval))
         
         let newDate = Calendar.current.date(byAdding: getDateComponentWithNoSmallTimeValuesFrom(date: date), to: date)
@@ -526,7 +526,7 @@ class HomeViewController: SpiralPayViewController, HomeDisplayLogic
         return dateComponent
     }
     
-    private func getFormatterStringWith(timeInterval: Int?) -> String {
+    private func getFormatterStringWith(timeInterval: Int64?) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, dd MMM"
         

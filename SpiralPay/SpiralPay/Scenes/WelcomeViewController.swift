@@ -19,7 +19,7 @@ class WelcomeViewController: SpiralPayViewController {
         // Do any additional setup after loading the view.
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         addCardButton.isSelected = true
-        nameLabel.text = "\(User.shared.firstName ?? "") \(User.shared.lastName ?? "")"
+        nameLabel.text = "\(User.shared.firstName ?? "")"
     }
     
     //MARK: IBAction methods

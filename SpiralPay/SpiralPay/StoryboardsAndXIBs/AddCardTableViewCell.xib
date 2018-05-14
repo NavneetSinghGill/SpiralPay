@@ -168,7 +168,7 @@
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="-10" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="deleteOptionsCross"/>
-                                <state key="highlighted" image="settingEditPencil"/>
+                                <state key="highlighted" image="deleteOptionsCross"/>
                                 <connections>
                                     <action selector="deleteButtonTapped" destination="4Ex-IM-CZV" eventType="touchUpInside" id="ZNM-bk-yZZ"/>
                                 </connections>
@@ -186,7 +186,7 @@
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="-10" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="defaultAddressOptionsTick"/>
-                                <state key="highlighted" image="settingEditPencil"/>
+                                <state key="highlighted" image="defaultAddressOptionsTick"/>
                                 <connections>
                                     <action selector="defaultButtonTapped" destination="4Ex-IM-CZV" eventType="touchUpInside" id="IhR-Vj-NwB"/>
                                 </connections>
