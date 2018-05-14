@@ -26,6 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var universalLinkURLString: String?
     var universalLinkBlock : ((_ url: String?) -> Void)?
     
+    var orientationLock = UIInterfaceOrientationMask.all
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return self.orientationLock
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         

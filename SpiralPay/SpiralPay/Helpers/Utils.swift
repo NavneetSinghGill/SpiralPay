@@ -10,6 +10,22 @@ import UIKit
 import CoreData
 import GIDSDK
 
+struct AppUtility {
+    
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+        ApplicationDelegate.orientationLock = orientation
+    }
+    
+    /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+        
+        self.lockOrientation(orientation)
+        
+        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+    }
+    
+}
+
 class Utils: NSObject {
     
     static var currentProgressBarValue: CGFloat = 0.0
