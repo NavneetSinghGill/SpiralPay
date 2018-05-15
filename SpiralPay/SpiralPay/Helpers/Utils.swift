@@ -276,7 +276,6 @@ class Utils: NSObject {
     }
     
     func saveCustomerDetailsWith(getVerificationResultResponse: GetVerificationResultResponse) {
-        User.shared.savedState = SavedState.CustomerDetailsEntered
         
         let rtrn = getVerificationResultResponse.return_
         
@@ -303,7 +302,6 @@ class Utils: NSObject {
         
         User.shared.postcode = registrationDetails?.currentResidentialAddress?.postcode ?? ""
         
-        //TODO: Check if this line is needed
         //Get country name from country alpha3 code of vix
         let phoneCountry = User.shared.countryName
         let vixGeneratedCountryAlpha2Code = registrationDetails?.currentResidentialAddress?.country ?? ""
@@ -326,7 +324,21 @@ class Utils: NSObject {
         }
         
         let dict = User.shared.getCurrentAddressDict()
-        User.shared.addresses = [dict]
+        
+        if User.shared.addresses == nil || User.shared.addresses!.count == 0 {
+            //Onboarding
+            User.shared.savedState = SavedState.CustomerDetailsEntered
+            User.shared.addresses = [dict]
+        } else {
+            //Find and replace the verification address with this new one
+            var addresses = [dict]
+            for address in User.shared.addresses! {
+                if address[User.originatedFromVerificationProcess] != "true" {
+                    addresses.append(address)
+                }
+            }
+            User.shared.addresses = addresses
+        }
         
         User.shared.address = ""
         User.shared.city = ""

@@ -41,6 +41,7 @@ class User: NSObject {
     static let country = "country"
     static let countryPhoneCode = "countryPhoneCode"
     static let isDefault = "isDefault"
+    static let originatedFromVerificationProcess = "originatedFromVerificationProcess"
     
     var phone: String?
     var email: String?
@@ -176,6 +177,7 @@ class User: NSObject {
         dict[User.postcode] = User.shared.postcode ?? ""
         dict[User.country] = User.shared.countryName ?? ""
         dict[User.countryPhoneCode] = User.shared.countryPhoneCode ?? ""
+        dict[User.originatedFromVerificationProcess] = "true"
         dict[User.isDefault] = "true"
         
         return dict
@@ -191,6 +193,7 @@ class User: NSObject {
                     dict[User.postcode] = address[User.postcode] ?? ""
                     dict[User.country] = address[User.country] ?? ""
                     dict[User.countryPhoneCode] = address[User.countryPhoneCode] ?? ""
+                    dict[User.originatedFromVerificationProcess] = address[User.originatedFromVerificationProcess] ?? ""
                     
                     return dict
                 }
@@ -202,6 +205,7 @@ class User: NSObject {
             dict[User.postcode] = addresses.first![User.postcode] ?? ""
             dict[User.country] = addresses.first![User.country] ?? ""
             dict[User.countryPhoneCode] = addresses.first![User.countryPhoneCode] ?? ""
+            dict[User.originatedFromVerificationProcess] = addresses.first![User.originatedFromVerificationProcess] ?? ""
             
             return dict
         }

@@ -65,6 +65,12 @@ class SettingsViewController: SpiralPayViewController {
             self.parent?.navigationController?.pushViewController(lockAccountScreen, animated: true)
         }
     }
+    
+    //MARK:- Overridden methods
+    
+    override func afterVixVerifySuccess() {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
 
 }
 
@@ -116,6 +122,8 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
                 openCardsListScreen()
             case 2:
                 openPersonalDetailsScreen()
+            case 3:
+                routeToVixVerify()
             case 4:
                 openChangePinScreen()
             default:

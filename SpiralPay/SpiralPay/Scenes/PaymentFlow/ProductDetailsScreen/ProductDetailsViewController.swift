@@ -234,10 +234,10 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         //Checks
         var message = ""
         if request.line1 == nil || request.line1!.count == 0 {
-            message = "Please enter default address."
+            message = "Please update address."
         }
         if request.city == nil || request.city!.count == 0 {
-            message = "Please enter city."
+            message = "Please update city."
         }
         if message.count != 0 {
             NLoader.stopAnimating()
