@@ -67,46 +67,6 @@ class Utils: NSObject {
         accessTokenExpiryTimer?.invalidate()
     }
     
-    func startGetVerificationResultTimer(shouldCallApiAtStartOnce: Bool) {
-        getVerificationResultTimer?.invalidate()
-        getVerificationResultTimer = nil
-        
-        let apiCode = {
-            let getVerificationResult = GetVerificationResult()
-            getVerificationResult.accountId = Secret.accountID
-            getVerificationResult.password = Secret.password
-            
-            var haveAtleastTokenOrID = false
-//            if let token = VixVerify.shared.verificationToken, token.count != 0 {
-//                getVerificationResult.verificationToken = token
-//                haveAtleastTokenOrID = true
-//            }
-            
-            if let vID = VixVerify.shared.verificationID, vID.count != 0 {
-                getVerificationResult.verificationId = vID
-                haveAtleastTokenOrID = true
-            }
-            
-            if haveAtleastTokenOrID {
-                Utils.shared.getVerificationResult(getVerificationResult: getVerificationResult)
-            }
-        }
-        
-        if shouldCallApiAtStartOnce {
-            apiCode()
-        }
-        
-        if VixVerify.shared.verificationStatus != VerificationStatus.verified &&
-            (User.shared.savedState == .CustomerDetailsEntered || User.shared.savedState == .CardAdded) {
-            
-            getVerificationResultTimer = Timer.scheduledTimer(withTimeInterval: getVerificationResultTime, repeats: true, block: { (timer) in
-                
-                apiCode()
-                
-            })
-        }
-    }
-    
     func stopGetVerificationResultTimer() {
         getVerificationResultTimer?.invalidate()
         getVerificationResultTimer = nil
@@ -193,6 +153,18 @@ class Utils: NSObject {
                 }
             }
             URLSession.shared.dataTask(with: request, completionHandler: completionHandler).resume()
+        }
+    }
+    
+    func refreshTemporaryLockState() {
+        let intervalString = UserDefaults.standard.string(forKey: Constants.kLockTime) ?? "0"
+        let lockDate = Date(timeIntervalSince1970: TimeInterval(intervalString)!)
+        
+        let difference = Calendar.current.dateComponents([Calendar.Component.minute, Calendar.Component.second], from: lockDate, to: Date())
+        if difference.minute! > Constants.lockTime && difference.second! > 0 {
+            UserDefaults.standard.set(false, forKey: Constants.kIsLockedTemporarily)
+            UserDefaults.standard.set(nil, forKey: Constants.kLockTime)
+            UserDefaults.standard.synchronize()
         }
     }
     
@@ -347,6 +319,46 @@ class Utils: NSObject {
         User.shared.countryName = phoneCountry
         
         User.shared.save()
+    }
+    
+    func startGetVerificationResultTimer(shouldCallApiAtStartOnce: Bool) {
+        getVerificationResultTimer?.invalidate()
+        getVerificationResultTimer = nil
+        
+        let apiCode = {
+            let getVerificationResult = GetVerificationResult()
+            getVerificationResult.accountId = Secret.accountID
+            getVerificationResult.password = Secret.password
+            
+            var haveAtleastTokenOrID = false
+            //            if let token = VixVerify.shared.verificationToken, token.count != 0 {
+            //                getVerificationResult.verificationToken = token
+            //                haveAtleastTokenOrID = true
+            //            }
+            
+            if let vID = VixVerify.shared.verificationID, vID.count != 0 {
+                getVerificationResult.verificationId = vID
+                haveAtleastTokenOrID = true
+            }
+            
+            if haveAtleastTokenOrID {
+                Utils.shared.getVerificationResult(getVerificationResult: getVerificationResult)
+            }
+        }
+        
+        if shouldCallApiAtStartOnce {
+            apiCode()
+        }
+        
+        if VixVerify.shared.verificationStatus != VerificationStatus.verified &&
+            (User.shared.savedState == .CustomerDetailsEntered || User.shared.savedState == .CardAdded) {
+            
+            getVerificationResultTimer = Timer.scheduledTimer(withTimeInterval: getVerificationResultTime, repeats: true, block: { (timer) in
+                
+                apiCode()
+                
+            })
+        }
     }
     
     //MARK: - Validation Methods

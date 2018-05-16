@@ -235,26 +235,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if User.shared.savedState == .None { //every state is accepted except None
             return
         }
+        Utils.shared.refreshTemporaryLockState()
+        
         let pinVC = PinViewController.create()
         pinVC.pinEntry = .Login
         let viewC = UIApplication.shared.keyWindow?.rootViewController
         let presentedVC = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController
         
-        if let loginVC = viewC as? PinViewController {
+        //Update if Login screen already opened
+        var loginViewController: PinViewController?
+        if let loginVC = (viewC as? UINavigationController)?.viewControllers.first as? PinViewController {
             if loginVC.pinEntry == .Login {
-                return
+                loginViewController = loginVC
             }
-        } else if let loginVC = presentedVC as? PinViewController {
+        } else if let loginVC = (presentedVC as? UINavigationController)?.viewControllers.first as? PinViewController {
             if loginVC.pinEntry == .Login {
-                return
+                loginViewController = loginVC
             }
         }
+        
+        if let loginVC = loginViewController {
+            loginVC.refreshLoginState()
+            return
+        }
+        
+        //If not opened then open login screen
+        let navC = UINavigationController(rootViewController: pinVC)
+        navC.setNavigationBarHidden(true, animated: false)
+        
+        if UserDefaults.standard.bool(forKey: Constants.kIsLockedTemporarily) {
+            //Add lock screen
+            let tempLockScreen = TemporaryLockTimerViewController.create()
+            navC.setViewControllers(navC.viewControllers + [tempLockScreen], animated: false)
+        }
+        
         if presentedVC != nil {
-            presentedVC?.present(pinVC, animated: false, completion: nil)
+            presentedVC?.present(navC, animated: false, completion: nil)
         } else if viewC != nil {
-            viewC?.present(pinVC, animated: false, completion: nil)
+            viewC?.present(navC, animated: false, completion: nil)
         } else {
-            UIApplication.shared.windows.first?.rootViewController = pinVC
+            UIApplication.shared.windows.first?.rootViewController = navC
         }
     }
     

@@ -168,6 +168,15 @@ class User: NSObject {
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "savedState")
         _ = SecurityStorageWorker.shared.setArray(Array<AnyObject>(), key: "addresses")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "currentLoyaltyPoints")
+        _ = SecurityStorageWorker.shared.setTokenValue("", key: "__pin__")
+    }
+    
+    func save(pin: String) {
+        _ = SecurityStorageWorker.shared.setTokenValue(pin, key: "__pin__")
+    }
+    
+    func getPin() -> String {
+        return SecurityStorageWorker.shared.getKeychainValue(key: "__pin__") ?? ""
     }
     
     func getCurrentAddressDict() -> Dictionary<String,String> {

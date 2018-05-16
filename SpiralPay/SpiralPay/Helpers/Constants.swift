@@ -31,6 +31,7 @@ struct VerificationStatus {
 struct Constants {
     
     static let kHadAppRunBeforeAtleastOnce = "hadAppRunBeforeAtleastOnce"
+    static let lockTime: Int = 10
     
     // MARK: - General Constants
     static let deviceIdentifier = "DeviceIdentifier"
@@ -55,6 +56,10 @@ struct Constants {
     static let kBearerkey = "Bearer "
     
     static let kAppName = "SpiralPay"
+    static let kIsFingerPrintEnabled = "kIsFingerPrintEnabled"
+    static let kDontAskAgainForTouchIDenabling = "kDontAskAgainForTouchIDenabling"
+    static let kIsLockedTemporarily = "kIsLockedTemporarily"
+    static let kLockTime = "kLockTime"
     
     // MARK: - User Defaults
     

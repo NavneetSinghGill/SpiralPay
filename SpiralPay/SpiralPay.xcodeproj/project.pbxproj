@@ -107,6 +107,7 @@
 		1858D3C52091B3B10080E094 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858D3C42091B3B10080E094 /* CircularProgressView.swift */; };
 		1859768320514B1F0063A647 /* ShoppingCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859768220514B1F0063A647 /* ShoppingCartViewController.swift */; };
 		185C60AC20244835009D23BE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C60AB20244835009D23BE /* User.swift */; };
+		185CE2CD20AEA78A0096D8A4 /* TemporaryLockTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185CE2CC20AEA78A0096D8A4 /* TemporaryLockTimerViewController.swift */; };
 		185F27C820773EFB00142DDB /* LockAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F27C220773EFB00142DDB /* LockAccountPresenter.swift */; };
 		185F27C920773EFB00142DDB /* LockAccountWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F27C320773EFB00142DDB /* LockAccountWorker.swift */; };
 		185F27CA20773EFB00142DDB /* LockAccountRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F27C420773EFB00142DDB /* LockAccountRouter.swift */; };
@@ -116,6 +117,8 @@
 		18645D50203552140017E214 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D4F203552140017E214 /* WelcomeViewController.swift */; };
 		18645D52203577040017E214 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D51203577040017E214 /* UIViewExtension.swift */; };
 		18645D5420359B7F0017E214 /* AddCardOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */; };
+		1865359420AD6804005EE430 /* EnableTouchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865359320AD6804005EE430 /* EnableTouchViewController.swift */; };
+		1865359620AD7824005EE430 /* TouchActivatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865359520AD7824005EE430 /* TouchActivatedViewController.swift */; };
 		1865601B205BDB5000536D4F /* ShoppingCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18656019205BDB5000536D4F /* ShoppingCartTableViewCell.swift */; };
 		1865601C205BDB5000536D4F /* ShoppingCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */; };
 		186A1DC1206153B30021BC0F /* SpiralPay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 186A1DBF206153B30021BC0F /* SpiralPay.xcdatamodeld */; };
@@ -156,6 +159,7 @@
 		18902871204D6E15008D903C /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18902872204D6E15008D903C /* Reachability.framework */; };
 		18902873204D6E20008D903C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18902874204D6E20008D903C /* Alamofire.framework */; };
 		18902875204D6E41008D903C /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18902876204D6E41008D903C /* AlamofireObjectMapper.framework */; };
+		1892879420AAED9A006358E5 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1892879320AAED99006358E5 /* LocalAuthentication.framework */; };
 		18930E99207CFE350081AC89 /* CardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18930E98207CFE350081AC89 /* CardListViewController.swift */; };
 		18943500202488F9000C2166 /* PinPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FA202488F9000C2166 /* PinPresenter.swift */; };
 		18943501202488F9000C2166 /* PinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FB202488F9000C2166 /* PinWorker.swift */; };
@@ -379,6 +383,7 @@
 		1858D3C42091B3B10080E094 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		1859768220514B1F0063A647 /* ShoppingCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartViewController.swift; sourceTree = "<group>"; };
 		185C60AB20244835009D23BE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		185CE2CC20AEA78A0096D8A4 /* TemporaryLockTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryLockTimerViewController.swift; sourceTree = "<group>"; };
 		185F27C220773EFB00142DDB /* LockAccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAccountPresenter.swift; sourceTree = "<group>"; };
 		185F27C320773EFB00142DDB /* LockAccountWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAccountWorker.swift; sourceTree = "<group>"; };
 		185F27C420773EFB00142DDB /* LockAccountRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAccountRouter.swift; sourceTree = "<group>"; };
@@ -388,6 +393,8 @@
 		18645D4F203552140017E214 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		18645D51203577040017E214 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardOptionsViewController.swift; sourceTree = "<group>"; };
+		1865359320AD6804005EE430 /* EnableTouchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableTouchViewController.swift; sourceTree = "<group>"; };
+		1865359520AD7824005EE430 /* TouchActivatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchActivatedViewController.swift; sourceTree = "<group>"; };
 		18656019205BDB5000536D4F /* ShoppingCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartTableViewCell.swift; sourceTree = "<group>"; };
 		1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartTableViewCell.xib; sourceTree = "<group>"; };
 		186A1DC0206153B30021BC0F /* SpiralPay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpiralPay.xcdatamodel; sourceTree = "<group>"; };
@@ -428,6 +435,7 @@
 		18902872204D6E15008D903C /* Reachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Reachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18902874204D6E20008D903C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18902876204D6E41008D903C /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1892879320AAED99006358E5 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		18930E98207CFE350081AC89 /* CardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewController.swift; sourceTree = "<group>"; };
 		189434FA202488F9000C2166 /* PinPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinPresenter.swift; sourceTree = "<group>"; };
 		189434FB202488F9000C2166 /* PinWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinWorker.swift; sourceTree = "<group>"; };
@@ -536,6 +544,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1892879420AAED9A006358E5 /* LocalAuthentication.framework in Frameworks */,
 				18B4B61F209AFCF40017D777 /* XMLMapper.framework in Frameworks */,
 				186EAC93207F945B00516AFE /* libstdc++.6.tbd in Frameworks */,
 				186EAC91207F944600516AFE /* UIKit.framework in Frameworks */,
@@ -801,6 +810,7 @@
 		575C9A2F8E71777712E58AA8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1892879320AAED99006358E5 /* LocalAuthentication.framework */,
 				18B4B620209AFCF40017D777 /* XMLMapper.framework */,
 				186EAC92207F945B00516AFE /* libstdc++.6.tbd */,
 				185091F2207F99A4006651B1 /* GIDResources.bundle */,
@@ -1056,6 +1066,9 @@
 				1894350620248D76000C2166 /* SpiralPayViewController.swift */,
 				1894350820248DA7000C2166 /* ProgressBarViewController.swift */,
 				184A4FA4202DB72B0019AD40 /* DateAndTimeViewController.swift */,
+				1865359320AD6804005EE430 /* EnableTouchViewController.swift */,
+				1865359520AD7824005EE430 /* TouchActivatedViewController.swift */,
+				185CE2CC20AEA78A0096D8A4 /* TemporaryLockTimerViewController.swift */,
 				F1E89B6D201F09F10052C723 /* Signup */,
 				18645D4F203552140017E214 /* WelcomeViewController.swift */,
 				18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */,
@@ -1378,6 +1391,7 @@
 				1828564420998BF400B1388B /* SoapHttpClient.swift in Sources */,
 				181A245320A1D4CD00A7CFCF /* LoyaltyPageViewController.swift in Sources */,
 				180C1609202197C100818460 /* CountryRouter.swift in Sources */,
+				1865359620AD7824005EE430 /* TouchActivatedViewController.swift in Sources */,
 				18E5BA28205668C500E6F804 /* ProductDetailsInteractor.swift in Sources */,
 				1871E898203DA401008BDEF8 /* BezierPathExtenstion.swift in Sources */,
 				F1D9BAD6201856D1004B42B7 /* RemoteNotificationManager.swift in Sources */,
@@ -1450,6 +1464,7 @@
 				F1D9BAB320185605004B42B7 /* CGSizeExtensions.swift in Sources */,
 				187DC5C320721C25000500AA /* ChangePinModels.swift in Sources */,
 				180C160C202197C100818460 /* CountryInteractor.swift in Sources */,
+				1865359420AD6804005EE430 /* EnableTouchViewController.swift in Sources */,
 				F1D9BAC120185605004B42B7 /* CollectionExtensions.swift in Sources */,
 				1828564F20998BF400B1388B /* getSources.swift in Sources */,
 				F1D9BAA920185605004B42B7 /* ViewControllerExtensions.swift in Sources */,
@@ -1524,6 +1539,7 @@
 				F1E89B76201F0E540052C723 /* PhoneAndEmailWorker.swift in Sources */,
 				1815BC832047D8C20001E392 /* PaymentPriceDetailsTableViewCell.swift in Sources */,
 				18529F69202B31CD00BD8D0E /* PhoneVerificationViewController.swift in Sources */,
+				185CE2CD20AEA78A0096D8A4 /* TemporaryLockTimerViewController.swift in Sources */,
 				180C1607202197C100818460 /* CountryPresenter.swift in Sources */,
 				F1D9BAAA20185605004B42B7 /* UIStoryboard+Storyboards.swift in Sources */,
 				1808502C207389BD00DCF027 /* ChangeEmailWorker.swift in Sources */,

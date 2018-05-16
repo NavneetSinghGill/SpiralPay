@@ -12,7 +12,7 @@ class SettingsViewController: SpiralPayViewController {
     
     var headers: Array<String> = ["ACCOUNT", "OTHER"]
     var options: Array<Array<String>> = [
-        ["Card", "Personal details", "Verify yourself", "Change PIN", "Enable Fingerprint"],
+        ["Card", "Personal details", "Verify yourself", "Change PIN", "Enable Touch ID"],
         ["Help", "Contact us"]]
     var optionImages: Array<Array<UIImage?>> = [
         [UIImage(named: "settingCard"),
@@ -23,6 +23,8 @@ class SettingsViewController: SpiralPayViewController {
         [UIImage(named: "settingHelp"),
          UIImage(named: "settingContact")]
     ]
+    
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,8 @@ class SettingsViewController: SpiralPayViewController {
         
         //This will restore User data in case its changed in any of the settings flow
         User.shared.restore()
+        
+        tableView.reloadData()
     }
     
     //MARK:- Private methods
@@ -64,6 +68,11 @@ class SettingsViewController: SpiralPayViewController {
             let lockAccountScreen = LockAccountViewController.create()
             self.parent?.navigationController?.pushViewController(lockAccountScreen, animated: true)
         }
+    }
+    
+    @IBAction func touchIDswitchValueChanged(touchSwitch: UISwitch) {
+        UserDefaults.standard.set(touchSwitch.isOn, forKey: Constants.kIsFingerPrintEnabled)
+        UserDefaults.standard.synchronize()
     }
     
     //MARK:- Overridden methods
@@ -103,7 +112,8 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             guard  let optionSwitch = cell.contentView.viewWithTag(104) as? UISwitch else {
                 return cell
             }
-            if indexPath.section == 0 && indexPath.row == 5 { 
+            if indexPath.section == 0 && indexPath.row == 5 {
+                optionSwitch.isOn = UserDefaults.standard.bool(forKey: Constants.kIsFingerPrintEnabled)
                 optionSwitch.isHidden = false
                 cell.accessoryType = .none
             } else {

@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 enum PinEntry {
     case Create
@@ -93,15 +94,22 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        codeTextField.becomeFirstResponder()
+        if pinEntry == .Login && UserDefaults.standard.bool(forKey: Constants.kIsFingerPrintEnabled) {
+            didAuthenticateTouchOnce = false
+            authenticateUser()
+        } else {
+            codeTextField.becomeFirstResponder()
+        }
     }
   
   // MARK: Do something
     
     @IBOutlet weak var codeTextField: UITextField!
     @IBOutlet weak var headingLabel: UILabel!
+    @IBOutlet weak var subHeadingLabel: UILabel!
     @IBOutlet weak var passwordDoesntMatch: UILabel!
     @IBOutlet var pins: [UIButton]!
+    @IBOutlet weak var fingerPrintButton: UIButton!
     
     var pinEntry: PinEntry = .Create
     var createdPin: String?
@@ -109,6 +117,15 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
     var screenType = AppFlowType.Onboard
     
     let pinDoesntMatchText = "PIN code doesn't match"
+    let enterPinOrTouchIDtext = "Please enter your PIN or Touch ID to log in"
+    
+    var touchRetries: Int = 1
+    var touchMaxRetries: Int = 5
+    
+    var pinRetries: Int = 1
+    var pinMaxRetries: Int = 3
+    
+    var didAuthenticateTouchOnce: Bool = false //It is used to disable error popup at the start of app
     
     //MARK: - API
     //MARK: Customer registration
@@ -138,6 +155,8 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
         Utils.shared.startAccessTokenExpiryTimer()
         
         router?.routeToPhoneVerificationProcess()
+        
+        User.shared.save(pin: createdPin ?? "")
     }
     
     func customerRegistrationFailed(response: Pin.CustomerRegistration.Response) {
@@ -155,22 +174,52 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
         User.shared.accessToken = response.accessToken
 //        User.shared.accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjpudWxsLCJ1c2VyX25hbWUiOiJkaWRfMDc5MTlDRTktMUU1RC00MTZELTgzRTYtREY0MTQzNzcyNkZGIiwic2NvcGUiOlsicXJfcGF5bWVudF9jcmVhdGUiLCJxcl9wYXltZW50X3ZpZXciLCJtZXJjaGFudF92aWV3IiwicXJfcGF5bWVudF9wcm9jZXNzIiwiY3VzdG9tZXJfbWFuYWdlIiwicGF5bWVudF92aWV3Il0sIm1lcmNoYW50X2lkIjpudWxsLCJleHAiOjE1MjAyNTY4NDEsImN1c3RvbWVyX2lkIjoiNGRkODI5MDItNzNhNi00MzZiLTk4ZjQtMTk0MTMyOTdhODk1IiwiYXV0aG9yaXRpZXMiOlsibWVyY2hhbnRfdmlldyIsInFyX3BheW1lbnRfY3JlYXRlIiwicXJfcGF5bWVudF92aWV3IiwicGF5bWVudF92aWV3IiwicXJfcGF5bWVudF9wcm9jZXNzIiwiY3VzdG9tZXJfbWFuYWdlIl0sImp0aSI6IjRjOGI1MmQwLWVkMDgtNGFmMC04ODc0LWEyMzcyMWQ4ZTFlOCIsImNsaWVudF9pZCI6InByb21ldGhldXMiLCJ1c2VybmFtZSI6ImRpZF8wNzkxOUNFOS0xRTVELTQxNkQtODNFNi1ERjQxNDM3NzI2RkYifQ.b-I08eqY_EFYCU7clItw7whLcEAonq-_PHgBRlWsfAQ"
         User.shared.save()
-
-        if self == ApplicationDelegate.getWindow().rootViewController { //If its the very first screen of app
-            ApplicationDelegate.openIntendedScreen()
-//            ApplicationDelegate.showHomeTabBarScreen()
-        } else {
-            self.dismiss(animated: true, completion: {
-                ApplicationDelegate.executeUniversalLinkingBlock()
-            })
-        }
         
         DispatchQueue.global().async {
             Utils.shared.startGetVerificationResultTimer(shouldCallApiAtStartOnce: true)
         }
+        
+        
+        
+        
+        let successBlock = {
+            DispatchQueue.main.async {
+                if self.navigationController == ApplicationDelegate.getWindow().rootViewController &&
+                    self.navigationController?.viewControllers.first == self { //If its the very first screen of app
+                    ApplicationDelegate.openIntendedScreen()
+                } else {
+                    self.navigationController?.dismiss(animated: true, completion: {
+                        ApplicationDelegate.executeUniversalLinkingBlock()
+                    })
+                }
+            }
+        }
+        
+        if UserDefaults.standard.bool(forKey: Constants.kIsFingerPrintEnabled) {
+            successBlock()
+        } else {
+            if UserDefaults.standard.bool(forKey: Constants.kDontAskAgainForTouchIDenabling) {
+                successBlock()
+            } else {
+                let enableTouchScreen = EnableTouchViewController.create()
+                enableTouchScreen.successBlock = {successBlock()}
+                if self.navigationController != nil {
+                    self.navigationController?.pushViewController(enableTouchScreen, animated: true)
+                } else {
+                    self.present(enableTouchScreen, animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     func loginFailed(response: Pin.Login.Response) {
+        if response.errorDescription != Constants.kNoNetworkMessage {
+            if pinRetries >= pinMaxRetries {
+                setupTemporaryLock()
+            }
+            pinRetries += 1
+            updateRetryPINLayout()
+        }
         NLoader.shared.stopNLoader()
         
         if response.errorDescription != nil {
@@ -184,6 +233,12 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
         codeTextField.becomeFirstResponder()
     }
     
+    //MARK:- IBAction methods
+    
+    @IBAction func fingerprintTapped() {
+        authenticateUser()
+    }
+    
     //MARK:- Private methods
     
     private func initialSetup() {
@@ -195,12 +250,17 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
             progressBar.isHidden = true
         }
         
+        fingerPrintButton.isHidden = true
+        
         if pinEntry == .ReEnter {
             headingLabel.text = "Re-enter PIN Code"
         } else if pinEntry == .Login {
-            headingLabel.text = "Enter PIN Code"
+            headingLabel.text = "Hello!"
+            subHeadingLabel.text = enterPinOrTouchIDtext
             passwordDoesntMatch.text = pinDoesntMatchText
             Utils.shared.stopAccessTokenExpiryTimer()
+            
+            fingerPrintButton.isHidden = !UserDefaults.standard.bool(forKey: Constants.kIsFingerPrintEnabled)
         }
     }
     
@@ -233,8 +293,162 @@ class PinViewController: ProgressBarViewController, PinDisplayLogic
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !codeTextField.isFirstResponder {
             codeTextField.becomeFirstResponder()
+        } else {
+            self.view.endEditing(true)
         }
     }
+    
+    //MARK:- Fingerprint flow methods
+    
+    func authenticateUser() {
+        setFingerprintButton(selection: false)
+        
+        let context = LAContext()
+        context.localizedCancelTitle = "Dismiss"
+        context.localizedFallbackTitle = "Retry"
+//        if touchRetries == 1 {
+//            context.localizedFallbackTitle = "Retry (Attempt 1)"
+//        } else if touchRetries == 2 {
+//            context.localizedFallbackTitle = "Retry (Attempt 2)"
+//        } else if touchRetries == 3 {
+//            context.localizedFallbackTitle = "Retry (Attempt 3)"
+//        } else if touchRetries == 4 {
+//            context.localizedFallbackTitle = "Retry (Last attempt)"
+//        } else {
+//            context.localizedFallbackTitle = ""
+//        }
+        
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Unlock using Touch ID"
+            
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+                [unowned self] success, authenticationError in
+                
+                DispatchQueue.main.async {
+                    if success {
+                        self.runSecretCode()
+                    } else {
+                        var message: String = ""
+                        
+                        let retryBlock = {
+//                            self.touchRetries += 1
+//                            if self.touchRetries <= self.touchMaxRetries {
+                                self.authenticateUser()
+//                            }
+                        }
+                        
+                        if #available(iOS 11.0, *) {
+                            switch authenticationError {
+                            case LAError.authenticationFailed?:
+                                message = "There was a problem verifying your identity."
+//                            case LAError.userCancel?:
+//                                message = "You pressed cancel."
+                            case LAError.userFallback?:
+//                                message = "You pressed password."
+                                //This fallback is used as Retry button action
+                                retryBlock()
+                            case LAError.biometryNotAvailable?:
+                                message = "Touch ID is not available."
+                            case LAError.biometryNotEnrolled?:
+                                message = "Touch ID is not set up."
+                            case LAError.biometryLockout?:
+                                message = "Biometry is locked out."
+                            default:
+                                message = ""//Touch ID may not be configured"
+                            }
+                        } else {
+                            switch authenticationError {
+                            case LAError.authenticationFailed?:
+                                message = "There was a problem verifying your identity."
+//                            case LAError.userCancel?:
+//                                message = "You pressed cancel."
+                            case LAError.userFallback?:
+//                                message = "You pressed password."
+                                //This fallback is used as Retry button action
+                                retryBlock()
+                            case LAError.touchIDNotAvailable?:
+                                message = "Touch ID is not available."
+                            case LAError.touchIDNotEnrolled?:
+                                message = "Touch ID is not set up."
+                            case LAError.touchIDLockout?:
+                                message = "Touch ID is locked out."
+                            default:
+                                message = ""//Touch ID may not be configured"
+                            }
+                        }
+                        if message.count > 0 {
+                            print(message)
+                            BannerManager.showFailureBanner(subtitle: message)
+                            self.setFingerprintButton(selection: true)
+                        }
+                    }
+                }
+            }
+        } else {
+            if UserDefaults.standard.bool(forKey: Constants.kIsFingerPrintEnabled) && didAuthenticateTouchOnce {
+                if let error = error {
+                    BannerManager.showFailureBanner(subtitle: error.localizedDescription)
+                } else {
+                    BannerManager.showFailureBanner(subtitle: "Your device is not configured for Touch ID.")
+                }
+            } else {
+                didAuthenticateTouchOnce = true
+            }
+            setFingerprintButton(selection: true)
+        }
+    }
+    
+    func runSecretCode() {
+        doLoginCheckWith(pin: User.shared.getPin())
+    }
+    
+    func setFingerprintButton(selection: Bool) {
+        if selection {
+            fingerPrintButton.isSelected = true
+            fingerPrintButton.setImage(UIImage(named: "grayTouchCross"), for: .highlighted)
+        } else {
+            fingerPrintButton.isSelected = false
+            fingerPrintButton.setImage(UIImage(named: "grayTouch"), for: .highlighted)
+        }
+    }
+    
+    func refreshLoginState() {
+        if self.pinEntry == .Login && UserDefaults.standard.bool(forKey: Constants.kIsFingerPrintEnabled) && !UserDefaults.standard.bool(forKey: Constants.kIsLockedTemporarily) {
+            didAuthenticateTouchOnce = false
+            authenticateUser()
+        }
+    }
+    
+    func setupTemporaryLock() {
+        UserDefaults.standard.set(true, forKey: Constants.kIsLockedTemporarily)
+        let intervalString = "\(Date().timeIntervalSince1970)"
+        UserDefaults.standard.set(intervalString, forKey: Constants.kLockTime)
+        UserDefaults.standard.synchronize()
+        
+        let tempLockScreen = TemporaryLockTimerViewController.create()
+        self.navigationController?.pushViewController(tempLockScreen, animated: true)
+    }
+    
+    func resetPinRetries() {
+        passwordDoesntMatch?.isHidden = true
+        pinRetries = 1
+    }
+    
+    func updateRetryPINLayout() {
+        if pinRetries == 2 {
+            headingLabel.text = "Oops!"
+            subHeadingLabel.text = "Incorrect PIN(2 attempts)"
+        } else if pinRetries == 3 {
+            headingLabel.text = "Oops!"
+            subHeadingLabel.text = "Incorrect PIN(Last attempt)"
+        } else {
+            headingLabel.text = "Hello!"
+            subHeadingLabel.text = enterPinOrTouchIDtext
+        }
+    }
+    
 }
 
 extension PinViewController: UITextFieldDelegate {
@@ -258,7 +472,7 @@ extension PinViewController: UITextFieldDelegate {
                     } else {
                         textField.text = updatedText
                         codeTextField.resignFirstResponder()
-                        
+
                         pinCreationAndMatchingDoneLocally()
                     }
                 } else {

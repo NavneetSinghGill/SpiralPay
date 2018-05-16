@@ -111,6 +111,7 @@ class ChangePinViewController: SpiralPayViewController, ChangePinDisplayLogic
     
     func changePinSuccess(response: ChangePin.ChangePin.Response) {
         NLoader.shared.stopNLoader()
+        User.shared.save(pin: newPin ?? "")
         self.navigationController?.popToRootViewController(animated: true)
     }
     
