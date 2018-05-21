@@ -15,6 +15,7 @@ import UIKit
 @objc protocol ChangePinRoutingLogic
 {
     func routeToEnterNewPinScreenWith(currentPin: String)
+    func routeToReEnterNewPinScreenWith(currentPin: String, newPin: String)
 }
 
 protocol ChangePinDataPassing
@@ -34,5 +35,15 @@ class ChangePinRouter: NSObject, ChangePinRoutingLogic, ChangePinDataPassing
         enterNewPinViewController.currentPin = currentPin
         
         viewController?.navigationController?.pushViewController(enterNewPinViewController, animated: true)
+    }
+    
+    func routeToReEnterNewPinScreenWith(currentPin: String, newPin: String) {
+        
+        let reEnterNewPinViewController: ChangePinViewController = ChangePinViewController.create()
+        reEnterNewPinViewController.changePinEntry = .ReenterNew
+        reEnterNewPinViewController.currentPin = currentPin
+        reEnterNewPinViewController.newPin = newPin
+        
+        viewController?.navigationController?.pushViewController(reEnterNewPinViewController, animated: true)
     }
 }

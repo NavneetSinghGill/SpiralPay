@@ -15,6 +15,7 @@ import UIKit
 enum ChangePinEntry {
     case Current
     case New
+    case ReenterNew
 }
 
 protocol ChangePinDisplayLogic: class
@@ -82,6 +83,8 @@ class ChangePinViewController: SpiralPayViewController, ChangePinDisplayLogic
     var currentPin: String?
     var newPin: String?
     
+    let pinDoesntMatchText = "PIN code doesn't match"
+    
     // MARK: View lifecycle
     
     override func viewDidLoad()
@@ -120,6 +123,7 @@ class ChangePinViewController: SpiralPayViewController, ChangePinDisplayLogic
         
         var vcs = self.navigationController?.viewControllers
         vcs?.removeLast()
+        vcs?.removeLast()
         if let previousVC = vcs?.last as? ChangePinViewController {
             previousVC.errorLabel.isHidden = false
             previousVC.resetUI()
@@ -143,6 +147,8 @@ class ChangePinViewController: SpiralPayViewController, ChangePinDisplayLogic
             headingLabel.text = "Enter Current PIN Code"
         } else if changePinEntry == .New {
             headingLabel.text = "Enter New PIN Code"
+        } else if changePinEntry == .ReenterNew {
+            headingLabel.text = "Re-enter New PIN Code"
         }
     }
     
@@ -182,11 +188,18 @@ extension ChangePinViewController: UITextFieldDelegate {
                 if changePinEntry == .Current {
                     router?.routeToEnterNewPinScreenWith(currentPin: updatedText)
                 } else if changePinEntry == .New {
-                    textField.text = updatedText
-                    codeTextField.resignFirstResponder()
-                    newPin = updatedText
-                    
-                    changePIN()
+                    router?.routeToReEnterNewPinScreenWith(currentPin: currentPin ?? "", newPin: updatedText)
+                } else if changePinEntry == .ReenterNew {
+                    if updatedText == newPin {
+                        textField.text = updatedText
+                        codeTextField.resignFirstResponder()
+                        newPin = updatedText
+                        
+                        changePIN()
+                    } else {
+                        errorLabel.text = pinDoesntMatchText
+                        errorLabel.isHidden = false
+                    }
                 }
             }
             
