@@ -188,16 +188,10 @@ class SpiralPayViewController: UIViewController {
             }
         }
     }
-    //MARK: possibly overridden in derived controllers
-    func afterVixVerifySuccess() {
-        let welcomeScreen: WelcomeViewController = WelcomeViewController.create()
-        self.navigationController?.setViewControllers([welcomeScreen], animated: true)
-    }
     
-    func vixVerifyNotNow() {
-        let confirmDetailsScreen = ConfirmDetailsViewController.create()
-        self.navigationController?.pushViewController(confirmDetailsScreen, animated: true)
-    }
+    //MARK: Possibly overridden in derived controllers
+    func afterVixVerifySuccess() { }
+    func vixVerifyNotNow() { }
 
 }
 

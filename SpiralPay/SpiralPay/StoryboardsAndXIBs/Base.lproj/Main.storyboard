@@ -4124,7 +4124,7 @@
                                 <rect key="frame" x="0.0" y="75" width="375" height="592"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WqY-6I-GNf">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="392"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="396"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4x9-g4-oys" userLabel="FirstNameView">
                                                 <rect key="frame" x="25" y="50" width="324" height="51"/>
@@ -4287,38 +4287,48 @@
                                                     <outlet property="delegate" destination="Fsx-qT-420" id="YB6-pi-Wf9"/>
                                                 </connections>
                                             </tableView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBs-WR-dJN">
-                                                <rect key="frame" x="124" y="342" width="126" height="40"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OY1-uN-yGU" customClass="SpiralPayButton" customModule="SpiralPay" customModuleProvider="target">
+                                                <rect key="frame" x="93.5" y="342" width="187" height="44"/>
+                                                <color key="backgroundColor" red="0.0" green="0.63921568630000003" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="pSr-qF-gPJ"/>
+                                                    <constraint firstAttribute="height" constant="44" id="zg8-3P-uZW"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
-                                                <state key="normal" title="  Add Address" image="addAddressPlus">
-                                                    <color key="titleColor" red="0.61176470588235299" green="0.61176470588235299" blue="0.61176470588235299" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
+                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="19"/>
+                                                <state key="normal" title="Add Address      "/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="22"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="openSettingsHomeAddressScreen" destination="Fsx-qT-420" eventType="touchUpInside" id="QSx-99-0TR"/>
+                                                    <action selector="openCardAddEditScreen" destination="3au-8e-ODX" eventType="touchUpInside" id="pgK-Cg-yy5"/>
+                                                    <action selector="openSettingsHomeAddressScreen" destination="Fsx-qT-420" eventType="touchUpInside" id="7MM-7a-Q6A"/>
                                                 </connections>
                                             </button>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addCard" translatesAutoresizingMaskIntoConstraints="NO" id="8zI-Jq-ICw">
+                                                <rect key="frame" x="232.5" y="352.5" width="23" height="23"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="T4V-ek-kqV" firstAttribute="trailing" secondItem="4x9-g4-oys" secondAttribute="trailing" id="7dl-Wz-UXd"/>
-                                            <constraint firstAttribute="bottom" secondItem="bBs-WR-dJN" secondAttribute="bottom" constant="10" id="AWW-cz-FgI"/>
                                             <constraint firstItem="MvK-rb-8SQ" firstAttribute="trailing" secondItem="T4V-ek-kqV" secondAttribute="trailing" id="AwX-W8-igu"/>
                                             <constraint firstItem="4x9-g4-oys" firstAttribute="leading" secondItem="WqY-6I-GNf" secondAttribute="leading" constant="25" id="C0G-1F-0Cj"/>
                                             <constraint firstItem="T4V-ek-kqV" firstAttribute="top" secondItem="4x9-g4-oys" secondAttribute="bottom" constant="10" id="DWF-Hg-HsE"/>
                                             <constraint firstItem="vXI-L9-unc" firstAttribute="leading" secondItem="MvK-rb-8SQ" secondAttribute="leading" id="DcN-He-6on"/>
+                                            <constraint firstItem="OY1-uN-yGU" firstAttribute="top" secondItem="vXI-L9-unc" secondAttribute="bottom" constant="15" id="GDw-6o-Ogv"/>
                                             <constraint firstItem="vXI-L9-unc" firstAttribute="trailing" secondItem="MvK-rb-8SQ" secondAttribute="trailing" id="H7H-xW-eee"/>
                                             <constraint firstAttribute="trailing" secondItem="4x9-g4-oys" secondAttribute="trailing" constant="25" id="HUo-G4-GjW"/>
-                                            <constraint firstItem="bBs-WR-dJN" firstAttribute="top" secondItem="vXI-L9-unc" secondAttribute="bottom" constant="15" id="ObW-xG-nWH"/>
                                             <constraint firstItem="vXI-L9-unc" firstAttribute="top" secondItem="MvK-rb-8SQ" secondAttribute="bottom" constant="5" id="PII-Eh-GQK"/>
-                                            <constraint firstItem="bBs-WR-dJN" firstAttribute="centerX" secondItem="WqY-6I-GNf" secondAttribute="centerX" id="Tnn-Oq-HHY"/>
+                                            <constraint firstAttribute="bottom" secondItem="OY1-uN-yGU" secondAttribute="bottom" constant="10" id="QLW-id-mqf"/>
+                                            <constraint firstItem="OY1-uN-yGU" firstAttribute="centerX" secondItem="WqY-6I-GNf" secondAttribute="centerX" id="S2r-SW-BiE"/>
                                             <constraint firstItem="4x9-g4-oys" firstAttribute="top" secondItem="WqY-6I-GNf" secondAttribute="top" constant="50" id="Uyh-Rf-CeU"/>
+                                            <constraint firstItem="OY1-uN-yGU" firstAttribute="width" secondItem="WqY-6I-GNf" secondAttribute="width" multiplier="0.5" id="W0D-ut-QWo"/>
                                             <constraint firstItem="MvK-rb-8SQ" firstAttribute="top" secondItem="T4V-ek-kqV" secondAttribute="bottom" constant="10" id="bW5-SS-JIc"/>
                                             <constraint firstItem="T4V-ek-kqV" firstAttribute="leading" secondItem="4x9-g4-oys" secondAttribute="leading" id="bv3-nX-KAk"/>
+                                            <constraint firstItem="8zI-Jq-ICw" firstAttribute="centerY" secondItem="OY1-uN-yGU" secondAttribute="centerY" id="lyk-jp-E9N"/>
                                             <constraint firstItem="MvK-rb-8SQ" firstAttribute="leading" secondItem="T4V-ek-kqV" secondAttribute="leading" id="oPx-QP-TET"/>
+                                            <constraint firstItem="8zI-Jq-ICw" firstAttribute="centerX" secondItem="OY1-uN-yGU" secondAttribute="centerX" constant="57" id="y2p-IE-Msp"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -4366,6 +4376,7 @@
                         <viewLayoutGuide key="safeArea" id="hFb-5i-t2R"/>
                     </view>
                     <connections>
+                        <outlet property="addAddressButton" destination="OY1-uN-yGU" id="32k-Ay-Fcx"/>
                         <outlet property="emailLabel" destination="pQm-go-L8e" id="tAe-dx-npl"/>
                         <outlet property="homeAddressTableView" destination="vXI-L9-unc" id="XkN-Gp-7tG"/>
                         <outlet property="mobileLabel" destination="bnG-hg-f7C" id="6HX-HO-gX8"/>
@@ -5640,7 +5651,6 @@
     </scenes>
     <resources>
         <image name="acceptPayment" width="75" height="75"/>
-        <image name="addAddressPlus" width="22" height="22"/>
         <image name="addCard" width="23" height="23"/>
         <image name="address" width="18" height="25"/>
         <image name="backgroundGradient" width="375" height="185"/>

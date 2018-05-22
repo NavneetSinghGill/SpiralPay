@@ -301,6 +301,16 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
         }
     }
     
+    override func afterVixVerifySuccess() {
+        let welcomeScreen: WelcomeViewController = WelcomeViewController.create()
+        self.navigationController?.setViewControllers([welcomeScreen], animated: true)
+    }
+    
+    override func vixVerifyNotNow() {
+        let confirmDetailsScreen = ConfirmDetailsViewController.create()
+        self.navigationController?.pushViewController(confirmDetailsScreen, animated: true)
+    }
+    
 }
 
 extension PhoneVerificationViewController: UITextFieldDelegate {

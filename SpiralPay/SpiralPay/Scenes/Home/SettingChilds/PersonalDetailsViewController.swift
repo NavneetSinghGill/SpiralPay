@@ -16,6 +16,7 @@ class PersonalDetailsViewController: SpiralPayViewController {
     @IBOutlet weak var homeAddressTableView: UITableView!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var addAddressButton: SpiralPayButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,7 @@ class PersonalDetailsViewController: SpiralPayViewController {
         homeAddressTableView.rowHeight = UITableViewAutomaticDimension
 //        homeAddressTableView.estimatedRowHeight = 95
 
+        addAddressButton.isSelected = true
         
         let nib = UINib(nibName: "HomeAddressTableViewCell", bundle: nil)
         homeAddressTableView.register(nib, forCellReuseIdentifier: "HomeAddressTableViewCell")
