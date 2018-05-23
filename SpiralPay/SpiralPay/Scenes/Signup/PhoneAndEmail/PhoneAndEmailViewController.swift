@@ -15,6 +15,7 @@ import UIKit
 enum AppFlowType {
     case Onboard
     case Setting
+    case Home
 }
 
 protocol PhoneAndEmailDisplayLogic: class

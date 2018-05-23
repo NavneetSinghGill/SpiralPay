@@ -237,19 +237,25 @@ class HomeContainerViewController: SpiralPayViewController, HomeContainerDisplay
     
     @IBAction func payButtonTapped() {
         
-        #if (arch(i386) || arch(x86_64)) && (os(iOS) || os(watchOS) || os(tvOS))
-            let code = "051e1657-03da-4ad5-9004-8e9774aa3aa0"
-            getCampaignsWith(udid: code)
-            return
-        #endif
-        
-        let scannerVC = ScannerViewController.create()
-        scannerVC.scannerDelegate = self
-        scannerVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        if self.navigationController != nil {
-            self.navigationController?.present(scannerVC, animated: true, completion: nil)
-        } else {
-            self.present(scannerVC, animated: true, completion: nil)
+        if User.shared.savedState == .CardNotAdded || Card.shared.cards == nil || Card.shared.cards!.count == 0 {
+            let cardAddScreen = AddCardIntroViewController.create()
+            cardAddScreen.appFlowType = .Home
+            self.navigationController?.pushViewController(cardAddScreen, animated: true)
+        } else if User.shared.savedState == .CardAdded {
+            #if (arch(i386) || arch(x86_64)) && (os(iOS) || os(watchOS) || os(tvOS))
+                let code = "051e1657-03da-4ad5-9004-8e9774aa3aa0"
+                getCampaignsWith(udid: code)
+                return
+            #endif
+            
+            let scannerVC = ScannerViewController.create()
+            scannerVC.scannerDelegate = self
+            scannerVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            if self.navigationController != nil {
+                self.navigationController?.present(scannerVC, animated: true, completion: nil)
+            } else {
+                self.present(scannerVC, animated: true, completion: nil)
+            }
         }
     }
     

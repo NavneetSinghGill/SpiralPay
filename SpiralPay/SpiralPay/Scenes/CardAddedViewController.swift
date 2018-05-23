@@ -11,6 +11,7 @@ import UIKit
 class CardAddedViewController: SpiralPayViewController {
     
     @IBOutlet weak var spiralPayHomeButton: SpiralPayButton!
+    var appFlowType = AppFlowType.Onboard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +22,11 @@ class CardAddedViewController: SpiralPayViewController {
     //MARK: IBAction methods
     
     @IBAction func spiralPayButtonTapped() {
-        let homeTabBar = HomeContainerViewController.create()
-        let navC = UINavigationController(rootViewController: homeTabBar)
-        navC.navigationBar.isHidden = true
-        ApplicationDelegate.getWindow().rootViewController = navC
+        if appFlowType == .Onboard {
+            Utils.shared.showHomeTabBarScreen()
+        } else if appFlowType == .Home {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
 
 }

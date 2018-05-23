@@ -228,6 +228,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             showWelcomeScreen()
         case .CardAdded:
             showHomeTabBarScreen()
+        case .CardNotAdded:
+            showHomeTabBarScreen()
         }
     }
     
@@ -303,9 +305,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func showHomeTabBarScreen() {
-        let homeTabBar = HomeContainerViewController.create()
-        let navC = UINavigationController(rootViewController: homeTabBar)
-        ApplicationDelegate.getWindow().rootViewController = navC
+        Utils.shared.showHomeTabBarScreen()
         
         self.executeUniversalLinkingBlock()
     }

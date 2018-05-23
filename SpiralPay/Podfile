@@ -16,5 +16,6 @@ target 'SpiralPay' do
     pod 'Crashlytics'
     #  pod 'SWXMLHash', '~> 4.0.0'
     pod 'XMLMapper/Requests'
-    
+#    pod 'CardIO'
+
 end

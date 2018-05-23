@@ -14,6 +14,7 @@ enum SavedState {
     case PhoneVerified
     case CustomerDetailsEntered
     case CardAdded
+    case CardNotAdded
     
     func rawValue() -> String {
         switch self {
@@ -27,6 +28,8 @@ enum SavedState {
             return "CustomerDetailsEntered"
         case .CardAdded:
             return "CardAdded"
+        case .CardNotAdded:
+            return "CardNotAdded"
         }
     }
 }
@@ -138,6 +141,8 @@ class User: NSObject {
                 savedState = SavedState.CustomerDetailsEntered
             case SavedState.CardAdded.rawValue():
                 savedState = SavedState.CardAdded
+            case SavedState.CardNotAdded.rawValue():
+                savedState = SavedState.CardNotAdded
             default:
                 savedState = SavedState.None
             }

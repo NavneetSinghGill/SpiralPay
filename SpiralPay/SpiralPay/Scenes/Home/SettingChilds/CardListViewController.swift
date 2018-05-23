@@ -48,7 +48,7 @@ class CardListViewController: SpiralPayViewController {
     
     @IBAction func openCardAddEditScreen() {
         DispatchQueue.main.async {
-            let cardScreen = AddCardManuallyViewController.create()
+            let cardScreen = AddCardOptionsViewController.create()
             cardScreen.screenMode = .AddNew
             cardScreen.appFlowType = .Setting
             self.navigationController?.pushViewController(cardScreen, animated: true)
@@ -142,6 +142,10 @@ extension CardListViewController: AddCardTableViewCellDelegate {
                 self.reloadTableViewDataWith(animation: true)
             }
             
+            if Card.shared.cards == nil || Card.shared.cards!.count == 0 {
+                User.shared.savedState = .CardNotAdded
+                User.shared.save()
+            }
         }
         let noAction = UIAlertAction(title: "No", style: .default, handler: nil)
         alert.addAction(noAction)
@@ -151,7 +155,7 @@ extension CardListViewController: AddCardTableViewCellDelegate {
     }
     
     func editButtonTappedWith(index: Int) {
-        let cardScreen = AddCardManuallyViewController.create()
+        let cardScreen = AddCardOptionsViewController.create()
         cardScreen.indexOfCardToShow = index
         cardScreen.screenMode = .Edit
         cardScreen.appFlowType = .Setting

@@ -168,6 +168,13 @@ class Utils: NSObject {
         }
     }
     
+    func showHomeTabBarScreen() {
+        let homeTabBar = HomeContainerViewController.create()
+        let navC = UINavigationController(rootViewController: homeTabBar)
+        navC.navigationBar.isHidden = true
+        ApplicationDelegate.getWindow().rootViewController = navC
+    }
+    
     //MARK:- Vix verify
     
     func getVixVerifyControllerWith(delegate: UIViewController) -> UIViewController {
@@ -351,7 +358,7 @@ class Utils: NSObject {
         }
         
         if VixVerify.shared.verificationStatus != VerificationStatus.verified &&
-            (User.shared.savedState == .CustomerDetailsEntered || User.shared.savedState == .CardAdded) {
+            (User.shared.savedState == .CustomerDetailsEntered || User.shared.savedState == .CardAdded || User.shared.savedState == .CardNotAdded) {
             
             getVerificationResultTimer = Timer.scheduledTimer(withTimeInterval: getVerificationResultTime, repeats: true, block: { (timer) in
                 

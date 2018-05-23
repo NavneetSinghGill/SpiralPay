@@ -116,11 +116,11 @@
 		185F27CD20773EFB00142DDB /* LockAccountInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F27C720773EFB00142DDB /* LockAccountInteractor.swift */; };
 		18645D50203552140017E214 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D4F203552140017E214 /* WelcomeViewController.swift */; };
 		18645D52203577040017E214 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D51203577040017E214 /* UIViewExtension.swift */; };
-		18645D5420359B7F0017E214 /* AddCardOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */; };
 		1865359420AD6804005EE430 /* EnableTouchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865359320AD6804005EE430 /* EnableTouchViewController.swift */; };
 		1865359620AD7824005EE430 /* TouchActivatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865359520AD7824005EE430 /* TouchActivatedViewController.swift */; };
 		1865601B205BDB5000536D4F /* ShoppingCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18656019205BDB5000536D4F /* ShoppingCartTableViewCell.swift */; };
 		1865601C205BDB5000536D4F /* ShoppingCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */; };
+		1866779E20B7DB5900A39BDD /* AddCardIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1866779D20B7DB5900A39BDD /* AddCardIntroViewController.swift */; };
 		186A1DC1206153B30021BC0F /* SpiralPay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 186A1DBF206153B30021BC0F /* SpiralPay.xcdatamodeld */; };
 		186D5FFE209073BB000558F3 /* LoyaltyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186D5FFC209073BB000558F3 /* LoyaltyTableViewCell.swift */; };
 		186D5FFF209073BB000558F3 /* LoyaltyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186D5FFD209073BB000558F3 /* LoyaltyTableViewCell.xib */; };
@@ -153,6 +153,11 @@
 		187DC5C420721C25000500AA /* ChangePinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5BE20721C25000500AA /* ChangePinViewController.swift */; };
 		187DC5C520721C25000500AA /* ChangePinInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5BF20721C25000500AA /* ChangePinInteractor.swift */; };
 		187DC5C920724B83000500AA /* HomeAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5C820724B83000500AA /* HomeAddressViewController.swift */; };
+		188ECEA320B572F600C57F50 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188ECEA220B572F600C57F50 /* Accelerate.framework */; };
+		188ECEB320B5759F00C57F50 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 188ECEA720B5758100C57F50 /* libCardIO.a */; };
+		188ECEB420B5759F00C57F50 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 188ECEA920B5758900C57F50 /* libopencv_imgproc.a */; };
+		188ECEB520B5759F00C57F50 /* CardIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 188ECEAB20B5758E00C57F50 /* CardIO.m */; };
+		188ECEB620B5759F00C57F50 /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 188ECEB220B5759E00C57F50 /* libopencv_core.a */; };
 		1890286C204D2424008D903C /* PaymentStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890286B204D2424008D903C /* PaymentStatusViewController.swift */; };
 		1890286D204D6DE1008D903C /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1890286E204D6DE1008D903C /* ObjectMapper.framework */; };
 		1890286F204D6E00008D903C /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18902870204D6E00008D903C /* SwiftKeychainWrapper.framework */; };
@@ -169,7 +174,7 @@
 		18943505202488F9000C2166 /* PinInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189434FF202488F9000C2166 /* PinInteractor.swift */; };
 		1894350720248D76000C2166 /* SpiralPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1894350620248D76000C2166 /* SpiralPayViewController.swift */; };
 		1894350920248DA7000C2166 /* ProgressBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1894350820248DA7000C2166 /* ProgressBarViewController.swift */; };
-		189F22F52035A5D600971AFD /* AddCardManuallyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F22F42035A5D600971AFD /* AddCardManuallyViewController.swift */; };
+		189F22F52035A5D600971AFD /* AddCardOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F22F42035A5D600971AFD /* AddCardOptionsViewController.swift */; };
 		18A8BCF420A03A950099433B /* VixVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8BCF320A03A950099433B /* VixVerify.swift */; };
 		18A982F7205665A700BDC4AD /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A982F1205665A700BDC4AD /* ProductDetailsViewController.swift */; };
 		18B4B61F209AFCF40017D777 /* XMLMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B4B620209AFCF40017D777 /* XMLMapper.framework */; };
@@ -392,11 +397,11 @@
 		185F27C720773EFB00142DDB /* LockAccountInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockAccountInteractor.swift; sourceTree = "<group>"; };
 		18645D4F203552140017E214 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		18645D51203577040017E214 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardOptionsViewController.swift; sourceTree = "<group>"; };
 		1865359320AD6804005EE430 /* EnableTouchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableTouchViewController.swift; sourceTree = "<group>"; };
 		1865359520AD7824005EE430 /* TouchActivatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchActivatedViewController.swift; sourceTree = "<group>"; };
 		18656019205BDB5000536D4F /* ShoppingCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartTableViewCell.swift; sourceTree = "<group>"; };
 		1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartTableViewCell.xib; sourceTree = "<group>"; };
+		1866779D20B7DB5900A39BDD /* AddCardIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardIntroViewController.swift; sourceTree = "<group>"; };
 		186A1DC0206153B30021BC0F /* SpiralPay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpiralPay.xcdatamodel; sourceTree = "<group>"; };
 		186D5FFC209073BB000558F3 /* LoyaltyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyTableViewCell.swift; sourceTree = "<group>"; };
 		186D5FFD209073BB000558F3 /* LoyaltyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoyaltyTableViewCell.xib; sourceTree = "<group>"; };
@@ -429,6 +434,20 @@
 		187DC5BE20721C25000500AA /* ChangePinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinViewController.swift; sourceTree = "<group>"; };
 		187DC5BF20721C25000500AA /* ChangePinInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinInteractor.swift; sourceTree = "<group>"; };
 		187DC5C820724B83000500AA /* HomeAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAddressViewController.swift; sourceTree = "<group>"; };
+		188ECEA220B572F600C57F50 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		188ECEA420B574BA00C57F50 /* SpiralPay-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpiralPay-Bridging-Header.h"; sourceTree = "<group>"; };
+		188ECEA720B5758100C57F50 /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCardIO.a; sourceTree = "<group>"; };
+		188ECEA820B5758300C57F50 /* CardIODetectionMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIODetectionMode.h; sourceTree = "<group>"; };
+		188ECEA920B5758900C57F50 /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopencv_imgproc.a; sourceTree = "<group>"; };
+		188ECEAA20B5758C00C57F50 /* CardIOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOView.h; sourceTree = "<group>"; };
+		188ECEAB20B5758E00C57F50 /* CardIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardIO.m; sourceTree = "<group>"; };
+		188ECEAC20B5759000C57F50 /* CardIOPaymentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewControllerDelegate.h; sourceTree = "<group>"; };
+		188ECEAD20B5759200C57F50 /* CardIOUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOUtilities.h; sourceTree = "<group>"; };
+		188ECEAE20B5759400C57F50 /* CardIOPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewController.h; sourceTree = "<group>"; };
+		188ECEAF20B5759600C57F50 /* CardIOCreditCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOCreditCardInfo.h; sourceTree = "<group>"; };
+		188ECEB020B5759800C57F50 /* CardIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIO.h; sourceTree = "<group>"; };
+		188ECEB120B5759A00C57F50 /* CardIOViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOViewDelegate.h; sourceTree = "<group>"; };
+		188ECEB220B5759E00C57F50 /* libopencv_core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopencv_core.a; sourceTree = "<group>"; };
 		1890286B204D2424008D903C /* PaymentStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentStatusViewController.swift; sourceTree = "<group>"; };
 		1890286E204D6DE1008D903C /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18902870204D6E00008D903C /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -445,7 +464,7 @@
 		189434FF202488F9000C2166 /* PinInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinInteractor.swift; sourceTree = "<group>"; };
 		1894350620248D76000C2166 /* SpiralPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiralPayViewController.swift; sourceTree = "<group>"; };
 		1894350820248DA7000C2166 /* ProgressBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarViewController.swift; sourceTree = "<group>"; };
-		189F22F42035A5D600971AFD /* AddCardManuallyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardManuallyViewController.swift; sourceTree = "<group>"; };
+		189F22F42035A5D600971AFD /* AddCardOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardOptionsViewController.swift; sourceTree = "<group>"; };
 		18A8BCF320A03A950099433B /* VixVerify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VixVerify.swift; sourceTree = "<group>"; };
 		18A982F1205665A700BDC4AD /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		18B4B620209AFCF40017D777 /* XMLMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = XMLMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -544,26 +563,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1892879420AAED9A006358E5 /* LocalAuthentication.framework in Frameworks */,
-				18B4B61F209AFCF40017D777 /* XMLMapper.framework in Frameworks */,
-				186EAC93207F945B00516AFE /* libstdc++.6.tbd in Frameworks */,
 				186EAC91207F944600516AFE /* UIKit.framework in Frameworks */,
-				186EAC8F207F943B00516AFE /* Foundation.framework in Frameworks */,
-				186EAC8D207F943100516AFE /* ImageIO.framework in Frameworks */,
-				185091F3207F99A4006651B1 /* IDMetricsSelfieCapture.framework in Frameworks */,
 				186EAC8B207F942A00516AFE /* Security.framework in Frameworks */,
 				186EAC89207F942100516AFE /* QuartzCore.framework in Frameworks */,
 				186EAC87207F941900516AFE /* OpenGLES.framework in Frameworks */,
 				186EAC85207F940E00516AFE /* MobileCoreServices.framework in Frameworks */,
+				186EAC8F207F943B00516AFE /* Foundation.framework in Frameworks */,
+				188ECEB420B5759F00C57F50 /* libopencv_imgproc.a in Frameworks */,
 				186EAC83207F940500516AFE /* CoreVideo.framework in Frameworks */,
+				188ECEB320B5759F00C57F50 /* libCardIO.a in Frameworks */,
+				188ECEB620B5759F00C57F50 /* libopencv_core.a in Frameworks */,
 				186EAC81207F93FB00516AFE /* CoreMedia.framework in Frameworks */,
+				186EAC7F207F93F300516AFE /* CoreGraphics.framework in Frameworks */,
+				186EAC7D207F93E800516AFE /* AVFoundation.framework in Frameworks */,
+				186EAC7B207F93DD00516AFE /* AudioToolbox.framework in Frameworks */,
+				188ECEA320B572F600C57F50 /* Accelerate.framework in Frameworks */,
+				1892879420AAED9A006358E5 /* LocalAuthentication.framework in Frameworks */,
+				18B4B61F209AFCF40017D777 /* XMLMapper.framework in Frameworks */,
+				186EAC93207F945B00516AFE /* libstdc++.6.tbd in Frameworks */,
+				186EAC8D207F943100516AFE /* ImageIO.framework in Frameworks */,
+				185091F3207F99A4006651B1 /* IDMetricsSelfieCapture.framework in Frameworks */,
 				185091FE207F99D7006651B1 /* iFaceRec.framework in Frameworks */,
 				185091F4207F99A4006651B1 /* IDMetricsDocumentCapture.framework in Frameworks */,
 				185091F5207F99A4006651B1 /* GIDSDK.framework in Frameworks */,
-				186EAC7F207F93F300516AFE /* CoreGraphics.framework in Frameworks */,
-				186EAC7D207F93E800516AFE /* AVFoundation.framework in Frameworks */,
 				186EAC7A207F93DD00516AFE /* CoreAudio.framework in Frameworks */,
-				186EAC7B207F93DD00516AFE /* AudioToolbox.framework in Frameworks */,
 				18902875204D6E41008D903C /* AlamofireObjectMapper.framework in Frameworks */,
 				185091F8207F99D7006651B1 /* GIDSDK.framework in Frameworks */,
 				18902873204D6E20008D903C /* Alamofire.framework in Frameworks */,
@@ -781,6 +804,25 @@
 			path = ChangePin;
 			sourceTree = "<group>";
 		};
+		188ECEA620B5756E00C57F50 /* CardIO */ = {
+			isa = PBXGroup;
+			children = (
+				188ECEB020B5759800C57F50 /* CardIO.h */,
+				188ECEAB20B5758E00C57F50 /* CardIO.m */,
+				188ECEAF20B5759600C57F50 /* CardIOCreditCardInfo.h */,
+				188ECEA820B5758300C57F50 /* CardIODetectionMode.h */,
+				188ECEAE20B5759400C57F50 /* CardIOPaymentViewController.h */,
+				188ECEAC20B5759000C57F50 /* CardIOPaymentViewControllerDelegate.h */,
+				188ECEAD20B5759200C57F50 /* CardIOUtilities.h */,
+				188ECEAA20B5758C00C57F50 /* CardIOView.h */,
+				188ECEB120B5759A00C57F50 /* CardIOViewDelegate.h */,
+				188ECEA720B5758100C57F50 /* libCardIO.a */,
+				188ECEB220B5759E00C57F50 /* libopencv_core.a */,
+				188ECEA920B5758900C57F50 /* libopencv_imgproc.a */,
+			);
+			path = CardIO;
+			sourceTree = "<group>";
+		};
 		189434F9202488B8000C2166 /* CreatePin */ = {
 			isa = PBXGroup;
 			children = (
@@ -810,6 +852,7 @@
 		575C9A2F8E71777712E58AA8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				188ECEA220B572F600C57F50 /* Accelerate.framework */,
 				1892879320AAED99006358E5 /* LocalAuthentication.framework */,
 				18B4B620209AFCF40017D777 /* XMLMapper.framework */,
 				186EAC92207F945B00516AFE /* libstdc++.6.tbd */,
@@ -880,6 +923,8 @@
 				183990192063C9EC00FD1D7D /* SpiralPay.entitlements */,
 				F1D9BA50201852E8004B42B7 /* AppDelegate.swift */,
 				186D886F20A314CA00304E39 /* Alpha2ToAlpha3.plist */,
+				188ECEA420B574BA00C57F50 /* SpiralPay-Bridging-Header.h */,
+				188ECEA620B5756E00C57F50 /* CardIO */,
 				1828560620998BCF00B1388B /* Soap */,
 				F1D9BA7E20185605004B42B7 /* Helpers */,
 				F1D9BAC7201856D1004B42B7 /* Manager */,
@@ -1071,8 +1116,8 @@
 				185CE2CC20AEA78A0096D8A4 /* TemporaryLockTimerViewController.swift */,
 				F1E89B6D201F09F10052C723 /* Signup */,
 				18645D4F203552140017E214 /* WelcomeViewController.swift */,
-				18645D5320359B7F0017E214 /* AddCardOptionsViewController.swift */,
-				189F22F42035A5D600971AFD /* AddCardManuallyViewController.swift */,
+				1866779D20B7DB5900A39BDD /* AddCardIntroViewController.swift */,
+				189F22F42035A5D600971AFD /* AddCardOptionsViewController.swift */,
 				18D914EC2036B824008FFB60 /* CardAddedViewController.swift */,
 				180B4709203C043D00775D06 /* Home */,
 				1873FB3A204533B1003CA863 /* ScannerViewController.swift */,
@@ -1418,7 +1463,6 @@
 				1808502F207389BD00DCF027 /* ChangeEmailViewController.swift in Sources */,
 				18529F6A202B31CD00BD8D0E /* PhoneVerificationInteractor.swift in Sources */,
 				F1D9BAC320185605004B42B7 /* Utils.swift in Sources */,
-				18645D5420359B7F0017E214 /* AddCardOptionsViewController.swift in Sources */,
 				1828564A20998BF400B1388B /* SWXMLHash.swift in Sources */,
 				F1D9BAC020185605004B42B7 /* OptionalExtensions.swift in Sources */,
 				187B544C2075015100961C6B /* HomeAddressTableViewCell.swift in Sources */,
@@ -1444,6 +1488,7 @@
 				1828563820998BF400B1388B /* DynamicFormsServiceV3.swift in Sources */,
 				F1D9BABE20185605004B42B7 /* DateExtensions.swift in Sources */,
 				F1D9BAB720185605004B42B7 /* NSViewExtensions.swift in Sources */,
+				1866779E20B7DB5900A39BDD /* AddCardIntroViewController.swift in Sources */,
 				18930E99207CFE350081AC89 /* CardListViewController.swift in Sources */,
 				1828565420998BF400B1388B /* getSourcesResponse.swift in Sources */,
 				F1E109B9207E234000714C9F /* AddCardTableViewCell.swift in Sources */,
@@ -1453,8 +1498,9 @@
 				185F27CA20773EFB00142DDB /* LockAccountRouter.swift in Sources */,
 				F1D9BAA620185605004B42B7 /* StoryboardInstantiable.swift in Sources */,
 				1828563A20998BF400B1388B /* lastCheckResultV3.swift in Sources */,
-				189F22F52035A5D600971AFD /* AddCardManuallyViewController.swift in Sources */,
+				189F22F52035A5D600971AFD /* AddCardOptionsViewController.swift in Sources */,
 				F1D9BAA820185605004B42B7 /* FloatExtensions.swift in Sources */,
+				188ECEB520B5759F00C57F50 /* CardIO.m in Sources */,
 				1828564920998BF400B1388B /* registerVerificationResponse.swift in Sources */,
 				18943505202488F9000C2166 /* PinInteractor.swift in Sources */,
 				18256FE020527AB2007FA954 /* HomeContainerRouter.swift in Sources */,
@@ -1727,6 +1773,10 @@
 				INFOPLIST_FILE = SpiralPay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SpiralPay/CardIO",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1759,6 +1809,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "f14ee3f7-c40c-4ece-8bfb-0d5fcea85b85";
 				PROVISIONING_PROFILE_SPECIFIER = SpiralPayDevelopment;
+				SWIFT_OBJC_BRIDGING_HEADER = "SpiralPay/SpiralPay-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1782,6 +1833,10 @@
 				INFOPLIST_FILE = SpiralPay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SpiralPay/CardIO",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1814,6 +1869,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d2915cda-69f0-4aec-9d39-1029373ba95a";
 				PROVISIONING_PROFILE_SPECIFIER = SpiralPayAdhoc;
+				SWIFT_OBJC_BRIDGING_HEADER = "SpiralPay/SpiralPay-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

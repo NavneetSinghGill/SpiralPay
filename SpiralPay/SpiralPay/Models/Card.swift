@@ -53,6 +53,7 @@ class Card: NSObject {
         dict[Card.number] = Card.shared.number ?? ""
         dict[Card.expiry] = Card.shared.expiry ?? ""
         dict[Card.cvv] = Card.shared.cvv ?? ""
+        dict[Card.isDefault] = "true"
         
         return dict
     }
