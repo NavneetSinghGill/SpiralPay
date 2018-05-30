@@ -80,6 +80,10 @@ class SettingsViewController: SpiralPayViewController {
     override func afterVixVerifySuccess() {
         self.navigationController?.popToRootViewController(animated: true)
     }
+    
+    override func vixVerifyNotNow() {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
 
 }
 

@@ -121,22 +121,9 @@ class ConfirmDetailsViewController: ProgressBarViewController, ConfirmDetailsDis
     @IBAction func confirmButtonTapped() {
         
         User.shared.savedState = SavedState.CustomerDetailsEntered
-        User.shared.name = nameTextField.text
-//        User.shared.birthday = birthdayTextField.text
-        User.shared.address = addressTextField.text
-        User.shared.city = cityTextField.text
-        User.shared.postcode = postCodeTextField.text
         
-        let dict = User.shared.getCurrentAddressDict()
-        User.shared.addresses = [dict]
-        
-        User.shared.address = ""
-        User.shared.city = ""
-        User.shared.postcode = ""
-
         //Split name
-        if User.shared.name != nil && User.shared.name!.count != 0 {
-            let name = User.shared.name ?? ""
+        if let name = nameTextField.text, name.count != 0 {
             if let first = name.components(separatedBy: " ").first {
                 User.shared.firstName = first
             } else {
@@ -150,8 +137,27 @@ class ConfirmDetailsViewController: ProgressBarViewController, ConfirmDetailsDis
             User.shared.name = ""
         }
         
-        User.shared.save()
+        //Split birthday
+        if let birthday = birthdayTextField.text, birthday.count != 0 {
+            let birthDate = birthday.components(separatedBy: "/")
+            User.shared.birthDay = birthDate[0]
+            User.shared.birthMonth = birthDate[1]
+            User.shared.birthYear = birthDate[2]
+        }
+        User.shared.address = addressTextField.text
+        User.shared.city = cityTextField.text
+        User.shared.postcode = postCodeTextField.text
         
+        var dict = User.shared.getCurrentAddressDict()
+        dict[User.originatedFromVerificationProcess] = "false"
+        User.shared.addresses = [dict]
+        
+        User.shared.address = ""
+        User.shared.city = ""
+        User.shared.postcode = ""
+        
+        User.shared.save()
+                
         router?.routeToWelcomeScreen()
     }
     

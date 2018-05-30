@@ -188,10 +188,15 @@ class SpiralPayViewController: UIViewController {
             }
         }
     }
-    
+    //MARK: possibly overridden in derived controllers
     func afterVixVerifySuccess() {
         let welcomeScreen: WelcomeViewController = WelcomeViewController.create()
         self.navigationController?.setViewControllers([welcomeScreen], animated: true)
+    }
+    
+    func vixVerifyNotNow() {
+        let confirmDetailsScreen = ConfirmDetailsViewController.create()
+        self.navigationController?.pushViewController(confirmDetailsScreen, animated: true)
     }
 
 }
@@ -233,13 +238,14 @@ extension SpiralPayViewController: GIDDelegate, GIDLoggerDelegate {
             // User opted out of the process
         } else if resultCode == .back {
             // User tapped the back button
+            vixVerifyNotNow()
         } else if (resultCode == .userInactivity) {
             // User Inactivity
         } else if (resultCode == .resourceBundle) {
             // No Resource Bundle
         }
         
-        if resultCode != .success {
+        if resultCode != .success && resultCode != .back {
             self.navigationController!.popViewController(animated: true)
         } else {
             

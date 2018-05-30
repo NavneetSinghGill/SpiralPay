@@ -302,13 +302,15 @@ class Utils: NSObject {
             }
         }
         
-        let dict = User.shared.getCurrentAddressDict()
+        var dict = User.shared.getCurrentAddressDict()
         
         if User.shared.addresses == nil || User.shared.addresses!.count == 0 {
             //Onboarding
             User.shared.savedState = SavedState.CustomerDetailsEntered
             User.shared.addresses = [dict]
         } else {
+            dict[User.isDefault] = "false"
+            
             //Find and replace the verification address with this new one
             var addresses = [dict]
             for address in User.shared.addresses! {
