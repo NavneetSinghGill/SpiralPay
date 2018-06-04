@@ -2,7 +2,7 @@
 //  SpiralPay-Bridging-Header.h
 //  SpiralPay
 //
-//  Created by Apple on 23/05/18.
+//  Created by Zoeb on 23/05/18.
 //  Copyright © 2018 EnvisionWorld. All rights reserved.
 //
 

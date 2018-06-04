@@ -39,6 +39,9 @@ class AddCardOptionsViewController: SpiralPayViewController, CardIOViewDelegate 
     var appFlowType = AppFlowType.Onboard
     var screenMode = ScreenMode.AddNew
     
+    var dictOfCardToCheck: Dictionary<String,String>?
+    var saveCardClosure = {}
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -129,25 +132,25 @@ class AddCardOptionsViewController: SpiralPayViewController, CardIOViewDelegate 
     
     @IBAction func confirmButtonTapped() {
         if appFlowType == .Onboard || appFlowType == .Home {
-            Card.shared.number = cardNumberTextField.text?.replacingOccurrences(of: " ", with: "")
-            Card.shared.expiry = expiryTextField.text
-            Card.shared.cvv = cvvTextField.text
+            var dict = Dictionary<String,String>()
+            dict[Card.number] = cardNumberTextField.text?.replacingOccurrences(of: " ", with: "") ?? ""
+            dict[Card.expiry] = expiryTextField.text ?? ""
+            dict[Card.cvv] = cvvTextField.text ?? ""
+            dict[Card.isDefault] = "true"
             
-            let dict = Card.shared.getCurrentCardDict()
-            Card.shared.cards = [dict]
+            dictOfCardToCheck = dict
             
-            Card.shared.number = ""
-            Card.shared.expiry = ""
-            Card.shared.cvv = ""
-            
-            Card.shared.save()
-            
-            User.shared.savedState = .CardAdded
-            User.shared.save()
-            
-            let cardAddScreen = CardAddedViewController.create()
-            cardAddScreen.appFlowType = appFlowType
-            self.navigationController?.pushViewController(cardAddScreen, animated: true)
+            saveCardClosure = {
+                Card.shared.cards = [dict]
+                Card.shared.save()
+                
+                User.shared.savedState = .CardAdded
+                User.shared.save()
+                
+                let cardAddScreen = CardAddedViewController.create()
+                cardAddScreen.appFlowType = self.appFlowType
+                self.navigationController?.pushViewController(cardAddScreen, animated: true)
+            }
         } else if appFlowType == .Setting {
             if screenMode == .AddNew {
                 var dict = Dictionary<String,String>()
@@ -156,18 +159,37 @@ class AddCardOptionsViewController: SpiralPayViewController, CardIOViewDelegate 
                 dict[Card.cvv] = cvvTextField.text
                 dict[Card.isDefault] = "false"
                 
-                Card.shared.cards?.append(dict)
-                Card.shared.save()
+                dictOfCardToCheck = dict
+                
+                saveCardClosure = {
+                    Card.shared.cards?.append(dict)
+                    Card.shared.save()
+                    self.navigationController?.popViewController(animated: true)
+                }
             } else {
                 var dict = Card.shared.cards![indexOfCardToShow]
                 dict[Card.number] = cardNumberTextField.text
                 dict[Card.expiry] = expiryTextField.text
                 dict[Card.cvv] = cvvTextField.text
                 
-                Card.shared.cards![indexOfCardToShow] = dict
-                Card.shared.save()
+                dictOfCardToCheck = dict
+                
+                saveCardClosure = {
+                    Card.shared.cards![self.indexOfCardToShow] = dict
+                    Card.shared.save()
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
-            self.navigationController?.popViewController(animated: true)
+        }
+        
+        
+        if let dictOfCardToCheck = self.dictOfCardToCheck {
+            let dollarOneScreen = DollarOneCardVerificationViewController.create()
+            dollarOneScreen.modalTransitionStyle = .crossDissolve
+            dollarOneScreen.modalPresentationStyle = .overCurrentContext
+            dollarOneScreen.dictOfCardToCheck = dictOfCardToCheck
+            dollarOneScreen.saveCardClosure = saveCardClosure
+            self.present(dollarOneScreen, animated: true, completion: nil)
         }
     }
     
@@ -242,9 +264,17 @@ class AddCardOptionsViewController: SpiralPayViewController, CardIOViewDelegate 
         }
     }
     
+    func openDollarOneScreenPopup() {
+        let dollarOneScreen = DollarOneCardVerificationViewController.create()
+        dollarOneScreen.modalTransitionStyle = .crossDissolve
+        dollarOneScreen.modalPresentationStyle = .overCurrentContext
+        self.navigationController?.present(dollarOneScreen, animated: true, completion: nil)
+    }
+    
     //MARK:- Card delegate
     
     func cardIOView(_ cardIOView: CardIOView!, didScanCard cardInfo: CardIOCreditCardInfo!) {
+        openDollarOneScreenPopup() 
         hideCardView()
         
         if let cardNumber = cardInfo.cardNumber {

@@ -173,5 +173,15 @@ class RequestManager: NSObject {
         }
     }
     
+    func dollarOneCardVerification(request:BaseRequest, completion:@escaping CompletionHandler){
+        if ApplicationDelegate.isNetworkAvailable{
+            RealAPI().postObject(request:request, genericResponse: DollarOneCardVerification.DollarOneCardVerification.Response.self, completion:completion)
+        }
+        else{
+            completion(false, Constants.kNoNetworkMessage)
+            BannerManager.showFailureBanner(subtitle: Constants.kNoNetworkMessage)
+        }
+    }
+    
     
 }

@@ -175,6 +175,55 @@ class Utils: NSObject {
         ApplicationDelegate.getWindow().rootViewController = navC
     }
     
+    func getDefaultCardTokenRequest(of cardDict: Dictionary<String,String> = Card.shared.defaultCard()) -> ProductDetails.CardToken.Request? {
+        var request = ProductDetails.CardToken.Request()
+        request.clientIP = Utils.shared.getWiFiAddress()
+        request.locale = "\(Locale.current.languageCode ?? "")-\(Locale.current.regionCode ?? "")"
+        
+        request.userAgent = ""
+        request.type = "card"
+        request.email = User.shared.email
+        
+        let defaultAddress = User.shared.defaultAddress()
+        request.line1 = defaultAddress[User.address]
+        request.line2 = ""
+        request.city = defaultAddress[User.city]
+        request.postcode = defaultAddress[User.postcode]
+        
+        //Check if able to find Country alpha code.
+        //If it returns nil then pass the same string as it is
+        let code = Utils.shared.getCountryCodeFor(country: defaultAddress[User.country] ?? "") ?? ""
+        if code.count != 0 {
+            request.country = code
+        } else {
+            request.country = defaultAddress[User.country]
+        }
+        
+        let defaultCard = cardDict
+        request.cvv = defaultCard[Card.cvv]
+        request.number = (defaultCard[Card.number] ?? "").replacingOccurrences(of: " ", with: "")
+        request.name = ".."
+        
+        let expiry = defaultCard[Card.expiry] ?? ""
+        if let range = expiry.range(of: "/") {
+            request.expiryMonth = Int(expiry[expiry.startIndex..<range.lowerBound])
+            request.expiryYear = Int(expiry[range.upperBound..<expiry.endIndex])
+        } else {
+            return nil
+        }
+        
+        request.state = ""
+        
+        return request
+    }
+    
+    func getFirstAndLast4DigitsOf(cardNumber: String?) -> String {
+        if let cardNumber = cardNumber {
+            return "\(String(cardNumber.prefix(4)))\(String(cardNumber.suffix(4)))"
+        }
+        return ""
+    }
+    
     //MARK:- Vix verify
     
     func getVixVerifyControllerWith(delegate: UIViewController) -> UIViewController {

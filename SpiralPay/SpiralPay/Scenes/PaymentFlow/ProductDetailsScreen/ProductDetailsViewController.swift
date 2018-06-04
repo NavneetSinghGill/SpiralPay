@@ -165,89 +165,54 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     //MARK: Get card token
     
     func getCardToken() {
-        var request = ProductDetails.CardToken.Request()
-        request.clientIP = Utils.shared.getWiFiAddress()
-        request.locale = "\(Locale.current.languageCode ?? "")-\(Locale.current.regionCode ?? "")"
-        var amount : CGFloat = 0
-        if detailsType == DetailsType.Payment {
-            request.currency = paymentDetail.currency
-            request.amount = paymentDetail.amount
-            amount = paymentDetail.amount ?? 0
-        } else if detailsType == DetailsType.Campaign {
-            request.currency = campaignDetail.currency
-            request.amount = campaignDetail.amount
-            amount = campaignDetail.amount ?? 0
-        } else if detailsType == DetailsType.Multiple {
-            request.currency = createdPayments![indexOfPaymentInProgress].currency
-            request.amount = createdPayments![indexOfPaymentInProgress].amount
-            
-            if let createdPayments = createdPayments {
-                for createdPayment in createdPayments {
-                    if let items = createdPayment.items {
-                        for item in items {
-                            amount = amount + ((item.amount ?? 0) * CGFloat(item.count ?? 0))
+        if var request = Utils.shared.getDefaultCardTokenRequest() {
+            var amount : CGFloat = 0
+            if detailsType == DetailsType.Payment {
+                request.currency = paymentDetail.currency
+                request.amount = paymentDetail.amount
+                amount = paymentDetail.amount ?? 0
+            } else if detailsType == DetailsType.Campaign {
+                request.currency = campaignDetail.currency
+                request.amount = campaignDetail.amount
+                amount = campaignDetail.amount ?? 0
+            } else if detailsType == DetailsType.Multiple {
+                request.currency = createdPayments![indexOfPaymentInProgress].currency
+                request.amount = createdPayments![indexOfPaymentInProgress].amount
+                
+                if let createdPayments = createdPayments {
+                    for createdPayment in createdPayments {
+                        if let items = createdPayment.items {
+                            for item in items {
+                                amount = amount + ((item.amount ?? 0) * CGFloat(item.count ?? 0))
+                            }
                         }
                     }
                 }
             }
+            if VixVerify.shared.isBuyRestricted() && Int(amount/100) >= 30 {
+                NLoader.stopAnimating()
+                Utils.showAlertWith(message: "Please verify yourself to do payment of more than £30.", inController: self)
+                return
+            }
+            
+            //Checks
+            var message = ""
+            if request.line1 == nil || request.line1!.count == 0 {
+                message = "Please update address."
+            }
+            if request.city == nil || request.city!.count == 0 {
+                message = "Please update city."
+            }
+            if message.count != 0 {
+                NLoader.stopAnimating()
+                Utils.showAlertWith(message: message, inController: self)
+                return
+            }
+            
+            interactor?.getCardToken(request: request)
+            
+            NLoader.shared.startNLoader()
         }
-        if VixVerify.shared.isBuyRestricted() && Int(amount/100) >= 30 {
-            NLoader.stopAnimating()
-            Utils.showAlertWith(message: "Please verify yourself to do payment of more than £30.", inController: self)
-            return
-        }
-        
-        request.userAgent = ""
-        request.type = "card"
-        request.email = User.shared.email
-        
-        let defaultCard = Card.shared.defaultCard()
-        request.cvv = defaultCard[Card.cvv]
-        request.number = (defaultCard[Card.number] ?? "").replacingOccurrences(of: " ", with: "")
-        request.name = ".."
-        
-        let defaultAddress = User.shared.defaultAddress()
-        request.line1 = defaultAddress[User.address]
-        request.line2 = ""
-        request.city = defaultAddress[User.city]
-        request.postcode = defaultAddress[User.postcode]
-        
-        //Check if able to find Country alpha code.
-        //If it returns nil then pass the same string as it is
-        let code = Utils.shared.getCountryCodeFor(country: defaultAddress[User.country] ?? "") ?? ""
-        if code.count != 0 {
-            request.country = code
-        } else {
-            request.country = defaultAddress[User.country]
-        }
-        
-        request.state = ""
-        
-        let expiry = defaultCard[Card.expiry] ?? ""
-        if let range = expiry.range(of: "/") {
-            request.expiryMonth = Int(expiry[expiry.startIndex..<range.lowerBound])
-            request.expiryYear = Int(expiry[range.upperBound..<expiry.endIndex])
-        } else {
-            return
-        }
-        
-        //Checks
-        var message = ""
-        if request.line1 == nil || request.line1!.count == 0 {
-            message = "Please update address."
-        }
-        if request.city == nil || request.city!.count == 0 {
-            message = "Please update city."
-        }
-        if message.count != 0 {
-            NLoader.stopAnimating()
-            Utils.showAlertWith(message: message, inController: self)
-            return
-        }
-        
-        interactor?.getCardToken(request: request)
-        
-        NLoader.shared.startNLoader()
     }
     
     func getCardTokenSuccessWith(response: ProductDetails.CardToken.Response) {

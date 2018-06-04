@@ -2,7 +2,7 @@
 //  LoyaltyContentViewController.swift
 //  SpiralPay
 //
-//  Created by Apple on 08/05/18.
+//  Created by Zoeb on 08/05/18.
 //  Copyright © 2018 EnvisionWorld. All rights reserved.
 //
 

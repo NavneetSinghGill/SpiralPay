@@ -86,15 +86,22 @@ class RealAPI: NSObject {
     func handleSuccessResponse<T:Mappable>(request: BaseRequest, response: DataResponse<T>?, responseArray: DataResponse<[T]>?, block:@escaping CompletionHandler) -> Void {
         let responseStatus = response != nil ? response?.response : responseArray?.response
         
-//        let message: String = String.init(format: "Success:- URL:%@\n", (responseStatus?.url?.absoluteString)!)
-//        Utils.print(object: (message)
-        
         if (request.apiType == .Put_UpdateMobileAndEmail ||
             request.apiType == .Put_UpdateCustomerVerificationData ||
             request.apiType == .Post_LockAccount) &&
             responseStatus?.statusCode == Constants.ResponseStatusSuccess {
             block(true, response)
-            return
+            return ()
+        }
+        
+        if request.apiType == .Post_DollarOneCardVerification {
+            if responseStatus?.statusCode == 201 {
+                block(true, response)
+                return ()
+            } else if responseStatus?.statusCode == 202 {
+                block(true, response)
+                return ()
+            }
         }
         
         if ((request.urlPath == sendSmsURL || (request.urlPath.range(of: processPaymentUrlSuffix) != nil && request.urlPath.range(of: processPaymentUrlPrefix) != nil)) && responseStatus?.statusCode == Constants.ResponseStatusAccepted) ||

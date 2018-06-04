@@ -44,8 +44,15 @@ class SettingsViewController: SpiralPayViewController {
     
     private func openCardsListScreen() {
         DispatchQueue.main.async {
-            let cardsListScreen = CardListViewController.create()
-            self.parent?.navigationController?.pushViewController(cardsListScreen, animated: true)
+            if let cards = Card.shared.cards, cards.count > 0 {
+                let cardsListScreen = CardListViewController.create()
+                self.parent?.navigationController?.pushViewController(cardsListScreen, animated: true)
+            } else {
+                let cardScreen = AddCardOptionsViewController.create()
+                cardScreen.screenMode = .AddNew
+                cardScreen.appFlowType = .Setting
+                self.navigationController?.pushViewController(cardScreen, animated: true)
+            }
         }
     }
     

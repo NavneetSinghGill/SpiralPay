@@ -121,6 +121,12 @@
 		1865601B205BDB5000536D4F /* ShoppingCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18656019205BDB5000536D4F /* ShoppingCartTableViewCell.swift */; };
 		1865601C205BDB5000536D4F /* ShoppingCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */; };
 		1866779E20B7DB5900A39BDD /* AddCardIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1866779D20B7DB5900A39BDD /* AddCardIntroViewController.swift */; };
+		1869DB6020C51601001D00F3 /* DollarOneCardVerificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869DB5A20C51601001D00F3 /* DollarOneCardVerificationPresenter.swift */; };
+		1869DB6120C51601001D00F3 /* DollarOneCardVerificationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869DB5B20C51601001D00F3 /* DollarOneCardVerificationWorker.swift */; };
+		1869DB6220C51601001D00F3 /* DollarOneCardVerificationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869DB5C20C51601001D00F3 /* DollarOneCardVerificationRouter.swift */; };
+		1869DB6320C51601001D00F3 /* DollarOneCardVerificationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869DB5D20C51601001D00F3 /* DollarOneCardVerificationModels.swift */; };
+		1869DB6420C51601001D00F3 /* DollarOneCardVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869DB5E20C51601001D00F3 /* DollarOneCardVerificationViewController.swift */; };
+		1869DB6520C51601001D00F3 /* DollarOneCardVerificationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869DB5F20C51601001D00F3 /* DollarOneCardVerificationInteractor.swift */; };
 		186A1DC1206153B30021BC0F /* SpiralPay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 186A1DBF206153B30021BC0F /* SpiralPay.xcdatamodeld */; };
 		186D5FFE209073BB000558F3 /* LoyaltyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186D5FFC209073BB000558F3 /* LoyaltyTableViewCell.swift */; };
 		186D5FFF209073BB000558F3 /* LoyaltyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186D5FFD209073BB000558F3 /* LoyaltyTableViewCell.xib */; };
@@ -402,6 +408,12 @@
 		18656019205BDB5000536D4F /* ShoppingCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartTableViewCell.swift; sourceTree = "<group>"; };
 		1865601A205BDB5000536D4F /* ShoppingCartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartTableViewCell.xib; sourceTree = "<group>"; };
 		1866779D20B7DB5900A39BDD /* AddCardIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardIntroViewController.swift; sourceTree = "<group>"; };
+		1869DB5A20C51601001D00F3 /* DollarOneCardVerificationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarOneCardVerificationPresenter.swift; sourceTree = "<group>"; };
+		1869DB5B20C51601001D00F3 /* DollarOneCardVerificationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarOneCardVerificationWorker.swift; sourceTree = "<group>"; };
+		1869DB5C20C51601001D00F3 /* DollarOneCardVerificationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarOneCardVerificationRouter.swift; sourceTree = "<group>"; };
+		1869DB5D20C51601001D00F3 /* DollarOneCardVerificationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarOneCardVerificationModels.swift; sourceTree = "<group>"; };
+		1869DB5E20C51601001D00F3 /* DollarOneCardVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarOneCardVerificationViewController.swift; sourceTree = "<group>"; };
+		1869DB5F20C51601001D00F3 /* DollarOneCardVerificationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarOneCardVerificationInteractor.swift; sourceTree = "<group>"; };
 		186A1DC0206153B30021BC0F /* SpiralPay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SpiralPay.xcdatamodel; sourceTree = "<group>"; };
 		186D5FFC209073BB000558F3 /* LoyaltyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyTableViewCell.swift; sourceTree = "<group>"; };
 		186D5FFD209073BB000558F3 /* LoyaltyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoyaltyTableViewCell.xib; sourceTree = "<group>"; };
@@ -778,6 +790,19 @@
 			path = Lock;
 			sourceTree = "<group>";
 		};
+		1869DB5920C515CE001D00F3 /* DollarOneCardVerification */ = {
+			isa = PBXGroup;
+			children = (
+				1869DB5A20C51601001D00F3 /* DollarOneCardVerificationPresenter.swift */,
+				1869DB5B20C51601001D00F3 /* DollarOneCardVerificationWorker.swift */,
+				1869DB5C20C51601001D00F3 /* DollarOneCardVerificationRouter.swift */,
+				1869DB5D20C51601001D00F3 /* DollarOneCardVerificationModels.swift */,
+				1869DB5E20C51601001D00F3 /* DollarOneCardVerificationViewController.swift */,
+				1869DB5F20C51601001D00F3 /* DollarOneCardVerificationInteractor.swift */,
+			);
+			path = DollarOneCardVerification;
+			sourceTree = "<group>";
+		};
 		1870C49C206CD54900B7E4C3 /* SettingChilds */ = {
 			isa = PBXGroup;
 			children = (
@@ -1119,6 +1144,7 @@
 				1866779D20B7DB5900A39BDD /* AddCardIntroViewController.swift */,
 				189F22F42035A5D600971AFD /* AddCardOptionsViewController.swift */,
 				18D914EC2036B824008FFB60 /* CardAddedViewController.swift */,
+				1869DB5920C515CE001D00F3 /* DollarOneCardVerification */,
 				180B4709203C043D00775D06 /* Home */,
 				1873FB3A204533B1003CA863 /* ScannerViewController.swift */,
 				1859768420514B350063A647 /* PaymentFlow */,
@@ -1430,6 +1456,7 @@
 				1828563120998BF400B1388B /* sourceV3.swift in Sources */,
 				F1D9BABC20185605004B42B7 /* LocaleExtensions.swift in Sources */,
 				18D914EB2036B491008FFB60 /* Card.swift in Sources */,
+				1869DB6220C51601001D00F3 /* DollarOneCardVerificationRouter.swift in Sources */,
 				1828563020998BF400B1388B /* setFields.swift in Sources */,
 				187DC5C520721C25000500AA /* ChangePinInteractor.swift in Sources */,
 				187DC5C020721C25000500AA /* ChangePinPresenter.swift in Sources */,
@@ -1471,6 +1498,7 @@
 				1828564D20998BF400B1388B /* fieldResultV3.swift in Sources */,
 				F1D9BAD2201856D1004B42B7 /* CommonResponse.swift in Sources */,
 				1810DF0C203C62DC00722760 /* LoyaltyViewController.swift in Sources */,
+				1869DB6320C51601001D00F3 /* DollarOneCardVerificationModels.swift in Sources */,
 				F1D9BAA320185605004B42B7 /* Constants.swift in Sources */,
 				1828563D20998BF400B1388B /* SoapHttpClientExtension.swift in Sources */,
 				1828564E20998BF400B1388B /* getFieldsResponse.swift in Sources */,
@@ -1499,6 +1527,7 @@
 				F1D9BAA620185605004B42B7 /* StoryboardInstantiable.swift in Sources */,
 				1828563A20998BF400B1388B /* lastCheckResultV3.swift in Sources */,
 				189F22F52035A5D600971AFD /* AddCardOptionsViewController.swift in Sources */,
+				1869DB6520C51601001D00F3 /* DollarOneCardVerificationInteractor.swift in Sources */,
 				F1D9BAA820185605004B42B7 /* FloatExtensions.swift in Sources */,
 				188ECEB520B5759F00C57F50 /* CardIO.m in Sources */,
 				1828564920998BF400B1388B /* registerVerificationResponse.swift in Sources */,
@@ -1512,6 +1541,7 @@
 				180C160C202197C100818460 /* CountryInteractor.swift in Sources */,
 				1865359420AD6804005EE430 /* EnableTouchViewController.swift in Sources */,
 				F1D9BAC120185605004B42B7 /* CollectionExtensions.swift in Sources */,
+				1869DB6120C51601001D00F3 /* DollarOneCardVerificationWorker.swift in Sources */,
 				1828564F20998BF400B1388B /* getSources.swift in Sources */,
 				F1D9BAA920185605004B42B7 /* ViewControllerExtensions.swift in Sources */,
 				187DC5C220721C25000500AA /* ChangePinRouter.swift in Sources */,
@@ -1567,6 +1597,7 @@
 				F1E89B77201F0E540052C723 /* PhoneAndEmailRouter.swift in Sources */,
 				1894350920248DA7000C2166 /* ProgressBarViewController.swift in Sources */,
 				F1E89B78201F0E540052C723 /* PhoneAndEmailModels.swift in Sources */,
+				1869DB6020C51601001D00F3 /* DollarOneCardVerificationPresenter.swift in Sources */,
 				18085030207389BD00DCF027 /* ChangeEmailInteractor.swift in Sources */,
 				F1D9BAB020185605004B42B7 /* DoubleExtensions.swift in Sources */,
 				F1D9BABB20185605004B42B7 /* SearchBarExtension.swift in Sources */,
@@ -1583,6 +1614,7 @@
 				184A4F9F202D8EBA0019AD40 /* ConfirmDetailsWorker.swift in Sources */,
 				F1D9BAAD20185605004B42B7 /* DataExtensions.swift in Sources */,
 				F1E89B76201F0E540052C723 /* PhoneAndEmailWorker.swift in Sources */,
+				1869DB6420C51601001D00F3 /* DollarOneCardVerificationViewController.swift in Sources */,
 				1815BC832047D8C20001E392 /* PaymentPriceDetailsTableViewCell.swift in Sources */,
 				18529F69202B31CD00BD8D0E /* PhoneVerificationViewController.swift in Sources */,
 				185CE2CD20AEA78A0096D8A4 /* TemporaryLockTimerViewController.swift in Sources */,

@@ -191,27 +191,35 @@ class NetworkHttpClient: NSObject {
     
     func handleExceptionsFor<T:Mappable>(url: String, withResponseCode: Int, response: DataResponse<T>, apiType: ApiType, genericResponse:T.Type) -> AnyObject? {
         
-        if (apiType == .Put_UpdateMobileAndEmail ||
+        if ((apiType == .Put_UpdateMobileAndEmail ||
             apiType == .Put_UpdateCustomerVerificationData ||
             apiType == .Post_LockAccount) &&
-            withResponseCode == 200 {
+            withResponseCode == 200 ) {
+        
             return response as AnyObject
         }
-        
+        if apiType == .Post_DollarOneCardVerification {
+            if withResponseCode == 201 {
+                return response as AnyObject
+            } else if withResponseCode == 202 {
+                return response as AnyObject
+            }
+        }
+    
         if url == sendSmsURL && withResponseCode == 202 {
 //            let response = PhoneVerification.SmsPhoneVerification.Response(message: "Sms sent successfully")
 //            response.response?.statusCode
             return response as AnyObject
         } else if (url.range(of: processPaymentUrlSuffix) != nil && url.range(of: processPaymentUrlPrefix) != nil)
             && withResponseCode == 202 {
-            
+    
             return response as AnyObject
         } else if (url.hasSuffix(itemAddedToBasketURLSuffix) ||
                     url.hasSuffix(changePinSuffix)) && withResponseCode == 200 {
             return response as AnyObject
         }
-        
-        
+    
+    
         return nil
     }
     

@@ -110,13 +110,7 @@ enum ProductDetails
                 baseRequest.parameters["type"] = type ?? ""
                 baseRequest.parameters["email"] = email ?? ""
                 
-                var address = Dictionary<String,String>()
-                address["city"] = city ?? ""
-                address["country"] = country ?? ""
-                address["line1"] = line1 ?? ""
-                address["line2"] = line2 ?? ""
-                address["state"] = state ?? ""
-                address["postcode"] = postcode ?? ""
+                var address = getAddressDict()
                 baseRequest.parameters["address"] = address
                 
                 var card = Dictionary<String,AnyObject>()
@@ -129,6 +123,20 @@ enum ProductDetails
                 
                 return baseRequest
             }
+            
+            func getAddressDict() -> Dictionary<String,String> {
+                var address = Dictionary<String,String>()
+                address["city"] = city ?? ""
+                address["country"] = country ?? ""
+                address["line1"] = line1 ?? ""
+                address["line2"] = line2 ?? ""
+                address["state"] = state ?? ""
+                address["postcode"] = postcode ?? ""
+                address["name"] = "\(User.shared.firstName ?? "") \(User.shared.middleName ?? "") \(User.shared.lastName ?? "")"
+                
+                return address
+            }
+            
         }
         struct Response: Mappable {
             

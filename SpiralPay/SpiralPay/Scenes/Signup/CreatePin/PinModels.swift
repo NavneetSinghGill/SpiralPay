@@ -108,11 +108,13 @@ enum Pin
             private struct SerializationKeys {
                 static let accessToken = "access_token"
                 static let message = "message"
+                static let cards = "cards"
                 static let errorDescription = "error_description"
             }
             
             // MARK: Properties
             public var accessToken: String?
+            public var cards: Dictionary<String,String>?
             public var message: String?
             public var errorDescription: String?
             
@@ -135,6 +137,7 @@ enum Pin
             /// - parameter map: A mapping from ObjectMapper.
             public mutating func mapping(map: Map) {
                 accessToken <- map[SerializationKeys.accessToken]
+                cards <- map[SerializationKeys.cards]
                 message <- map[SerializationKeys.message]
                 errorDescription <- map[SerializationKeys.errorDescription]
             }
@@ -145,6 +148,7 @@ enum Pin
             public func dictionaryRepresentation() -> [String: Any] {
                 var dictionary: [String: Any] = [:]
                 if let value = accessToken { dictionary[SerializationKeys.accessToken] = value }
+                if let value = cards { dictionary[SerializationKeys.cards] = value }
                 if let value = message { dictionary[SerializationKeys.message] = value }
                 if let value = errorDescription { dictionary[SerializationKeys.errorDescription] = value }
                 return dictionary
