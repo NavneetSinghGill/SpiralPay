@@ -28,10 +28,24 @@ class DollarOneCardVerificationWorker
     //MARK: Parse methods
     
     public func handleDollarOneCardVerificationResponse(success:@escaping(dollarOneCardVerificationResponseHandler), fail:@escaping(dollarOneCardVerificationResponseHandler), status: Bool, response: Any?) {
-        let message:String = Constants.kErrorMessage
+        var message:String = Constants.kErrorMessage
         if status {
-            success(DollarOneCardVerification.DollarOneCardVerification.Response(message: "Dollar one card verification succeded")!)
-            return
+            if let result = response as? DollarOneCardVerification.DollarOneCardVerification.Response {
+                success(result)
+                return
+            }
+        }
+        else {
+            if let result = response as? DollarOneCardVerification.DollarOneCardVerification.Response {
+                fail(result)
+                return
+            }
+            else
+            {
+                if let result = response as? String {
+                    message = result
+                }
+            }
         }
         fail(DollarOneCardVerification.DollarOneCardVerification.Response(message:message)!)
     }

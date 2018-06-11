@@ -94,16 +94,6 @@ class RealAPI: NSObject {
             return ()
         }
         
-        if request.apiType == .Post_DollarOneCardVerification {
-            if responseStatus?.statusCode == 201 {
-                block(true, response)
-                return ()
-            } else if responseStatus?.statusCode == 202 {
-                block(true, response)
-                return ()
-            }
-        }
-        
         if ((request.urlPath == sendSmsURL || (request.urlPath.range(of: processPaymentUrlSuffix) != nil && request.urlPath.range(of: processPaymentUrlPrefix) != nil)) && responseStatus?.statusCode == Constants.ResponseStatusAccepted) ||
             
             ((request.urlPath.hasSuffix(itemAddedToBasketURLSuffix) ||

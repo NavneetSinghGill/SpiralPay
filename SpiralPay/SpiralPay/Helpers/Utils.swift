@@ -185,7 +185,7 @@ class Utils: NSObject {
         request.email = User.shared.email
         
         let defaultAddress = User.shared.defaultAddress()
-        request.line1 = defaultAddress[User.address]
+        request.line1 = defaultAddress[User.address] == "" ? "-": defaultAddress[User.address]
         request.line2 = ""
         request.city = defaultAddress[User.city]
         request.postcode = defaultAddress[User.postcode]

@@ -43,10 +43,12 @@ enum DollarOneCardVerification
         {
             
             private struct SerializationKeys {
+                static let status = "status"
                 static let message = "message"
             }
             
             public var message: String?
+            public var status: String?
             
             public init?(map: Map){
                 
@@ -57,11 +59,13 @@ enum DollarOneCardVerification
             
             public mutating func mapping(map: Map) {
                 message <- map[SerializationKeys.message]
+                status <- map[SerializationKeys.status]
             }
             
             public func dictionaryRepresentation() -> [String: Any] {
                 var dictionary: [String: Any] = [:]
                 if let value = message { dictionary[SerializationKeys.message] = value }
+                if let value = status { dictionary[SerializationKeys.status] = value }
                 return dictionary
             }
             

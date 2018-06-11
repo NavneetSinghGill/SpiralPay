@@ -95,6 +95,10 @@ class DollarOneCardVerificationViewController: UIViewController, DollarOneCardVe
         }
     }
     
+    @IBAction func dismiss() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     //MARK:- API calls
     
     func doDollarOneCardVerification(token: String!, firstAndLast4Digits: String!, address: Dictionary<String, String>!) {
@@ -108,12 +112,17 @@ class DollarOneCardVerificationViewController: UIViewController, DollarOneCardVe
     
     func dollarOneCardVerificationAPIsuccess(response: DollarOneCardVerification.DollarOneCardVerification.Response) {
         NLoader.stopAnimating()
-        self.dismiss(animated: true) {
-            self.saveCardClosure()
+        if response.status == "COMPLETED" {
+            self.dismiss(animated: true) {
+                self.saveCardClosure()
+            }
+        } else {
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
     func dollarOneCardVerificationAPIfailure(response: DollarOneCardVerification.DollarOneCardVerification.Response) {
         NLoader.stopAnimating()
+        self.dismiss(animated: true, completion: nil)
     }
 }

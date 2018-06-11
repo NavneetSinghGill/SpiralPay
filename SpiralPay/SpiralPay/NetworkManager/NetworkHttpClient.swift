@@ -198,13 +198,6 @@ class NetworkHttpClient: NSObject {
         
             return response as AnyObject
         }
-        if apiType == .Post_DollarOneCardVerification {
-            if withResponseCode == 201 {
-                return response as AnyObject
-            } else if withResponseCode == 202 {
-                return response as AnyObject
-            }
-        }
     
         if url == sendSmsURL && withResponseCode == 202 {
 //            let response = PhoneVerification.SmsPhoneVerification.Response(message: "Sms sent successfully")
