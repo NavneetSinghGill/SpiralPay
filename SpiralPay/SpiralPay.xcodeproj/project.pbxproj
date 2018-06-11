@@ -152,6 +152,7 @@
 		1873FB3B204533B1003CA863 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873FB3A204533B1003CA863 /* ScannerViewController.swift */; };
 		187B544C2075015100961C6B /* HomeAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B544A2075015100961C6B /* HomeAddressTableViewCell.swift */; };
 		187B544D2075015100961C6B /* HomeAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187B544B2075015100961C6B /* HomeAddressTableViewCell.xib */; };
+		187B90B820CEA275002ACD25 /* CardScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B90B720CEA274002ACD25 /* CardScanViewController.swift */; };
 		187DC5C020721C25000500AA /* ChangePinPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5BA20721C25000500AA /* ChangePinPresenter.swift */; };
 		187DC5C120721C25000500AA /* ChangePinWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5BB20721C25000500AA /* ChangePinWorker.swift */; };
 		187DC5C220721C25000500AA /* ChangePinRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5BC20721C25000500AA /* ChangePinRouter.swift */; };
@@ -439,6 +440,7 @@
 		1873FB3A204533B1003CA863 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		187B544A2075015100961C6B /* HomeAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAddressTableViewCell.swift; sourceTree = "<group>"; };
 		187B544B2075015100961C6B /* HomeAddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeAddressTableViewCell.xib; sourceTree = "<group>"; };
+		187B90B720CEA274002ACD25 /* CardScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardScanViewController.swift; sourceTree = "<group>"; };
 		187DC5BA20721C25000500AA /* ChangePinPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinPresenter.swift; sourceTree = "<group>"; };
 		187DC5BB20721C25000500AA /* ChangePinWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinWorker.swift; sourceTree = "<group>"; };
 		187DC5BC20721C25000500AA /* ChangePinRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinRouter.swift; sourceTree = "<group>"; };
@@ -1144,6 +1146,7 @@
 				1866779D20B7DB5900A39BDD /* AddCardIntroViewController.swift */,
 				189F22F42035A5D600971AFD /* AddCardOptionsViewController.swift */,
 				18D914EC2036B824008FFB60 /* CardAddedViewController.swift */,
+				187B90B720CEA274002ACD25 /* CardScanViewController.swift */,
 				1869DB5920C515CE001D00F3 /* DollarOneCardVerification */,
 				180B4709203C043D00775D06 /* Home */,
 				1873FB3A204533B1003CA863 /* ScannerViewController.swift */,
@@ -1496,6 +1499,7 @@
 				18A982F7205665A700BDC4AD /* ProductDetailsViewController.swift in Sources */,
 				1828563F20998BF400B1388B /* getVerificationResult.swift in Sources */,
 				1828564D20998BF400B1388B /* fieldResultV3.swift in Sources */,
+				187B90B820CEA275002ACD25 /* CardScanViewController.swift in Sources */,
 				F1D9BAD2201856D1004B42B7 /* CommonResponse.swift in Sources */,
 				1810DF0C203C62DC00722760 /* LoyaltyViewController.swift in Sources */,
 				1869DB6320C51601001D00F3 /* DollarOneCardVerificationModels.swift in Sources */,

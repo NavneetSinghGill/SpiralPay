@@ -69,6 +69,7 @@ class DollarOneCardVerificationViewController: UIViewController, DollarOneCardVe
     
     var dictOfCardToCheck: Dictionary<String,String>!
     var saveCardClosure = {}
+    var failureClosure = {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,7 +118,9 @@ class DollarOneCardVerificationViewController: UIViewController, DollarOneCardVe
                 self.saveCardClosure()
             }
         } else {
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true) {
+                self.failureClosure()
+            }
         }
     }
     

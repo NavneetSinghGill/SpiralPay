@@ -13,10 +13,8 @@ enum ScreenMode {
     case Edit
 }
 
-class AddCardOptionsViewController: SpiralPayViewController, CardIOViewDelegate {
+class AddCardOptionsViewController: SpiralPayViewController {
     
-    @IBOutlet weak var cardSuperView: UIView!
-    @IBOutlet weak var cardIOView: CardIOView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var cardNumberTextField: FloatingHeaderTextField!
     @IBOutlet weak var expiryTextField: FloatingHeaderTextField!
@@ -27,7 +25,6 @@ class AddCardOptionsViewController: SpiralPayViewController, CardIOViewDelegate 
     @IBOutlet weak var manualCardViewButton: UIButton!
     @IBOutlet weak var notNowAndCardCaptureButton: UIButton!
     @IBOutlet weak var cardTypeViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewHeightConstraint: NSLayoutConstraint!
     var cardTypeViewTopConstraintDefaultValue: CGFloat!
     
     let dateFormat = "MM/yy"
@@ -41,17 +38,10 @@ class AddCardOptionsViewController: SpiralPayViewController, CardIOViewDelegate 
     
     var dictOfCardToCheck: Dictionary<String,String>?
     var saveCardClosure = {}
+    var failureClosure = {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if !CardIOUtilities.canReadCardWithCamera() {
-            //TODO: Hide your "Scan Card" button, or take other appropriate action...
-        } else {
-            cardIOView.delegate = self
-            cardIOView.guideColor = .white
-            cardIOView.hideCardIOLogo = true
-        }
         
         addKeyboardObservers()
         
@@ -64,6 +54,7 @@ class AddCardOptionsViewController: SpiralPayViewController, CardIOViewDelegate 
             }
             confirmButton.setTitle("Save", for: .normal)
             backButton.isHidden = false
+//            notNowAndCardCaptureButton.isHidden = true
         } else {
             backButton.isHidden = true
         }
@@ -71,26 +62,12 @@ class AddCardOptionsViewController: SpiralPayViewController, CardIOViewDelegate 
         cardTypeViewTopConstraintDefaultValue = cardTypeViewTopConstraint.constant
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        CardIOUtilities.preloadCardIO()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        cardViewHeightConstraint.constant = cardIOView.cameraPreviewFrame.size.height
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    
     //MARK:- IBAction methods
     
     @IBAction func notNowAndCardCaptureButtonTapped() {
         if notNowAndCardCaptureButton.isSelected { //Capture card
             self.view.endEditing(true)
+            
             UIView.transition(with: notNowAndCardCaptureButton, duration: 0.3, options: .transitionFlipFromBottom, animations: {
                 self.notNowAndCardCaptureButton.isSelected = false
             }, completion: nil)
@@ -131,6 +108,11 @@ class AddCardOptionsViewController: SpiralPayViewController, CardIOViewDelegate 
     }
     
     @IBAction func confirmButtonTapped() {
+        
+        failureClosure = {
+            BannerManager.showFailureBanner(subtitle: Constants.kErrorMessage)
+        }
+        
         if appFlowType == .Onboard || appFlowType == .Home {
             var dict = Dictionary<String,String>()
             dict[Card.number] = cardNumberTextField.text?.replacingOccurrences(of: " ", with: "") ?? ""
@@ -189,6 +171,7 @@ class AddCardOptionsViewController: SpiralPayViewController, CardIOViewDelegate 
             dollarOneScreen.modalPresentationStyle = .overCurrentContext
             dollarOneScreen.dictOfCardToCheck = dictOfCardToCheck
             dollarOneScreen.saveCardClosure = saveCardClosure
+            dollarOneScreen.failureClosure = failureClosure
             self.present(dollarOneScreen, animated: true, completion: nil)
         }
     }
@@ -210,12 +193,12 @@ class AddCardOptionsViewController: SpiralPayViewController, CardIOViewDelegate 
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func captureCardBackButtonTapped() {
-        hideCardView()
-    }
-    
     @IBAction func captureCardButtonTapped() {
-        showCardView()
+        let cardScanVC = CardScanViewController.create()
+        cardScanVC.modalTransitionStyle = .crossDissolve
+        cardScanVC.modalPresentationStyle = .overCurrentContext
+        cardScanVC.cardScanDelegate = self
+        self.navigationController?.present(cardScanVC, animated: true, completion: nil)
     }
     
     //MARK:- Private methods
@@ -248,35 +231,18 @@ class AddCardOptionsViewController: SpiralPayViewController, CardIOViewDelegate 
         checkValidity()
     }
     
-    func hideCardView() {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.cardSuperView.alpha = 0
-        }) { (complete) in
-            self.cardSuperView.isHidden = true
-        }
-    }
-    
-    func showCardView() {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.cardSuperView.alpha = 1
-        }) { (complete) in
-            self.cardSuperView.isHidden = false
-        }
-    }
-    
     func openDollarOneScreenPopup() {
         let dollarOneScreen = DollarOneCardVerificationViewController.create()
         dollarOneScreen.modalTransitionStyle = .crossDissolve
         dollarOneScreen.modalPresentationStyle = .overCurrentContext
         self.navigationController?.present(dollarOneScreen, animated: true, completion: nil)
     }
+
+}
+
+extension AddCardOptionsViewController: CardScanDelegate {
     
-    //MARK:- Card delegate
-    
-    func cardIOView(_ cardIOView: CardIOView!, didScanCard cardInfo: CardIOCreditCardInfo!) {
-        openDollarOneScreenPopup() 
-        hideCardView()
-        
+    func cardScanSuccessful(cardInfo: CardIOCreditCardInfo!) {
         if let cardNumber = cardInfo.cardNumber {
             cardNumberTextField.text = Utils.shared.addSpacesToCard(text: "\(cardNumber)")
         } else {
@@ -292,7 +258,7 @@ class AddCardOptionsViewController: SpiralPayViewController, CardIOViewDelegate 
         
         manualCardViewButtonTapped()
     }
-
+    
 }
 
 extension AddCardOptionsViewController: DateAndTimeDelegate {
