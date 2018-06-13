@@ -1843,7 +1843,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SpiralPay.SpiralPay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f14ee3f7-c40c-4ece-8bfb-0d5fcea85b85";
+				PROVISIONING_PROFILE = "f85045d8-439f-4727-9726-88349818567d";
 				PROVISIONING_PROFILE_SPECIFIER = SpiralPayDevelopment;
 				SWIFT_OBJC_BRIDGING_HEADER = "SpiralPay/SpiralPay-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -1857,8 +1857,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SpiralPay/SpiralPay.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2A498HB725;
 				ENABLE_BITCODE = NO;
@@ -1903,8 +1903,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SpiralPay.SpiralPay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f85045d8-439f-4727-9726-88349818567d";
-				PROVISIONING_PROFILE_SPECIFIER = SpiralPayDevelopment;
+				PROVISIONING_PROFILE = "96f3f2e6-abd4-4d8e-978a-297a448d7288";
+				PROVISIONING_PROFILE_SPECIFIER = SpiralPayAdhoc;
 				SWIFT_OBJC_BRIDGING_HEADER = "SpiralPay/SpiralPay-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

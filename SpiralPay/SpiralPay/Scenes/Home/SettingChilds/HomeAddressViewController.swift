@@ -68,6 +68,7 @@ class HomeAddressViewController: SpiralPayViewController {
             addressDict[User.isDefault] = "false"
             
             User.shared.addresses?.append(addressDict)
+            SecurityStorageWorker.shared.setArrayUserDefaults(User.shared.addresses!, key: "addresses")
             User.shared.save()
         } else {
             //Save to existing address
@@ -79,6 +80,7 @@ class HomeAddressViewController: SpiralPayViewController {
             addressDict[User.countryPhoneCode] = countryPhoneCode ?? ""
             
             User.shared.addresses![indexOfAddressToShow] = addressDict
+            SecurityStorageWorker.shared.setArrayUserDefaults(User.shared.addresses!, key: "addresses")
             User.shared.save()
         }
         self.navigationController?.popViewController(animated: true)

@@ -166,7 +166,7 @@
         
         SoapHttpClient.callWS(Host : self.Host,WebServiceUrl:self.Url,SoapAction:soapAction,SoapMessage:soapReqXML)
     }
-    public func getVerificationResult(getVerificationResult: GetVerificationResult, completionHandler: @escaping ((GetVerificationResultResponse?) -> Void) = {_ in }){
+    public func getVerificationResult(getVerificationResult: GetVerificationResult, completionHandler: @escaping ((GetVerificationResultResponse) -> Void) = {_ in }){
         var soapReqXML:String = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
         
         soapReqXML  += "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns1=\"http://dynamicform.services.registrations.edentiti.com/\">"
@@ -190,7 +190,9 @@
                  
         SoapHttpClient.callWS(Host : self.Host,WebServiceUrl:self.Url,SoapAction:soapAction,SoapMessage:soapReqXML) { data in
             let verificationResult = GetVerificationResultResponse(XMLString: String(data: data, encoding: .utf8)!)
-            completionHandler(verificationResult)
+            if let verificationResult = verificationResult {
+                completionHandler(verificationResult)
+            }
         }
         
     }

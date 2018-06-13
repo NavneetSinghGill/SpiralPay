@@ -151,6 +151,7 @@ class ConfirmDetailsViewController: ProgressBarViewController, ConfirmDetailsDis
         var dict = User.shared.getCurrentAddressDict()
         dict[User.originatedFromVerificationProcess] = "false"
         User.shared.addresses = [dict]
+        SecurityStorageWorker.shared.setArrayUserDefaults(User.shared.addresses!, key: "addresses")
         
         User.shared.address = ""
         User.shared.city = ""

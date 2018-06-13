@@ -18,7 +18,11 @@ class SecurityStorageWorker: NSObject {
         return KeychainWrapper.standard.set(value, forKey: key)
     }
     
-    public func setArray(_ value: Array<AnyObject>, key: String) -> Bool {
+    public func setArrayUserDefaults(_ value: Array<Dictionary<String,String>>, key: String) {
+        UserDefaults.standard.set(value, forKey: key)
+    }
+    
+    public func setRegularArray(_ value: Array<AnyObject>, key: String) -> Bool {
         let data = NSKeyedArchiver.archivedData(withRootObject: value)
         return KeychainWrapper.standard.set(data, forKey: key)
     }
@@ -32,6 +36,13 @@ class SecurityStorageWorker: NSObject {
         let data = KeychainWrapper.standard.data(forKey: key)
         if let data = data, let array = NSKeyedUnarchiver.unarchiveObject(with: data) as? Array<AnyObject> {
             return array
+        }
+        return Array<AnyObject>()
+    }
+    
+    public func getUserDefaultsArrayValue(key: String) -> Array<AnyObject> {
+        if let value = UserDefaults.standard.value(forKey: key) as? Array<AnyObject> {
+            return value
         }
         return Array<AnyObject>()
     }

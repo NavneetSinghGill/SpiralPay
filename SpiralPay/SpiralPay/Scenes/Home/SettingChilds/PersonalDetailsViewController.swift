@@ -105,6 +105,7 @@ class PersonalDetailsViewController: SpiralPayViewController {
         newAddresses[index] = address
         User.shared.addresses = newAddresses
         
+        SecurityStorageWorker.shared.setArrayUserDefaults(User.shared.addresses!, key: "addresses")
         User.shared.save()
         self.reloadTableViewDataWith(animation: true)
     }
@@ -147,6 +148,7 @@ extension PersonalDetailsViewController: HomeAddressTableViewCellDelegate {
             if var addresses = User.shared.addresses {
                 addresses.remove(at: index)
                 User.shared.addresses = addresses
+                SecurityStorageWorker.shared.setArrayUserDefaults(User.shared.addresses!, key: "addresses")
                 User.shared.save()
                 self.reloadTableViewDataWith(animation: true)
             }

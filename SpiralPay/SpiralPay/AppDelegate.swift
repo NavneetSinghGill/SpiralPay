@@ -59,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             User.shared.address = ""
             User.shared.city = ""
             User.shared.postcode = ""
+            SecurityStorageWorker.shared.setArrayUserDefaults(User.shared.addresses!, key: "addresses")
             User.shared.save()
         }
         

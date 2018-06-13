@@ -31,7 +31,7 @@ class Card: NSObject {
         _ = SecurityStorageWorker.shared.setTokenValue(number ?? "", key: "cardNumber")
         _ = SecurityStorageWorker.shared.setTokenValue(expiry ?? "", key: "cardExpiry")
         _ = SecurityStorageWorker.shared.setTokenValue(cvv ?? "", key: "cardCvv")
-        _ = SecurityStorageWorker.shared.setArray((cards as Array<AnyObject>?) ?? Array<AnyObject>(), key: "cards")
+        _ = SecurityStorageWorker.shared.setRegularArray((cards as Array<AnyObject>?) ?? Array<AnyObject>(), key: "cards")
     }
     
     func restore() {
@@ -45,7 +45,7 @@ class Card: NSObject {
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "cardNumber")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "cardExpiry")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "cardCvv")
-        _ = SecurityStorageWorker.shared.setArray(Array<AnyObject>(), key: "cards")
+        _ = SecurityStorageWorker.shared.setRegularArray(Array<AnyObject>(), key: "cards")
     }
     
     func getCurrentCardDict() -> Dictionary<String,String> {

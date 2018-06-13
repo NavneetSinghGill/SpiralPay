@@ -178,14 +178,12 @@ class SpiralPayViewController: UIViewController {
         task.resume()
     }
     
-    func saveCustomerDetailsWith(getVerificationResultResponse: GetVerificationResultResponse?) {
-        if let gVRResponse = getVerificationResultResponse {
-            Utils.shared.saveCustomerDetailsWith(getVerificationResultResponse: gVRResponse)
+    func saveCustomerDetailsWith(getVerificationResultResponse: GetVerificationResultResponse) {
+        Utils.shared.saveCustomerDetailsWith(getVerificationResultResponse: getVerificationResultResponse)
             
-            //Move to Welcome screen
-            DispatchQueue.main.async {
-                self.afterVixVerifySuccess()
-            }
+        //Move to Welcome screen
+        DispatchQueue.main.async {
+            self.afterVixVerifySuccess()
         }
     }
     
@@ -224,7 +222,9 @@ extension SpiralPayViewController: GIDDelegate, GIDLoggerDelegate {
             NLoader.startAnimating()
             Utils.shared.getVerificationResult(getVerificationResult: getVerificationResult, completionBlock: { (getVerificationResultResponse) -> (Void) in
                 NLoader.stopAnimating()
-                self.saveCustomerDetailsWith(getVerificationResultResponse: getVerificationResultResponse)
+                DispatchQueue.main.async {
+                    self.saveCustomerDetailsWith(getVerificationResultResponse: getVerificationResultResponse)
+                }
             })
             
             

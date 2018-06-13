@@ -18,17 +18,17 @@ enum SavedState {
     
     func rawValue() -> String {
         switch self {
-        case .None:
+        case SavedState.None:
             return "None"
-        case .PinCreated:
+        case SavedState.PinCreated:
             return "PinCreated"
-        case .PhoneVerified:
+        case SavedState.PhoneVerified:
             return "PhoneVerified"
-        case .CustomerDetailsEntered:
+        case SavedState.CustomerDetailsEntered:
             return "CustomerDetailsEntered"
-        case .CardAdded:
+        case SavedState.CardAdded:
             return "CardAdded"
-        case .CardNotAdded:
+        case SavedState.CardNotAdded:
             return "CardNotAdded"
         }
     }
@@ -63,7 +63,7 @@ class User: NSObject {
     var city: String?
     var postcode: String?
     var addresses: Array<Dictionary<String,String>>?
-    var savedState: SavedState = .None
+    var savedState: SavedState = SavedState.None
     var currentLoyaltyPoints: Float = 0
 
     var phoneWithCode: String? {
@@ -78,25 +78,26 @@ class User: NSObject {
     }
     
     func save() {
-        _ = SecurityStorageWorker.shared.setTokenValue(phone ?? "", key: "phone")
-        _ = SecurityStorageWorker.shared.setTokenValue(email ?? "", key: "email")
-        _ = SecurityStorageWorker.shared.setTokenValue(countryName ?? "", key: "countryName")
-        _ = SecurityStorageWorker.shared.setTokenValue(countryPhoneCode ?? "", key: "countryPhoneCode")
-        _ = SecurityStorageWorker.shared.setTokenValue(accessToken ?? "", key: "accessToken")
-        _ = SecurityStorageWorker.shared.setTokenValue(customerID ?? "", key: "customerID")
-        _ = SecurityStorageWorker.shared.setTokenValue(name ?? "", key: "name")
-        _ = SecurityStorageWorker.shared.setTokenValue(firstName ?? "", key: "firstName")
-        _ = SecurityStorageWorker.shared.setTokenValue(middleName ?? "", key: "middleName")
-        _ = SecurityStorageWorker.shared.setTokenValue(lastName ?? "", key: "lastName")
-        _ = SecurityStorageWorker.shared.setTokenValue(birthDay ?? "", key: "birthDay")
-        _ = SecurityStorageWorker.shared.setTokenValue(birthMonth ?? "", key: "birthMonth")
-        _ = SecurityStorageWorker.shared.setTokenValue(birthYear ?? "", key: "birthYear")
-        _ = SecurityStorageWorker.shared.setTokenValue(address ?? "", key: "address")
-        _ = SecurityStorageWorker.shared.setTokenValue(city ?? "", key: "city")
-        _ = SecurityStorageWorker.shared.setTokenValue(postcode ?? "", key: "postcode")
-        _ = SecurityStorageWorker.shared.setArray((addresses as Array<AnyObject>?) ?? Array<AnyObject>(), key: "addresses")
+//        let addresses = self.addresses ?? Array<Dictionary<String,String>>()
+//        SecurityStorageWorker.shared.setArrayUserDefaults(addresses, key: "addresses")
         
-        _ = SecurityStorageWorker.shared.setTokenValue(savedState.rawValue(), key: "savedState")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.phone ?? "", key: "phone")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.email ?? "", key: "email")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.countryName ?? "", key: "countryName")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.countryPhoneCode ?? "", key: "countryPhoneCode")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.accessToken ?? "", key: "accessToken")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.customerID ?? "", key: "customerID")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.name ?? "", key: "name")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.firstName ?? "", key: "firstName")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.middleName ?? "", key: "middleName")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.lastName ?? "", key: "lastName")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.birthDay ?? "", key: "birthDay")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.birthMonth ?? "", key: "birthMonth")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.birthYear ?? "", key: "birthYear")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.address ?? "", key: "address")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.city ?? "", key: "city")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.postcode ?? "", key: "postcode")
+        _ = SecurityStorageWorker.shared.setTokenValue(self.savedState.rawValue(), key: "savedState")
         
         //Dont save loyalty points here
     }
@@ -127,7 +128,7 @@ class User: NSObject {
         address = SecurityStorageWorker.shared.getKeychainValue(key: "address") ?? ""
         city = SecurityStorageWorker.shared.getKeychainValue(key: "city") ?? ""
         postcode = SecurityStorageWorker.shared.getKeychainValue(key: "postcode") ?? ""
-        addresses = SecurityStorageWorker.shared.getKeychainArrayValue(key: "addresses") as? Array<Dictionary<String, String>>
+        addresses = SecurityStorageWorker.shared.getUserDefaultsArrayValue(key: "addresses") as? Array<Dictionary<String, String>>
         
         if let sS = SecurityStorageWorker.shared.getKeychainValue(key: "savedState") {
             switch sS {
@@ -171,7 +172,7 @@ class User: NSObject {
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "city")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "postcode")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "savedState")
-        _ = SecurityStorageWorker.shared.setArray(Array<AnyObject>(), key: "addresses")
+        _ = SecurityStorageWorker.shared.setArrayUserDefaults(Array<Dictionary<String,String>>(), key: "addresses")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "currentLoyaltyPoints")
         _ = SecurityStorageWorker.shared.setTokenValue("", key: "__pin__")
     }

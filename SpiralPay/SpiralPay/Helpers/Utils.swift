@@ -259,13 +259,13 @@ class Utils: NSObject {
         return main
     }
     
-    func getVerificationResult(getVerificationResult: GetVerificationResult, completionBlock: @escaping (GetVerificationResultResponse?) -> (Void) = {_ in}) {
+    func getVerificationResult(getVerificationResult: GetVerificationResult, completionBlock: @escaping (GetVerificationResultResponse) -> (Void) = {_ in}) {
         
         DynamicFormsServiceV3().getVerificationResult(getVerificationResult: getVerificationResult, completionHandler: { (getVerificationResultResponse) in
             
-            let status = getVerificationResultResponse?.return_?.verificationResult?.overallVerificationStatus
-            let verificationID = getVerificationResultResponse?.return_?.verificationResult?.verificationId
-            let verificationToken = getVerificationResultResponse?.return_?.verificationToken
+            let status = getVerificationResultResponse.return_?.verificationResult?.overallVerificationStatus
+            let verificationID = getVerificationResultResponse.return_?.verificationResult?.verificationId
+            let verificationToken = getVerificationResultResponse.return_?.verificationToken
             
             //Save some data
             VixVerify.shared.verificationStatus = status
@@ -280,8 +280,6 @@ class Utils: NSObject {
             } else {
                 self.startGetVerificationResultTimer(shouldCallApiAtStartOnce: false)
             }
-            
-            completionBlock(getVerificationResultResponse)
             
             
             if let status = status, let verificationID = verificationID {
@@ -299,6 +297,7 @@ class Utils: NSObject {
                 }
             }
             
+            completionBlock(getVerificationResultResponse)
         })
         
     }
@@ -352,11 +351,12 @@ class Utils: NSObject {
         }
         
         var dict = User.shared.getCurrentAddressDict()
+        var addresses_: Array<Dictionary<String,String>>?
         
         if User.shared.addresses == nil || User.shared.addresses!.count == 0 {
             //Onboarding
             User.shared.savedState = SavedState.CustomerDetailsEntered
-            User.shared.addresses = [dict]
+            addresses_ = [dict]
         } else {
             dict[User.isDefault] = "false"
             
@@ -367,8 +367,11 @@ class Utils: NSObject {
                     addresses.append(address)
                 }
             }
-            User.shared.addresses = addresses
+            addresses_ = addresses
+            Swift.print("...... addresses: \(addresses)")
         }
+        
+        User.shared.addresses = addresses_
         
         User.shared.address = ""
         User.shared.city = ""
@@ -376,6 +379,7 @@ class Utils: NSObject {
         
         User.shared.countryName = phoneCountry
         
+        SecurityStorageWorker.shared.setArrayUserDefaults(addresses_!, key: "addresses")
         User.shared.save()
     }
     
