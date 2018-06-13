@@ -50,7 +50,7 @@ class Utils: NSObject {
     
     static func print(object: Any) {
         #if DEBUG
-            Swift.print(object)
+//            Swift.print(object)
         #endif
     }
     

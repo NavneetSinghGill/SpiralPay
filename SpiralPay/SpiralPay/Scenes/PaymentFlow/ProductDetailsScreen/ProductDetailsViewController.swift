@@ -208,7 +208,7 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
                 Utils.showAlertWith(message: message, inController: self)
                 return
             }
-            
+            Utils.print(object: "API for get card token")
             interactor?.getCardToken(request: request)
             
             NLoader.shared.startNLoader()
@@ -216,6 +216,7 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     }
     
     func getCardTokenSuccessWith(response: ProductDetails.CardToken.Response) {
+        Utils.print(object: "API for get card token success")
         if response.token != nil {
             NLoader.shared.startNLoader()
             var request = ProductDetails.ProcessPayment.Request()
@@ -230,32 +231,37 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
             request.customerEmail = User.shared.email
             request.customerPhone = User.shared.phoneWithCode
             
+            Utils.print(object: "API for process payment")
             interactor?.processPayment(request: request)
         } else {
             NLoader.shared.stopNLoader()
-            paymentFailed()
+            paymentFailed(error: "card token success")
         }
     }
     
     func getCardTokenFailureWith(response: ProductDetails.CardToken.Response) {
+        Utils.print(object: "API for get card token failure")
         NLoader.shared.stopNLoader()
-        paymentFailed()
+        paymentFailed(error: "card token failure")
     }
     
     //MARK: Process payment
     
     func processPaymentSuccessWith(response: ProductDetails.ProcessPayment.Response) {
+        Utils.print(object: "API for process payment success")
         doMultiplePaymentDetailsAPI()
     }
     
     func processPaymentFailureWith(response: ProductDetails.ProcessPayment.Response) {
+        Utils.print(object: "API for process payment failure")
         NLoader.shared.stopNLoader()
-        paymentFailed()
+        paymentFailed(error: "process payment failure")
     }
     
     //MARK: Get payment details
     
     func getPaymentDetailSuccessWith(response: Home.PaymentDetail.Response) {
+        Utils.print(object: "API for get payment details success")
         NLoader.shared.stopNLoader()
         
         if !didGetPaymentDetails {
@@ -279,12 +285,14 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
                     doNextPaymentInCaseOfMultipleMerchants()
                 }
             } else if response.status == "PAY_FAILED" {
+                Utils.print(object: "API for get payment success : PAY_FAILED")
                 showPaymentFailedScreenWith(paymentDetail: response)
             }
         }
     }
     
     func getPaymentDetailFailureWith(response: Home.PaymentDetail.Response) {
+        Utils.print(object: "API for get payment details failure")
         NLoader.shared.stopNLoader()
         
         if !didGetPaymentDetails {
@@ -314,6 +322,7 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
     }
     
     func createPaymentSuccessWith(response: ProductDetails.CreatePayment.Response) {
+        Utils.print(object: "API for create payment success")
         if response.paymentId != nil {
             if detailsType == .Campaign {
                 campaignPaymentID = response.paymentId
@@ -323,16 +332,18 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
             getCardToken()
         } else {
             NLoader.shared.stopNLoader()
-            paymentFailed()
+            paymentFailed(error: "create payment success")
         }
     }
     
     func createPaymentFailureWith(response: ProductDetails.CreatePayment.Response) {
+        Utils.print(object: "API for create payment failure")
         NLoader.shared.stopNLoader()
-        paymentFailed()
+        paymentFailed(error: "create payment failure")
     }
     
-    func paymentFailed() {
+    func paymentFailed(error: String) {
+        Utils.print(object: "payment failed: \(error)")
         //Filling paymentDetail object removes the headache of managing another useless campaign/combinedItems object in payment status screen
         if detailsType == DetailsType.Campaign {
             paymentDetail.amount = campaignDetail.amount
@@ -593,6 +604,7 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
         } else if detailsType == DetailsType.Multiple {
             request.paymentID = combinedItemPaymentID
         }
+        Utils.print(object: "API for get payment details")
         self.interactor?.getPaymentDetails(request: request)
     }
     
