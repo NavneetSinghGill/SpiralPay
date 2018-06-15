@@ -302,8 +302,17 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
     }
     
     override func afterVixVerifySuccess(status: VerificationStatus) {
-        let welcomeScreen: WelcomeViewController = WelcomeViewController.create()
-        self.navigationController?.setViewControllers([welcomeScreen], animated: true)
+        if status == .verified || status == .verifiedAdmin {
+            let welcomeScreen: WelcomeViewController = WelcomeViewController.create()
+            welcomeScreen.verificationStatus = status
+            welcomeScreen.appFlowType = .Onboard
+            self.navigationController?.setViewControllers([welcomeScreen], animated: true)
+        } else {
+            let vixVerifyStatusScreen: VixVerifyStatusViewController = VixVerifyStatusViewController.create()
+            vixVerifyStatusScreen.verificationStatus = status
+            vixVerifyStatusScreen.appFlowType = .Onboard
+            self.navigationController?.setViewControllers([vixVerifyStatusScreen], animated: true)
+        }
     }
     
     override func vixVerifyNotNow() {

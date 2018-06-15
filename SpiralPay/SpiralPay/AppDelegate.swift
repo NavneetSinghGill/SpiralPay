@@ -226,7 +226,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case .PhoneVerified:
             showConfirmDetailsScreen()
         case .CustomerDetailsEntered:
-            showWelcomeScreen()
+            showWelcomeOrVixVerifyStatusScreen()
         case .CardAdded:
             showHomeTabBarScreen()
         case .CardNotAdded:
@@ -299,9 +299,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.getWindow().rootViewController = navVC
     }
      
-    func showWelcomeScreen() {
-        let welcomeScreen = WelcomeViewController.create()
-        let navVC = UINavigationController(rootViewController: welcomeScreen)
+    func showWelcomeOrVixVerifyStatusScreen() {
+        var vc: UIViewController?
+        let status = VixVerify.shared.verificationStatus
+        if status == .verified || status == .verifiedAdmin {
+            let welcomeScreen: WelcomeViewController = WelcomeViewController.create()
+            welcomeScreen.verificationStatus = status
+            welcomeScreen.appFlowType = .Onboard
+            vc = welcomeScreen
+        } else {
+            let vixVerifyStatusScreen: VixVerifyStatusViewController = VixVerifyStatusViewController.create()
+            vixVerifyStatusScreen.verificationStatus = status
+            vixVerifyStatusScreen.appFlowType = .Onboard
+            vc = vixVerifyStatusScreen
+        }
+        let navVC = UINavigationController(rootViewController: vc!)
+        navVC.setNavigationBarHidden(true, animated: false)
         self.getWindow().rootViewController = navVC
     }
     
