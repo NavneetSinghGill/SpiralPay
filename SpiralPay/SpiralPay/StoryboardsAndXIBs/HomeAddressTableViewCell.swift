@@ -59,10 +59,8 @@ class HomeAddressTableViewCell: UITableViewCell {
         self.address = address
         if index == 0 {
             addressNameLabel.text = "Home Address"
-            addressType = .Home
         } else {
             addressNameLabel.text = "Shipping Address \(index ?? 0)"
-            addressType = .Shipping
         }
         addressLabel.text = "\(address[User.address] ?? "-"), \(address[User.city] ?? "-"), \(address[User.country] ?? "-") \(address[User.postcode] ?? "-")"
         
@@ -108,7 +106,7 @@ class HomeAddressTableViewCell: UITableViewCell {
     
     func showOptionView() {
         UIView.animate(withDuration: 0.2) {
-            if self.addressType == .Home {
+            if self.address![User.originatedFromVerificationProcess] == "true" {
                 self.homeOptionsView.alpha = 1
             } else {
                 self.shippingOptionsView.alpha = 1

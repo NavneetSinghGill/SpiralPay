@@ -301,7 +301,7 @@ class PhoneVerificationViewController: ProgressBarViewController, PhoneVerificat
         }
     }
     
-    override func afterVixVerifySuccess() {
+    override func afterVixVerifySuccess(status: VerificationStatus) {
         let welcomeScreen: WelcomeViewController = WelcomeViewController.create()
         self.navigationController?.setViewControllers([welcomeScreen], animated: true)
     }

@@ -21,11 +21,26 @@ let screenWidth = UIScreen.main.bounds.size.width
 //let isTestEnvironment = false
 let isTestEnvironment = true
 
-struct VerificationStatus {
-    static let verified = "VERIFIED"
-    static let verifiedAdmin = "VERIFIED_ADMIN"
-    static let inProgress = "IN_PROGRESS"
-    static let pending = "PENDING"
+enum VerificationStatus: String {
+    case verified = "VERIFIED"
+    case verifiedAdmin = "VERIFIED_ADMIN"
+    case inProgress = "IN_PROGRESS"
+    case pending = "PENDING"
+    
+    static func getStatus(string: String) -> VerificationStatus {
+        switch string {
+        case VerificationStatus.verified.rawValue:
+            return VerificationStatus.verified
+        case VerificationStatus.verifiedAdmin.rawValue:
+            return VerificationStatus.verifiedAdmin
+        case VerificationStatus.inProgress.rawValue:
+            return VerificationStatus.inProgress
+        case VerificationStatus.pending.rawValue:
+            return VerificationStatus.pending
+        default:
+            return VerificationStatus.pending
+        }
+    }
 }
 
 struct Constants {

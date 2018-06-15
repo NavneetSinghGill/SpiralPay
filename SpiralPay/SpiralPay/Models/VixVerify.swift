@@ -14,7 +14,7 @@ class VixVerify: NSObject {
     
     var verificationID: String?
     var verificationToken: String?
-    var verificationStatus: String?
+    var verificationStatus: VerificationStatus?
     
     func reset() {
         VixVerify.shared = VixVerify()
@@ -24,13 +24,13 @@ class VixVerify: NSObject {
     func save() {
         _ = SecurityStorageWorker.shared.setTokenValue(verificationID ?? "", key: "verificationID")
         _ = SecurityStorageWorker.shared.setTokenValue(verificationToken ?? "", key: "verificationToken")
-        _ = SecurityStorageWorker.shared.setTokenValue(verificationStatus ?? "", key: "verificationStatus")
+        _ = SecurityStorageWorker.shared.setTokenValue(verificationStatus?.rawValue ?? "", key: "verificationStatus")
     }
     
     func restore() {
         verificationID = SecurityStorageWorker.shared.getKeychainValue(key: "verificationID") ?? ""
         verificationToken = SecurityStorageWorker.shared.getKeychainValue(key: "verificationToken") ?? ""
-        verificationStatus = SecurityStorageWorker.shared.getKeychainValue(key: "verificationStatus") ?? ""
+        verificationStatus = VerificationStatus.getStatus(string: SecurityStorageWorker.shared.getKeychainValue(key: "verificationStatus") ?? "")
     }
     
     static func resetSavedValues() {

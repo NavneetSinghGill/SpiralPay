@@ -180,15 +180,15 @@ class SpiralPayViewController: UIViewController {
     
     func saveCustomerDetailsWith(getVerificationResultResponse: GetVerificationResultResponse) {
         Utils.shared.saveCustomerDetailsWith(getVerificationResultResponse: getVerificationResultResponse)
-            
+        
         //Move to Welcome screen
         DispatchQueue.main.async {
-            self.afterVixVerifySuccess()
+            self.afterVixVerifySuccess(status: VerificationStatus.getStatus(string: getVerificationResultResponse.return_?.verificationResult?.overallVerificationStatus ?? ""))
         }
     }
     
     //MARK: Possibly overridden in derived controllers
-    func afterVixVerifySuccess() { }
+    func afterVixVerifySuccess(status: VerificationStatus) { }
     func vixVerifyNotNow() { }
 
 }

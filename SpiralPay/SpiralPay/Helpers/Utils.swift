@@ -50,7 +50,7 @@ class Utils: NSObject {
     
     static func print(object: Any) {
         #if DEBUG
-//            Swift.print(object)
+            Swift.print(object)
         #endif
     }
     
@@ -263,7 +263,7 @@ class Utils: NSObject {
         
         DynamicFormsServiceV3().getVerificationResult(getVerificationResult: getVerificationResult, completionHandler: { (getVerificationResultResponse) in
             
-            let status = getVerificationResultResponse.return_?.verificationResult?.overallVerificationStatus
+            let status = VerificationStatus.getStatus(string: getVerificationResultResponse.return_?.verificationResult?.overallVerificationStatus ?? "")
             let verificationID = getVerificationResultResponse.return_?.verificationResult?.verificationId
             let verificationToken = getVerificationResultResponse.return_?.verificationToken
             
@@ -282,10 +282,10 @@ class Utils: NSObject {
             }
             
             
-            if let status = status, let verificationID = verificationID {
+            if let verificationID = verificationID {
                 //Send status to own sv
                 var request = PhoneVerification.UpdateCustomerVerificationData.Request()
-                request.status = status
+                request.status = status.rawValue
                 request.verificationID = verificationID
                 
                 DispatchQueue.main.async {

@@ -160,6 +160,7 @@
 		187DC5C420721C25000500AA /* ChangePinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5BE20721C25000500AA /* ChangePinViewController.swift */; };
 		187DC5C520721C25000500AA /* ChangePinInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5BF20721C25000500AA /* ChangePinInteractor.swift */; };
 		187DC5C920724B83000500AA /* HomeAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DC5C820724B83000500AA /* HomeAddressViewController.swift */; };
+		1882953920D3987300ED273F /* VixVerifyStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1882953820D3987300ED273F /* VixVerifyStatusViewController.swift */; };
 		188ECEA320B572F600C57F50 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188ECEA220B572F600C57F50 /* Accelerate.framework */; };
 		188ECEB320B5759F00C57F50 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 188ECEA720B5758100C57F50 /* libCardIO.a */; };
 		188ECEB420B5759F00C57F50 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 188ECEA920B5758900C57F50 /* libopencv_imgproc.a */; };
@@ -448,6 +449,7 @@
 		187DC5BE20721C25000500AA /* ChangePinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinViewController.swift; sourceTree = "<group>"; };
 		187DC5BF20721C25000500AA /* ChangePinInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePinInteractor.swift; sourceTree = "<group>"; };
 		187DC5C820724B83000500AA /* HomeAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAddressViewController.swift; sourceTree = "<group>"; };
+		1882953820D3987300ED273F /* VixVerifyStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VixVerifyStatusViewController.swift; sourceTree = "<group>"; };
 		188ECEA220B572F600C57F50 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		188ECEA420B574BA00C57F50 /* SpiralPay-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpiralPay-Bridging-Header.h"; sourceTree = "<group>"; };
 		188ECEA720B5758100C57F50 /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCardIO.a; sourceTree = "<group>"; };
@@ -1141,6 +1143,7 @@
 				1865359320AD6804005EE430 /* EnableTouchViewController.swift */,
 				1865359520AD7824005EE430 /* TouchActivatedViewController.swift */,
 				185CE2CC20AEA78A0096D8A4 /* TemporaryLockTimerViewController.swift */,
+				1882953820D3987300ED273F /* VixVerifyStatusViewController.swift */,
 				F1E89B6D201F09F10052C723 /* Signup */,
 				18645D4F203552140017E214 /* WelcomeViewController.swift */,
 				1866779D20B7DB5900A39BDD /* AddCardIntroViewController.swift */,
@@ -1482,6 +1485,7 @@
 				F1D9BAB920185605004B42B7 /* CLLocationExtensions.swift in Sources */,
 				1828563B20998BF400B1388B /* currentStatusV3.swift in Sources */,
 				1828564620998BF400B1388B /* getVerificationTokenResponse.swift in Sources */,
+				1882953920D3987300ED273F /* VixVerifyStatusViewController.swift in Sources */,
 				181287B1204441A600779850 /* HomeInteractor.swift in Sources */,
 				1828565220998BF400B1388B /* getVerificationToken.swift in Sources */,
 				18943501202488F9000C2166 /* PinWorker.swift in Sources */,

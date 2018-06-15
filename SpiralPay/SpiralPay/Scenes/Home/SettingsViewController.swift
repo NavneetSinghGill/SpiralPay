@@ -84,8 +84,11 @@ class SettingsViewController: SpiralPayViewController {
     
     //MARK:- Overridden methods
     
-    override func afterVixVerifySuccess() {
-        self.navigationController?.popToRootViewController(animated: true)
+    override func afterVixVerifySuccess(status: VerificationStatus) {
+        let vixVerifyStatusScreen = VixVerifyStatusViewController.create()
+        vixVerifyStatusScreen.appFlowType = AppFlowType.Setting
+        vixVerifyStatusScreen.verificationStatus = status
+        self.navigationController?.pushViewController(vixVerifyStatusScreen, animated: true)
     }
     
     override func vixVerifyNotNow() {

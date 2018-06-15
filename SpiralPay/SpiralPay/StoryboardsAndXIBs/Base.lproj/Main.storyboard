@@ -730,7 +730,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="780"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9c-TK-nDS" userLabel="Container View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="831"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="701"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYw-M2-ie8" customClass="ProgressBarView" customModule="SpiralPay" customModuleProvider="target">
                                                 <rect key="frame" x="76" y="46" width="168" height="4"/>
@@ -836,7 +836,7 @@
                                                     <outlet property="delegate" destination="w53-Op-FHp" id="Lq7-oN-lVL"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eqi-vG-cO8" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
+                                            <textField hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eqi-vG-cO8" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="490" width="270" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="end-ro-8AH"/>
@@ -849,7 +849,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Mv-sv-csm" customClass="SpiralPayButton" customModule="SpiralPay" customModuleProvider="target">
-                                                <rect key="frame" x="29.5" y="634" width="262" height="52"/>
+                                                <rect key="frame" x="29.5" y="504" width="262" height="52"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="52" id="j0F-KK-JXe"/>
                                                 </constraints>
@@ -857,24 +857,23 @@
                                                 <state key="normal" title="Confirm" backgroundImage="buttonBlueBackground"/>
                                                 <connections>
                                                     <action selector="confirmButtonTapped" destination="w53-Op-FHp" eventType="touchUpInside" id="wEO-mk-28R"/>
-                                                    <action selector="nextButtonTappedWithButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Xv-4f-iny"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By clicking confirm you confirm to SpiralPay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SqP-eW-vKt">
-                                                <rect key="frame" x="31" y="711" width="258.5" height="16"/>
+                                                <rect key="frame" x="31" y="581" width="258.5" height="16"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13.5"/>
                                                 <color key="textColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jsA-aS-Zri" userLabel="UnderlineTermsView">
-                                                <rect key="frame" x="93.5" y="741.5" width="133" height="1"/>
+                                                <rect key="frame" x="93.5" y="611.5" width="133" height="1"/>
                                                 <color key="backgroundColor" red="0.0" green="0.58431372550000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="0.5" id="BWw-5Z-Atb"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnp-WJ-BkN">
-                                                <rect key="frame" x="93.5" y="722" width="133" height="29"/>
+                                                <rect key="frame" x="93.5" y="592" width="133" height="29"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                 <state key="normal" title="Terms and Conditions">
                                                     <color key="titleColor" red="0.0" green="0.58431372550000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -883,7 +882,7 @@
                                                     <action selector="termsButtonTapped" destination="w53-Op-FHp" eventType="touchUpInside" id="tI0-hW-URk"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Drb-fR-6dw" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
+                                            <textField hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Drb-fR-6dw" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
                                                 <rect key="frame" x="104.5" y="555" width="190.5" height="45"/>
                                                 <color key="textColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
@@ -892,7 +891,7 @@
                                                     <outlet property="delegate" destination="w53-Op-FHp" id="rSR-sz-LAO"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text=" " placeholder="Country" textAlignment="natural" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="50A-Jg-vIQ" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
+                                            <textField hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text=" " placeholder="Country" textAlignment="natural" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="50A-Jg-vIQ" customClass="FloatingHeaderTextField" customModule="SpiralPay" customModuleProvider="target">
                                                 <rect key="frame" x="25" y="555" width="61.5" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="t4Z-9h-2jV"/>
@@ -928,7 +927,6 @@
                                             <constraint firstItem="sX1-gv-oYY" firstAttribute="leading" secondItem="jDk-PY-0g5" secondAttribute="leading" id="JfU-UY-dif"/>
                                             <constraint firstItem="sX1-gv-oYY" firstAttribute="top" secondItem="jDk-PY-0g5" secondAttribute="top" id="KZq-lL-aXd"/>
                                             <constraint firstItem="blH-q5-ObQ" firstAttribute="top" secondItem="kYw-M2-ie8" secondAttribute="bottom" constant="32" id="PIX-Sm-2zf"/>
-                                            <constraint firstItem="9Mv-sv-csm" firstAttribute="top" secondItem="50A-Jg-vIQ" secondAttribute="bottom" constant="34" id="PKk-Rc-7eS"/>
                                             <constraint firstItem="sX1-gv-oYY" firstAttribute="trailing" secondItem="jDk-PY-0g5" secondAttribute="trailing" id="PMu-n1-uGK"/>
                                             <constraint firstItem="Eqi-vG-cO8" firstAttribute="leading" secondItem="6ug-Cl-Sbi" secondAttribute="leading" id="S8Z-ee-2uf"/>
                                             <constraint firstItem="3Sz-B0-SIf" firstAttribute="leading" secondItem="V9c-TK-nDS" secondAttribute="leading" constant="25" id="W2S-Ra-KYF"/>
@@ -951,6 +949,7 @@
                                             <constraint firstItem="RA1-KQ-6dp" firstAttribute="trailing" secondItem="jDk-PY-0g5" secondAttribute="trailing" id="lUv-FV-TUH"/>
                                             <constraint firstItem="Drb-fR-6dw" firstAttribute="trailing" secondItem="Eqi-vG-cO8" secondAttribute="trailing" id="mwu-un-JOY"/>
                                             <constraint firstItem="Drb-fR-6dw" firstAttribute="width" secondItem="50A-Jg-vIQ" secondAttribute="width" multiplier="244:68" constant="-30" id="oQI-t0-URc"/>
+                                            <constraint firstItem="9Mv-sv-csm" firstAttribute="top" secondItem="6ug-Cl-Sbi" secondAttribute="bottom" constant="34" id="oV3-IB-5Zn"/>
                                             <constraint firstItem="HhB-DW-161" firstAttribute="leading" secondItem="x0D-c0-R6G" secondAttribute="trailing" id="pgs-KD-nG4"/>
                                             <constraint firstItem="HhB-DW-161" firstAttribute="width" secondItem="x0D-c0-R6G" secondAttribute="width" id="qas-ud-rv0"/>
                                             <constraint firstItem="sTJ-C9-hfz" firstAttribute="bottom" secondItem="HhB-DW-161" secondAttribute="bottom" id="qj8-N8-vXp"/>
@@ -2255,6 +2254,31 @@
             </objects>
             <point key="canvasLocation" x="8766" y="325"/>
         </scene>
+        <!--Vix Verify Status View Controller-->
+        <scene sceneID="cEK-Bm-j2j">
+            <objects>
+                <viewController storyboardIdentifier="VixVerifyStatusViewController" id="sFv-Ub-PEU" customClass="VixVerifyStatusViewController" customModule="SpiralPay" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tDA-Gn-UZ9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nh3-yQ-7dZ">
+                                <rect key="frame" x="151" y="148" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="backButtonTapped" destination="sFv-Ub-PEU" eventType="touchUpInside" id="WJa-6v-j2j"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="70G-j6-QHC"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I65-22-1bn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8766" y="1080"/>
+        </scene>
         <!--Loyalty View Controller-->
         <scene sceneID="SDC-Gv-9H8">
             <objects>
@@ -2636,7 +2660,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g31-yq-L6w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7045.6000000000004" y="1263.4182908545729"/>
+            <point key="canvasLocation" x="9372" y="-2001"/>
         </scene>
         <!--Product Details View Controller-->
         <scene sceneID="ZVR-LE-Qq7">
@@ -3342,7 +3366,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aM4-2J-KQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7853.6000000000004" y="1263.4182908545729"/>
+            <point key="canvasLocation" x="10180" y="-2001"/>
         </scene>
         <!--More View Controller-->
         <scene sceneID="sIg-PY-yIr">
@@ -3430,19 +3454,19 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="265.12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iew-Nd-KDn">
-                                <rect key="frame" x="132" y="364" width="113" height="43.5"/>
+                                <rect key="frame" x="131" y="364" width="113" height="43.5"/>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lp8-Fq-tFd">
-                                <rect key="frame" x="121" y="367" width="8" height="17"/>
+                                <rect key="frame" x="120" y="367" width="8" height="17"/>
                                 <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E Shopping mall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piP-nn-yYw">
-                                <rect key="frame" x="139.5" y="417.5" width="98" height="17"/>
+                                <rect key="frame" x="138.5" y="417.5" width="98" height="17"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -3598,7 +3622,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i3a-pQ-w5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8538" y="1263"/>
+            <point key="canvasLocation" x="10863" y="-2002"/>
         </scene>
         <!--Shopping Cart View Controller-->
         <scene sceneID="aO8-bW-FBJ">
@@ -3674,7 +3698,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="265.12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBU-rO-eTz">
-                                <rect key="frame" x="132" y="438" width="113" height="43.5"/>
+                                <rect key="frame" x="131" y="438" width="113" height="43.5"/>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -3784,7 +3808,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Svy-Fz-xsC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9263.2000000000007" y="1263.4182908545729"/>
+            <point key="canvasLocation" x="11590" y="-2001"/>
         </scene>
         <!--Personal Details View Controller-->
         <scene sceneID="yl0-2I-FLr">
@@ -5025,7 +5049,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QHK-4P-iry" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7045.6000000000004" y="2079.3103448275865"/>
+            <point key="canvasLocation" x="9372" y="-1185"/>
         </scene>
         <!--Touch Activated View Controller-->
         <scene sceneID="DwH-lI-YaO">
@@ -5066,7 +5090,7 @@
                                 <rect key="frame" x="0.0" y="158" width="375" height="345"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7KH-vZ-V6k">
-                                        <rect key="frame" x="100.5" y="86.5" width="174" height="174"/>
+                                        <rect key="frame" x="100.5" y="85.5" width="174" height="174"/>
                                         <state key="normal" image="highlightTouch"/>
                                         <state key="highlighted" image="highlightTouch"/>
                                     </button>
@@ -5119,7 +5143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FEB-d0-4iq" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7735" y="2079"/>
+            <point key="canvasLocation" x="10060" y="-1186"/>
         </scene>
         <!--Temporary Lock Timer View Controller-->
         <scene sceneID="VZp-Dk-VAZ">
@@ -5191,7 +5215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UrS-jz-5vo" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8449" y="2078"/>
+            <point key="canvasLocation" x="10775" y="-1187"/>
         </scene>
         <!--Add Card Intro View Controller-->
         <scene sceneID="zO6-rM-IZe">
@@ -5345,7 +5369,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYO-p3-Y5a" userLabel="ContentView">
-                                        <rect key="frame" x="50" y="94.5" width="275" height="460"/>
+                                        <rect key="frame" x="50" y="93.5" width="275" height="460"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kuj-Vj-yy6" userLabel="CardView">
                                                 <rect key="frame" x="94.5" y="45" width="85" height="85"/>
