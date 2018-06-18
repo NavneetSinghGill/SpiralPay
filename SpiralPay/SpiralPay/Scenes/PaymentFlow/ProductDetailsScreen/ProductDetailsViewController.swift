@@ -191,7 +191,9 @@ class ProductDetailsViewController: SpiralPayViewController, ProductDetailsDispl
             }
             if VixVerify.shared.isBuyRestricted() && Int(amount/100) >= 30 {
                 NLoader.stopAnimating()
-                Utils.showAlertWith(message: "Please verify yourself to do payment of more than £30.", inController: self)
+//                Utils.showAlertWith(message: "Please verify yourself to do payment of more than £30.", inController: self)
+                let dollar30Screen = Dollar30RestrictionViewController.create()
+                self.navigationController?.pushViewController(dollar30Screen, animated: true)
                 return
             }
             

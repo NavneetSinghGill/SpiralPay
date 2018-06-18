@@ -30,6 +30,7 @@
 		181287B1204441A600779850 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181287AB204441A600779850 /* HomeInteractor.swift */; };
 		181287B2204441A600779850 /* HomeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181287AC204441A600779850 /* HomeModels.swift */; };
 		181287B3204441A600779850 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181287AD204441A600779850 /* HomePresenter.swift */; };
+		1813333C20D7E38F0067B420 /* Dollar30RestrictionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813333B20D7E38F0067B420 /* Dollar30RestrictionViewController.swift */; };
 		1815BC832047D8C20001E392 /* PaymentPriceDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815BC812047D8C20001E392 /* PaymentPriceDetailsTableViewCell.swift */; };
 		1815BC842047D8C20001E392 /* PaymentPriceDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1815BC822047D8C20001E392 /* PaymentPriceDetailsTableViewCell.xib */; };
 		181A245120A1CC8E00A7CFCF /* LoyaltyContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181A245020A1CC8E00A7CFCF /* LoyaltyContentViewController.swift */; };
@@ -324,6 +325,7 @@
 		181287AB204441A600779850 /* HomeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		181287AC204441A600779850 /* HomeModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModels.swift; sourceTree = "<group>"; };
 		181287AD204441A600779850 /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		1813333B20D7E38F0067B420 /* Dollar30RestrictionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dollar30RestrictionViewController.swift; sourceTree = "<group>"; };
 		1815BC812047D8C20001E392 /* PaymentPriceDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentPriceDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		1815BC822047D8C20001E392 /* PaymentPriceDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentPriceDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		181A245020A1CC8E00A7CFCF /* LoyaltyContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyaltyContentViewController.swift; sourceTree = "<group>"; };
@@ -1144,6 +1146,7 @@
 				1865359520AD7824005EE430 /* TouchActivatedViewController.swift */,
 				185CE2CC20AEA78A0096D8A4 /* TemporaryLockTimerViewController.swift */,
 				1882953820D3987300ED273F /* VixVerifyStatusViewController.swift */,
+				1813333B20D7E38F0067B420 /* Dollar30RestrictionViewController.swift */,
 				F1E89B6D201F09F10052C723 /* Signup */,
 				18645D4F203552140017E214 /* WelcomeViewController.swift */,
 				1866779D20B7DB5900A39BDD /* AddCardIntroViewController.swift */,
@@ -1435,6 +1438,7 @@
 				1828563420998BF400B1388B /* address.swift in Sources */,
 				1828562F20998BF400B1388B /* registerVerification.swift in Sources */,
 				18A8BCF420A03A950099433B /* VixVerify.swift in Sources */,
+				1813333C20D7E38F0067B420 /* Dollar30RestrictionViewController.swift in Sources */,
 				1828564720998BF400B1388B /* setFieldsResponse.swift in Sources */,
 				F1D9BA51201852E8004B42B7 /* AppDelegate.swift in Sources */,
 				1870C49E206CD58200B7E4C3 /* PersonalDetailsViewController.swift in Sources */,

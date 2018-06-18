@@ -224,6 +224,14 @@ class Utils: NSObject {
         return ""
     }
     
+    static func getRangeOfSubString(subString: String, fromString: String) -> NSRange {
+        let sampleLinkRange = fromString.range(of: subString)!
+        let startPos = fromString.distance(from: fromString.startIndex, to: sampleLinkRange.lowerBound)
+        let endPos = fromString.distance(from: fromString.startIndex, to: sampleLinkRange.upperBound)
+        let linkRange = NSMakeRange(startPos, endPos - startPos)
+        return linkRange
+    }
+    
     //MARK:- Vix verify
     
     func getVixVerifyControllerWith(delegate: UIViewController) -> UIViewController {

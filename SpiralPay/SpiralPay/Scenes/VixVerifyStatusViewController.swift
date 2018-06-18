@@ -33,17 +33,9 @@ class VixVerifyStatusViewController: SpiralPayViewController {
             let text = "It is taking us longer than usual to verify your details we will be in touch when verified. Meanwhile you can still make purchases of up to £30"
             let attributedText = NSMutableAttributedString(string: text)
             
-            attributedText.addAttributes([NSAttributedStringKey.foregroundColor: Colors.mediumBlue, NSAttributedStringKey.font: headingLabel.font], range: getRangeOfSubString(subString: "£30", fromString: text))
+            attributedText.addAttributes([NSAttributedStringKey.foregroundColor: Colors.mediumBlue, NSAttributedStringKey.font: headingLabel.font], range: Utils.getRangeOfSubString(subString: "£30", fromString: text))
             subHeadingLabel.attributedText = attributedText
         }
-    }
-    
-    func getRangeOfSubString(subString: String, fromString: String) -> NSRange {
-        let sampleLinkRange = fromString.range(of: subString)!
-        let startPos = fromString.distance(from: fromString.startIndex, to: sampleLinkRange.lowerBound)
-        let endPos = fromString.distance(from: fromString.startIndex, to: sampleLinkRange.upperBound)
-        let linkRange = NSMakeRange(startPos, endPos - startPos)
-        return linkRange
     }
     
     //MARK:- IBAction methods
