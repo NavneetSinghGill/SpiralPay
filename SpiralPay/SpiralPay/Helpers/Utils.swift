@@ -127,7 +127,11 @@ class Utils: NSObject {
         }
         freeifaddrs(ifaddr)
         
-        return address
+        if address == nil || address!.count == 0 {
+            return "8.8.8.8"
+        } else {
+            return address
+        }
     }
     
     func getURLfor(id: String?) -> URL {
